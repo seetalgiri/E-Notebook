@@ -1,14 +1,16 @@
-<nav class="navbar">
+<nav class="navbar" id="Navigation">
     <div class="logo">
-        <img src="./Client/images/notebookLogo.png" alt="Logo" />
+        <a href="./">
+            <img src="./Client/images/notebookLogo.png" alt="Logo" />
+        </a>
     </div>
     <ul class="nav-list">
-        <li><a href="/">Home</a></li>
+        <li><a href="./">Home</a></li>
         <div class="line"></div>
-        <li><a href="./Client/pages/notes.html">Notes</a></li>
-        <li><a href="./previousquestions">Previous Question</a></li>
-        <li><a href="./notices">Notices</a></li>
-        <li><a href="./syllabus">Syllabus</a></li>
+        <li><a href="./notes.php">Notes</a></li>
+        <li><a href="./previousquestions.php">Previous Question</a></li>
+        <li><a href="./notices.php">Notices</a></li>
+        <li><a href="./syllabus.php">Syllabus</a></li>
     </ul>
     <div class="rightNav">
         <div class="login">

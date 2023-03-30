@@ -1,0 +1,85 @@
+#Navigation .logo {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#Navigation a img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  max-height: 80px;
+}
+.navbar {
+  height: 7vh;
+  width: 100%;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#Navigation .nav-list {
+  width: 50%;
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#Navigation .nav-list li {
+  list-style: none;
+  padding: 26px 30px;
+  font-size: larger;
+}
+#Navigation .nav-list li a {
+  text-decoration: none;
+  color: black;
+}
+#Navigation .nav-list li a:hover {
+  text-decoration: none;
+  color: gray;
+}
+
+#Navigation .rightNav {
+  /* background-color: #009ffd; */
+  margin-right: 20px;
+}
+#Navigation .login a {
+  text-decoration: none;
+}
+
+#Navigation .login {
+  margin-right: 80px;
+  padding: 5px;
+  border-radius: 4px;
+  background-image: linear-gradient(to right, #009ffd, #2a2a72);
+  color: white;
+}
+
+#Navigation .nav a {
+  text-decoration: none;
+  font-size: larger;
+  margin: auto;
+}
+
+#Navigation .nav {
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+#Navigation .nav:hover #Navigation .line {
+  height: 2px;
+  position: absolute;
+  width: 110%;
+  background-image: linear-gradient(to right, from red via #e9a31d to #3f2b04);
+  z-index: -1;
+}
+
+#Navigation .logo {
+  margin-top: 25px;
+  margin-left: 20px;
+}

@@ -1,116 +1,16 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.logo{
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.logo img{
-  width: 25%;
-  height: 7vh;
-}
-
-.navbar{
-  /* height: 7vh; */
-  width: 100%;
-  background-color: rgb(211, 215, 218);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-list{
-  width: 50%;
-  /* background-color: yellow; */
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.nav-list li{
-  list-style: none;
-  padding: 26px 30px;
-  font-size: larger;
-}
-.nav-list li a{
-  text-decoration: none;
-  color: black;
-}
-.nav-list li a:hover{
-  text-decoration: none;
-  color: gray;
-}
-
-
-.rightNav{
-  /* background-color: #009ffd; */
-  margin-right: 20px;
-}
-.login a {
-  text-decoration: none;
-}
-
-.login {
-  margin-right: 80px;
-  padding: 5px;
-  border-radius: 4px;
-  background-image: linear-gradient(to right, #009ffd, #2a2a72);
-  color: white;
-}
-
-.nav a {
-  text-decoration: none;
-  font-size: larger;
-  margin: auto;
-}
-
-.nav{
-  width: 45%;
-  display: flex;
-  justify-content: space-around;
-  position: relative;
-}
-
-
-.nav:hover .line{
-  height: 2px;
-  position: absolute;
-  width: 110%;
-  background-image: linear-gradient(
-    to right,
-    from red via #e9a31d to #3f2b04
-  );
-  z-index: -1;
-}
-
-.logo {
-  margin-top: 25px;
-  margin-left: 20px;
-}
 #home {
   background-color: aquamarine;
 }
-
-.line{
+.line {
   height: 2px;
   position: absolute;
   /* width: 100%; */
-  background-image: linear-gradient(from-pink-500, bg-gradient-to-r) ;
+  background-image: linear-gradient(from-pink-500, bg-gradient-to-r);
 }
 
-
-/* {`h-[2px] bottom-[9px] absolute w-[110%] navCssCh rounded-md bg-gradient-to-r from-pink-500 via-[#E9A31D] to-[#3F2B04] ${
-  location === "/" && "!block"
-}`} */
-
-.home{
+.home {
   width: 95%;
-  background-color:#E0E0E0;
+  background-color: #e0e0e0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,36 +19,34 @@
   flex-direction: column;
 }
 
-.home .heading{
+.home .heading {
   width: 92%;
   /* background: #000; */
   display: flex;
   justify-content: start;
   align-items: center;
-  gap:10px ;
+  gap: 10px;
 }
 
-.home .content{
+.home .content {
   font-size: larger;
   width: 85%;
 }
 
-
-.profile{
+.profile {
   height: 40px;
   width: 40px;
-  /* background-color: #2a2a72; */
   border-radius: 20px;
   cursor: pointer;
-  background-image: url("path/to/image.jpg");;
+  background-image: url("path/to/image.jpg");
 }
 
-.profile img{
+.profile img {
   overflow: hidden;
   object-fit: cover;
 }
 
-.name .yname{
+.name .yname {
   font-size: x-large;
   font-weight: 500;
 }
