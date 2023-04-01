@@ -1,18 +1,22 @@
 <div id="navigations">
   <nav id="sidenav">
     <div id="mainham">
-      <div id="hamburger">
+      <div id="hamburger" onclick="hambarclk()">
         <div class="div3"></div>
         <div class="div2"></div>
         <div class="div1"></div>
       </div>
     </div>
-    <div class="sidnavLine"></div>
-    <div class="sidelinks">
+    <div id="sidnavLine"></div>
+    <div id="sidelinks">
       <ul id="sideNavLikes">
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <div class="sidnavLine"></div>
+        <li class="lists listItems listWidth">
           <a href="dashboard.php">
+            <div class="listName">
+              Dashboard
+            </div>
+            <div class="addressTracker dashboard "></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M16.25 3.75V11.25H26.25V3.75M16.25 26.25H26.25V13.75H16.25M3.75 26.25H13.75V18.75H3.75M3.75 16.25H13.75V3.75H3.75V16.25Z" />
             </svg>
@@ -22,9 +26,12 @@
           </div>
         </li>
         <div class="sidnavLine"></div>
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <li class="lists listItems">
           <a href="faculty.php">
+            <div class="listName">
+              Faculty
+            </div>
+            <div class="addressTracker faculty"></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M15 3.75L1.25 11.25L15 18.75L26.25 12.6125V21.25H28.75V11.25M6.25 16.475V21.475L15 26.25L23.75 21.475V16.475L15 21.25L6.25 16.475Z" />
             </svg>
@@ -34,10 +41,12 @@
           </div>
         </li>
         <div class="sidnavLine"></div>
-
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <li class="lists listItems">
           <a href="subjectname.php">
+            <div class="listName">
+              Subject Name
+            </div>
+            <div class="addressTracker subjectname"></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M11.025 21.25L16.25 24.1V27.5H7.5C6.1125 27.5 5 26.3875 5 25V5C5 3.625 6.1125 2.5 7.5 2.5H8.75V11.25L11.875 9.375L15 11.25V2.5H22.5C23.875 2.5 25 3.6125 25 5V15.675L23.125 14.65L11.025 21.25ZM30 21.25L23.125 17.5L16.25 21.25L23.125 25L30 21.25ZM18.75 23.8625V26.3625L23.125 28.75L27.5 26.3625V23.8625L23.125 26.25L18.75 23.8625Z" />
             </svg>
@@ -50,9 +59,12 @@
           </div>
         </li>
         <div class="sidnavLine"></div>
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <li class="lists listItems">
           <a href="requestpost.php">
+            <div class="listName">
+              Request Post
+            </div>
+            <div class="addressTracker requestpost"></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M25 10L15 16.25L5 10V7.5L15 13.75L25 7.5M25 5H5C3.6125 5 2.5 6.1125 2.5 7.5V22.5C2.5 23.163 2.76339 23.7989 3.23223 24.2678C3.70107 24.7366 4.33696 25 5 25H25C25.663 25 26.2989 24.7366 26.7678 24.2678C27.2366 23.7989 27.5 23.163 27.5 22.5V7.5C27.5 6.1125 26.375 5 25 5Z" />
             </svg>
@@ -65,9 +77,12 @@
           </div>
         </li>
         <div class="sidnavLine"></div>
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <li class="lists listItems">
           <a href="post.php">
+            <div class="listName">
+              Posts
+            </div>
+            <div class="addressTracker post"></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M3.75 3.75V26.25H26.25V3.75H3.75ZM22.5 22.5H7.5V21.25H22.5V22.5ZM22.5 20H7.5V18.75H22.5V20ZM22.5 15H7.5V7.5H22.5V15Z" />
             </svg>
@@ -77,9 +92,12 @@
           </div>
         </li>
         <div class="sidnavLine"></div>
-        <li class="listItems">
-          <div class="addressTracker"></div>
+        <li class="lists listItems">
           <a href="users.php">
+            <div class="listName">
+              Users
+            </div>
+            <div class="addressTracker users"></div>
             <svg width="28" height="28" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.5 21.25C7.5 18.75 12.5 17.375 15 17.375C17.5 17.375 22.5 18.75 22.5 21.25V22.5H7.5M18.75 11.25C18.75 12.2446 18.3549 13.1984 17.6517 13.9017C16.9484 14.6049 15.9946 15 15 15C14.0054 15 13.0516 14.6049 12.3483 13.9017C11.6451 13.1984 11.25 12.2446 11.25 11.25C11.25 10.2554 11.6451 9.30161 12.3483 8.59835C13.0516 7.89509 14.0054 7.5 15 7.5C15.9946 7.5 16.9484 7.89509 17.6517 8.59835C18.3549 9.30161 18.75 10.2554 18.75 11.25ZM3.75 6.25V23.75C3.75 24.413 4.01339 25.0489 4.48223 25.5178C4.95107 25.9866 5.58696 26.25 6.25 26.25H23.75C24.413 26.25 25.0489 25.9866 25.5178 25.5178C25.9866 25.0489 26.25 24.413 26.25 23.75V6.25C26.25 5.58696 25.9866 4.95107 25.5178 4.48223C25.0489 4.01339 24.413 3.75 23.75 3.75H6.25C4.8625 3.75 3.75 4.875 3.75 6.25Z" />
             </svg>
@@ -134,3 +152,54 @@
     </div>
   </nav>
 </div>
+<script>
+  const sidenav = document.getElementById("sidenav");
+  const div1 = document.querySelector(".div1");
+  const div2 = document.querySelector(".div2");
+  const div3 = document.querySelector(".div3");
+  const currentUrl = window.location.href;
+  const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+  sidenav.style.width = '90px';
+  const lists = document.getElementsByClassName("lists");
+  const listName = document.getElementsByClassName("listName");
+  const addressTracker = document.querySelectorAll(".addressTracker");
+  for (let i = 0; i < addressTracker.length; i++) {
+    if (addressTracker[i].classList.contains(currentPage.slice(0, -4))) {
+      addressTracker[i].classList.add("active");
+    } else {
+      addressTracker[i].classList.remove("active");
+    }
+  }
+  const hambarclk = () => {
+    const width = sidenav.style.width;
+    if (width === '90px') {
+      sidenav.style.width = '220px';
+      div3.classList.add("crossDiv3");
+      div2.classList.add("crossDiv2");
+      div1.style.display = 'none';
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].classList.remove('listItems');
+      }
+      for (let i = 0; i < listName.length; i++) {
+        listName[i].style.display = "block"
+      }
+    } else {
+      sidenav.style.width = '90px';
+      div3.classList.remove("crossDiv3");
+      div2.classList.remove("crossDiv2");
+      div1.style.display = 'block';
+      for (let i = 0; i < lists.length; i++) {
+        lists[i].classList.add('listItems');
+      }
+      for (let i = 0; i < listName.length; i++) {
+        listName[i].style.display = "none"
+      }
+    }
+  };
+  // Highlight the corresponding navigation button
+  // document.querySelector(`nav a[href*='${currentPage}']`).classList.add('active');
+</script>
+
+<script>
+  console.log(currentPage)
+</script>
