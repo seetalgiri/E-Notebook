@@ -15,7 +15,7 @@
     <div id="adminContent">
         <div class="actualContent">
             <div class="contentDiv">
-                this is post
+                this is request post
             </div>
         </div>
     </div>
