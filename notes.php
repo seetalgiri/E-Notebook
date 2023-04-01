@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php include '../e_notebook/Client/Common/Navigation.php' ?>
+    <?php include './Client/Common/Navigation.php' ?>
+
     this is notes
 </body>
 

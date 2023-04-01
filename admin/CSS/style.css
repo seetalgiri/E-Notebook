@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primaryColor: "#3E4E59";
+}
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #f7f8fc;
+}
+#navigations {
+  display: flex;
+}
+#sidenav {
+  height: 100vh;
+  width: 90px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.09);
+}
+#sidenav #hamburger {
+  height: 80px;
+  width: 40px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: start;
+  cursor: pointer;
+}
+#sidenav #hamburger .div1,
+#sidenav #hamburger .div2,
+#sidenav #hamburger .div3 {
+  height: 5.5px;
+  width: 15px;
+  background-color: #3e4e59;
+  border-radius: 20px;
+}
+#sidenav #hamburger .div2 {
+  width: 25px;
+}
+#sidenav #hamburger .div3 {
+  width: 35px;
+}
+#sidenav #mainham {
+  height: 80px;
+}
+#sidenav .sidnavLine {
+  width: 90px;
+  height: 1px;
+  background-color: #dbdaff;
+}
+#sideNavLikes {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sideNavLikes li {
+  list-style: none;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#sideNavLikes li .addressTracker {
+  position: absolute;
+  left: -31px;
+  height: 50px;
+  width: 5px;
+  background-color: #3834a9;
+  border-radius: 0 10px 10px 0;
+  transition: 0.5s;
+}
+
+.addressTracker {
+  opacity: 0;
+}
+
+.listItems:hover .addressTracker {
+  opacity: 1;
+}
+
+#sideNavLikes li .addressTracker1 {
+  position: absolute;
+  left: 65px;
+  border-radius: 0 10pxX 10px 0;
+  transition: 0.5s;
+}
+#sideNavLikes li .addressTracker1 p {
+  width: 100%;
+  background-color: #3834a9;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+  padding: 8px;
+  text-transform: capitalize;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 4px;
+}
+#sideNavLikes li .addressTracker1 p::before {
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  background-color: #3834a9;
+  left: -6px;
+  transform: rotateZ(45deg);
+  z-index: -1;
+  bottom: 9px;
+}
+
+.addressTracker1 {
+  opacity: 0;
+}
+
+.listItems:hover .addressTracker1 {
+  opacity: 1;
+}
+
+svg {
+  fill: #2d3941;
+}
+
+#sidenav a:hover svg {
+  fill: #3834a9 !important;
+  transition: 0.3s;
+}
+
+#topnav {
+  height: 80px;
+  width: 100%;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#topnav .grid {
+  width: 20%;
+  min-width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding-left: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  gap: 3px;
+  color: #3e4e59;
+}
+#searchsec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90px;
+}
+#searchsec form {
+  height: 40px;
+  width: 280px;
+  position: relative;
+}
+#searchsec input {
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.09);
+  border-radius: 3px;
+  z-index: 9;
+  padding: 7px;
+  font-size: 17px;
+  outline: none;
+  border: none;
+  position: absolute;
+  width: 280px;
+  padding-right: 33px;
+  padding-left: 10px;
+  color: #2d3941;
+}
+
+#searchsec button {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  height: 40px;
+  right: 5px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+#sideContents {
+  position: absolute;
+  height: 100%;
+  right: 4%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#sideContents ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25%;
+}
+#sideContents ul li {
+  list-style: none;
+}
