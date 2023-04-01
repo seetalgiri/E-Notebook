@@ -76,7 +76,7 @@ body {
   left: -31px;
   height: 50px;
   width: 5px;
-  background-color: #3834a9;
+  background-color: #38376e;
   border-radius: 0 10px 10px 0;
   transition: 0.5s;
 }
@@ -97,7 +97,7 @@ body {
 }
 #sideNavLikes li .addressTracker1 p {
   width: 100%;
-  background-color: #3834a9;
+  background-color: #38376e;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
@@ -108,13 +108,14 @@ body {
   z-index: 2;
   display: flex;
   gap: 4px;
+  border-radius: 2px;
 }
 #sideNavLikes li .addressTracker1 p::before {
   content: "";
   position: absolute;
   height: 12px;
   width: 12px;
-  background-color: #3834a9;
+  background-color: #38376e;
   left: -6px;
   transform: rotateZ(45deg);
   z-index: -1;
@@ -122,11 +123,11 @@ body {
 }
 
 .addressTracker1 {
-  opacity: 0;
+  display: none;
 }
 
 .listItems:hover .addressTracker1 {
-  opacity: 1;
+  display: block;
 }
 
 svg {
@@ -134,7 +135,7 @@ svg {
 }
 
 #sidenav a:hover svg {
-  fill: #3834a9 !important;
+  fill: #38376e !important;
   transition: 0.3s;
 }
 
