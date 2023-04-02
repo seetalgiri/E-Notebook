@@ -1,5 +1,3 @@
-console.log("hello world");
-
 const togglePassword = document.querySelector('#toggle-password');
 const passwordInput = document.querySelector('#password');
 
