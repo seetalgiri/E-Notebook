@@ -2,9 +2,9 @@
   <nav id="sidenav">
     <div id="mainham">
       <div id="hamburger" onclick="hambarclk()">
-        <div class="div3"></div>
-        <div class="div2"></div>
-        <div class="div1"></div>
+        <div class="div3 hamdivs"></div>
+        <div class="div2 hamdivs"></div>
+        <div class="div1 hamdivs"></div>
       </div>
     </div>
     <div id="sidnavLine"></div>
@@ -196,10 +196,13 @@
       }
     }
   };
-  // Highlight the corresponding navigation button
-  // document.querySelector(`nav a[href*='${currentPage}']`).classList.add('active');
-</script>
-
-<script>
-  console.log(currentPage)
+  window.onclick = function(event) {
+    const parentId = event.target.parentNode.id;
+    const parentId2 = event.target.parentNode.id;
+    if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId !== "hamburger" && parentId2 !== "sideNavLikes") {
+      if (sidenav.style.width === '220px') {
+        hambarclk()
+      }
+    }
+  }
 </script>
