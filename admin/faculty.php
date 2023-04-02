@@ -58,8 +58,8 @@
                         <input type="number" name="dOrder" id="dOrder">
                     </div>
                     <div id="forms" class="buttonformFac">
-                        <button type="reset">Reset</button>
                         <button type="submit">Add</button>
+                        <button type="reset">Reset</button>
                     </div>
                 </form>
             </div>
