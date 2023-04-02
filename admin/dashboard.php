@@ -14,7 +14,7 @@
     <div id="adminContent">
         <div class="actualContent">
             <div class="contentDiv">
-                this is dashboard
+                Dashboard
             </div>
         </div>
     </div>

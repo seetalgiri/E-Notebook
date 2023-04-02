@@ -113,7 +113,9 @@
   <nav id="topnav">
     <div class="grid">
       <h2 id="logo">E-NoteBook</h2>
-      <p>Good morning, Admin!</p>
+      <p id="greeting">
+
+      </p>
     </div>
     <div id="searchsec">
       <form action="#">
@@ -153,6 +155,19 @@
   </nav>
 </div>
 <script>
+  let date = new Date();
+  let hour = date.getHours();
+  let greet = ""
+
+  if (hour >= 5 && hour < 12) {
+    greet = "Good morning, Admin!"
+  } else if (hour >= 12 && hour < 18) {
+    greet = "Good afternoon, Admin!"
+  } else {
+    greet = "Good evening, Admin!"
+  }
+  let greetingParagraph = document.getElementById("greeting");
+  greetingParagraph.textContent = greet;
   const sidenav = document.getElementById("sidenav");
   const div1 = document.querySelector(".div1");
   const div2 = document.querySelector(".div2");

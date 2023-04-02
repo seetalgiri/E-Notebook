@@ -1,0 +1,27 @@
+.faculity {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.faculity,
+.faculity tr,
+.faculity th,
+.faculity td {
+  border: 1px solid rgb(119, 119, 119);
+  border-collapse: collapse;
+  padding: 7px;
+}
+.faculity th{
+  padding: 10px 0;
+}
+.serialname {
+  width: 100px;
+}
+.facname {
+  width: 40%;
+}
+.edit svg:hover,
+.delete svg:hover {
+  fill: rgb(0, 0, 0) !important;
+  cursor: pointer;
+}
