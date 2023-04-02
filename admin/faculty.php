@@ -84,12 +84,22 @@
 
 
         window.onclick = function(event) {
+            console.log(event.target.id)
             const parentId = event.target.parentNode.id;
             const par = event.target;
-            if (parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+            if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
                 if (modalContent.style.right !== '-378px') {
                     modalContent.style.right = '-378px';
                     svgbtn.style.transform = 'rotateZ(180deg)';
+                }
+            }
+
+
+            const parentId1 = event.target.parentNode.id;
+            const parentId2 = event.target.parentNode.id;
+            if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" && parentId2 !== "sideNavLikes") {
+                if (sidenav.style.width === '220px') {
+                    hambarclk()
                 }
             }
         }
