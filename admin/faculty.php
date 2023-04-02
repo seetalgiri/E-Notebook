@@ -33,12 +33,40 @@ if (isset($_GET["id"])) {
         header("Location: " . $_SERVER['PHP_SELF']);
     }
 }
-if (isset($_GET["edit"])) {
-    $id = $_GET["edit"];
-    echo "<h1>" . $id . "</h1>";
-}
+
+// for edit btn
 $name = "";
 $dorder = "";
+$idnum = "";
+
+if (isset($_GET["edit"])) {
+    $id = $_GET["edit"];
+    $sql = "SELECT * FROM faculty WHERE id = $id";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $name = $row["faculity_name"];
+        $dorder = $row["displayorder"];
+        $idnum = $row["id"];
+    } else {
+        $name = "";
+        $dorder = "";
+        $idnum = "";
+    }
+}
+
+// to update content
+if (isset($_POST['updateadd'])) {
+    $fname = $_POST['fname'];
+    $dOrder = $_POST['dOrder'];
+    $id = $_POST['idnum'];
+    $sql = "UPDATE faculty SET faculity_name = '$fname',displayorder = '$dOrder' WHERE id = $id";
+    if (mysqli_query($con, $sql)) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+    } else {
+        echo "Error updating record: " . mysqli_error($con);
+    }
+}
 
 ?>
 
@@ -71,13 +99,15 @@ $dorder = "";
                         while ($row = mysqli_fetch_assoc($res)) {
                             echo "
                     <tr>
-                        <td>" . $row["id"] . "</td>
-                        <td>" . $row["faculity_name"] . "</td>
-                        <td>" . $row["displayorder"] . "</td>s
-                        <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
+                    <td>" . $row["id"] . "</td>
+                    <td>" . $row["faculity_name"] . "</td>
+                    <td>" . $row["displayorder"] . "</td>
+                    <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
+                            <a name='editBtn' href=\"./faculty.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./faculty.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
                             </svg>
+                            </a>
                         </td>
                         <td class='delete'>
                         <a name='deletebtn' href=\"./faculty.php?id=" . $row["id"] . "\">
@@ -103,6 +133,7 @@ $dorder = "";
             <div id="sideDivForm">
                 <form action="./faculty.php" method="post" id="forms">
                     <h3>Add Faculty:</h3>
+                    <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
                         <label for="fname">Enter faclity name:</label>
                         <input type="text" name="fname" id="fname" value=<?php echo "$name"; ?>>
@@ -112,7 +143,10 @@ $dorder = "";
                         <input type="number" name="dOrder" id="dOrder" value=<?php echo "$dorder"; ?>>
                     </div>
                     <div id="forms" class="buttonformFac">
-                        <button type="submit" name="postadd">Add</button>
+                        <?php
+                        $message = (intval($idnum) >= 1) ? "<button type='submit' name='updateadd'>Update</button>" : "<button type='submit' name='postadd'>Add</button>";
+                        echo $message;
+                        ?>
                         <button type="reset">Reset</button>
                     </div>
                 </form>
@@ -164,7 +198,6 @@ $dorder = "";
         var searchParams = new URLSearchParams(window.location.search);
         var editParam = searchParams.get("edit");
         if (Number(editParam)) {
-            console.log("i a good")
             openmodal();
         }
     </script>
