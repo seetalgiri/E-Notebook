@@ -1,9 +1,13 @@
 <?php
 $show_notification = false;
+
+// to conntct database
 $con = mysqli_connect("localhost", "root", "", "e_notebook");
 if (!$con) {
     die("Database connection failed");
 }
+
+// to add content
 if (isset($_POST['postadd'])) {
     $fname = $_POST['fname'];
     $dOrder = $_POST['dOrder'];
@@ -17,7 +21,7 @@ if (isset($_POST['postadd'])) {
     }
 }
 
-// fetch from db
+// to so all data in frontend
 $sql = "SELECT * FROM `faculty`";
 $res = mysqli_query($con, $sql);
 
@@ -35,10 +39,10 @@ if (isset($_GET["id"])) {
 }
 
 // for edit btn
+// to show edting data
 $name = "";
 $dorder = "";
 $idnum = "";
-
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
     $sql = "SELECT * FROM faculty WHERE id = $id";
@@ -55,7 +59,7 @@ if (isset($_GET["edit"])) {
     }
 }
 
-// to update content
+// to update changes
 if (isset($_POST['updateadd'])) {
     $fname = $_POST['fname'];
     $dOrder = $_POST['dOrder'];
@@ -169,7 +173,6 @@ if (isset($_POST['updateadd'])) {
                 svgbtn.style.transform = 'rotateZ(0deg)';
             }
         }
-
 
         window.onclick = function(event) {
             const parentId = event.target.parentNode.id;
