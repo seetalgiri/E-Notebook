@@ -26,8 +26,8 @@
                         <td>1</td>
                         <td>Gaurab</td>
                         <td>1</td>
-                        <td class="edit">
-                            <svg width="17" height="17" viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
+                        <td class="edit" id="editbtn" onclick="openmodal()">
+                            <svg id="editbtn" width="17" height="17" viewBox="0 0 25 24" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z" />
                             </svg>
                         </td>
@@ -40,7 +40,66 @@
                 </table>
             </div>
         </div>
+        <div id="modalContent">
+            <div id="sideButton" onclick="modalBtnclk()">
+                <svg width="13" height="16" viewBox="0 0 8 12" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.589844 10.58L5.16984 6L0.589844 1.41L1.99984 0L7.99984 6L1.99984 12L0.589844 10.58Z" />
+                </svg>
+            </div>
+            <div id="sideDivForm">
+                <form action="#" method="post" id="forms">
+                    <h3>Add Faculty:</h3>
+                    <div id="forms" class="flex">
+                        <label for="fname">Enter faclity name:</label>
+                        <input type="text" name="fname" id="fname">
+                    </div>
+                    <div id="forms" class="flex">
+                        <label for="dOrder">Enter Display order:</label>
+                        <input type="number" name="dOrder" id="dOrder">
+                    </div>
+                    <div id="forms" class="buttonformFac">
+                        <button type="reset">Reset</button>
+                        <button type="submit">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+    <script>
+        const modalContent = document.getElementById("modalContent");
+        const svgbtn = document.querySelector("#sideButton svg");
+        modalContent.style.right = '-378px';
+        svgbtn.style.transform = 'rotateZ(180deg)';
+
+        function modalBtnclk() {
+            if (modalContent.style.right === "0px") {
+                modalContent.style.right = '-378px';
+                svgbtn.style.transform = 'rotateZ(180deg)';
+            } else {
+                modalContent.style.right = '0px';
+                svgbtn.style.transform = 'rotateZ(0deg)';
+            }
+        }
+
+
+        window.onclick = function(event) {
+            const parentId = event.target.parentNode.id;
+            const par = event.target;
+            if (parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+                if (modalContent.style.right !== '-378px') {
+                    modalContent.style.right = '-378px';
+                    svgbtn.style.transform = 'rotateZ(180deg)';
+                }
+            }
+        }
+
+        function openmodal() {
+            modalContent.style.right = '0px';
+            svgbtn.style.transform = 'rotateZ(0deg)';
+        }
+    </script>
+
 </body>
 
 </html>
