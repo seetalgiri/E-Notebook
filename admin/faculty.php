@@ -162,7 +162,7 @@ if (isset($_POST['updateadd'])) {
         const modalContent = document.getElementById("modalContent");
         const svgbtn = document.querySelector("#sideButton svg");
         modalContent.style.right = '-378px';
-        svgbtn.style.transform = 'rotateZ(180deg)';
+        svgbtn.style.transform = '  rotateZ(180deg)';
 
         function modalBtnclk() {
             if (modalContent.style.right === "0px") {
