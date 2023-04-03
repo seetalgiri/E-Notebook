@@ -18,7 +18,7 @@ if (isset($_POST['postadd'])) {
     } else {
         // echo "Sorry";
 
-        
+
         $show_notification = false;
     }
 }
@@ -101,11 +101,12 @@ if (isset($_POST['updateadd'])) {
                         <th colspan="2">Action</th>
                     </tr>
                     <?php
+                    $num = 1;
                     if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
                             echo "
                     <tr>
-                    <td>" . $row["id"] . "</td>
+                    <td>" . $num . "</td>
                     <td>" . $row["faculity_name"] . "</td>
                     <td>" . $row["displayorder"] . "</td>
                     <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
@@ -124,6 +125,7 @@ if (isset($_POST['updateadd'])) {
                         </td>
                     </tr>
                     ";
+                            $num = $num + 1;
                         }
                     }
                     ?>
