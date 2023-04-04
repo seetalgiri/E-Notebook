@@ -14,12 +14,8 @@ if (isset($_POST['postadd'])) {
     $yearsem = $_POST['yearsem'];
     $sql = "INSERT INTO `faculty` (`faculity_name`, `displayorder`, `yearsem`) VALUES ('$fname', '$dOrder', '$yearsem')";
     if (mysqli_query($con, $sql)) {
-        // echo "Inserted";
         $show_notification = true;
     } else {
-        // echo "Sorry";
-
-
         $show_notification = false;
     }
 }
