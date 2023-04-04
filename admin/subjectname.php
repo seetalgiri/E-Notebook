@@ -11,6 +11,9 @@ if (!$con) {
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
+// for sem and year selection
+$extype = 1;
+
 // to add content
 if (isset($_POST['postadd'])) {
 
@@ -170,31 +173,23 @@ if (isset($_POST['updateadd'])) {
                     <h3>Add Subject name:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
-                        <label for="dOrder">Enter Display order:</label>
-                        <select name="facultyid">
+                        <label for="dOrder">Choose Faculty:</label>
+                        <select name="facultyid" id="mySelect" onchange="myFunction()">
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
-                                // if (isset($_GET['edit'])) {
-                                //     while ($row = mysqli_fetch_assoc($resfac)) {
-                                //         if ($row['id'] === $dorder) {
-                                //             echo "<option value=" . $row["id"] . ">" . $row["faculity_name"] . "</option> ";
-                                //         }
-                                //     }
-                                //     while ($row = mysqli_fetch_assoc($resfac)) {
-                                //         if ($row['id'] !== $dorder) {
-                                //             continue;
-                                //             echo "<option value=" . $row["id"] . ">" . $row["faculity_name"] . "</option> ";
-                                //         }   
-                                //     }
-                                // } else {
-                                // }
                                 while ($row = mysqli_fetch_assoc($resfac)) {
-                                    echo "<option value=" . $row["id"] . ">" . $row["faculity_name"] . "</option> ";
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
                                 }
                             }
                             ?>
                         </select>
                     </div>
+
+                    <div id="semyear" class="flex">
+                        <label id="semyear" for="semyeard">Choose Year/Semester:</label>
+
+                    </div>
+
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
                         <input type="text" name="sub_name" id="fname" placeholder="Subject Name" value=<?php echo "$name"; ?>>
@@ -230,14 +225,12 @@ if (isset($_POST['updateadd'])) {
         window.onclick = function(event) {
             const parentId = event.target.parentNode.id;
             const par = event.target;
-            if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+            if (event.target.id !== "forms" && event.target.id !== "semyearsel" && event.target.id !== "semyear" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
                 if (modalContent.style.right !== '-378px') {
                     modalContent.style.right = '-378px';
                     svgbtn.style.transform = 'rotateZ(180deg)';
                 }
             }
-
-
             const parentId1 = event.target.parentNode.id;
             const parentId2 = event.target.parentNode.id;
             if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" && parentId2 !== "sideNavLikes") {
@@ -256,7 +249,53 @@ if (isset($_POST['updateadd'])) {
         if (Number(editParam)) {
             openmodal();
         }
+
+
+        // to select semester and year
+        // value of sem and year
+        let sem = `
+                        <select name='sem' id='semyearsel'>              
+                        <option value='1'>First Semester</option>
+                        <option value='2'>Second Semester</option>
+                        <option value='3'>Third Semester</option>
+                        <option value='4'>Fourth Semester</option>
+                        <option value='5'>Fifth Semester</option>
+                        <option value='6'>Sixth Semester</option>
+                        <option value='7'>Seventh Semester</option>
+                        <option value='8'>Eighth Semester</option>
+                        </select>`;
+
+        let year = `
+                        <select name='year' id='semyearsel'>
+                        <option value='1'>First Year</option>
+                        <option value='2'>Second Year</option>
+                        <option value='3'>Third Year</option>
+                        <option value='4'>Fourth Year</option>
+                        </select>`;
+
+        // setting year and sem
+        const semyear = document.getElementById("semyear");
+        const initialval = document.querySelector("#mySelect option")
+
+        let initialvaltype = initialval.getAttribute("data_yearsem");
+        let HTML = Number(initialvaltype) === 1 ? year : sem;
+
+        // changing faculty value;
+        function myFunction() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            let type = selectedOption.getAttribute("data_yearsem");
+            if (Number(type) === 1) {
+                HTML = year;
+            } else {
+                HTML = sem;
+            }
+            semyear.innerHTML = HTML;
+        }
+        let type = myFunction();
+        console.log(type)
     </script>
+
 
 </body>
 
