@@ -16,9 +16,15 @@ $extype = 1;
 
 // to add content
 if (isset($_POST['postadd'])) {
-
+    $year = -1;
+    $sem = -1;
     $sub_name = $_POST['sub_name'];
     $fId = $_POST['facultyid'];
+    if (isset($_POST['year'])) {
+        $year = $_POST['year'];
+    } else {
+        $sem = $_POST['sem'];
+    }
 
     $facName = "";
     if (mysqli_num_rows($resfac) > 0) {
@@ -30,11 +36,11 @@ if (isset($_POST['postadd'])) {
     }
 
 
-
-    $sql = "INSERT INTO `subname` (`name`, `facultyid`, `facname`) VALUES ('$sub_name', '$fId', '$facName')";
+    $sql = "INSERT INTO `subname` (`name`, `facultyid`, `facname`, `year`, `sem`) VALUES ('$sub_name', '$fId', '$facName', '$year', '$sem')";
     if (mysqli_query($con, $sql)) {
         // echo "Inserted";
         $show_notification = true;
+        header("Location: " . $_SERVER['PHP_SELF']);
     } else {
         // echo "Sorry";
         $show_notification = false;
@@ -186,7 +192,6 @@ if (isset($_POST['updateadd'])) {
                     </div>
 
                     <div id="semyear" class="flex">
-                        <label id="semyear" for="semyeard">Choose Year/Semester:</label>
 
                     </div>
 
@@ -253,7 +258,7 @@ if (isset($_POST['updateadd'])) {
 
         // to select semester and year
         // value of sem and year
-        let sem = `
+        let sem = `<label id="semyear" for="semyeard">Choose Semester:</label>
                         <select name='sem' id='semyearsel'>              
                         <option value='1'>First Semester</option>
                         <option value='2'>Second Semester</option>
@@ -265,7 +270,7 @@ if (isset($_POST['updateadd'])) {
                         <option value='8'>Eighth Semester</option>
                         </select>`;
 
-        let year = `
+        let year = `<label id="semyear" for="semyeard">Choose Year:</label>
                         <select name='year' id='semyearsel'>
                         <option value='1'>First Year</option>
                         <option value='2'>Second Year</option>
