@@ -11,7 +11,8 @@ if (!$con) {
 if (isset($_POST['postadd'])) {
     $fname = $_POST['fname'];
     $dOrder = $_POST['dOrder'];
-    $sql = "INSERT INTO `faculty` (`faculity_name`, `displayorder`) VALUES ('$fname', '$dOrder')";
+    $yearsem = $_POST['yearsem'];
+    $sql = "INSERT INTO `faculty` (`faculity_name`, `displayorder`, `yearsem`) VALUES ('$fname', '$dOrder', '$yearsem')";
     if (mysqli_query($con, $sql)) {
         // echo "Inserted";
         $show_notification = true;
@@ -66,7 +67,8 @@ if (isset($_POST['updateadd'])) {
     $fname = $_POST['fname'];
     $dOrder = $_POST['dOrder'];
     $id = $_POST['idnum'];
-    $sql = "UPDATE faculty SET faculity_name = '$fname',displayorder = '$dOrder' WHERE id = $id";
+    $yearsem = $_POST['yearsem'];
+    $sql = "UPDATE faculty SET faculity_name = '$fname',displayorder = '$dOrder', yearsem='$yearsem' WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF']);
     } else {
@@ -86,6 +88,16 @@ if (isset($_POST['updateadd'])) {
     <title>faculty</title>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
+    <style>
+        select {
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer !important;
+            font-size: 17px !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -97,6 +109,7 @@ if (isset($_POST['updateadd'])) {
                     <tr>
                         <th class="serialname">S.N</th>
                         <th class="facname">Name</th>
+                        <th>Year/Semester</th>
                         <th>Display order</th>
                         <th colspan="2">Action</th>
                     </tr>
@@ -107,9 +120,13 @@ if (isset($_POST['updateadd'])) {
                             echo "
                     <tr>
                     <td>" . $num . "</td>
-                    <td>" . $row["faculity_name"] . "</td>
-                    <td>" . $row["displayorder"] . "</td>
-                    <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
+                    <td>" . $row["faculity_name"] . "</td>";
+                            if ($row["yearsem"] == 1) {
+                                echo "<td>Year</td>";
+                            } else {
+                                echo "<td>Semester</td>";
+                            }
+                            echo "<td>" . $row["displayorder"] . "</td> <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./faculty.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./faculty.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
@@ -145,6 +162,13 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="fname">Enter faclity name:</label>
                         <input type="text" name="fname" id="fname" placeholder="Name" value=<?php echo "$name"; ?>>
+                    </div>
+                    <div id="forms" class="flex">
+                        <label for="stdType">Select Year/Semester:</label>
+                        <select name="yearsem" id="stdType">
+                            <option value="1">Years</option>
+                            <option value="2">Semester</option>
+                        </select>
                     </div>
                     <div id="forms" class="flex">
                         <label for="dOrder">Enter Display order:</label>
