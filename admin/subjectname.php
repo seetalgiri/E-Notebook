@@ -89,10 +89,17 @@ if (isset($_GET["edit"])) {
 
 // to update changes
 if (isset($_POST['updateadd'])) {
+    $year = -1;
+    $sem = -1;
     $fname = $_POST['sub_name'];
     $dOrder = $_POST['facultyid'];
+    if (isset($_POST['year'])) {
+        $year = $_POST['year'];
+    } else {
+        $sem = $_POST['sem'];
+    }
     $id = $_POST['idnum'];
-    $sql = "UPDATE subname SET name = '$fname',facultyid = '$dOrder' WHERE id = $id";
+    $sql = "UPDATE subname SET name = '$fname',facultyid = '$dOrder', year=$year, sem=$sem WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF']);
     } else {
@@ -197,7 +204,7 @@ if (isset($_POST['updateadd'])) {
 
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
-                        <input type="text" name="sub_name" id="fname" placeholder="Subject Name" value=<?php echo "$name"; ?>>
+                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name" value=<?php echo "$name"; ?>>
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php

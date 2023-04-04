@@ -157,7 +157,7 @@ if (isset($_POST['updateadd'])) {
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
                         <label for="fname">Enter faclity name:</label>
-                        <input type="text" name="fname" id="fname" placeholder="Name" value=<?php echo "$name"; ?>>
+                        <input type="text" name="fname" required id="fname" placeholder="Name" value=<?php echo "$name"; ?>>
                     </div>
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
@@ -168,7 +168,7 @@ if (isset($_POST['updateadd'])) {
                     </div>
                     <div id="forms" class="flex">
                         <label for="dOrder">Enter Display order:</label>
-                        <input type="number" name="dOrder" id="dOrder" placeholder="Display Order" value=<?php echo "$dorder"; ?>>
+                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value=<?php echo "$dorder"; ?>>
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
