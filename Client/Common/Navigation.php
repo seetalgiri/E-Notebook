@@ -14,7 +14,7 @@
     </ul>
     <div class="rightNav">
         <div class="login">
-            <a href="./Client/auth/login.html">Login</a>
+            <a href="./Client/auth/login.php">Login</a>
         </div>
     </div>
 </nav>
