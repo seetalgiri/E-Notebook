@@ -10,7 +10,6 @@ if (!$con) {
 $sqlGet = "SELECT * FROM `like` WHERE `id` = '1'";
 $responseRes = mysqli_query($con, $sqlGet);
 
-$likeArr = array();
 $totalLike = 0;
 if (mysqli_num_rows($responseRes) > 0) {
     $row = mysqli_fetch_assoc($responseRes);
@@ -21,8 +20,6 @@ if (mysqli_num_rows($responseRes) > 0) {
     }
 }
 
-// for login
-$userid = 10;
 
 ?>
 
@@ -65,38 +62,25 @@ $userid = 10;
 
     <form id="myForm">
         <input type="userId" name="userid" id="userid" value="10">
-        <input type="hidden" name="showme" id="showme" value=<?php echo array_search($userid, $likeArr) ? "true" : "false" ?>>
         <input type="text" name="data" id="likeIdSet" liketype=readonly value=<?php echo $totalLike ?> class="readonly-text">
         <button type="submit" id="myButton">Like</button>
     </form>
 
-    <div id="response"></div>
 
     <script>
         // TODO: variable declaration
         const form = document.getElementById("myForm");
         const button = document.getElementById("myButton");
-        const responseDiv = document.getElementById("response");
-        const likeshow = document.getElementById("showme");
-        const setLikeInitial = likeshow.value
-        // TODO: set flag likable or not
-        let flag = setLikeInitial === "true" ? true : false;
-        console.log(flag)
+
         // TODO: Make like function
         form.addEventListener("submit", function(event) {
             event.preventDefault();
-            console.log(flag)
-            // TODO: increment or decrement of like
-            let value = Number(likeIdSet.value);
-            likeIdSet.value = flag ? value + 1 : value - 1;
-            flag = !flag;
-
             // TODO: backend logic
             const formData = new FormData(form);
             const xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    responseDiv.innerHTML = xhr.responseText;
+                    likeIdSet.value = xhr.responseText;
                 }
             };
             xhr.open("POST", "likeBackend.php", true);

@@ -28,17 +28,20 @@ if (isset($_POST['data'])) {
             // when user already exist remove user from array (check in which index this user is);
             $elmind = array_search($userid, $likeArr);
             array_splice($likeArr, $elmind, 1);
-            echo "updated unliked <br />";
+            // echo "updated unliked <br />";
         } else {
             array_push($likeArr, $userid);
-            echo "updated liked <br />";
+            // echo "updated liked <br />";
         }
-        // convert to array format into string
+        $likeArr = array_diff($likeArr, array("", " "));
+        $data = $likeArr;
+        // print_r($data);
         $data = implode(",", $likeArr);
         // inserting to db
         $sql = "UPDATE `like` SET `like`='$data' WHERE `id`='1'";
 
         if (mysqli_query($con, $sql)) {
+            echo count($likeArr);
             // echo "updated";
         } else {
             echo "cannot update";
