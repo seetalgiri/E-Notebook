@@ -35,7 +35,6 @@ if (isset($_POST['data'])) {
         }
         $likeArr = array_diff($likeArr, array("", " "));
         $data = $likeArr;
-        // print_r($data);
         $data = implode(",", $likeArr);
         // inserting to db
         $sql = "UPDATE `like` SET `like`='$data' WHERE `id`='1'";
@@ -48,5 +47,3 @@ if (isset($_POST['data'])) {
         }
     }
 }
-
-// to get like value from the database

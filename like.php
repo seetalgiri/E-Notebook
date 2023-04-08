@@ -66,7 +66,6 @@ if (mysqli_num_rows($responseRes) > 0) {
         <button type="submit" id="myButton">Like</button>
     </form>
 
-
     <script>
         // TODO: variable declaration
         const form = document.getElementById("myForm");
