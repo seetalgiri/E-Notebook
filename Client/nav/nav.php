@@ -5,10 +5,10 @@
     </a>
   </div>
   <ul id="MainNav">
-    <li class="navLinks active"><a href="./index.php">News</a></li>
-    <li class="navLinks"><a href="./notices.php">Notes</a></li>
-    <li class="navLinks"><a href="./syllabus.php">Syllabus</a></li>
-    <li class="navLinks"><a href="./previousquestions.php">Question Papers</a></li>
+    <li class="navLinks index active"><a href="./index.php">News</a></li>
+    <li class="navLinks notices"><a href="./notices.php">Notes</a></li>
+    <li class="navLinks syllabus"><a href="./syllabus.php">Syllabus</a></li>
+    <li class="navLinks previousquestions"><a href="./previousquestions.php">Question Papers</a></li>
   </ul>
   <div id="user" class="login">
     <button class="shadow-lg">
@@ -19,3 +19,22 @@
     </button>
   </div>
 </nav>
+<script>
+  var navLinks = document.getElementsByTagName("a");
+  const currentUrl = window.location.href;
+  const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+  const clsPage = currentPage.split(".")[0]
+
+
+  const classes = document.querySelectorAll(".navLinks");
+  for (let i = 0; i < classes.length; i++) {
+    if(classes[i].classList.contains(clsPage)){
+      console.log(clsPage)
+      classes[i].classList.add("active");
+    }else{
+      classes[i].classList.remove("active");
+    }
+  }
+
+
+</script>

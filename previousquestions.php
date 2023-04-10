@@ -8,13 +8,17 @@
     <title>E-Notebook Previous year questions</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/style.css" />
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/globa.css" />
 </head>
 
 <body>
-<?php include "./Client/nav/nav.php"; ?>
+    <?php include "./Client/nav/nav.php"; ?>
 
-    this is prevqn
+    <div id="cotentsAfterNav">
+        <div id="contentnot">
+            Hi Previous
+        </div>
+    </div>
 </body>
 
 </html>

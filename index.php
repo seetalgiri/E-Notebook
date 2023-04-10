@@ -30,6 +30,6 @@
     </div>
   </div>
 </body>
-<script src="./Client/logic/script.js"></script>
+<!-- <script src="./Client/logic/script.js"></script> -->
 
 </html>
