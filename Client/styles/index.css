@@ -1,0 +1,75 @@
+#post {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#createPost {
+  padding: 5px 10px;
+  width: 70%;
+  border: none;
+  outline: none;
+  background-color: #dae0e68f;
+  border-radius: 2px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #353535c6;
+}
+
+#post svg {
+  fill: #353535c6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#post svg:hover {
+  fill: black;
+}
+
+#userPost {
+  background-color: #dae0e68f;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #353535c6;
+}
+
+.stream {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  justify-content: space-around;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.stream li a {
+  border: 1px solid #dae0e6da;
+  padding: 4px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #353535c6;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.stream li a svg{
+  margin-bottom: 2px;
+  fill: #353535c6;
+}
+.stream li a:hover,
+.activestr {
+  background-color: #000b32d4;
+  color: white !important;
+}
+.stream li a:hover svg,
+.activestr svg {
+  fill: white !important;
+}
