@@ -156,7 +156,7 @@ if (isset($_POST['updateadd'])) {
                     <h3>Add Faculty:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
-                        <label for="fname">Enter faclity name:</label>
+                        <label for="fname">Enter faculity name:</label>
                         <input type="text" name="fname" required id="fname" placeholder="Name" value=<?php echo "$name"; ?>>
                     </div>
                     <div id="forms" class="flex">

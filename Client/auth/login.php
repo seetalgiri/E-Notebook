@@ -44,7 +44,7 @@ if (isset($_POST['login'])) {
             <input type="password" id="password" name="password" placeholder="Enter your password" />
             <span id="toggle-password" class="show-password"></span>
           </div>
-          <p>I don't have account <a href="./client/auth/register.php">SignUp?</a></p>
+          <p>I don't have account <a href="./Client/auth/register.php">SignUp?</a></p>
 
           <button type="submit" name="login">Login</button>
         </div>
