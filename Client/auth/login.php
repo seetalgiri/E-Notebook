@@ -20,13 +20,13 @@ if (isset($_POST['login'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Registration form</title>
-  <link rel="stylesheet" href="../styles/login.css" />
+  <link rel="stylesheet" href="../styles/logi.css" />
 </head>
 
 <body>
   <div id="container" class="overflow-hidden">
     <div id="paragraph">
-      <h2>I-NoteBook</h2>
+      <h2>E-NoteBook</h2>
       <p>Save your notes and share it with your friends and other world</p>
     </div>
     <div id="loginform" class="overflow-hidden">
@@ -44,7 +44,7 @@ if (isset($_POST['login'])) {
             <input type="password" id="password" name="password" placeholder="Enter your password" />
             <span id="toggle-password" class="show-password"></span>
           </div>
-          <p>I don't have account <a href="./Client/auth/register.php">SignUp?</a></p>
+          <p>I don't have account <a href="./register.php">SignUp?</a></p>
 
           <button type="submit" name="login">Login</button>
         </div>

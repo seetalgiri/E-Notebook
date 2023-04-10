@@ -27,37 +27,61 @@ if (isset($_POST['register'])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>register</title>
-  <link rel="stylesheet" href="../styles/register.css" />
+  <link rel="stylesheet" href="../styles/registe.css" />
 </head>
 
 <body>
-  <div id="logform" className="overflow-hidden">
-    <form method="post" action="./register.php">
-      <div id="inputfields">
-        <h1>I-NoteBook</h1>
-        <h3>Its free and always will be</h3>
+    <div id="container">
+     
+      <div id="loginform" >
+        <form method="post" action="../../Server/Auth.php">
+          <div id="inputfields">
+            <h1>Register</h1>
+            
+              <label for="name"></label>
+              <input
+                type="username"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+              />
+                      
+              <label for="email"></label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+              />
+           
+              <label for="password"></label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+              />
+              <span id="toggle-password" class="show-password"></span>
+                  
+              <select name="stream" id="stream">
+                <option value="all">All</option>
+                <option value="bca">BCA</option>
+                <option value="bbm">BBM</option>
+                <option value="others">others</option>
+              </select>
+        
+            <p>I don't have account <a href="./login.php">SignUp?</a></p>
 
-        <div class="username h-full w-full relative">
-          <label for="name"></label>
-          <input type="text" id="name" name="name" placeholder="Enter your Name" />
-          <PersonIcon className=" absolute top-4 right-3 cursor-pointer" />
-        </div>
-        <div class="username h-full w-full relative mt-6">
-          <label for="email"></label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" />
-          <EmailIcon className=" absolute top-4 right-3 cursor-pointer" />
-        </div>
-
-        <div class="username h-full w-full relative mt-6">
-          <label for="password"></label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" />
-        </div>
-        <p>I have account <a href="./login.html"> Login?</a></p>
-        <button type="submit" name="register">Sign Up</button>
+            <button type="submit" name="register">Register</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</body>
+      <div id="paragraph">
+        <h2>E-NoteBook</h2>
+        <p>Save your notes and share it with your friends and others</p>
+      </div>
+    </div>
+  </body>
 
 </html>
 
