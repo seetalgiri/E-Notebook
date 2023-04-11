@@ -2,7 +2,7 @@
 // Connecting to db
 include "./DBConnect.php";
 
-// when register
+// when register 
 if(isset($_POST['register'])){
     $name = $_POST['name'];
     $email = $_POST['email'];

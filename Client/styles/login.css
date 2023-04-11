@@ -9,34 +9,10 @@
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: rgb(225, 225, 225);
+    /* background-color: rgb(225, 225, 225);    */
     justify-content: center;
     gap: 60px;
-    flex-direction: row;
-}
-
-#paragraph {
-    /* background-color: yellow; */
-    height: 40vh;
-    width: 40%;
-    padding: 40px;
-}
-
-#paragraph h2 {
-    margin-top: 20px;
-    color: blue;
-    font-weight: 700;
-    font-size: xx-large;
-    font-style: italic;
-    text-align: center;
-}
-
-#paragraph p {
-    color: black;
-    font-size: x-large;
-    margin-top: 20px;
-    text-align: center;
-    font-weight: 400;
+    flex-direction: column;  
 }
 
 #loginform {
@@ -47,66 +23,85 @@
 }
 
 #loginform form {
-    min-width: 450px;
+    min-width: 400px;
     max-width: 600px;
     background-color: white;
-    padding: 50px;
+    padding: 30px;
+}
+
+#inputfields{
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-}
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    }
 
-
-#loginform form h3 {
+#inputfields h1{
+    color: rgb(1, 6, 6);
     text-align: center;
-    margin-top: 30px;
-    color: rgb(0, 0, 0, .7);
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 2px;
-    font-weight: 500;
-    font-size: 20px;
 }
 
-#loginform form h1 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 2px;
-    font-weight: 500;
-    color: rgb(0, 6, 42);
+form .input-box{
+    width: 100%;
+    height: 50px;
+    gap: 10px;
+    position: relative;
+    margin-top: 15px;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    border: 1px solid gray;
+    border-radius: 5px;
 }
 
-#loginform form p {
-    color: rgb(0, 0, 0, .6);
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 10px 8px;
-    letter-spacing: 1px;
+.input-box input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    padding-left: 10px;
+    border-radius: 5px;
+    margin-left: 11px;
+    margin-right: 30px;
+}
+
+.input-box svg{
+    position: absolute;
+    left: 4px;
+    margin-top: 14px;
+    cursor: pointer;
+}
+.input-box .password{
+    position: absolute;
+    margin-top: 4px;
+    right: 30px;
 }
 
 #loginform form a {
     text-decoration: none;
-}
-
-
+    color: blue;
+}   
 #loginform form button {
-    margin: 0 120px;
+    width: 100%;
     padding: 7px;
     font-size: 20px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    margin-top: 15px;
     border: none;
     background-color: rgb(0, 44, 115);
-    border-radius: 2px;
+    border-radius: 4px;
     color: white;
     cursor: pointer;
-    transition: .1s;
 }
-
-#loginform form button:hover {
-    box-shadow: inset 0 0 5px 0 black;
-    background-color: rgb(0, 24, 62);
-}
+#inputfields p{
+    margin-left: 50px;
+    margin-top: 15px;
+    color: rgb(0, 0, 0, .6);
+    font-family: Arial, Helvetica, sans-serif;
+} 
 
 .show-password {
     display: inline-block;
