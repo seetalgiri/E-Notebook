@@ -101,7 +101,7 @@
   font-size: 20px;
   color: #353535c6;
 }
-#nameMore{
+#nameMore {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -170,20 +170,128 @@
 #like svg {
   margin-bottom: 3px;
 }
-.counter{
+.counter {
   font-weight: 600;
 }
-.liked{
+.liked {
   color: #00229f !important;
 }
 .liked svg {
   fill: #00229f !important;
 }
 
-.imagePosst{
+.imagePosst {
   width: 100%;
   max-height: 600px;
   margin-top: 15px;
   object-fit: cover;
   border-radius: 2px;
+}
+
+#fixedContent {
+  height: 85vh;
+  top: 12vh;
+  width: 100%;
+  max-width: 300px;
+  position: fixed;
+  left: 66%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fixedContentDiv {
+  background-color: white;
+  min-height: 100px;
+  width: 100%;
+  border-radius: 2px;
+}
+.fixedcontentbox1 {
+  height: 300px;
+}
+#recentTitle {
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 10px;
+  color: #353535a1;
+}
+.fixedcontentbox3 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.divline {
+  width: 97%;
+  margin: auto;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.contentbtns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 15px 30px;
+}
+.contentbtns button {
+  padding: 9px 20px;
+  background-color: #000b32d4;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: 0.3s !important;
+}
+#notes {
+  border: 1px solid #000b32d4;
+  background-color: white;
+  color: #000b32d4;
+}
+#createpost:hover {
+  background-color: #000b32;
+}
+#notes:hover {
+  color: white;
+  background-color: #000b32;
+}
+#divfixedTopcontent{
+  margin: 20px;
+  height: 140px;
+}
+.footercontent {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin: 4px 0 8px 0px;
+  color: #353535c6;
+}
+.linksforContent {
+  margin: -2px 0 6px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.linksforContent li {
+  list-style: none;
+  width: 40%;
+}
+.linksforContent li a {
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: #353535c6;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.linksforContent li a:hover {
+  color: black !important;
 }

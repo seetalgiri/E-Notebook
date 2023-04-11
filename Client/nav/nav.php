@@ -31,7 +31,6 @@
   if (clsPage.length > 1) {
     for (let i = 0; i < classes.length; i++) {
       if (classes[i].classList.contains(clsPage)) {
-        console.log(clsPage)
         classes[i].classList.add("active");
       } else {
         classes[i].classList.remove("active");

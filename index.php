@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/index.css" />
+  <link rel="stylesheet" href="./Client/styles/indexa.css" />
   <link rel="stylesheet" href="./Client/nav/style.css" />
 </head>
 
@@ -73,7 +73,8 @@
               </span>
               <img class="imagePosst" src="https://images.unsplash.com/photo-1680770536739-1120e9b0d7e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="">
             </div>
-            <div class="lineDiv"></div>
+            <div class="divline"></div>
+
             <div id="actionDiv">
               <div id="like" class="actionFlex liked">
                 <svg width="17" height="17" viewBox="0 0 10 9" xmlns="http://www.w3.org/2000/svg">
@@ -102,22 +103,43 @@
         </div>
       </div>
       <div id="fixedContent">
-        <div>
-          <div class="shadow dhtihs"></div>
-
-          <!-- for recent post  -->
-          <div id="recentPost" class="shadow dhtihs">
-            rec
+        <div class="fixedcontentbox1 fixedContentDiv shadow">
+          <div id="divfixedTopcontent">
+            hime
+          </div>
+          <div class="divline"></div>
+          <div class="contentbtns">
+            <button id="createpost" class="shadow">Create Post</button>
+            <button id="notes" class="shadow">See Notes</button>
+          </div>
+        </div>
+        <div class="fixedcontentbox2 fixedContentDiv shadow">
+          <h3 id="recentTitle">Recent Post:</h3>
+        </div>
+        <div class="fixedcontentbox3 fixedContentDiv shadow">
+          <h3 id="recentTitle">Contents:</h3>
+          <div class="linksforContent">
+            <li><a href="#">Notes</a></li>
+            <li><a href="#">Question paper</a></li>
+            <li><a href="#">Syllabus</a></li>
+            <li><a href="#">Syllabus</a></li>
           </div>
 
-          <!-- for copiright  -->
-          <div id="copiright" class="dhtihs">Copiright</div>
-        </div>
+          <div class="divline"></div>
+          <footer class="footercontent">
+            E-NoteBook © <script>
+              const date = new Date();
+              const year = date.getFullYear();
+              document.write(year);
+            </script> | All rights reserved
+          </footer>
 
+        </div>
       </div>
+
     </div>
   </div>
 </body>
-<!-- <script src="./Client/logic/script.js"></script> -->
+<!-- <script src="./Client/logic/script.js"></scrip> -->
 
 </html>
