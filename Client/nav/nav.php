@@ -27,14 +27,15 @@
 
 
   const classes = document.querySelectorAll(".navLinks");
-  for (let i = 0; i < classes.length; i++) {
-    if(classes[i].classList.contains(clsPage)){
-      console.log(clsPage)
-      classes[i].classList.add("active");
-    }else{
-      classes[i].classList.remove("active");
+  classes[0].classList.add("active");
+  if (clsPage.length > 1) {
+    for (let i = 0; i < classes.length; i++) {
+      if (classes[i].classList.contains(clsPage)) {
+        console.log(clsPage)
+        classes[i].classList.add("active");
+      } else {
+        classes[i].classList.remove("active");
+      }
     }
   }
-
-
 </script>
