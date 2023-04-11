@@ -7,13 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Syllabus</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
-    <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/nav/style.css" />
+    <link rel="stylesheet" href="./Client/styles/globa.css" />
 </head>
 
 <body>
-    <?php include './Client/Common/Navigation.php' ?>
-    this is syllabus
+    <?php include "./Client/nav/nav.php"; ?>
+    <div id="cotentsAfterNav">
+        <div id="contentnot">
+            Hi Syllabus
+        </div>
+    </div>
 </body>
 
 </html>

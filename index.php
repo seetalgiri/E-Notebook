@@ -7,41 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>E-Notebook</title>
   <link rel="stylesheet" href="./Client/styles/style.css" />
-  <link rel="stylesheet" href="./Client/styles/navigation.css" />
+  <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
 </head>
 
 <body>
-  <?php include './Client/Common/Navigation.php'; ?>
+  <?php include "./Client/nav/nav.php"; ?>
+  <div id="home">
+    <div id="contentDiv">
+      <div id="dynamicContent">
+        <div id="post" class="shadow"></div>
+        <div id="category" class="shadow"></div>
+        <div id="eachPost">
 
-  <section class="home">
-    <div class="heading">
-      <div class="profile">
-        <img src="./Client/images/profile.png" alt="" />
+        </div>
       </div>
-      <div class="name">
-        <p class="yname">Your name</p>
-        <p class="email">your email</p>
+      <div id="fixedContent">
+        <div class="shadow">
+          td
+        </div>
       </div>
     </div>
-    <div class="content">
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et qui
-        repudiandae voluptatem, laborum molestiae aliquam sunt odit ab
-        architecto ea non tempore! Iure aliquam error illum enim asperiores
-        qui quae, modi autem consequuntur tenetur harum, repellendus quidem
-        dolores obcaecati sunt porro maiores. Deleniti unde commodi accusamus,
-        facere ipsam quod labore modi quis libero similique ex cum earum porro
-        sunt eos enim numquam dolorem voluptatum illum sequi? Nam tempora
-        porro nesciunt natus eius itaque, eos, soluta ipsa ab, architecto
-        veniam rem fugiat autem reiciendis quod id voluptatum. Eos enim illo
-        aut? Repellendus ipsam beatae ipsum vitae modi veniam rem possimus
-        quaerat.
-      </p>
-      <img src="" alt="" />
-    </div>
-  </section>
+  </div>
 </body>
-<script src="./Client/logic/script.js"></script>
+<!-- <script src="./Client/logic/script.js"></script> -->
 
 </html>
