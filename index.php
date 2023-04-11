@@ -52,6 +52,8 @@
               </a></li>
           </div>
         </div>
+
+        <!-- for each post  -->
         <div id="eachPost" class="shadow">
           <div id="contentdev">
             <div id="headerDiv">
@@ -99,8 +101,13 @@
                 <!-- <span>Share</span> -->
               </div>
             </div>
+            <div class="divline mt-2"></div>
+
           </div>
         </div>
+        <!-- end of each post  -->
+
+
       </div>
       <div id="fixedContent">
         <div class="fixedcontentbox1 fixedContentDiv shadow">
