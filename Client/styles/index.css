@@ -261,9 +261,9 @@
   color: white;
   background-color: #000b32;
 }
-#divfixedTopcontent{
-  margin: 20px;
-  height: 140px;
+#divfixedTopcontent {
+  margin: 15px;
+  height: 150px;
 }
 .footercontent {
   font-family: Arial, Helvetica, sans-serif;
@@ -294,4 +294,36 @@
 
 .linksforContent li a:hover {
   color: black !important;
+}
+#headerDiv2 {
+  display: flex;
+  gap: 10px;
+  scale: 0.92;
+  width: 100%;
+  min-width: 300px;
+  margin-left: -15px;
+}
+.logoandContent {
+  margin: 15px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.clsLogo {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  color: #353535c6;
+}
+.clsContentl {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #353535c6;
+  font-size: 14px;
+  text-align: justify;
+  letter-spacing: 2px;
+  line-height: 1.5;
+}
+.mt-2{
+  margin-top: 12px;
 }

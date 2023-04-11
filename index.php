@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/indexa.css" />
+  <link rel="stylesheet" href="./Client/styles/index.css" />
   <link rel="stylesheet" href="./Client/nav/style.css" />
 </head>
 
@@ -105,7 +105,20 @@
       <div id="fixedContent">
         <div class="fixedcontentbox1 fixedContentDiv shadow">
           <div id="divfixedTopcontent">
-            hime
+            <div id="headerDiv2">
+              <div id="profilePost" class="shadow">G</div>
+              <div id="nameMore">
+                <div id="name">Gaurab Sunar</div>
+                <div id="date">
+                  <span>gaurabsunar9@gmail.com</span>
+                </div>
+              </div>
+            </div>
+            <div class="divline mt-2"></div>
+            <div class="logoandContent">
+              <h3 class="clsLogo">E-NoteBook</h3>
+              <p class="clsContentl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus, placeat.</p>
+            </div>
           </div>
           <div class="divline"></div>
           <div class="contentbtns">
