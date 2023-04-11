@@ -128,6 +128,20 @@
         </div>
         <div class="fixedcontentbox2 fixedContentDiv shadow">
           <h3 id="recentTitle">Recent Post:</h3>
+          <div class="firstBox">
+            <img src="https://images.unsplash.com/photo-1681068420510-cb528c65d595?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80" alt="">
+            <div id="ing">
+              <div class="content">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                <div id="dateRec">
+                  2079-02-31
+                </div>
+              </div>
+              <div class="clearRec">
+                Clear
+              </div>
+            </div>
+          </div>
         </div>
         <div class="fixedcontentbox3 fixedContentDiv shadow">
           <h3 id="recentTitle">Contents:</h3>
@@ -135,7 +149,7 @@
             <li><a href="#">Notes</a></li>
             <li><a href="#">Question paper</a></li>
             <li><a href="#">Syllabus</a></li>
-            <li><a href="#">Syllabus</a></li>
+            <li><a href="#">Blogs</a></li>
           </div>
 
           <div class="divline"></div>
