@@ -1,0 +1,375 @@
+#post {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#createPost {
+  padding: 5px 10px;
+  width: 70%;
+  border: none;
+  outline: none;
+  background-color: #dae0e68f;
+  border-radius: 2px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #353535c6;
+}
+
+#post svg {
+  fill: #353535c6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+#post svg:hover {
+  fill: black;
+}
+
+#userPost {
+  background-color: #dae0e68f;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: #353535c6;
+}
+
+.stream {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  justify-content: space-around;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+}
+.stream li a {
+  border: 1px solid #dae0e6da;
+  padding: 4px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  transition: 0.3s;
+  text-decoration: none;
+  color: #353535c6;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.stream li a svg {
+  margin-bottom: 2px;
+  fill: #353535c6;
+}
+.stream li a:hover,
+.activestr {
+  background-color: #000b32d4;
+  color: white !important;
+}
+.stream li a:hover svg,
+.activestr svg {
+  fill: white !important;
+}
+#eachPost {
+  width: 100%;
+  min-height: 100px;
+  border-radius: 2px;
+  background-color: white;
+}
+#contentdev {
+  padding: 10px 20px;
+}
+
+#headerDiv {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-top: 13px;
+}
+#profilePost {
+  font-weight: 600;
+  background-color: #dae0e68f;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #353535c6;
+}
+#nameMore {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+#nameMore #name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #353535e2;
+}
+#nameMore #date {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #353535c6;
+}
+
+#contentDIv {
+  padding: 16px 35px;
+  text-align: justify;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #353535c6;
+}
+#contentDIv span {
+  line-height: 1.51;
+}
+.lineDiv {
+  width: 93%;
+  margin: auto;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#actionDiv {
+  min-height: 20px;
+  margin: 5px 30px;
+  margin-top: 12px;
+  display: flex;
+  gap: 8%;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+#actionDiv span {
+  font-size: 15px;
+}
+
+.actionFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: #353535c6;
+  transition: 0.4s;
+}
+.actionFlex svg {
+  fill: #353535c6;
+}
+.actionFlex:hover {
+  color: #353535e8 !important;
+}
+.actionFlex:hover svg {
+  fill: #353535e8 !important;
+}
+#like svg {
+  margin-bottom: 3px;
+}
+.counter {
+  font-weight: 600;
+}
+.liked {
+  color: #00229f !important;
+}
+.liked svg {
+  fill: #00229f !important;
+}
+
+.imagePosst {
+  width: 100%;
+  max-height: 600px;
+  margin-top: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+#fixedContent {
+  height: 85vh;
+  top: 12vh;
+  width: 100%;
+  max-width: 300px;
+  position: fixed;
+  left: 66%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.fixedContentDiv {
+  background-color: white;
+  min-height: 100px;
+  width: 100%;
+  border-radius: 2px;
+}
+.fixedcontentbox1 {
+  min-height: 200px;
+}
+#recentTitle {
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 10px;
+  color: #353535a1;
+}
+.fixedcontentbox3 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.divline {
+  width: 97%;
+  margin: auto;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.contentbtns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 15px 30px;
+}
+.contentbtns button {
+  padding: 9px 20px;
+  background-color: #000b32d4;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  transition: 0.3s !important;
+}
+#notes {
+  border: 1px solid #000b32d4;
+  background-color: white;
+  color: #000b32d4;
+}
+#createpost:hover {
+  background-color: #000b32;
+}
+#notes:hover {
+  color: white;
+  background-color: #000b32;
+}
+#divfixedTopcontent {
+  margin: 15px;
+  height: 150px;
+}
+.footercontent {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin: 4px 0 8px 0px;
+  color: #353535c6;
+}
+.linksforContent {
+  margin: -2px 0 6px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.linksforContent li {
+  list-style: none;
+  width: 40%;
+}
+.linksforContent li a {
+  text-decoration: none;
+  letter-spacing: 1px;
+  color: #353535c6;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.linksforContent li a:hover {
+  color: black !important;
+}
+#headerDiv2 {
+  display: flex;
+  gap: 10px;
+  scale: 0.92;
+  width: 100%;
+  min-width: 300px;
+  margin-left: -15px;
+}
+.logoandContent {
+  margin: 15px 7px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.clsLogo {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #353535c6;
+  font-size: 18px;
+}
+.clsContentl {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: #353535c6;
+  font-size: 14px;
+  text-align: justify;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+.mt-2 {
+  margin-top: 12px;
+}
+.d-none {
+  display: none;
+}
+.firstBox {
+  margin: 10px 10px;
+  display: flex;
+  gap: 12px;
+  color: #000b32af;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-right: 12px;
+  text-align: justify;
+}
+.firstBox img {
+  width: 70px;
+  height: 50px;
+  border-radius: 4px;
+}
+#dateRec {
+  font-size: 12px;
+  margin-top: 3px;
+}
+.fixedcontentbox2 {
+  position: relative;
+}
+.clearRec {
+  position: absolute;
+  right: 10px;
+  font-size: 12px;
+  user-select: none;
+  font-weight: 600;
+  bottom: 5px;
+  letter-spacing: 0;
+  color: #000b3286;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.clearRec:hover {
+  color: rgba(0, 0, 0, 0.914);
+}

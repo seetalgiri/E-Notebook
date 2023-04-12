@@ -101,11 +101,11 @@ nav {
 .active {
   border-bottom: 3px solid #1c4778;
 }
-#home{
+#home {
   min-height: 100vh;
   background-color: #dae0e68f;
 }
-#contentDiv{
+#contentDiv {
   width: 80%;
   min-height: 90vh;
   margin: auto;
@@ -115,43 +115,22 @@ nav {
   padding-top: 60px;
   position: relative;
 }
-#dynamicContent{
+#dynamicContent {
   width: 70%;
   min-height: 200px;
   margin-top: 25px;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 17px;
 }
-#fixedContent{
-  height: 200px;
-  width: 320px;
-  margin-top: 25px;
-  border-radius: 3px;
-  right: 13%;
-}
-#fixedContent div{
-  position: fixed;
-  width: 310px;
-  z-index: 1;
-  min-height: 300px;
-  border-radius: 2px;
-  background-color: white;
-  margin-left: 20px;
-}
-#post, #category{
+#post,
+#category {
   width: 100%;
   background-color: white;
-  height: 40px;
+  height: 42px;
   border-radius: 2px;
 }
-#category{
+#category {
   height: 50px;
-}
-#eachPost{
-  width: 100%;
-  min-height: 1000px;
-  background:red;
-  border-radius: 2px;
 }
