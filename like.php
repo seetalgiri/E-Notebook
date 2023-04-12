@@ -58,7 +58,7 @@ if (mysqli_num_rows($responseRes) > 0) {
 </head>
 
 <body>
-    <h2>This is libraby management system</h2>
+    <h2>This is library management system</h2>
 
     <form id="myForm">
         <input type="userId" name="userid" id="userid" value="10">

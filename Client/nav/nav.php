@@ -35,6 +35,4 @@
       classes[i].classList.remove("active");
     }
   }
-
-
 </script>

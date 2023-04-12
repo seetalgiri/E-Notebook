@@ -9,7 +9,7 @@
         <div class="line"></div>
         <li><a href="./notes.php">Notes</a></li>
         <li><a href="./previousquestions.php">Previous Question</a></li>
-        <li><a href="./notices.php">Notices</a></li>
+        <li><a href="./notes.php">Notices</a></li>
         <li><a href="./syllabus.php">Syllabus</a></li>
     </ul>
     <div class="rightNav">
