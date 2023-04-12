@@ -57,6 +57,9 @@ nav {
   justify-content: flex-end;
   padding-right: 80px;
 }
+.login a{
+  text-decoration: none !important;
+}
 .login button {
   padding: 5px 15px;
   letter-spacing: 1px;
