@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/index.css" />
+  <link rel="stylesheet" href="./Client/styles/indexa.css" />
   <link rel="stylesheet" href="./Client/nav/style.css" />
 </head>
 
@@ -18,7 +18,7 @@
   <div id="home" style="padding-bottom: 60px;">
     <div id="contentDiv">
       <div id="dynamicContent">
-        <div id="post" class="shadow">
+        <div id="post" class="shadow" onclick="modalOpen()">
           <div id="userPost">G</div>
           <input type="text" name="search" class="shadow" id="createPost" placeholder="Create Post">
           <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -171,8 +171,31 @@
         </div>
       </div>
 
+
     </div>
   </div>
+
+  <!-- post modal  -->
+  <div id="postModal">
+    <div id="postModalRel">
+      <div id="postModalContent">
+        <div class="headContent">
+          <div class="cross" onclick="modalClose()">X</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function modalClose() {
+      document.getElementById("postModal").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+
+    function modalOpen() {
+      document.getElementById("postModal").style.display = "block";
+      document.body.style.overflow = "hidden";
+    }
+  </script>
 </body>
 <!-- <script src="./Client/logic/script.js"></scrip> -->
 
