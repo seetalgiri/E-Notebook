@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/index.css" />
+  <link rel="stylesheet" href="./Client/styles/indexa.css" />
   <link rel="stylesheet" href="./Client/nav/style.css" />
 </head>
 
@@ -189,8 +189,8 @@
             <div class="contentDiv">
               <div class="buttonclscontent">
                 <div class="ContentChooseBtn">
-                  <div class="noticeBtn" id="uploadNotice">Upload Notice</div>
-                  <div class="noteBtn inactivebtnPost" id="uploadNote">Request Note</div>
+                  <div class="noteModalforHov noticeBtn" id="uploadNotice">Upload Notice</div>
+                  <div class="noteModalforHov noteBtn inactivebtnPost" id="uploadNote">Request Note</div>
                 </div>
               </div>
               <div id="formDiv"></div>
@@ -220,7 +220,7 @@
     const noticeHtml = `<form action="">
                 <div class="buttonclscontentPlc">
                   <div class="buttontextAreadiv">
-                    <textarea name="post" id="postContentMod" placeholder="What is on your mind?"></textarea>
+                    <textarea name="post" id="postContentMod" placeholder="What do you want to request?"></textarea>
                   </div>
                 </div>
                 <div class="buttonclscontent maincontentfotChoose">
