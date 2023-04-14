@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/indexa.css" />
+  <link rel="stylesheet" href="./Client/styles/index.css" />
   <link rel="stylesheet" href="./Client/nav/style.css" />
 </head>
 
@@ -139,7 +139,6 @@
           </div>
         </div>
         <!-- end of each post  -->
-
 
       </div>
       <div id="fixedContent">
