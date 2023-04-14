@@ -103,6 +103,39 @@
             </div>
             <div class="divline mt-2"></div>
 
+            <!-- for comment pot -->
+            <div>
+              <!-- for thers comment  -->
+              <div id="commentContent">
+                <div class="eachcomment">
+                  <div class="commentcontent">
+                    <div id="cmtuserDet">
+                      <div id="userPost">G</div>
+                      <div id="userNameAndDate">
+                        <span>Gaurab sunar</span>
+                        <span>2021-21-2</span>
+                      </div>
+                    </div>
+                    <div class="commentdata">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed. Rem vel officia, quae aliquam voluptatem possimus odio quam?
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="moreComment">
+                <a class="More" href="#">View More comments</a>
+              </div>
+
+              <!-- for post comment  -->
+              <div id="post" class="shadow">
+                <div id="userPost">G</div>
+                <input type="text" name="search" class="shadow" id="createPost" placeholder="Post Comment" autocomplete="off" style="width: 80%;">
+                <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
+                </svg>
+              </div>
+            </div>
+
           </div>
         </div>
         <!-- end of each post  -->
@@ -219,8 +252,8 @@
     })
 
     const noticeHtml = `<form action="">
-                <div class="buttonclscontentPlc">
-                  <div class="buttontextAreadiv">
+                <div class="buttonclscontentPlc buttonclscontentPlcreq">
+                  <div class="buttontextAreadiv requestNotice">
                     <textarea name="post" id="postContentMod" placeholder="What do you want to request?"></textarea>
                   </div>
                 </div>
@@ -234,10 +267,6 @@
                   <div class="Divisionsection"></div>
                   <div class="streamDiv">
                     <div class="stream streamChooseDiv">
-                      <li><a href="#" class="activestr"><span>ALL</span> <svg width="15" height="16" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                          </svg>
-                        </a></li>
                       <li><a href="#" class=""><span>BBM</span> <svg width="15" height="16" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                           </svg>
@@ -254,9 +283,36 @@
                             <path d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                           </svg>
                         </a></li>
+                        <li class="dropdown">
+                        <div class="dotLine"></div>
+                        <div class="dotLine"></div>
+                        <div class="dotLine"></div>
+                      </li>
                     </div>
                   </div>
-                </div>
+                  </div>
+                  <div class="buttonclscontent">
+                  <div class="streamDiv">
+                    <div class="stream streamChooseDiv semdivision">
+                      <li><a href="#" class=""><span>1st sem</span></a></li>
+                      <li><a href="#" class=""><span>2nd sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>3rd sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>4th sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>5th sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>6th sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>7th sem</span> 
+                        </a></li>
+                      <li><a href="#" class=""><span>8th sem</span> 
+                        </a></li>
+                    </div>
+                  </div>
+                  </div>
+                  <div class="buttonclscontent border"></div>
                 <div class="buttonclscontent border postBtn">
                   <button>REQUEST</button>
                 </div>
@@ -298,6 +354,11 @@
                             <path d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                           </svg>
                         </a></li>
+                        <li class="dropdown">
+                        <div class="dotLine"></div>
+                        <div class="dotLine"></div>
+                        <div class="dotLine"></div>
+                      </li>
                     </div>
                   </div>
                 </div>
