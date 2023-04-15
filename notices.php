@@ -13,8 +13,11 @@
 
 <body>
     <?php include "./Client/nav/nav.php"; ?>
-
-    this is notes
+    <div id="cotentsAfterNav">
+        <div id="contentnot">
+            
+        </div>
+    </div>
 </body>
 
 </html>

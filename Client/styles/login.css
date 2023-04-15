@@ -43,7 +43,6 @@
 .register #login {
   margin-top: -7px;
   bottom: 5px;
-
 }
 .register button {
   margin-bottom: -10px;
@@ -187,50 +186,62 @@ select option {
 .selectdiv label:hover {
   color: black;
 }
-.regCont{
+.regCont {
   display: flex;
   flex-direction: row !important;
 }
 
-.rightDiv{
+.rightDiv {
   width: 40%;
   max-width: 500px;
 }
-#socialmedia{
+#socialmedia {
   width: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.longLine{
+.longLine {
   width: 3px;
   height: 120px;
-  background-color: rgb(0, 0, 0, .4);
+  background-color: rgb(0, 0, 0, 0.4);
 }
-.shortLine{
+.shortLine {
   width: 3px;
   height: 25px;
-  background-color: rgb(0, 0, 0, .4);
+  background-color: rgb(0, 0, 0, 0.4);
 }
-.icons{
+.icons {
   padding: 2px;
   margin: 3px;
   border-radius: 2px;
 }
-.rightDiv{
+.rightDiv {
   display: flex;
   flex-direction: column;
   gap: 5px;
   color: #353535c6 !important;
 }
-.rightDiv h1{
+.rightDiv h1 {
   letter-spacing: 1px;
   font-size: 28px;
 }
-.rightDiv p{
+.rightDiv p {
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+.icons svg {
+  fill: #353535c6 !important;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.icons svg:hover {
+  fill: #000b32d4 !important;
+}
+#showIcon{
+  display: none;
 }
