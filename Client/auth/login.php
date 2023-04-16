@@ -1,13 +1,31 @@
 <?php
-// Connecting to db
-include "../../Server/DBConnect.php";
+$con = mysqli_connect("localhost", "root", "", "bibak");
+if (!$con) {
+  die("Database connection failed");
+}
 
-// login user authontication
+// check btn is clicked or not for connect
+
 if (isset($_POST['login'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
-}
 
+  // fetch data from db and check if password and email are correct
+  $sql = "SELECT * FROM `auth` WHERE `email` = '$email'";
+  $rowEmail = mysqli_query($con, $sql);
+  if (mysqli_num_rows($rowEmail) > 0) {
+    $userdata = mysqli_fetch_assoc($rowEmail);
+    // check text password and hash password are correct
+    if (password_verify($password, $userdata['password'])) {
+      // set header to index.php
+      header("Location: ../../index.php");
+    } else {
+      echo "password incorrect";
+    }
+  } else {
+    echo "user not found";
+  }
+}
 
 ?>
 
@@ -26,7 +44,7 @@ if (isset($_POST['login'])) {
 <body>
   <div id="container">
     <div id="loginform">
-      <form method="post" class="shadow" action="../../Server/Auth.php">
+      <form method="post" class="shadow" action="./login.php">
         <div id="inputfields">
           <h3 id="login">Login</h3>
           <div class="input-box">
