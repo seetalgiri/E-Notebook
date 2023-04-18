@@ -1,0 +1,685 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* common classes  */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.item-center {
+  align-items: center;
+}
+.bl-thin {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bl-lite {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.br-thin {
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+}
+.br-lite {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bt-thin {
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+.bt-lite {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bb-thin {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+.bb-lite {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.gap {
+  gap: 10px;
+}
+
+/* main section classes  */
+#subHead h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(0, 0, 0, 0.7);
+}
+#mainnoteSec {
+  min-height: 100vh;
+}
+.actualCOntent {
+  height: 100vh;
+  width: 100%;
+  padding-top: 10vh;
+  background-color: #dae0e6bb;
+}
+#notessection {
+  height: 99%;
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+}
+.filtersec {
+  height: 86vh;
+  width: 20%;
+  min-width: 280px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  margin: 10px;
+  transition: 0.2s;
+  overflow: auto;
+  max-height: 700px;
+}
+.filerContentfixed {
+  position: relative;
+  padding: 15px 10px;
+}
+.FilterNotes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px;
+}
+#steram {
+  padding: 7px;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 16px !important;
+  border-radius: 1px;
+  background-color: #dae0e684;
+}
+.headings {
+  height: 30px;
+  margin-bottom: 15px;
+}
+.filterBTn {
+  background-color: #dae0e684;
+  padding: 8px;
+  border: 1px solid #002f47;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  cursor: pointer;
+  border-radius: 1px;
+  color: #002f47;
+}
+.footerDIv {
+  height: 100%;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: red; */
+}
+.disremember {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: rgb(0, 0, 0, 0.7);
+  padding: 0 5px;
+}
+.filterBTn:hover {
+  background-color: #002f47;
+  color: white;
+}
+.mt-20px {
+  margin-top: 20px;
+}
+.headingTopicse {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.HeadingPage {
+  position: absolute;
+  top: -100%;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: rgba(0, 0, 0, 0.3);
+  user-select: none;
+  left: 0px;
+}
+
+.borderLines {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(0, 0, 0, 0.1);
+  margin-top: 16px;
+}
+.heading {
+  min-width: 160px;
+  height: 30px;
+  background-color: #dae0e6bb;
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.topics {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.headingTopicse .topics span {
+  font-size: 14px !important;
+}
+.topics span {
+  font-size: 14px;
+  color: black !important;
+}
+.topics span:nth-child(1) {
+  font-weight: 600;
+  height: 10px;
+}
+
+.topics span:nth-child(2) {
+  width: 100%;
+  margin-left: 5px;
+}
+
+#actualNote {
+  height: 100%;
+  width: 99%;
+  padding: 20px;
+}
+.topicHead {
+  padding: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+.leftLineTopic {
+  height: 1px;
+  width: 100px;
+  background-color: rgb(0, 0, 0, 0.1);
+}
+.rightLineTopic {
+  height: 1px;
+  width: 60%;
+  background-color: rgb(0, 0, 0, 0.4);
+}
+.NotesdivContent {
+  height: 100%;
+  width: 100%;
+  max-height: 505px;
+  position: relative;
+}
+.noteLineSec {
+  position: absolute;
+  top: -10px;
+  left: 40px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 1px;
+}
+.chapters-contents {
+  width: 90%;
+  float: right;
+  margin-top: 15px;
+  height: 100%;
+}
+
+.IntroChap {
+  width: 100%;
+  height: 1px;
+  background-color: rgb(0, 0, 0, 0.3);
+}
+.chapterNameTop {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+  width: 80%;
+  padding: 10px 20px 5px 20px;
+  position: relative;
+  margin: 20px 0;
+  color: rgb(0, 0, 0, 0.7);
+  fill: rgb(0, 0, 0, 0.7);
+}
+.NotesdivContent {
+  overflow: hidden;
+}
+.chapterNameTop::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 1px;
+  border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+  left: -77px;
+}
+
+.ChapterName {
+  width: 75%;
+}
+#actions {
+  width: 25%;
+}
+.noteActions {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.noteActions:hover svg {
+  fill: rgb(0, 0, 0);
+}
+.noteActions:hover {
+  color: rgb(0, 0, 0);
+}
+#authName {
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  display: flex;
+}
+#authName div {
+  background-color: red;
+  padding: 6px 18px 6px 10px;
+  border-radius: 1px;
+  margin-left: 25px;
+  text-transform: capitalize;
+  background-color: #012a52;
+  color: white;
+  display: flex;
+  gap: 4px;
+  position: relative;
+  align-items: center;
+  font-size: 13px;
+  position: relative;
+}
+
+#authName div::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: #012a52;
+  left: -4px;
+  bottom: 7px;
+  transform: rotateZ(45deg);
+}
+
+#authName div svg {
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  fill: white;
+}
+.linecontentNote {
+  width: 100%;
+  margin-bottom: -5px !important;
+  margin: auto;
+  height: 1px;
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+#searchNotes {
+  width: 95%;
+  height: 100%;
+  z-index: 100;
+  position: relative;
+  margin-top: 2px;
+}
+#searchNotes input {
+  padding: 7px 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: rgb(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
+}
+#searchNotes svg:hover {
+  fill: black;
+  cursor: pointer;
+}
+.searchBtn {
+  fill: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.filterNotes {
+  fill: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.headingsChapter {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 20px auto;
+  position: relative;
+  justify-content: center;
+}
+.flexbuttonset {
+  position: absolute;
+}
+
+/* for grid vied  */
+.gridContent {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
+  column-gap: 30px;
+  /* justify-content: center; */
+  max-width: 1100px;
+  margin: 20px auto;
+  align-items: start;
+  row-gap: 30px;
+  max-height: 80vh;
+  overflow: auto;
+  margin-top: 40px;
+}
+.gridContent .eachBox {
+  height: 110px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gridContent .boxcontentNote {
+  margin: 8px;
+  margin-right: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  color: rgb(0, 0, 0, 0.7);
+  letter-spacing: 1px;
+}
+.gridContent .boxcontentNote h3 {
+  font-size: 14px;
+  /* text-align: justify; */
+  text-transform: capitalize;
+  line-height: 1.5;
+  color: rgb(0, 0, 0, 0.8);
+}
+.gridContent .boxcontentNote .auth,
+.gridContent .boxcontentNote .date {
+  font-size: 13px;
+}
+.gridContent .boxcontentNote div span {
+  font-weight: 600;
+}
+.gridContent .eachBox .bookmark {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  fill: rgb(0, 0, 0, 0.7);
+}
+.gridContent .NoteAction {
+  width: 93%;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  color: rgb(0, 0, 0, 0.6);
+}
+.gridContent .NoteAction .date {
+  font-weight: 600 !important;
+}
+.gridContent .NoteAction .svgsNote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+}
+.gridContent .boxcontentNote .auth {
+  margin-top: 2px;
+}
+.gridContent .auth {
+  font-weight: 600;
+  color: rgb(0, 0, 0, 0.6) !important;
+}
+.svgsNote svg {
+  fill: rgb(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+.svgsNote svg:hover {
+  fill: rgb(0, 0, 0, 1);
+}
+
+/* for list view  */
+.flexContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.flexContent .eachBox {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.flexContent .eachBox {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.flexContent .eachBox .boxcontentNote {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 0 3% 7px 3%;
+}
+
+.flexContent .bookmark,
+.flexContent .date,
+.flexContent .auth span {
+  display: none;
+}
+.flexContent h3 {
+  font-size: 14px;
+  text-transform: capitalize;
+  line-height: 1.5;
+  color: rgb(0, 0, 0, 0.7);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flexContent .auth span {
+  background-color: red;
+  display: none;
+}
+.flexContent .svgsNote {
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexContent .auth {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: rgb(0, 0, 0, 0.6);
+}
+#toggleViwegrid,
+#toggleViweline {
+  width: 23px;
+  border: none;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: transparent;
+}
+#toggleViwegrid {
+  height: 23px;
+}
+#toggleViweline {
+  gap: 4px;
+}
+#toggleViwegrid .linegr,
+#toggleViweline .linegr {
+  width: 22px;
+  height: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 1px;
+}
+
+#toggleViwegrid:hover .linegr,
+#toggleViweline:hover .linegr {
+  background-color: rgb(0, 0, 0);
+}
+
+.flexbuttonset {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.gridview {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+  flex-wrap: wrap;
+}
+.gridview .box {
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 9px;
+  width: 9px;
+}
+
+.gridview:hover .box {
+  background-color: rgba(0, 0, 0);
+}
+.auth svg {
+  fill: rgb(0, 0, 0, 0.7);
+  margin-bottom: -1px;
+}
+#crosssection {
+  display: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#crosssection {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  z-index: 100000000;
+  color: rgba(0, 0, 0, 0.7);
+}
+#crosssection:hover {
+  color: rgba(0, 0, 0, 1);
+}
+#filterSection {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(232, 232, 232, 0.1);
+  z-index: 100000000 !important;
+  display: none;
+  font-weight: 700;
+}
+
+.headingTopicse .topics span {
+  color: rgb(0, 0, 0, 0.8) !important;
+}
+
+@media screen and (max-width: 940px) {
+  .filtersec {
+    position: absolute;
+    left: 0;
+    left: -260px;
+    background-color: #f4faff;
+    z-index: 100000000000 !important;
+  }
+  #crosssection {
+    display: block;
+  }
+}
+@media screen and (max-width: 680px) {
+  .flexContent .eachBox .boxcontentNote {
+    width: 100%;
+    padding: 0;
+    padding-bottom: 7px;
+  }
+  .flexContent .svgsNote {
+    width: 48px;
+  }
+  #searchNotes {
+    width: 90%;
+  }
+  .HeadingPage {
+    font-size: 20px;
+  }
+  .FilterNotes {
+    gap: 10px;
+  }
+  .headingsChapter {
+    margin-top: 30px;
+  }
+  .gridContent {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 300px));
+  }
+}
+@media screen and (max-width: 500px) {
+  .flexContent h3 {
+    font-size: 12px;
+  }
+  .flexContent .auth {
+    display: none;
+  }
+  .svgsNote svg:nth-child(2) {
+    height: 14px;
+  }
+  .svgsNote svg:nth-child(1) {
+    height: 11px;
+  }
+  .gridContent {
+    justify-content: center;
+  }
+  #actualNote {
+    padding: 10px;
+    padding-top: 15px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #searchNotes {
+    width: 80%;
+  }
+}

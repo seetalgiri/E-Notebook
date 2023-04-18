@@ -5,7 +5,6 @@ if (!$con) {
 }
 
 // check btn is clicked or not for connect
-
 if (isset($_POST['register'])) {
   $name = $_POST['username'];
   $password = $_POST['password'];
