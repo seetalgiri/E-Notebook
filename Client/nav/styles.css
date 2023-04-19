@@ -167,7 +167,7 @@ nav {
   }
   .navsectionLink {
     position: absolute;
-    right: 0;
+    right: -120%;
     top: 8vh;
     padding-bottom: 75px;
     bottom: 0;
@@ -204,8 +204,23 @@ nav {
   }
   #logo {
     width: auto;
-    padding-left: 3%;
-    height: 150px;
+    padding-left: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #logo a {
+    height: auto;
+    width: auto;
+    max-height: 47px;
+    display: flex;
+  }
+  #logo a img {
+    height: auto;
+    width: auto;
+    max-width: 139px;
+    object-fit: cover;
   }
 }
 

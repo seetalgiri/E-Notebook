@@ -72,7 +72,7 @@
   margin: auto;
 }
 .filtersec {
-  height: 86vh;
+  /* height: 86vh; */
   width: 20%;
   min-width: 280px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -80,7 +80,7 @@
   margin: 10px;
   transition: 0.2s;
   overflow: auto;
-  max-height: 700px;
+  max-height: 620px;
 }
 .filerContentfixed {
   position: relative;
@@ -184,7 +184,7 @@
 }
 
 .headingTopicse .topics span {
-  font-size: 14px !important;
+  font-size: 15px !important;
 }
 .topics span {
   font-size: 14px;
@@ -609,14 +609,14 @@
 #filterSection {
   position: absolute;
   inset: 0;
-  background-color: rgba(232, 232, 232, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 100000000 !important;
   display: none;
   font-weight: 700;
 }
 
 .headingTopicse .topics span {
-  color: rgb(0, 0, 0, 0.8) !important;
+  color: rgb(0, 0, 0, 0.6) !important;
 }
 
 @media screen and (max-width: 940px) {

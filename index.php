@@ -70,9 +70,9 @@
               </div>
             </div>
             <div id="contentDIv">
-              <span>
+              <div>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis, neque aspernatur? Nemo dolorum quasi dolorem error! Suscipit consectetur id eligendi quisquam sapiente enim minima. Sed fuga asperiores ipsam id atque nam vel officiis, iusto, sit facilis repellat quis blanditiis, odio temporibus tempora illum quod dicta consequatur saepe esse non.
-              </span>
+              </div>
               <img class="imagePosst" src="https://images.unsplash.com/photo-1680770536739-1120e9b0d7e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="">
             </div>
             <div class="divline"></div>

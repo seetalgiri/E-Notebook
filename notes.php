@@ -18,7 +18,7 @@
     <div id="mainnoteSec">
         <div class="actualCOntent">
             <div id="notessection" class="flex">
-                <div class="filtersec">
+                <div class="filtersec shadow">
                     <div id="crosssection">X</div>
                     <div class="filerContentfixed">
                         <div class="headings">

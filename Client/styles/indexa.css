@@ -128,7 +128,7 @@
   font-size: 15px;
   color: #353535c6;
 }
-#contentDIv span {
+#contentDIv div {
   line-height: 1.51;
 }
 .lineDiv {
@@ -673,7 +673,7 @@
   #contentDIv {
     padding: 13px 0px !important;
   }
-  #contentDIv span {
+  #contentDIv div {
     font-size: 13px;
   }
   #actionDiv {
@@ -718,6 +718,9 @@
   }
   #commentContent {
     margin: 10px 0 20px 0;
+  }
+  #postModalContent {
+    width: 97% !important;
   }
 }
 @media screen and (max-width: 420px) {
