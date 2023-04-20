@@ -9,13 +9,19 @@
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/style.css" />
     <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
 </head>
 
 <body>
     <?php include "./Client/nav/nav.php"; ?>
     <div id="cotentsAfterNav">
         <div id="contentnot">
-            
+            <div class="notesLeftContainer">
+                <div class="leftContainerContents">
+                    
+                </div>
+            </div>
+            <div class="notesRightContainer"></div>
         </div>
     </div>
 </body>

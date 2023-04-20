@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#contentnot{
+    background-color: aqua;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notesLeftContainer{
+    height: 100vh;
+    width: 20%; 
+    text-align: center; 
+    background-color: red;
+    /* border: 1px solid black; */
+}
+
+.leftContainerContents{
+    height: 80vh;
+    width: 80%;
+    display: inline-block;
+    margin: auto;
+    background-color: bisque;
+}
+.notesRightContainer{
+    height: 100vh;
+    width: 80%; 
+    border: 1px solid black; 
+}
