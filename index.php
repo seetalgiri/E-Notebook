@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="./Client/styles/style.css" />
   <link rel="stylesheet" href="./Client/styles/navigatio.css" />
   <link rel="stylesheet" href="./Client/styles/global.css" />
-  <link rel="stylesheet" href="./Client/styles/index.css" />
-  <link rel="stylesheet" href="./Client/nav/style.css" />
+  <link rel="stylesheet" href="./Client/styles/indexa.css" />
+  <link rel="stylesheet" href="./Client/nav/styles.css" />
 </head>
 
 <body>
@@ -70,9 +70,9 @@
               </div>
             </div>
             <div id="contentDIv">
-              <span>
+              <div>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nobis, neque aspernatur? Nemo dolorum quasi dolorem error! Suscipit consectetur id eligendi quisquam sapiente enim minima. Sed fuga asperiores ipsam id atque nam vel officiis, iusto, sit facilis repellat quis blanditiis, odio temporibus tempora illum quod dicta consequatur saepe esse non.
-              </span>
+              </div>
               <img class="imagePosst" src="https://images.unsplash.com/photo-1680770536739-1120e9b0d7e9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=60" alt="">
             </div>
             <div class="divline"></div>
@@ -129,7 +129,7 @@
               <!-- for post comment  -->
               <div id="post" class="shadow">
                 <div id="userPost">G</div>
-                <input type="text" name="search" class="shadow" id="createPost" placeholder="Post Comment" autocomplete="off" style="width: 80%;">
+                <input type="text" name="search" class="shadow" id="createPost" placeholder="Post Comment" autocomplete="off">
                 <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                   <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
                 </svg>

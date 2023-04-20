@@ -1,11 +1,27 @@
 <?php
-// Connecting to db
-include "../../Server/DBConnect.php";
+$con = mysqli_connect("localhost", "root", "", "bibak");
+if (!$con) {
+  die("Database connection failed");
+}
 
-// login user authontication
-if (isset($_POST['login'])) {
-  $email = $_POST['email'];
+// check btn is clicked or not for connect
+if (isset($_POST['register'])) {
+  $name = $_POST['username'];
   $password = $_POST['password'];
+  $email = $_POST['email'];
+
+  // convert password into hash password
+  $hash = password_hash($password, PASSWORD_BCRYPT);
+  $password = $hash;
+
+  // post data into server db named auth
+  $query = "INSERT INTO `auth` (`name`,`password`,`email`) VALUES ('$name','$password','$email')";
+  $result = mysqli_query($con, $query);
+  if ($result) {
+    echo "Data inserted into server db";
+  } else {
+    echo "Cannot insert data into server db";
+  }
 }
 
 
@@ -65,7 +81,7 @@ if (isset($_POST['login'])) {
       </div>
     </div>
     <div id="loginform">
-      <form method="post" class="shadow" action="../../Server/Auth.php">
+      <form method="post" class="shadow" action="./register.php">
         <div id="inputfields" class="register">
           <h3 id="login">Register</h3>
           <div class="input-box">
@@ -106,9 +122,9 @@ if (isset($_POST['login'])) {
               <option value="others">others</option>
             </select>
           </div>
-          <p class="dontHaveAcc">Already have account, <a href="./login.php">Login?</a></p>
+          <p class="dontHaveAcc">Already have account, <a href="./logi.php">Login?</a></p>
 
-          <button type="submit" name="login">Signup</button>
+          <button type="submit" name="register">Signup</button>
         </div>
       </form>
     </div>
