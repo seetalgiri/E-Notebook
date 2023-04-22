@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "bibak");
+$con = mysqli_connect("localhost", "root", "", "");
 if (!$con) {
   die("Database connection failed");
 }

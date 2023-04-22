@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "bibak");
+$con = mysqli_connect("localhost", "root", "", "");
 if (!$con) {
   die("Database connection failed");
 }
@@ -122,7 +122,7 @@ if (isset($_POST['register'])) {
               <option value="others">others</option>
             </select>
           </div>
-          <p class="dontHaveAcc">Already have account, <a href="./logi.php">Login?</a></p>
+          <p class="dontHaveAcc">Already have account, <a href="./login.php">Login?</a></p>
 
           <button type="submit" name="register">Signup</button>
         </div>
