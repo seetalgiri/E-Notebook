@@ -1,33 +1,3 @@
-<?php
-$con = mysqli_connect("localhost", "root", "", "bibak");
-if (!$con) {
-  die("Database connection failed");
-}
-
-// check btn is clicked or not for connect
-if (isset($_POST['register'])) {
-  $name = $_POST['username'];
-  $password = $_POST['password'];
-  $email = $_POST['email'];
-
-  // convert password into hash password
-  $hash = password_hash($password, PASSWORD_BCRYPT);
-  $password = $hash;
-
-  // post data into server db named auth
-  $query = "INSERT INTO `auth` (`name`,`password`,`email`) VALUES ('$name','$password','$email')";
-  $result = mysqli_query($con, $query);
-  if ($result) {
-    echo "Data inserted into server db";
-  } else {
-    echo "Cannot insert data into server db";
-  }
-}
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +49,7 @@ if (isset($_POST['register'])) {
       </div>
     </div>
     <div id="loginform">
-      <form method="post" class="shadow" action="./register.php">
+      <form method="post" class="shadow" action="../../Server/Auth.php">
         <div id="inputfields" class="register">
           <h3 id="login">Register</h3>
           <div class="input-box">
