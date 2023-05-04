@@ -275,7 +275,7 @@
       }
     })
 
-    const NoteHtml = `<form action="">
+    const NotesInnterHtml = `<form action="">
                 <div class="buttonclscontentPlc buttonclscontentPlcreq">
                   <div class="buttontextAreadiv requestNotice">
                     <textarea name="post" id="postContentMod" placeholder="What do you want to request?"></textarea>
@@ -336,13 +336,16 @@
                     </div>
                   </div>
                   </div>
-                  <div class="buttonclscontent border"></div>
+                  <div class="buttonclscontent  flex justify-between">
+                    <input type="text" class="subname border inputFldsSendreq" placeholder="Enter Subject Name" />
+                    <input type="text" class="note border inputFldsSendreq" placeholder="Enter Note Name" />
+                  </div>
                 <div class="buttonclscontent border postBtn">
                   <button>REQUEST</button>
                 </div>
               </form>`
 
-    const noticeReqHtml = `<form action="">
+    const NoticeInnerHtml = `<form action="">
                 <div class="buttonclscontentPlc">
                   <div class="buttontextAreadiv">
                     <textarea name="post" id="postContentMod" placeholder="What is on your mind?"></textarea>
@@ -397,18 +400,11 @@
     const formDiv = document.getElementById("formDiv");
 
 
-
-
-
-
-
-
-    formDiv.innerHTML = noticeReqHtml;
+    formDiv.innerHTML = NoticeInnerHtml;
     const uploadBtn = document.getElementById('uploadbtnnote');
     const fileInput = document.getElementById('pdfuploadnote');
 
     uploadBtn.addEventListener('click', () => {
-      console.log("Clicked")
       fileInput.click();
     });
 
@@ -420,13 +416,12 @@
 
 
     uploadNotice.addEventListener("click", (e) => {
-      formDiv.innerHTML = noticeReqHtml;
+      formDiv.innerHTML = NoticeInnerHtml;
       uploadNotice.classList.remove("inactivebtnPost");
       uploadNote.classList.add("inactivebtnPost");
       const uploadBtn = document.getElementById('uploadbtnnote');
       const fileInput = document.getElementById('pdfuploadnote');
       uploadBtn.addEventListener('click', () => {
-        console.log("Clicked")
         fileInput.click();
       });
 
@@ -437,13 +432,12 @@
       });
     })
     uploadNote.addEventListener("click", (e) => {
-      formDiv.innerHTML = noticeReqHtml;
+      formDiv.innerHTML = NotesInnterHtml;
       uploadNote.classList.remove("inactivebtnPost");
       uploadNotice.classList.add("inactivebtnPost");
       const uploadBtn = document.getElementById('uploadbtn');
       const fileInput = document.getElementById('pdfupload');
       uploadBtn.addEventListener('click', () => {
-        console.log("Clicked")
         fileInput.click();
       });
 
