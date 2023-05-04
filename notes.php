@@ -67,7 +67,7 @@
                         </div>
                         <div class="disremember">
                             For better quality notes, choose stream, semester or year, and
-                            subject in that order. Thank you ! 1.2
+                            subject in that order. Thank you!
                         </div>
                     </div>
                 </div>

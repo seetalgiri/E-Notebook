@@ -31,12 +31,13 @@
         </div>
         <div id="category" class="shadow">
           <div class="stream">
-            <li><a href="#" class="activestr"><span>ALL</span> <svg width="15" height="16" viewBox="0 0 16 18"
-                  xmlns="http://www.w3.org/2000/svg">
+            <li name="gaurab"><a href="/gaurab" class="activestr"><span>ALL</span> <svg width="15" height="16"
+                  viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                 </svg>
               </a></li>
+
             <li><a href="#" class=""><span>BBM</span> <svg width="15" height="16" viewBox="0 0 16 18"
                   xmlns="http://www.w3.org/2000/svg">
                   <path
