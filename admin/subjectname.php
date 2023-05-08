@@ -117,17 +117,18 @@ if (isset($_POST['updateadd'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suject name</title>
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/faculity.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/faculitys.css">
     <style>
-        select {
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer !important;
-            font-size: 17px !important;
-        }
+    select {
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer !important;
+        font-size: 17px !important;
+    }
     </style>
 </head>
 
@@ -204,7 +205,8 @@ if (isset($_POST['updateadd'])) {
 
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
-                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name" value=<?php echo "$name"; ?>>
+                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name"
+                            value=<?php echo "$name"; ?>>
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
@@ -219,53 +221,56 @@ if (isset($_POST['updateadd'])) {
     </div>
 
     <script>
-        const modalContent = document.getElementById("modalContent");
-        const svgbtn = document.querySelector("#sideButton svg");
-        modalContent.style.right = '-378px';
-        svgbtn.style.transform = '  rotateZ(180deg)';
+    const modalContent = document.getElementById("modalContent");
+    const svgbtn = document.querySelector("#sideButton svg");
+    modalContent.style.right = '-378px';
+    svgbtn.style.transform = '  rotateZ(180deg)';
 
-        function modalBtnclk() {
-            if (modalContent.style.right === "0px") {
-                modalContent.style.right = '-378px';
-                svgbtn.style.transform = 'rotateZ(180deg)';
-            } else {
-                modalContent.style.right = '0px';
-                svgbtn.style.transform = 'rotateZ(0deg)';
-            }
-        }
-
-        window.onclick = function(event) {
-            const parentId = event.target.parentNode.id;
-            const par = event.target;
-            if (event.target.id !== "forms" && event.target.id !== "semyearsel" && event.target.id !== "semyear" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
-                if (modalContent.style.right !== '-378px') {
-                    modalContent.style.right = '-378px';
-                    svgbtn.style.transform = 'rotateZ(180deg)';
-                }
-            }
-            const parentId1 = event.target.parentNode.id;
-            const parentId2 = event.target.parentNode.id;
-            if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" && parentId2 !== "sideNavLikes") {
-                if (sidenav.style.width === '220px') {
-                    hambarclk()
-                }
-            }
-        }
-
-        function openmodal(id) {
+    function modalBtnclk() {
+        if (modalContent.style.right === "0px") {
+            modalContent.style.right = '-378px';
+            svgbtn.style.transform = 'rotateZ(180deg)';
+        } else {
             modalContent.style.right = '0px';
             svgbtn.style.transform = 'rotateZ(0deg)';
         }
-        var searchParams = new URLSearchParams(window.location.search);
-        var editParam = searchParams.get("edit");
-        if (Number(editParam)) {
-            openmodal();
+    }
+
+    window.onclick = function(event) {
+        const parentId = event.target.parentNode.id;
+        const par = event.target;
+        if (event.target.id !== "forms" && event.target.id !== "semyearsel" && event.target.id !== "semyear" &&
+            parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !== "modalContent" && parentId !==
+            "forms" && parentId !== "editbtn") {
+            if (modalContent.style.right !== '-378px') {
+                modalContent.style.right = '-378px';
+                svgbtn.style.transform = 'rotateZ(180deg)';
+            }
         }
+        const parentId1 = event.target.parentNode.id;
+        const parentId2 = event.target.parentNode.id;
+        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
+            parentId2 !== "sideNavLikes") {
+            if (sidenav.style.width === '220px') {
+                hambarclk()
+            }
+        }
+    }
+
+    function openmodal(id) {
+        modalContent.style.right = '0px';
+        svgbtn.style.transform = 'rotateZ(0deg)';
+    }
+    var searchParams = new URLSearchParams(window.location.search);
+    var editParam = searchParams.get("edit");
+    if (Number(editParam)) {
+        openmodal();
+    }
 
 
-        // to select semester and year
-        // value of sem and year
-        let sem = `<label id="semyear" for="semyeard">Choose Semester:</label>
+    // to select semester and year
+    // value of sem and year
+    let sem = `<label id="semyear" for="semyeard">Choose Semester:</label>
                         <select name='sem' id='semyearsel'>              
                         <option value='1'>First Semester</option>
                         <option value='2'>Second Semester</option>
@@ -277,7 +282,7 @@ if (isset($_POST['updateadd'])) {
                         <option value='8'>Eighth Semester</option>
                         </select>`;
 
-        let year = `<label id="semyear" for="semyeard">Choose Year:</label>
+    let year = `<label id="semyear" for="semyeard">Choose Year:</label>
                         <select name='year' id='semyearsel'>
                         <option value='1'>First Year</option>
                         <option value='2'>Second Year</option>
@@ -285,27 +290,27 @@ if (isset($_POST['updateadd'])) {
                         <option value='4'>Fourth Year</option>
                         </select>`;
 
-        // setting year and sem
-        const semyear = document.getElementById("semyear");
-        const initialval = document.querySelector("#mySelect option")
+    // setting year and sem
+    const semyear = document.getElementById("semyear");
+    const initialval = document.querySelector("#mySelect option")
 
-        let initialvaltype = initialval.getAttribute("data_yearsem");
-        let HTML = Number(initialvaltype) === 1 ? year : sem;
+    let initialvaltype = initialval.getAttribute("data_yearsem");
+    let HTML = Number(initialvaltype) === 1 ? year : sem;
 
-        // changing faculty value;
-        function myFunction() {
-            var selectElement = document.getElementById("mySelect");
-            var selectedOption = selectElement.options[selectElement.selectedIndex];
-            let type = selectedOption.getAttribute("data_yearsem");
-            if (Number(type) === 1) {
-                HTML = year;
-            } else {
-                HTML = sem;
-            }
-            semyear.innerHTML = HTML;
+    // changing faculty value;
+    function myFunction() {
+        var selectElement = document.getElementById("mySelect");
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        let type = selectedOption.getAttribute("data_yearsem");
+        if (Number(type) === 1) {
+            HTML = year;
+        } else {
+            HTML = sem;
         }
-        let type = myFunction();
-        console.log(type)
+        semyear.innerHTML = HTML;
+    }
+    let type = myFunction();
+    console.log(type)
     </script>
 
 

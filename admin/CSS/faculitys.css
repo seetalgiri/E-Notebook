@@ -7,7 +7,7 @@
 .faculity tr,
 .faculity th,
 .faculity td {
-  border: 1px solid rgb(119, 119, 119);
+  border: 1px solid var(--light-border-clor-opacity2);
   border-collapse: collapse;
   padding: 7px;
 }
@@ -22,7 +22,7 @@
 }
 .edit svg:hover,
 .delete svg:hover {
-  fill: rgb(0, 0, 0) !important;
+  fill: var(--text-color-dark) !important;
   cursor: pointer;
 }
 #modalContent {
@@ -39,28 +39,29 @@
 #sideButton {
   height: 70px;
   width: 25px;
-  box-shadow: 2px 2px 4px rgba(183, 149, 255, 0.4);
+  box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
+
   border-radius: 5px 0 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s;
-  background-color: #5957d4;
+  background-color: var(--second-color-light);
   cursor: pointer;
 }
 #sideButton:hover {
-  background-color: #3b39b6;
+  background-color: var(--second-color);
 }
 #sideButton svg {
-  fill: rgb(208, 237, 253);
+  fill: var(--light-bgcolor);
 }
 #sideButton:hover svg {
-  fill: white;
+  fill: var(--bg-white);
 }
 #sideDivForm {
-  box-shadow: 2px 2px 4px rgba(183, 149, 255, 0.4);
+  box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
   border-radius: 10px 0 0 10px;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--bg-white);
   height: 420px;
   padding: 10px;
   width: 100%;
@@ -94,7 +95,7 @@
   letter-spacing: 1px;
   padding: 8px;
   outline: none;
-  border: 1px solid slategray;
+  border: 1px solid var(--light-border-clor-opacity2);
   border-radius: 2px;
 }
 form input::-webkit-inner-spin-button,
@@ -114,13 +115,13 @@ form input::-webkit-outer-spin-button {
   letter-spacing: 1px;
   cursor: pointer;
   border: none;
-  background-color: rgb(223, 244, 255);
-  box-shadow: 2px 2px 4px rgba(183, 149, 255, 0.4);
+  background-color: var(--bg-white);
+  box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
   transition: 0.2s;
   border-radius: 2px;
 }
 
 .buttonformFac button:hover {
-  background-color: #5957d4;
-  color: white;
+  background-color: var(--second-color-light);
+  color: var(--bg-white);
 }
