@@ -351,7 +351,7 @@
             }
         };
         filterSyllabus.addEventListener("click", () => {
-            if (window.innerWidth < 900) {
+            if (window.innerWidth < 940) {
                 togglesection();
             }
         });
