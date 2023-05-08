@@ -8,7 +8,7 @@
     <title>E-Notebook Notes</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/styles.css" />
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <link rel="stylesheet" href="./Client/styles/note.css" />
 </head>
 

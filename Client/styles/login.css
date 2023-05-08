@@ -13,7 +13,7 @@
   justify-content: center;
   gap: 60px;
   flex-direction: column;
-  background-color: #dae0e68f;
+  background-color: var(--light-bgcolor);
 }
 
 /* #loginform {
@@ -23,7 +23,7 @@
 #loginform form {
   min-width: 400px;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--bg-var(--bg-white));
   padding: 40px 45px 50px 45px;
   border-radius: 5px;
 }
@@ -56,14 +56,14 @@ form .input-box {
   outline: none;
   display: flex;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--light-border-clor-opacity2);
   border-radius: 3px;
   position: relative;
 }
 .input-box label {
   position: absolute;
   left: 10px;
-  background-color: white;
+  background-color: var(--bg-white);
   padding: 0 4px;
   letter-spacing: 1px;
   color: #353535c6;
@@ -126,7 +126,7 @@ form .input-box {
   border: none;
   background-color: #000b32d4;
   border-radius: 4px;
-  color: white;
+  color: var(--bg-white);
   cursor: pointer;
   transition: 0.3s;
 }
@@ -173,7 +173,7 @@ select option {
 .selectdiv label {
   position: absolute;
   left: 10px;
-  background-color: white;
+  background-color: var(--bg-white);
   padding: 0 4px;
   letter-spacing: 1px;
   color: #353535c6;
@@ -242,6 +242,6 @@ select option {
 .icons svg:hover {
   fill: #000b32d4 !important;
 }
-#showIcon{
+#showIcon {
   display: none;
 }

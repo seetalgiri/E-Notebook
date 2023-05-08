@@ -8,7 +8,7 @@
     <title>E-Notebook Previous Questions</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/styles.css" />
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <link rel="stylesheet" href="./Client/styles/note.css" />
 </head>
 
@@ -222,7 +222,8 @@
                       " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
                                 </g>
                             </svg>
-                            <input type="text" name="search" id="search" placeholder="Search Previous year Questions..." class="shadow" />
+                            <input type="text" name="search" id="search" placeholder="Search Previous year Questions..."
+                                class="shadow" />
                             <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
