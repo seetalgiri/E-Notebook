@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="./Client/styles/index.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/nav/style.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <!-- <link rel="stylesheet" href="./Client/styles/navstyle.css" /> -->
 
 </head>
 

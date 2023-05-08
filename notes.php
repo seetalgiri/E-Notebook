@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notes</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
-    <link rel="stylesheet" href="./Client/nav/style.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
     <link rel="stylesheet" href="./Client/styles/globals.css" />
     <link rel="stylesheet" href="./Client/styles/notes.css" />
 </head>
