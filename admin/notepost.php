@@ -16,7 +16,7 @@
     <div id="adminContent">
         <div class="actualContent">
             <div class="contentDiv">
-                this is post
+                this is notepost
             </div>
         </div>
     </div>
