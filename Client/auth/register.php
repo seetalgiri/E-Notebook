@@ -105,6 +105,7 @@
                         </select>
                     </div>
                     <p class="dontHaveAcc">Already have account, <a href="./login.php">Login?</a></p>
+                    <p class="dontHaveAcc gobackHwRg">Don't Want Login, <a href="/e_notebook/index.php">Go Back?</a></p>
 
                     <button type="submit" name="register">Signup</button>
                 </div>

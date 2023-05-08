@@ -187,17 +187,20 @@
   font-size: 15px !important;
 }
 .topics span {
-  font-size: 14px;
+  font-size: 13px !important;
   color: var(--text-color-dark) !important;
+  letter-spacing: 1px !important;
 }
 .topics span:nth-child(1) {
   font-weight: 600;
   height: 10px;
+  letter-spacing: 1px !important;
 }
 
 .topics span:nth-child(2) {
   width: 100%;
   margin-left: 5px;
+  letter-spacing: 1px !important;
 }
 
 #actualNote {

@@ -76,6 +76,8 @@ if (isset($_POST['login'])) {
                         </div>
                     </div>
                     <p class="dontHaveAcc">Don't have an account, <a href="./register.php">Signup?</a></p>
+                    <p class="dontHaveAcc gobackHw">Don't Want Login, <a href="/e_notebook/index.php">Go Back?</a></p>
+                    </p>
 
                     <button type="submit" name="login">Login</button>
                 </div>

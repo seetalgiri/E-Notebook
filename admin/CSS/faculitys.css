@@ -40,23 +40,22 @@
   height: 70px;
   width: 25px;
   box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
-
   border-radius: 5px 0 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.3s;
-  background-color: var(--second-color-light);
   cursor: pointer;
-}
-#sideButton:hover {
   background-color: var(--second-color);
 }
+#sideButton:hover {
+  background-color: var(--second-color-light);
+}
 #sideButton svg {
-  fill: var(--light-bgcolor);
+  fill: var(--bg-white);
 }
 #sideButton:hover svg {
-  fill: var(--bg-white);
+  fill: var(--light-bgcolor);
 }
 #sideDivForm {
   box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;

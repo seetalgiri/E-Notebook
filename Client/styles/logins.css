@@ -132,12 +132,14 @@ form .input-box {
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
 }
-#inputfields .dontHaveAcc a {
-  color: var(--username-light);
-  font-weight: 500;
+#inputfields .gobackHw {
+  margin-top: 0px;
+  font-size: 13px;
+  margin-bottom: -10px;
 }
-#inputfields .dontHaveAcc a:hover {
-  color: var(--text-color-dark);
+#inputfields .gobackHwRg {
+  margin-top: 5px;
+  font-size: 13px;
 }
 select {
   width: 100%;
