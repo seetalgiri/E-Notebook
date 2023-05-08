@@ -24,28 +24,28 @@
   align-items: center;
 }
 .bl-thin {
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid var(--light-border-clor-opacity1);
 }
 .bl-lite {
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: 1px solid var(--light-border-clor-opacity1);
 }
 .br-thin {
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  border-right: 1px solid var(--light-border-clor-opacity2);
 }
 .br-lite {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid var(--light-border-clor-opacity1);
 }
 .bt-thin {
-  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  border-top: 1px solid var(--light-border-clor-opacity2);
 }
 .bt-lite {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid var(--light-border-clor-opacity1);
 }
 .bb-thin {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid var(--light-border-clor-opacity2);
 }
 .bb-lite {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
 }
 .gap {
   gap: 10px;
@@ -54,7 +54,7 @@
 /* main section classes  */
 #subHead h4 {
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
 }
 #mainnoteSec {
   min-height: 100vh;
@@ -63,7 +63,7 @@
   height: 100vh;
   width: 100%;
   padding-top: 10vh;
-  background-color: #dae0e6bb;
+  background-color: var(--light-bgcolor);
 }
 #notessection {
   height: 99%;
@@ -75,7 +75,7 @@
   /* height: 86vh; */
   width: 20%;
   min-width: 300px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--bg-white);
   border-radius: 2px;
   margin: 10px;
   transition: 0.2s;
@@ -98,26 +98,26 @@
   border: none;
   width: 100%;
   cursor: pointer;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-border-clor-opacity1);
   font-size: 16px !important;
   border-radius: 1px;
-  background-color: #dae0e684;
+  background-color: var(--user-Profile-bgcolor);
 }
 .headings {
   height: 30px;
   margin-bottom: 15px;
 }
 .filterBTn {
-  background-color: #dae0e684;
+  background-color: var(--user-Profile-bgcolor);
   padding: 8px;
-  border: 1px solid #002f47;
+  border: 1px solid var(--primary-color-light);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: 0.3s;
   cursor: pointer;
   border-radius: 1px;
-  color: #002f47;
+  color: var(--primary-color-light);
 }
 .footerDIv {
   height: 100%;
@@ -130,12 +130,12 @@
   text-align: justify;
   font-size: 14px;
   letter-spacing: 1px;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   padding: 0 5px;
 }
 .filterBTn:hover {
-  background-color: #002f47;
-  color: white;
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
 }
 .mt-20px {
   margin-top: 20px;
@@ -152,7 +152,7 @@
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 5px;
-  color: rgba(0, 0, 0, 0.3);
+  color: var(--main-head-light);
   user-select: none;
   left: 0px;
 }
@@ -160,13 +160,13 @@
 .borderLines {
   width: 100%;
   height: 1px;
-  background-color: rgb(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
   margin-top: 16px;
 }
 .heading {
   min-width: 160px;
   height: 30px;
-  background-color: #dae0e6bb;
+  background-color: var(--light-bgcolor);
   position: absolute;
   left: 0;
   font-size: 14px;
@@ -188,7 +188,7 @@
 }
 .topics span {
   font-size: 14px;
-  color: black !important;
+  color: var(--text-color-dark) !important;
 }
 .topics span:nth-child(1) {
   font-weight: 600;
@@ -214,12 +214,12 @@
 .leftLineTopic {
   height: 1px;
   width: 100px;
-  background-color: rgb(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
 }
 .rightLineTopic {
   height: 1px;
   width: 60%;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: var(--main-head-light);
 }
 .NotesdivContent {
   height: 100%;
@@ -232,7 +232,7 @@
   top: -10px;
   left: 40px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: var(--light-border-clor-opacity2);
   width: 1px;
 }
 .chapters-contents {
@@ -245,18 +245,18 @@
 .IntroChap {
   width: 100%;
   height: 1px;
-  background-color: rgb(0, 0, 0, 0.3);
+  background-color: var(--main-head-light);
 }
 .chapterNameTop {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
   width: 80%;
   padding: 10px 20px 5px 20px;
   position: relative;
   margin: 20px 0;
-  color: rgb(0, 0, 0, 0.7);
-  fill: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
+  fill: var(--text-color-light);
 }
 .NotesdivContent {
   overflow: hidden;
@@ -266,7 +266,7 @@
   position: absolute;
   width: 50px;
   height: 1px;
-  border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--main-head-light);
   left: -77px;
 }
 
@@ -284,10 +284,10 @@
 }
 
 .noteActions:hover svg {
-  fill: rgb(0, 0, 0);
+  fill: var(--text-color-dark);
 }
 .noteActions:hover {
-  color: rgb(0, 0, 0);
+  color: var(--text-color-dark);
 }
 #authName {
   position: absolute;
@@ -296,13 +296,12 @@
   display: flex;
 }
 #authName div {
-  background-color: red;
   padding: 6px 18px 6px 10px;
   border-radius: 1px;
   margin-left: 25px;
   text-transform: capitalize;
-  background-color: #012a52;
-  color: white;
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
   display: flex;
   gap: 4px;
   position: relative;
@@ -316,7 +315,7 @@
   position: absolute;
   height: 10px;
   width: 10px;
-  background-color: #012a52;
+  background-color: var(--primary-color-light);
   left: -4px;
   bottom: 7px;
   transform: rotateZ(45deg);
@@ -326,14 +325,14 @@
   position: absolute;
   right: 0px;
   top: 1px;
-  fill: white;
+  fill: var(--bg-white);
 }
 .linecontentNote {
   width: 100%;
   margin-bottom: -5px !important;
   margin: auto;
   height: 1px;
-  background-color: rgb(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
 }
 
 #searchNotes {
@@ -349,23 +348,23 @@
   border: none;
   outline: none;
   font-size: 16px;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   letter-spacing: 1px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--bg-white);
   border-radius: 1px;
 }
 #searchNotes svg:hover {
-  fill: black;
+  fill: var(--text-color-dark);
   cursor: pointer;
 }
 .searchBtn {
-  fill: rgba(0, 0, 0, 0.7);
+  fill: var(--text-color-light);
   position: absolute;
   right: 10px;
   top: 8px;
 }
 .filterNotes {
-  fill: rgba(0, 0, 0, 0.7);
+  fill: var(--text-color-light);
   position: absolute;
   left: 10px;
   top: 7px;
@@ -401,7 +400,7 @@
 }
 .gridContent .eachBox {
   height: 110px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--bg-white);
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
@@ -418,7 +417,7 @@
   display: flex;
   gap: 2px;
   flex-direction: column;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   letter-spacing: 1px;
 }
 .gridContent .boxcontentNote h3 {
@@ -426,7 +425,7 @@
   /* text-align: justify; */
   text-transform: capitalize;
   line-height: 1.5;
-  color: rgb(0, 0, 0, 0.8);
+  color: var(--text-color-light);
 }
 .gridContent .boxcontentNote .auth,
 .gridContent .boxcontentNote .date {
@@ -439,7 +438,7 @@
   position: absolute;
   right: 2px;
   top: 2px;
-  fill: rgb(0, 0, 0, 0.7);
+  fill: var(--text-color-light);
 }
 .gridContent .NoteAction {
   width: 93%;
@@ -450,7 +449,7 @@
   bottom: 6px;
   left: 0;
   right: 0;
-  color: rgb(0, 0, 0, 0.6);
+  color: var(--text-color-light);
 }
 .gridContent .NoteAction .date {
   font-weight: 600 !important;
@@ -467,14 +466,14 @@
 }
 .gridContent .auth {
   font-weight: 600;
-  color: rgb(0, 0, 0, 0.6) !important;
+  color: var(--text-color-light) !important;
 }
 .svgsNote svg {
-  fill: rgb(0, 0, 0, 0.7);
+  fill: var(--text-color-light);
   cursor: pointer;
 }
 .svgsNote svg:hover {
-  fill: rgb(0, 0, 0, 1);
+  fill: var(--text-color-dark);
 }
 
 /* for list view  */
@@ -500,7 +499,7 @@
   margin: auto;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--light-border-clor-opacity2);
   padding: 0 3% 7px 3%;
 }
 
@@ -513,12 +512,11 @@
   font-size: 14px;
   text-transform: capitalize;
   line-height: 1.5;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .flexContent .auth span {
-  background-color: red;
   display: none;
 }
 .flexContent .svgsNote {
@@ -530,7 +528,7 @@
 .flexContent .auth {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  color: rgb(0, 0, 0, 0.6);
+  color: var(--text-color-light);
 }
 #toggleViwegrid,
 #toggleViweline {
@@ -554,13 +552,13 @@
 #toggleViweline .linegr {
   width: 22px;
   height: 4px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--text-color-light);
   border-radius: 1px;
 }
 
 #toggleViwegrid:hover .linegr,
 #toggleViweline:hover .linegr {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--text-color-dark);
 }
 
 .flexbuttonset {
@@ -576,16 +574,16 @@
   flex-wrap: wrap;
 }
 .gridview .box {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--text-color-light);
   height: 9px;
   width: 9px;
 }
 
 .gridview:hover .box {
-  background-color: rgba(0, 0, 0);
+  background-color: var(--text-color-dark);
 }
 .auth svg {
-  fill: rgb(0, 0, 0, 0.7);
+  fill: var(--text-color-light);
   margin-bottom: -1px;
 }
 #crosssection {
@@ -601,22 +599,22 @@
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   z-index: 100000000;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--text-color-light);
 }
 #crosssection:hover {
-  color: rgba(0, 0, 0, 1);
+  color: var(--text-color-dark);
 }
 #filterSection {
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--light-border-clor-opacity2);
   z-index: 100000000 !important;
   display: none;
   font-weight: 700;
 }
 
 .headingTopicse .topics span {
-  color: rgb(0, 0, 0, 0.6) !important;
+  color: var(--text-color-light) !important;
 }
 
 @media screen and (max-width: 940px) {
@@ -624,7 +622,7 @@
     position: absolute;
     left: 0;
     left: -260px;
-    background-color: #f4faff;
+    background-color: var(--bg-white);
     z-index: 100000000000 !important;
   }
   #crosssection {
