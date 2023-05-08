@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration form</title>
-    <link rel="stylesheet" href="../styles/globals.css" />
-    <link rel="stylesheet" href="../styles/logins.css" />
+    <link rel="stylesheet" href="../Client/styles/globals.css" />
+    <link rel="stylesheet" href="../Client/styles/logins.css" />
 
 </head>
 

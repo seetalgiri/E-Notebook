@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include "./Client/nav/nav.php"; ?>
+    <?php include "./Client/Common/Navigation.php"; ?>
     <div id="home" style="padding-bottom: 60px;">
         <div id="contentDiv">
             <div id="dynamicContent">
@@ -469,6 +469,5 @@
         })
     </script>
 </body>
-<!-- <script src="./Client/logic/script.js"></scrip> -->
 
 </html>
