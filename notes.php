@@ -8,7 +8,7 @@
     <title>E-Notebook Notes</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/style.css" />
-    <link rel="stylesheet" href="./Client/styles/globala.css" />
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <link rel="stylesheet" href="./Client/styles/notes.css" />
 </head>
 
@@ -292,74 +292,74 @@
     </div>
     <div id="filterSection"></div>
     <script>
-    // for grid view logic
-    // variable decletation
-    const flexbuttonset = document.getElementById("flexbuttonset");
-    const mainViewContent = document.getElementById("mainViewContent");
-    const gridView = document.getElementById("gridView");
-    const listView = document.getElementById("listView");
+        // for grid view logic
+        // variable decletation
+        const flexbuttonset = document.getElementById("flexbuttonset");
+        const mainViewContent = document.getElementById("mainViewContent");
+        const gridView = document.getElementById("gridView");
+        const listView = document.getElementById("listView");
 
-    // initial set view type in localstorage
-    !localStorage.getItem("view") && localStorage.setItem("view", "grid");
+        // initial set view type in localstorage
+        !localStorage.getItem("view") && localStorage.setItem("view", "grid");
 
-    // actions for list view
-    const listviewFun = () => {
-        listView.style.display = "block";
-        gridView.style.display = "none";
-        mainViewContent.classList.add("flexContent");
-        mainViewContent.classList.remove("gridContent");
-    };
-    // actions for grid view
-    const gridviewFun = () => {
-        listView.style.display = "none";
-        gridView.style.display = "block";
-        mainViewContent.classList.remove("flexContent");
-        mainViewContent.classList.add("gridContent");
-    };
+        // actions for list view
+        const listviewFun = () => {
+            listView.style.display = "block";
+            gridView.style.display = "none";
+            mainViewContent.classList.add("flexContent");
+            mainViewContent.classList.remove("gridContent");
+        };
+        // actions for grid view
+        const gridviewFun = () => {
+            listView.style.display = "none";
+            gridView.style.display = "block";
+            mainViewContent.classList.remove("flexContent");
+            mainViewContent.classList.add("gridContent");
+        };
 
-    // localstorage logic
-    if (localStorage.getItem("view") !== "grid") {
-        listviewFun();
-    } else {
-        gridviewFun();
-    }
-    // button click logic
-    gridView.addEventListener("click", () => {
-        localStorage.setItem("view", "list");
-        listviewFun();
-    });
-    listView.addEventListener("click", () => {
-        gridviewFun();
-        localStorage.setItem("view", "grid");
-    });
-    2;
-
-    // for responsive filter section
-    const filtersec = document.querySelector(".filtersec");
-    const filterNotes = document.querySelector(".filterNotes");
-    const crosssection = document.querySelector("#crosssection");
-    const filterSection = document.querySelector("#filterSection");
-    filtersec.style.left = "-350px";
-    const togglesection = () => {
-        if (filtersec.style.left === "-350px") {
-            filtersec.style.left = "0px";
-            filterSection.style.display = "block";
+        // localstorage logic
+        if (localStorage.getItem("view") !== "grid") {
+            listviewFun();
         } else {
-            filtersec.style.left = "-350px";
-            filterSection.style.display = "none";
+            gridviewFun();
         }
-    };
-    filterNotes.addEventListener("click", () => {
-        if (window.innerWidth < 940) {
+        // button click logic
+        gridView.addEventListener("click", () => {
+            localStorage.setItem("view", "list");
+            listviewFun();
+        });
+        listView.addEventListener("click", () => {
+            gridviewFun();
+            localStorage.setItem("view", "grid");
+        });
+        2;
+
+        // for responsive filter section
+        const filtersec = document.querySelector(".filtersec");
+        const filterNotes = document.querySelector(".filterNotes");
+        const crosssection = document.querySelector("#crosssection");
+        const filterSection = document.querySelector("#filterSection");
+        filtersec.style.left = "-350px";
+        const togglesection = () => {
+            if (filtersec.style.left === "-350px") {
+                filtersec.style.left = "0px";
+                filterSection.style.display = "block";
+            } else {
+                filtersec.style.left = "-350px";
+                filterSection.style.display = "none";
+            }
+        };
+        filterNotes.addEventListener("click", () => {
+            if (window.innerWidth < 940) {
+                togglesection();
+            }
+        });
+        crosssection.addEventListener("click", () => {
             togglesection();
-        }
-    });
-    crosssection.addEventListener("click", () => {
-        togglesection();
-    });
-    filterSection.addEventListener("click", () => {
-        togglesection();
-    });
+        });
+        filterSection.addEventListener("click", () => {
+            togglesection();
+        });
     </script>
 </body>
 

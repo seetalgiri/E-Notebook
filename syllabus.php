@@ -8,7 +8,7 @@
     <title>E-Notebook Syllabus</title>
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/nav/style.css" />
-    <link rel="stylesheet" href="./Client/styles/globala.css" />
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <link rel="stylesheet" href="./Client/styles/notes.css" />
 </head>
 

@@ -8,7 +8,7 @@
   width: 80%;
   border: none;
   outline: none;
-  background-color: var(--user-Profile-bgcolor);
+  background-color: var(--bg-white-with-opacity2);
   border-radius: 2px;
   font-size: 15px;
   letter-spacing: 1px;
@@ -181,6 +181,12 @@
 }
 .liked svg {
   fill: var(--second-color) !important;
+}
+.liked:hover {
+  color: var(--primary-color) !important;
+}
+.liked:hover svg {
+  fill: var(--primary-color) !important;
 }
 
 .imagePosst {
