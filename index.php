@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="./Client/styles/indexa.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
-    <!-- <link rel="stylesheet" href="./Client/styles/navstyles.css" /> -->
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <!-- <link rel="stylesheet" href="./Client/styles/navstyle.css" /> -->
 
 </head>
 
@@ -232,9 +232,9 @@
                     <footer class="footercontent">
                         E-NoteBook ©
                         <script>
-                        const date = new Date();
-                        const year = date.getFullYear();
-                        document.write(year);
+                            const date = new Date();
+                            const year = date.getFullYear();
+                            document.write(year);
                         </script> | All rights reserved
                     </footer>
 
@@ -273,25 +273,25 @@
         </div>
     </div>
     <script>
-    function modalClose() {
-        document.getElementById("postModal").style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-
-    function modalOpen() {
-        document.getElementById("postModal").style.display = "block";
-        document.body.style.overflow = "hidden";
-        let inputField = document.getElementById("postContentMod");
-        inputField.focus();
-    }
-
-    document.addEventListener("click", (e) => {
-        if (e.target.id === "postModalRel") {
-            modalClose();
+        function modalClose() {
+            document.getElementById("postModal").style.display = "none";
+            document.body.style.overflow = "auto";
         }
-    })
 
-    const NotesInnterHtml = `<form action="">
+        function modalOpen() {
+            document.getElementById("postModal").style.display = "block";
+            document.body.style.overflow = "hidden";
+            let inputField = document.getElementById("postContentMod");
+            inputField.focus();
+        }
+
+        document.addEventListener("click", (e) => {
+            if (e.target.id === "postModalRel") {
+                modalClose();
+            }
+        })
+
+        const NotesInnterHtml = `<form action="">
                 <div class="buttonclscontentPlc buttonclscontentPlcreq">
                   <div class="buttontextAreadiv requestNotice">
                     <textarea name="post" id="postContentMod" placeholder="What do you want to request?"></textarea>
@@ -361,7 +361,7 @@
                 </div>
               </form>`
 
-    const NoticeInnerHtml = `<form action="">
+        const NoticeInnerHtml = `<form action="">
                 <div class="buttonclscontentPlc">
                   <div class="buttontextAreadiv">
                     <textarea name="post" id="postContentMod" placeholder="What is on your mind?"></textarea>
@@ -410,63 +410,63 @@
                 </div>
               </form>`
 
-    // for notice modal
-    const uploadNotice = document.getElementById("uploadNotice")
-    const uploadNote = document.getElementById("uploadNote")
-    const formDiv = document.getElementById("formDiv");
+        // for notice modal
+        const uploadNotice = document.getElementById("uploadNotice")
+        const uploadNote = document.getElementById("uploadNote")
+        const formDiv = document.getElementById("formDiv");
 
 
-    formDiv.innerHTML = NoticeInnerHtml;
-    const uploadBtn = document.getElementById('uploadbtnnote');
-    const fileInput = document.getElementById('pdfuploadnote');
-
-    uploadBtn.addEventListener('click', () => {
-        fileInput.click();
-    });
-
-    fileInput.addEventListener('change', () => {
-        // Handle the uploaded file
-        const file = fileInput.files[0];
-        console.log('Uploaded file:', file);
-    });
-
-
-    uploadNotice.addEventListener("click", (e) => {
         formDiv.innerHTML = NoticeInnerHtml;
-        uploadNotice.classList.remove("inactivebtnPost");
-        uploadNote.classList.add("inactivebtnPost");
         const uploadBtn = document.getElementById('uploadbtnnote');
         const fileInput = document.getElementById('pdfuploadnote');
+
         uploadBtn.addEventListener('click', () => {
             fileInput.click();
         });
-        let inputField = document.getElementById("postContentMod");
-        inputField.focus();
 
         fileInput.addEventListener('change', () => {
             // Handle the uploaded file
             const file = fileInput.files[0];
             console.log('Uploaded file:', file);
         });
-    })
-    uploadNote.addEventListener("click", (e) => {
-        formDiv.innerHTML = NotesInnterHtml;
-        uploadNote.classList.remove("inactivebtnPost");
-        uploadNotice.classList.add("inactivebtnPost");
-        const uploadBtn = document.getElementById('uploadbtn');
-        const fileInput = document.getElementById('pdfupload');
-        uploadBtn.addEventListener('click', () => {
-            fileInput.click();
-        });
-        let inputField = document.getElementById("postContentMod");
-        inputField.focus();
 
-        fileInput.addEventListener('change', () => {
-            // Handle the uploaded file
-            const file = fileInput.files[0];
-            console.log('Uploaded file:', file);
-        });
-    })
+
+        uploadNotice.addEventListener("click", (e) => {
+            formDiv.innerHTML = NoticeInnerHtml;
+            uploadNotice.classList.remove("inactivebtnPost");
+            uploadNote.classList.add("inactivebtnPost");
+            const uploadBtn = document.getElementById('uploadbtnnote');
+            const fileInput = document.getElementById('pdfuploadnote');
+            uploadBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+            let inputField = document.getElementById("postContentMod");
+            inputField.focus();
+
+            fileInput.addEventListener('change', () => {
+                // Handle the uploaded file
+                const file = fileInput.files[0];
+                console.log('Uploaded file:', file);
+            });
+        })
+        uploadNote.addEventListener("click", (e) => {
+            formDiv.innerHTML = NotesInnterHtml;
+            uploadNote.classList.remove("inactivebtnPost");
+            uploadNotice.classList.add("inactivebtnPost");
+            const uploadBtn = document.getElementById('uploadbtn');
+            const fileInput = document.getElementById('pdfupload');
+            uploadBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+            let inputField = document.getElementById("postContentMod");
+            inputField.focus();
+
+            fileInput.addEventListener('change', () => {
+                // Handle the uploaded file
+                const file = fileInput.files[0];
+                console.log('Uploaded file:', file);
+            });
+        })
     </script>
 </body>
 
