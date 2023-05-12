@@ -83,7 +83,9 @@ nav {
 .login button:hover svg {
   fill: var(--bg-white);
 }
-
+.login button:hover {
+  background-color: var(--primary-color);
+}
 .navLinks a {
   padding: 4px;
 }
