@@ -271,7 +271,7 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   font-size: 17px;
-  color: var(--primary-color);
+  color: var(--text-color-dark);
   margin-right: 5px;
   display: none;
 }

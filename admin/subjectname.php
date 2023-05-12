@@ -118,8 +118,8 @@ if (isset($_POST['updateadd'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suject name</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./CSS/styles.css">
-    <link rel="stylesheet" href="./CSS/faculitys.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
     select {
         padding: 10px;

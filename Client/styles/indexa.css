@@ -756,6 +756,8 @@
   font-size: 15px;
   letter-spacing: 1px;
   outline: none;
+  background-color: transparent;
+  color: var(--text-color-light);
 }
 .flex {
   display: flex;
