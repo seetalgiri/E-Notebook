@@ -48,10 +48,11 @@
   /* for light large shadow  */
   --shadow-large-shadow1: #0000001a;
   --shadow-large-shadow2: #0000000d;
+  --image-color: 1;
 }
 
 /* ====================== For Dark Mode ====================== */
-:root {
+.Darkmode {
   /* for primary/secondary colors  */
   --primary-color: #b5c5ff;
   --primary-color-light: #bbf3ffd4;
@@ -83,6 +84,8 @@
   /* for light large shadow  */
   --shadow-large-shadow1: #0000001a;
   --shadow-large-shadow2: #0000000d;
+
+  --image-color: 10;
 }
 
 /* ====================== For Light Mode ====================== */
@@ -93,4 +96,61 @@
 .shadow-lg {
   box-shadow: 0px 10px 15px -3px var(--shadow-large-shadow1),
     0px 4px 6px -2px var(--shadow-large-shadow2);
+}
+
+.Mode {
+  background-color: var(--bg-white) !important;
+  color: var(--text-color-light);
+  position: absolute;
+  bottom: -35px;
+  right: 0;
+  padding: 3px 15px 0 8px;
+  border-radius: 13px 0 0 13px;
+  box-shadow: 0px 1px 3px 0px var(--shadow-small-shadow1),
+    0px 1px 2px 0px var(--shadow-small-shadow2);
+}
+
+.hidden {
+  display: none;
+}
+.block {
+  display: block;
+}
+
+.eachmode {
+  cursor: pointer;
+  position: relative;
+}
+
+.hoverMode {
+  position: absolute;
+  left: -100px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  padding: 6px 8px;
+  text-align: center;
+  top: 0px;
+  background-color: var(--bg-white);
+  box-shadow: 0px 1px 3px 0px var(--shadow-small-shadow1),
+    0px 1px 2px 0px var(--shadow-small-shadow2);
+  border-radius: 3px;
+  user-select: none;
+  cursor: text;
+  display: none;
+  z-index: 10000;
+}
+.hoverMode::before {
+  content: "";
+  position: absolute;
+  height: 8px;
+  top: 10px;
+  width: 8px;
+  background-color: var(--bg-white);
+  right: -4px;
+  transform: rotateZ(45deg);
+}
+
+.eachmode:hover .hoverMode {
+  display: block;
 }

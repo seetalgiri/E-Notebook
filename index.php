@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Notebook</title>
     <!-- for global css  -->
-    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
+    <link rel="stylesheet" href="./Client/styles/global.css" />
 
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexa.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <!-- <link rel="stylesheet" href="./Client/styles/navstyle.css" /> -->
+    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
+    <!-- <link rel="stylesheet" href="./Client/styles/navstyles.css" /> -->
 
 </head>
 

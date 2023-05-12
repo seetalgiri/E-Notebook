@@ -38,7 +38,7 @@ if (isset($_POST['login'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration form</title>
-    <link rel="stylesheet" href="../Client/styles/globalsa.css" />
+    <link rel="stylesheet" href="../Client/styles/global.css" />
     <link rel="stylesheet" href="../Client/styles/login.css" />
 </head>
 
@@ -85,20 +85,27 @@ if (isset($_POST['login'])) {
         </div>
     </div>
     <script>
-        const password = document.getElementById("password");
-        const hideIcon = document.getElementById("hideIcon");
-        const showIcon = document.getElementById("showIcon");
+    const password = document.getElementById("password");
+    const hideIcon = document.getElementById("hideIcon");
+    const showIcon = document.getElementById("showIcon");
 
-        const eyeOpen = () => {
-            showIcon.style.display = "none";
-            hideIcon.style.display = "block";
-            password.setAttribute("type", "password");
-        }
-        const eyeClose = () => {
-            showIcon.style.display = "block";
-            hideIcon.style.display = "none";
-            password.setAttribute("type", "text");
-        }
+    const eyeOpen = () => {
+        showIcon.style.display = "none";
+        hideIcon.style.display = "block";
+        password.setAttribute("type", "password");
+    }
+    const eyeClose = () => {
+        showIcon.style.display = "block";
+        hideIcon.style.display = "none";
+        password.setAttribute("type", "text");
+    }
+    const bodyMode = document.getElementsByTagName('body')[0];
+
+    if (localStorage.getItem('mode') === 'dark') {
+        bodyMode.classList.add('Darkmode');
+    } else {
+        bodyMode.classList.remove('Darkmode');
+    }
     </script>
 </body>
 
