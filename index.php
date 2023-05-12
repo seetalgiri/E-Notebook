@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/index.css" />
+    <link rel="stylesheet" href="./Client/styles/indexass.css" />
 
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyles.css" />
@@ -161,9 +161,9 @@
                             </div>
 
                             <!-- for post comment  -->
-                            <div id="post" class="shadow">
-                                <div id="userPost">G</div>
-                                <input type="text" name="search" id="createPost1" placeholder="Post Comment"
+                            <div id="cmtPost" class="shadow">
+                                <div id="cmtuserPost">G</div>
+                                <input type="text" name="comment" id="cmtcreatePost" placeholder="Create Post"
                                     autocomplete="off">
                                 <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />

@@ -1,10 +1,15 @@
-#post {
+#post,
+#cmtPost {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
+#cmtPost {
+  padding: 6px;
+}
 #createPost,
-#createPost1 {
+#createPost1,
+#cmtcreatePost {
   padding: 5px 10px;
   width: 80%;
   border: none;
@@ -16,17 +21,20 @@
   color: var(--text-color-light);
 }
 
-#post svg {
+#post svg,
+#cmtPost svg {
   fill: var(--text-color-light);
   transition: 0.3s;
   cursor: pointer;
 }
 
-#post svg:hover {
+#post svg:hover,
+#cmtPost svg:hover {
   fill: var(--text-color-dark);
 }
 
-#userPost {
+#userPost,
+#cmtuserPost {
   background-color: var(--user-Profile-bgcolor);
   height: 30px;
   width: 30px;
@@ -725,7 +733,8 @@
     padding: 0px 15px 20px 15px;
   }
   #createPost,
-  #createPost1 {
+  #createPost1,
+  #cmtcreatePost {
     width: 60%;
   }
   .stream li:nth-child(2) {
