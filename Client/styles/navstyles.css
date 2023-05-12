@@ -69,10 +69,13 @@ nav {
 }
 .login button span {
   margin-top: 2px;
+  color: var(--primary-color-light);
 }
-.login button:hover {
-  background-color: var(--primary-color-light);
-  color: var(--bg-white);
+.login button svg {
+  fill: var(--text-color-light);
+}
+.login button:hover span {
+  color: var(--bg-white) !important;
 }
 
 .login button:hover svg {

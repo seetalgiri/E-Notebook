@@ -117,7 +117,7 @@ if (isset($_POST['updateadd'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suject name</title>
-    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./CSS/styles.css">
     <link rel="stylesheet" href="./CSS/faculitys.css">
     <style>

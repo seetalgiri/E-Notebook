@@ -76,6 +76,7 @@ form .input-box {
   border-radius: 5px;
   margin-left: 11px;
   margin-right: 35px;
+  background: transparent;
   color: var(--text-color-light);
 }
 #login {
@@ -153,6 +154,7 @@ select {
   letter-spacing: 1px;
   color: var(--text-color-light);
   text-transform: capitalize;
+  background: transparent;
 }
 select option {
   font-size: 18px;

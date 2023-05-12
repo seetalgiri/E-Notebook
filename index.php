@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Notebook</title>
     <!-- for global css  -->
-    <link rel="stylesheet" href="./Client/styles/globals.css" />
+    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
 
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/index.css" />
+    <link rel="stylesheet" href="./Client/styles/indexa.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <!-- <link rel="stylesheet" href="./Client/styles/navstyle.css" /> -->
+    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
+    <!-- <link rel="stylesheet" href="./Client/styles/navstyles.css" /> -->
 
 </head>
 
@@ -163,7 +163,7 @@
                             <!-- for post comment  -->
                             <div id="post" class="shadow">
                                 <div id="userPost">G</div>
-                                <input type="text" name="search" id="createPost" placeholder="Post Comment"
+                                <input type="text" name="search" id="createPost1" placeholder="Post Comment"
                                     autocomplete="off">
                                 <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />

@@ -3,12 +3,13 @@
   align-items: center;
   justify-content: space-around;
 }
-#createPost {
+#createPost,
+#createPost1 {
   padding: 5px 10px;
   width: 80%;
   border: none;
   outline: none;
-  background-color: var(--bg-white-with-opacity2);
+  background-color: var(--light-bgcolor);
   border-radius: 2px;
   font-size: 15px;
   letter-spacing: 1px;
@@ -266,7 +267,8 @@
   background-color: var(--bg-white);
   color: var(--primary-color-light);
 }
-#createpost:hover {
+#createpost:hover,
+#createpost1:hover {
   background-color: var(--primary-color);
 }
 #notes:hover {
@@ -389,7 +391,7 @@
   z-index: 100000000000000;
 }
 #postModalRel {
-  background-color: var(--text-color-light);
+  background-color: var(--color-bg-modal);
   position: relative;
   height: 100%;
   width: 100%;
@@ -417,7 +419,7 @@
   margin: 0 15px;
   letter-spacing: 2px;
   font-size: 16px;
-  color: #000b3286;
+  color: var(--primary-color);
   text-transform: uppercase;
 }
 .headContent .cross {
@@ -457,7 +459,9 @@
   font-size: 16px;
   letter-spacing: 1px;
   width: 100%;
+  background: transparent;
   height: 100%;
+  color: var(--text-color-light);
 }
 .buttonclscontent,
 .buttonclscontentPlc {
@@ -717,7 +721,8 @@
   #contentdev {
     padding: 0px 15px 20px 15px;
   }
-  #createPost {
+  #createPost,
+  #createPost1 {
     width: 60%;
   }
   .stream li:nth-child(2) {

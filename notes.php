@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notes</title>
+    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
     <link rel="stylesheet" href="./Client/styles/style.css" />
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/globals.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
 </head>
 
 <body>
@@ -45,14 +45,14 @@
                                 <option value="3">BSW</option>
                                 <option value="4">MBS</option>
                             </select>
-                            <select name="stream" id="steram">
+                            <select name="semYear" id="semYear">
                                 <option value="">Select Year/Sem</option>
                                 <option value="1">1st</option>
                                 <option value="2">2nd</option>
                                 <option value="3">3rd</option>
                                 <option value="4">4th</option>
                             </select>
-                            <select name="stream" id="steram">
+                            <select name="subject" id="subject">
                                 <option value="">Select Subject</option>
                                 <option value="1">BCA</option>
                                 <option value="2">BBM</option>
