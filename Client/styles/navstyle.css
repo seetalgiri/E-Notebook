@@ -12,6 +12,7 @@ nav {
   top: 0;
   margin: auto;
   max-width: 1600px;
+  min-height: 60px;
 }
 #logo {
   width: 25%;
@@ -128,7 +129,7 @@ nav {
 }
 
 .navsectionLink {
-  width: 60%;
+  width: 50%;
   display: flex;
   justify-content: end;
   align-items: center;

@@ -122,4 +122,16 @@ const modeClick = () => {
         localStorage.setItem('mode', 'dark');
     }
 }
+window.addEventListener("scroll", function() {
+    let scrollY = Math.ceil(window.scrollY || window.pageYOffset);
+    if (scrollY > 140) {
+        toggleMode.style.right = "-100px"
+        toggleMode.style.opacity = "0"
+
+    } else {
+        toggleMode.style.right = "0px"
+        toggleMode.style.opacity = "1"
+
+    }
+});
 </script>

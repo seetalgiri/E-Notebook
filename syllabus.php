@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Syllabus</title>
     <!-- for global css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
 
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
     <link rel="stylesheet" href="./Client/styles/note.css" />
 
 </head>

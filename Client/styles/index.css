@@ -211,6 +211,7 @@
 #fixedContent {
   height: 85vh;
   top: 12vh;
+  /* margin-top: 70px; */
   width: 100%;
   max-width: 300px;
   position: fixed;

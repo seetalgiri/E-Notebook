@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>E-Notebook</title>
     <!-- for global css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
 
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexass.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
 
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
-    <!-- <link rel="stylesheet" href="./Client/styles/navstyles.css" /> -->
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <!-- <link rel="stylesheet" href="./Client/styles/navstyle.css" /> -->
 
 </head>
 
@@ -163,8 +163,8 @@
                             <!-- for post comment  -->
                             <div id="cmtPost" class="shadow">
                                 <div id="cmtuserPost">G</div>
-                                <input type="text" name="comment" id="cmtcreatePost" placeholder="Create Post"
-                                    autocomplete="off">
+                                <input type="text" name="comment" id="cmtcreatePost"
+                                    placeholder="Comment your thoughts..." autocomplete="off">
                                 <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
                                 </svg>
