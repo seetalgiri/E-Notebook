@@ -10,14 +10,27 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
-        select {
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer !important;
-            font-size: 17px !important;
-        }
+    select {
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer !important;
+        font-size: 17px !important;
+    }
+
+    textarea {
+        background-color: transparent;
+        resize: none;
+        outline: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        color: var(--text-color-light);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        letter-spacing: 1px;
+        height: 105px;
+    }
     </style>
 </head>
 
@@ -29,16 +42,16 @@
                 <table class="faculity">
                     <tr>
                         <th class="serialname">S.N</th>
-                        <th class="facname">Name</th>
-                        <th>Year/Semester</th>
-                        <th>Display order</th>
+                        <th class="facname">Description</th>
+                        <th>Image</th>
+                        <th>Faculty</th>
                         <th colspan="2">Action</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Gaurab</td>
+                        <td>THis is me gaurab sunar</td>
                         <td>Year</td>
-                        <td>2</td>
+                        <td>BCA</td>
                         <td class='edit' id='editbtn'>
                             <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24'
                                 xmlns='http://www.w3.org/2000/svg'>
@@ -72,29 +85,31 @@
                     <path d="M0.589844 10.58L5.16984 6L0.589844 1.41L1.99984 0L7.99984 6L1.99984 12L0.589844 10.58Z" />
                 </svg>
             </div>
-            <div id="sideDivForm">
+            <div id="sideDivForm" class='noticePost'>
                 <form action="./faculty.php" method="post" id="forms">
                     <h3>Add Faculty:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
-                        <label for="fname">Enter faculity name:</label>
-                        <input type="text" name="fname" required id="fname" placeholder="Name" value="Gaurab">
+                        <label for="fname">Enter Post Description:</label>
+                        <textarea name="" id="" cols="30" rows="10"></textarea>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="stdType">Select Year/Semester:</label>
+                        <label for="stdType">Select Stream:</label>
                         <select name="yearsem" id="stdType">
-                            <option value="1">Years</option>
-                            <option value="2">Semester</option>
+                            <option value="1">ALL</option>
+                            <option value="2">BCA</option>
+                            <option value="2">BBM</option>
+                            <option value="2">BSW</option>
                         </select>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="dOrder">Enter Display order:</label>
-                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value=2
-                            </div>
-                        <div id=" forms" class="buttonformFac">
-                            <button type='submit' name='updateadd'>Update</button>
-                            <button type="reset">Reset</button>
-                        </div>
+                        <label for="dOrder">Select Image:</label>
+                        <input type="file" name="image" id="image" type='image'>
+                    </div>
+                    <div id=" forms" class="buttonformFac">
+                        <button type='submit' name='updateadd'>Post</button>
+                        <button type="reset">Reset</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -102,52 +117,52 @@
 
 
     <script>
-        const modalContent = document.getElementById("modalContent");
-        const svgbtn = document.querySelector("#sideButton svg");
-        modalContent.style.right = '-378px';
-        svgbtn.style.transform = '  rotateZ(180deg)';
+    const modalContent = document.getElementById("modalContent");
+    const svgbtn = document.querySelector("#sideButton svg");
+    modalContent.style.right = '-378px';
+    svgbtn.style.transform = '  rotateZ(180deg)';
 
-        function modalBtnclk() {
-            if (modalContent.style.right === "0px") {
-                modalContent.style.right = '-378px';
-                svgbtn.style.transform = 'rotateZ(180deg)';
-            } else {
-                modalContent.style.right = '0px';
-                svgbtn.style.transform = 'rotateZ(0deg)';
-            }
-        }
-
-        window.onclick = function (event) {
-            const parentId = event.target.parentNode.id;
-            const par = event.target;
-            if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
-                "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
-                if (modalContent.style.right !== '-378px') {
-                    modalContent.style.right = '-378px';
-                    svgbtn.style.transform = 'rotateZ(180deg)';
-                }
-            }
-
-
-            const parentId1 = event.target.parentNode.id;
-            const parentId2 = event.target.parentNode.id;
-            if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
-                parentId2 !== "sideNavLikes") {
-                if (sidenav.style.width === '220px') {
-                    hambarclk()
-                }
-            }
-        }
-
-        function openmodal(id) {
+    function modalBtnclk() {
+        if (modalContent.style.right === "0px") {
+            modalContent.style.right = '-378px';
+            svgbtn.style.transform = 'rotateZ(180deg)';
+        } else {
             modalContent.style.right = '0px';
             svgbtn.style.transform = 'rotateZ(0deg)';
         }
-        var searchParams = new URLSearchParams(window.location.search);
-        var editParam = searchParams.get("edit");
-        if (Number(editParam)) {
-            openmodal();
+    }
+
+    window.onclick = function(event) {
+        const parentId = event.target.parentNode.id;
+        const par = event.target;
+        if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
+            "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+            if (modalContent.style.right !== '-378px') {
+                modalContent.style.right = '-378px';
+                svgbtn.style.transform = 'rotateZ(180deg)';
+            }
         }
+
+
+        const parentId1 = event.target.parentNode.id;
+        const parentId2 = event.target.parentNode.id;
+        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
+            parentId2 !== "sideNavLikes") {
+            if (sidenav.style.width === '220px') {
+                hambarclk()
+            }
+        }
+    }
+
+    function openmodal(id) {
+        modalContent.style.right = '0px';
+        svgbtn.style.transform = 'rotateZ(0deg)';
+    }
+    var searchParams = new URLSearchParams(window.location.search);
+    var editParam = searchParams.get("edit");
+    if (Number(editParam)) {
+        openmodal();
+    }
     </script>
 
 </body>

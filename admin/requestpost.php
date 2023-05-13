@@ -10,14 +10,23 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
-    select {
-        padding: 10px;
-        border: 1px solid #555;
-        border-radius: 4px;
-        outline: none;
-        cursor: pointer !important;
-        font-size: 17px !important;
-    }
+        select {
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer !important;
+            font-size: 17px !important;
+        }
+
+        td,
+        th {
+            min-width: 110px;
+        }
+
+        .twoBtn {
+            min-width: 40px;
+        }
     </style>
 </head>
 
@@ -29,24 +38,28 @@
                 <table class="faculity">
                     <tr>
                         <th class="serialname">S.N</th>
-                        <th class="facname">Name</th>
-                        <th>Year/Semester</th>
-                        <th>Display order</th>
+                        <th class="facname">Description</th>
+                        <th>Stream</th>
+                        <th>Sem/Year</th>
+                        <th>Subject Name</th>
+                        <th>Note Name</th>
                         <th colspan="2">Action</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Gaurab</td>
-                        <td>Year</td>
-                        <td>2</td>
-                        <td class='edit' id='editbtn'>
+                        <td>My name is gaurab</td>
+                        <td>BCA</td>
+                        <td>1st sem</td>
+                        <td>Digital Logic</td>
+                        <td>Chapter 1: Introduction this lorem </td>
+                        <td class='edit twoBtn' id='editbtn'>
                             <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24'
                                 xmlns='http://www.w3.org/2000/svg'>
                                 <path
                                     d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
                             </svg>
                         </td>
-                        <td class='delete'>
+                        <td class='delete twoBtn'>
                             <a name='deletebtn' $row[" id"] . "\">
                                 <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
                                     <path

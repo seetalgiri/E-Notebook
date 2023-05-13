@@ -334,3 +334,18 @@ svg {
   padding-right: 2px;
   font-size: 22px;
 }
+
+.noticePost form {
+  gap: 13px !important;
+  margin-top: 12px !important;
+  padding: 5 !important;
+}
+.noticePost {
+  width: 94% !important;
+}
+.noticePost .flex {
+  gap: 3px;
+}
+.noticePost input {
+  border: 1px solid var(--light-border-clor-opacity2) !important;
+}
