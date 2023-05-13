@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   height: 100%;
   width: 100%;
@@ -195,6 +200,7 @@ svg {
   padding-left: 10px;
   color: var(--text-color-light);
   border: 1px solid var(--light-border-clor-opacity1);
+  background: transparent;
 }
 
 #searchsec button {
@@ -250,6 +256,7 @@ svg {
   box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
   padding: 20px;
   background-color: var(--bg-white);
+  position: relative;
 }
 
 .crossDiv2 {
@@ -283,4 +290,47 @@ svg {
   padding: 6px 12px;
   width: 180px;
   border-radius: 2px;
+}
+
+/* for pagintion  */
+.pagination {
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+
+.pagination a {
+  color: var(--text-color-dark);
+  float: left;
+  height: 35px;
+  width: 35px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid var(--light-border-clor-opacity2);
+  margin: 0 4px;
+}
+
+.pagination a.activePage {
+  background-color: var(--second-color-light);
+  color: var(--bg-white);
+  border: 1px solid var(--light-border-clor-opacity2) !important;
+}
+
+.pagination a:hover:not(.activePage) {
+  background-color: var(--second-color) !important;
+  color: var(--bg-white);
+}
+.rightArrow {
+  padding-bottom: 5px;
+  padding-left: 2px;
+  font-size: 22px;
+}
+.leftArrow {
+  padding-bottom: 5px;
+  padding-right: 2px;
+  font-size: 22px;
 }

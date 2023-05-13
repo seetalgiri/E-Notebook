@@ -116,9 +116,9 @@ if (isset($_POST['updateadd'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suject name</title>
+    <title>E-NoteBook Suject Name</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
     select {
@@ -174,6 +174,18 @@ if (isset($_POST['updateadd'])) {
                     }
                     ?>
                 </table>
+
+                <div class="pagination">
+                    <a href="#" class="leftArrow">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#" class="activePage">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#" class="rightArrow">&raquo;</a>
+                </div>
+
             </div>
         </div>
         <div id="modalContent">
@@ -206,7 +218,8 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
                         <input type="text" required name="sub_name" id="fname" placeholder="Subject Name"
-                            value=<?php echo "$name"; ?>>
+                            value="<?php echo $name; ?>">
+
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
@@ -216,8 +229,10 @@ if (isset($_POST['updateadd'])) {
                         <button type="reset">Reset</button>
                     </div>
                 </form>
+
             </div>
         </div>
+
     </div>
 
     <script>

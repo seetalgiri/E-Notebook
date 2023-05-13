@@ -81,19 +81,19 @@ if (isset($_POST['updateadd'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>faculty</title>
+    <title>E-NoteBook Faculty</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
-    select {
-        padding: 10px;
-        border: 1px solid #555;
-        border-radius: 4px;
-        outline: none;
-        cursor: pointer !important;
-        font-size: 17px !important;
-    }
+        select {
+            padding: 10px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            outline: none;
+            cursor: pointer !important;
+            font-size: 17px !important;
+        }
     </style>
 </head>
 
@@ -144,6 +144,14 @@ if (isset($_POST['updateadd'])) {
                     }
                     ?>
                 </table>
+                <div class="pagination">
+                    <a href="#" class="leftArrow">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#" class="activePage">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#" class="rightArrow">&raquo;</a>
+                </div>
             </div>
         </div>
         <div id="modalContent">
@@ -159,7 +167,7 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="fname">Enter faculity name:</label>
                         <input type="text" name="fname" required id="fname" placeholder="Name"
-                            value=<?php echo "$name"; ?>>
+                            value="<?php echo $name; ?>">
                     </div>
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
@@ -171,7 +179,7 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="dOrder">Enter Display order:</label>
                         <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order"
-                            value=<?php echo "$dorder"; ?>>
+                            value="<?php echo $dorder; ?>">
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
@@ -186,52 +194,52 @@ if (isset($_POST['updateadd'])) {
     </div>
 
     <script>
-    const modalContent = document.getElementById("modalContent");
-    const svgbtn = document.querySelector("#sideButton svg");
-    modalContent.style.right = '-378px';
-    svgbtn.style.transform = '  rotateZ(180deg)';
+        const modalContent = document.getElementById("modalContent");
+        const svgbtn = document.querySelector("#sideButton svg");
+        modalContent.style.right = '-378px';
+        svgbtn.style.transform = '  rotateZ(180deg)';
 
-    function modalBtnclk() {
-        if (modalContent.style.right === "0px") {
-            modalContent.style.right = '-378px';
-            svgbtn.style.transform = 'rotateZ(180deg)';
-        } else {
+        function modalBtnclk() {
+            if (modalContent.style.right === "0px") {
+                modalContent.style.right = '-378px';
+                svgbtn.style.transform = 'rotateZ(180deg)';
+            } else {
+                modalContent.style.right = '0px';
+                svgbtn.style.transform = 'rotateZ(0deg)';
+            }
+        }
+
+        window.onclick = function (event) {
+            const parentId = event.target.parentNode.id;
+            const par = event.target;
+            if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
+                "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+                if (modalContent.style.right !== '-378px') {
+                    modalContent.style.right = '-378px';
+                    svgbtn.style.transform = 'rotateZ(180deg)';
+                }
+            }
+
+
+            const parentId1 = event.target.parentNode.id;
+            const parentId2 = event.target.parentNode.id;
+            if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
+                parentId2 !== "sideNavLikes") {
+                if (sidenav.style.width === '220px') {
+                    hambarclk()
+                }
+            }
+        }
+
+        function openmodal(id) {
             modalContent.style.right = '0px';
             svgbtn.style.transform = 'rotateZ(0deg)';
         }
-    }
-
-    window.onclick = function(event) {
-        const parentId = event.target.parentNode.id;
-        const par = event.target;
-        if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
-            "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
-            if (modalContent.style.right !== '-378px') {
-                modalContent.style.right = '-378px';
-                svgbtn.style.transform = 'rotateZ(180deg)';
-            }
+        var searchParams = new URLSearchParams(window.location.search);
+        var editParam = searchParams.get("edit");
+        if (Number(editParam)) {
+            openmodal();
         }
-
-
-        const parentId1 = event.target.parentNode.id;
-        const parentId2 = event.target.parentNode.id;
-        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
-            parentId2 !== "sideNavLikes") {
-            if (sidenav.style.width === '220px') {
-                hambarclk()
-            }
-        }
-    }
-
-    function openmodal(id) {
-        modalContent.style.right = '0px';
-        svgbtn.style.transform = 'rotateZ(0deg)';
-    }
-    var searchParams = new URLSearchParams(window.location.search);
-    var editParam = searchParams.get("edit");
-    if (Number(editParam)) {
-        openmodal();
-    }
     </script>
 
 </body>
