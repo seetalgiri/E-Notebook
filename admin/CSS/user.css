@@ -110,7 +110,7 @@
   width: 80px;
   background-color: var(--bg-white);
   top: 14px;
-  left: 0;
+  left: -70px;
   border-radius: 2px;
   overflow: hidden;
   z-index: 10000000000;
