@@ -146,7 +146,7 @@ svg {
 
 #sidenav a:hover svg {
   fill: var(--text-color-dark) !important;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 #topnav {

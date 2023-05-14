@@ -24,7 +24,7 @@
 #post svg,
 #cmtPost svg {
   fill: var(--text-color-light);
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
 }
 
@@ -63,7 +63,7 @@
   border-radius: 2px;
   cursor: pointer;
   display: flex;
-  transition: 0.3s;
+  transition: 0.2s;
   text-decoration: none;
   color: var(--text-color-light);
   align-items: center;
@@ -518,7 +518,7 @@
   color: var(--bg-white);
   background-color: var(--primary-color-light);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .inactivebtnPost:hover {
   color: var(--bg-white) !important;
@@ -541,7 +541,7 @@
   width: 24px;
   fill: var(--text-color-light);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .filechoose svg:hover {
   fill: var(--text-color-dark);
@@ -583,7 +583,7 @@
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .postBtn button:hover {
@@ -671,7 +671,7 @@
   text-decoration: none;
   color: var(--text-color-light);
   font-size: 14px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 #moreComment a:hover {
   color: var(--username-light);

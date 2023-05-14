@@ -111,7 +111,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: 0.3s;
+  transition: 0.2s;
   cursor: pointer;
   border-radius: 1px;
   color: var(--primary-color-light);

@@ -36,54 +36,54 @@
     <div class='Mode' id='toggleMode'></div>
 </nav>
 <script>
-var navLinks = document.getElementsByTagName("a");
-const currentUrl = window.location.href;
-const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
-const clsPage = currentPage.split(".")[0]
+    var navLinks = document.getElementsByTagName("a");
+    const currentUrl = window.location.href;
+    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+    const clsPage = currentPage.split(".")[0]
 
 
-const classes = document.querySelectorAll(".navLinks");
-classes[0].classList.add("active");
-if (clsPage.length > 1) {
-    for (let i = 0; i < classes.length; i++) {
-        if (classes[i].classList.contains(clsPage)) {
-            classes[i].classList.add("active");
-        } else {
-            classes[i].classList.remove("active");
+    const classes = document.querySelectorAll(".navLinks");
+    classes[0].classList.add("active");
+    if (clsPage.length > 1) {
+        for (let i = 0; i < classes.length; i++) {
+            if (classes[i].classList.contains(clsPage)) {
+                classes[i].classList.add("active");
+            } else {
+                classes[i].classList.remove("active");
+            }
         }
     }
-}
 
-const hamburgerNav = document.getElementById("hamburgerNav");
-const navsectionLink = document.querySelector(".navsectionLink");
-const navCloseDIv = document.querySelector(".navCloseDIv");
-navsectionLink.style.right = "-120%";
-const navToggleFuction = () => {
-    if (navsectionLink.style.right === "-120%") {
-        navsectionLink.style.right = "-12px";
-        hamburgerNav.classList.add("crossNav");
-        navCloseDIv.style.display = "block";
-    } else {
-        navsectionLink.style.right = "-120%";
-        hamburgerNav.classList.remove("crossNav");
-        navCloseDIv.style.display = "none";
-    }
-};
+    const hamburgerNav = document.getElementById("hamburgerNav");
+    const navsectionLink = document.querySelector(".navsectionLink");
+    const navCloseDIv = document.querySelector(".navCloseDIv");
+    navsectionLink.style.right = "-120%";
+    const navToggleFuction = () => {
+        if (navsectionLink.style.right === "-120%") {
+            navsectionLink.style.right = "-12px";
+            hamburgerNav.classList.add("crossNav");
+            navCloseDIv.style.display = "block";
+        } else {
+            navsectionLink.style.right = "-120%";
+            hamburgerNav.classList.remove("crossNav");
+            navCloseDIv.style.display = "none";
+        }
+    };
 
-hamburgerNav.addEventListener("click", () => {
-    navToggleFuction();
-});
+    hamburgerNav.addEventListener("click", () => {
+        navToggleFuction();
+    });
 
-navCloseDIv.addEventListener("click", () => {
-    navToggleFuction();
-});
-
-
-const bodyMode = document.getElementsByTagName('body')[0];
-const toggleMode = document.getElementById('toggleMode')
+    navCloseDIv.addEventListener("click", () => {
+        navToggleFuction();
+    });
 
 
-const LightHTML = `<div id='eachModeLight' class="light eachmode">
+    const bodyMode = document.getElementsByTagName('body')[0];
+    const toggleMode = document.getElementById('toggleMode')
+
+
+    const LightHTML = `<div id='eachModeLight' class="light eachmode">
             <svg onclick="modeClick()" width="22" height="22" viewBox="0 0 22 22" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -92,7 +92,7 @@ const LightHTML = `<div id='eachModeLight' class="light eachmode">
             </svg>
             <div class="hoverMode">Light Mode</div>
         </div>`
-const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
+    const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
         <svg onclick="modeClick()" width="20" height="22" viewBox="0 0 20 22" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -103,35 +103,35 @@ const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
     </div>`
 
 
-if (localStorage.getItem('mode') === 'dark') {
-    bodyMode.classList.add('Darkmode');
-    toggleMode.innerHTML = LightHTML
-} else {
-    bodyMode.classList.remove('Darkmode');
-    toggleMode.innerHTML = DarkHTML
-}
-// for dark and light mode
-const modeClick = () => {
     if (localStorage.getItem('mode') === 'dark') {
-        toggleMode.innerHTML = DarkHTML
-        bodyMode.classList.remove('Darkmode');
-        localStorage.setItem('mode', 'light');
-    } else {
-        toggleMode.innerHTML = LightHTML
         bodyMode.classList.add('Darkmode');
-        localStorage.setItem('mode', 'dark');
-    }
-}
-window.addEventListener("scroll", function() {
-    let scrollY = Math.ceil(window.scrollY || window.pageYOffset);
-    if (scrollY > 140) {
-        toggleMode.style.right = "-100px"
-        toggleMode.style.opacity = "0"
-
+        toggleMode.innerHTML = LightHTML
     } else {
-        toggleMode.style.right = "0px"
-        toggleMode.style.opacity = "1"
-
+        bodyMode.classList.remove('Darkmode');
+        toggleMode.innerHTML = DarkHTML
     }
-});
+    // for dark and light mode
+    const modeClick = () => {
+        if (localStorage.getItem('mode') === 'dark') {
+            toggleMode.innerHTML = DarkHTML
+            bodyMode.classList.remove('Darkmode');
+            localStorage.setItem('mode', 'light');
+        } else {
+            toggleMode.innerHTML = LightHTML
+            bodyMode.classList.add('Darkmode');
+            localStorage.setItem('mode', 'dark');
+        }
+    }
+    window.addEventListener("scroll", function () {
+        let scrollY = Math.ceil(window.scrollY || window.pageYOffset);
+        if (scrollY > 140) {
+            toggleMode.style.right = "-100px"
+            toggleMode.style.opacity = "0"
+
+        } else {
+            toggleMode.style.right = "0px"
+            toggleMode.style.opacity = "1"
+
+        }
+    });
 </script>
