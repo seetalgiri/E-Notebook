@@ -180,8 +180,17 @@
                     </div>
                     <div id="listItemsAdminPp" class="shadow">
                         <ul id='adminppLink'>
-                            <li>Logout</li>
-                            <li>Go Home</li>
+                            <li><span>Logout</span> <svg width="15" height="17" viewBox="0 0 19 21"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.2101 15.9712V12.9712H6.2101V8.97119H13.2101V5.97119L18.2101 10.9712L13.2101 15.9712ZM11.2101 0.971191C11.7405 0.971191 12.2492 1.18191 12.6243 1.55698C12.9994 1.93205 13.2101 2.44076 13.2101 2.97119V4.97119H11.2101V2.97119H2.2101V18.9712H11.2101V16.9712H13.2101V18.9712C13.2101 19.5016 12.9994 20.0103 12.6243 20.3854C12.2492 20.7605 11.7405 20.9712 11.2101 20.9712H2.2101C1.67967 20.9712 1.17096 20.7605 0.795885 20.3854C0.420812 20.0103 0.210098 19.5016 0.210098 18.9712V2.97119C0.210098 2.44076 0.420812 1.93205 0.795885 1.55698C1.17096 1.18191 1.67967 0.971191 2.2101 0.971191H11.2101Z" />
+                                </svg>
+                            </li>
+                            <li><span>Home</span> <svg width="18" height="22" viewBox="0 0 20 17"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M8 17V11H12V17H17V9H20L10 0L0 9H3V17H8Z" />
+                                </svg>
+                            </li>
                         </ul>
                     </div>
                 </li>
@@ -190,96 +199,96 @@
     </nav>
 </div>
 <script>
-let date = new Date();
-let hour = date.getHours();
-let greet = ""
+    let date = new Date();
+    let hour = date.getHours();
+    let greet = ""
 
-if (hour >= 5 && hour < 12) {
-    greet = "Good morning, Admin!"
-} else if (hour >= 12 && hour < 18) {
-    greet = "Good afternoon, Admin!"
-} else {
-    greet = "Good evening, Admin!"
-}
-let greetingParagraph = document.getElementById("greeting");
-greetingParagraph.textContent = greet;
-const sidenav = document.getElementById("sidenav");
-const div1 = document.querySelector(".div1");
-const div2 = document.querySelector(".div2");
-const div3 = document.querySelector(".div3");
-const currentUrl = window.location.href;
-const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
-sidenav.style.width = '90px';
-const lists = document.getElementsByClassName("lists");
-const listName = document.getElementsByClassName("listName");
-const borderDesign = document.querySelectorAll(".lists a")
-const addressTracker = document.querySelectorAll(".addressTracker");
-for (let i = 0; i < addressTracker.length; i++) {
-    if (addressTracker[i].classList.contains(currentPage.slice(0, -4))) {
-        addressTracker[i].classList.add("active");
+    if (hour >= 5 && hour < 12) {
+        greet = "Good morning, Admin!"
+    } else if (hour >= 12 && hour < 18) {
+        greet = "Good afternoon, Admin!"
     } else {
-        addressTracker[i].classList.remove("active");
+        greet = "Good evening, Admin!"
     }
-}
-const hambarclk = () => {
-    const width = sidenav.style.width;
-    if (width === '90px') {
-        sidenav.style.width = '220px';
-        div3.classList.add("crossDiv3");
-        div2.classList.add("crossDiv2");
-        div1.style.display = 'none';
-        for (let i = 0; i < lists.length; i++) {
-            lists[i].classList.remove('listItems');
-            borderDesign[i].style.border = '1px solid var(--light-border-clor-opacity2)';
+    let greetingParagraph = document.getElementById("greeting");
+    greetingParagraph.textContent = greet;
+    const sidenav = document.getElementById("sidenav");
+    const div1 = document.querySelector(".div1");
+    const div2 = document.querySelector(".div2");
+    const div3 = document.querySelector(".div3");
+    const currentUrl = window.location.href;
+    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+    sidenav.style.width = '90px';
+    const lists = document.getElementsByClassName("lists");
+    const listName = document.getElementsByClassName("listName");
+    const borderDesign = document.querySelectorAll(".lists a")
+    const addressTracker = document.querySelectorAll(".addressTracker");
+    for (let i = 0; i < addressTracker.length; i++) {
+        if (addressTracker[i].classList.contains(currentPage.slice(0, -4))) {
+            addressTracker[i].classList.add("active");
+        } else {
+            addressTracker[i].classList.remove("active");
         }
-        for (let i = 0; i < listName.length; i++) {
-            listName[i].style.display = "block"
+    }
+    const hambarclk = () => {
+        const width = sidenav.style.width;
+        if (width === '90px') {
+            sidenav.style.width = '220px';
+            div3.classList.add("crossDiv3");
+            div2.classList.add("crossDiv2");
+            div1.style.display = 'none';
+            for (let i = 0; i < lists.length; i++) {
+                lists[i].classList.remove('listItems');
+                borderDesign[i].style.border = '1px solid var(--light-border-clor-opacity2)';
+            }
+            for (let i = 0; i < listName.length; i++) {
+                listName[i].style.display = "block"
+            }
+        } else {
+            sidenav.style.width = '90px';
+            div3.classList.remove("crossDiv3");
+            div2.classList.remove("crossDiv2");
+            div1.style.display = 'block';
+            for (let i = 0; i < lists.length; i++) {
+                lists[i].classList.add('listItems');
+                borderDesign[i].style.border = 'none';
+
+            }
+            for (let i = 0; i < listName.length; i++) {
+                listName[i].style.display = "none"
+            }
         }
+    };
+
+    const bodyMode = document.getElementsByTagName('body')[0];
+
+    if (localStorage.getItem('mode') === 'dark') {
+        bodyMode.classList.add('Darkmode');
     } else {
-        sidenav.style.width = '90px';
-        div3.classList.remove("crossDiv3");
-        div2.classList.remove("crossDiv2");
-        div1.style.display = 'block';
-        for (let i = 0; i < lists.length; i++) {
-            lists[i].classList.add('listItems');
-            borderDesign[i].style.border = 'none';
-
+        bodyMode.classList.remove('Darkmode');
+    }
+    const adminProfile = document.getElementById('adminProfile');
+    const listItemsAdminPp = document.getElementById('listItemsAdminPp');
+    listItemsAdminPp.style.display = 'none';
+    adminProfile.addEventListener('click', () => {
+        if (listItemsAdminPp.style.display === 'none') {
+            listItemsAdminPp.style.display = 'block';
+        } else {
+            listItemsAdminPp.style.display = "none";
         }
-        for (let i = 0; i < listName.length; i++) {
-            listName[i].style.display = "none"
+    })
+    window.onclick = function (event) {
+        const parentId = event.target.parentNode.id;
+        const parentId2 = event.target.parentNode.id;
+        if (event.target.id !== 'adminProfile1' && event.target.id !== 'adminppLink' && parentId !==
+            "adminppLink" && parentId !== "adminProfile1") {
+            listItemsAdminPp.style.display = "none";
         }
-    }
-};
-
-const bodyMode = document.getElementsByTagName('body')[0];
-
-if (localStorage.getItem('mode') === 'dark') {
-    bodyMode.classList.add('Darkmode');
-} else {
-    bodyMode.classList.remove('Darkmode');
-}
-const adminProfile = document.getElementById('adminProfile');
-const listItemsAdminPp = document.getElementById('listItemsAdminPp');
-listItemsAdminPp.style.display = 'none';
-adminProfile.addEventListener('click', () => {
-    if (listItemsAdminPp.style.display === 'none') {
-        listItemsAdminPp.style.display = 'block';
-    } else {
-        listItemsAdminPp.style.display = "none";
-    }
-})
-window.onclick = function(event) {
-    const parentId = event.target.parentNode.id;
-    const parentId2 = event.target.parentNode.id;
-    if (event.target.id !== 'adminProfile1' && event.target.id !== 'adminppLink' && parentId !==
-        "adminppLink" && parentId !== "adminProfile1") {
-        listItemsAdminPp.style.display = "none";
-    }
-    if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId !== "hamburger" &&
-        parentId2 !== "sideNavLikes") {
-        if (sidenav.style.width === '220px') {
-            hambarclk()
+        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId !== "hamburger" &&
+            parentId2 !== "sideNavLikes") {
+            if (sidenav.style.width === '220px') {
+                hambarclk()
+            }
         }
     }
-}
 </script>
