@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Note Post</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
         select {
@@ -218,6 +218,11 @@
                 if (sidenav.style.width === '220px') {
                     hambarclk()
                 }
+            }
+
+            if (event.target.id !== 'adminProfile1' && event.target.id !== 'adminppLink' && parentId !==
+                "adminppLink" && parentId !== "adminProfile1") {
+                listItemsAdminPp.style.display = "none";
             }
         }
 

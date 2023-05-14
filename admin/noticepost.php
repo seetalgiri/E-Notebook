@@ -7,30 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notice Post</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
     <style>
-        select {
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer !important;
-            font-size: 17px !important;
-        }
+    select {
+        padding: 10px;
+        border: 1px solid #555;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer !important;
+        font-size: 17px !important;
+    }
 
-        textarea {
-            background-color: transparent;
-            resize: none;
-            outline: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            color: var(--text-color-light);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            letter-spacing: 1px;
-            height: 105px;
-        }
+    textarea {
+        background-color: transparent;
+        resize: none;
+        outline: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        color: var(--text-color-light);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        letter-spacing: 1px;
+        height: 105px;
+    }
     </style>
 </head>
 
@@ -117,52 +117,57 @@
 
 
     <script>
-        const modalContent = document.getElementById("modalContent");
-        const svgbtn = document.querySelector("#sideButton svg");
-        modalContent.style.right = '-378px';
-        svgbtn.style.transform = '  rotateZ(180deg)';
+    const modalContent = document.getElementById("modalContent");
+    const svgbtn = document.querySelector("#sideButton svg");
+    modalContent.style.right = '-378px';
+    svgbtn.style.transform = '  rotateZ(180deg)';
 
-        function modalBtnclk() {
-            if (modalContent.style.right === "0px") {
-                modalContent.style.right = '-378px';
-                svgbtn.style.transform = 'rotateZ(180deg)';
-            } else {
-                modalContent.style.right = '0px';
-                svgbtn.style.transform = 'rotateZ(0deg)';
-            }
-        }
-
-        window.onclick = function (event) {
-            const parentId = event.target.parentNode.id;
-            const par = event.target;
-            if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
-                "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
-                if (modalContent.style.right !== '-378px') {
-                    modalContent.style.right = '-378px';
-                    svgbtn.style.transform = 'rotateZ(180deg)';
-                }
-            }
-
-
-            const parentId1 = event.target.parentNode.id;
-            const parentId2 = event.target.parentNode.id;
-            if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
-                parentId2 !== "sideNavLikes") {
-                if (sidenav.style.width === '220px') {
-                    hambarclk()
-                }
-            }
-        }
-
-        function openmodal(id) {
+    function modalBtnclk() {
+        if (modalContent.style.right === "0px") {
+            modalContent.style.right = '-378px';
+            svgbtn.style.transform = 'rotateZ(180deg)';
+        } else {
             modalContent.style.right = '0px';
             svgbtn.style.transform = 'rotateZ(0deg)';
         }
-        var searchParams = new URLSearchParams(window.location.search);
-        var editParam = searchParams.get("edit");
-        if (Number(editParam)) {
-            openmodal();
+    }
+
+    window.onclick = function(event) {
+        const parentId = event.target.parentNode.id;
+        const par = event.target;
+        if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
+            "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
+            if (modalContent.style.right !== '-378px') {
+                modalContent.style.right = '-378px';
+                svgbtn.style.transform = 'rotateZ(180deg)';
+            }
         }
+
+
+        const parentId1 = event.target.parentNode.id;
+        const parentId2 = event.target.parentNode.id;
+        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
+            parentId2 !== "sideNavLikes") {
+            if (sidenav.style.width === '220px') {
+                hambarclk()
+            }
+        }
+
+        if (event.target.id !== 'adminProfile1' && event.target.id !== 'adminppLink' && parentId !==
+            "adminppLink" && parentId !== "adminProfile1") {
+            listItemsAdminPp.style.display = "none";
+        }
+    }
+
+    function openmodal(id) {
+        modalContent.style.right = '0px';
+        svgbtn.style.transform = 'rotateZ(0deg)';
+    }
+    var searchParams = new URLSearchParams(window.location.search);
+    var editParam = searchParams.get("edit");
+    if (Number(editParam)) {
+        openmodal();
+    }
     </script>
 
 </body>
