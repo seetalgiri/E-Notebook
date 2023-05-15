@@ -8,7 +8,7 @@
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
     <link rel="stylesheet" href="./CSS/notepost.css">
 

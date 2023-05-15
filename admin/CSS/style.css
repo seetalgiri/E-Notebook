@@ -373,27 +373,30 @@ svg {
 }
 
 #listItemsAdminPp ul li {
-  padding: 10px;
   border-bottom: 1px solid var(--light-border-clor-opacity1);
   width: 100%;
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   user-select: none;
+}
+#listItemsAdminPp ul li a {
   color: var(--text-color-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
+  padding: 10px;
+  text-decoration: none;
 }
 #listItemsAdminPp ul li svg {
   margin-bottom: 1.5px;
 }
-#listItemsAdminPp ul li:hover svg {
+#listItemsAdminPp ul li a:hover svg {
   fill: var(--bg-white);
 }
 
-#listItemsAdminPp ul li:hover {
+#listItemsAdminPp ul li a:hover {
   background-color: var(--primary-color);
   color: var(--bg-white);
 }
