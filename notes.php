@@ -5,15 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Notes</title>
+    <!-- ==================== CSS Imported ======================== -->
+    <!-- for globald.css  -->
+    <link rel="stylesheet" href="./Client/styles/globald.css" />
+    <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
-    <link rel="stylesheet" href="./Client/nav/styles.css" />
-    <link rel="stylesheet" href="./Client/styles/global.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/navigation.css" />
+    <!-- for nav css  -->
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
+
+    <!-- ==================== JS Imported ======================== -->
+    <script src="./Client/logic/notesqns.js" defer></script>
+
+
 </head>
 
 <body>
-    <?php include "./Client/nav/nav.php"; ?>
+    <?php include "./Client/Common/Navigation.php"; ?>
 
     <div id="mainnoteSec">
         <div class="actualCOntent">
@@ -45,14 +56,14 @@
                                 <option value="3">BSW</option>
                                 <option value="4">MBS</option>
                             </select>
-                            <select name="stream" id="steram">
+                            <select name="semYear" id="semYear">
                                 <option value="">Select Year/Sem</option>
                                 <option value="1">1st</option>
                                 <option value="2">2nd</option>
                                 <option value="3">3rd</option>
                                 <option value="4">4th</option>
                             </select>
-                            <select name="stream" id="steram">
+                            <select name="subject" id="subject">
                                 <option value="">Select Subject</option>
                                 <option value="1">BCA</option>
                                 <option value="2">BBM</option>
@@ -67,7 +78,7 @@
                         </div>
                         <div class="disremember">
                             For better quality notes, choose stream, semester or year, and
-                            subject in that order. Thank you ! 1.2
+                            subject in that order. Thank you!
                         </div>
                     </div>
                 </div>
@@ -75,160 +86,17 @@
                 <div id="actualNote" class="bl-thin">
                     <div class="headingsChapter">
                         <h3 class="HeadingPage">Notes:</h3>
-                        <div id="searchNotes">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                version="1.1" width="20" height="18" viewBox="0 0 256 256" xml:space="preserve"
-                                class="filterNotes">
-                                <g style="
-                      stroke: none;
-                      stroke-width: 0;
-                      stroke-dasharray: none;
-                      stroke-linecap: butt;
-                      stroke-linejoin: miter;
-                      stroke-miterlimit: 10;
-                      opacity: 1;
-                    " transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                        <form id="searchNotes" class="shadow">
+                            <?php include './Client/Common/filterSVG.php'; ?>
+                            <input type="text" name="search" id="search" placeholder="Search Notes..." />
+                            <button id="searchName">
+                                <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <path
-                                        d="M 85.813 59.576 H 55.575 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 30.237 c 1.657 0 3 1.343 3 3 S 87.47 59.576 85.813 59.576 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 48.302 66.849 c -5.664 0 -10.272 -4.608 -10.272 -10.272 c 0 -5.665 4.608 -10.273 10.272 -10.273 c 5.665 0 10.273 4.608 10.273 10.273 C 58.575 62.24 53.967 66.849 48.302 66.849 z M 48.302 52.303 c -2.356 0 -4.272 1.917 -4.272 4.273 c 0 2.355 1.917 4.272 4.272 4.272 c 2.356 0 4.273 -1.917 4.273 -4.272 C 52.575 54.22 50.658 52.303 48.302 52.303 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 41.029 59.576 H 4.188 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 36.842 c 1.657 0 3 1.343 3 3 S 42.686 59.576 41.029 59.576 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 85.813 36.424 h -57.79 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 57.79 c 1.657 0 3 1.343 3 3 S 87.47 36.424 85.813 36.424 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 20.75 43.697 c -5.665 0 -10.273 -4.608 -10.273 -10.273 s 4.608 -10.273 10.273 -10.273 s 10.273 4.608 10.273 10.273 S 26.414 43.697 20.75 43.697 z M 20.75 29.151 c -2.356 0 -4.273 1.917 -4.273 4.273 s 1.917 4.273 4.273 4.273 s 4.273 -1.917 4.273 -4.273 S 23.105 29.151 20.75 29.151 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 13.477 36.424 H 4.188 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 9.289 c 1.657 0 3 1.343 3 3 S 15.133 36.424 13.477 36.424 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 57.637 13.273 H 4.188 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 53.449 c 1.657 0 3 1.343 3 3 S 59.294 13.273 57.637 13.273 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 64.909 20.546 c -5.664 0 -10.272 -4.608 -10.272 -10.273 S 59.245 0 64.909 0 c 5.665 0 10.273 4.608 10.273 10.273 S 70.574 20.546 64.909 20.546 z M 64.909 6 c -2.355 0 -4.272 1.917 -4.272 4.273 s 1.917 4.273 4.272 4.273 c 2.356 0 4.273 -1.917 4.273 -4.273 S 67.266 6 64.909 6 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 85.813 13.273 h -13.63 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 13.63 c 1.657 0 3 1.343 3 3 S 87.47 13.273 85.813 13.273 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 85.813 82.728 h -57.79 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 57.79 c 1.657 0 3 1.343 3 3 S 87.47 82.728 85.813 82.728 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 20.75 90 c -5.665 0 -10.273 -4.608 -10.273 -10.272 c 0 -5.665 4.608 -10.273 10.273 -10.273 s 10.273 4.608 10.273 10.273 C 31.022 85.392 26.414 90 20.75 90 z M 20.75 75.454 c -2.356 0 -4.273 1.917 -4.273 4.273 c 0 2.355 1.917 4.272 4.273 4.272 s 4.273 -1.917 4.273 -4.272 C 25.022 77.371 23.105 75.454 20.75 75.454 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                    <path
-                                        d="M 13.477 82.728 H 4.188 c -1.657 0 -3 -1.343 -3 -3 s 1.343 -3 3 -3 h 9.289 c 1.657 0 3 1.343 3 3 S 15.133 82.728 13.477 82.728 z"
-                                        style="
-                        stroke: none;
-                        stroke-width: 1;
-                        stroke-dasharray: none;
-                        stroke-linecap: butt;
-                        stroke-linejoin: miter;
-                        stroke-miterlimit: 10;
-                        opacity: 1;
-                      " transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
-                                </g>
-                            </svg>
-                            <input type="text" name="search" id="search" placeholder="Search Notes..." class="shadow" />
-                            <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M7.01221 0.316132C8.73611 0.316132 10.3894 1.00095 11.6084 2.21994C12.8274 3.43892 13.5122 5.09222 13.5122 6.81613C13.5122 8.42613 12.9222 9.90613 11.9522 11.0461L12.2222 11.3161H13.0122L18.0122 16.3161L16.5122 17.8161L11.5122 12.8161V12.0261L11.2422 11.7561C10.1022 12.7261 8.62221 13.3161 7.01221 13.3161C5.2883 13.3161 3.635 12.6313 2.41601 11.4123C1.19703 10.1933 0.512207 8.54004 0.512207 6.81613C0.512207 5.09222 1.19703 3.43892 2.41601 2.21994C3.635 1.00095 5.2883 0.316132 7.01221 0.316132ZM7.01221 2.31613C4.51221 2.31613 2.51221 4.31613 2.51221 6.81613C2.51221 9.31613 4.51221 11.3161 7.01221 11.3161C9.51221 11.3161 11.5122 9.31613 11.5122 6.81613C11.5122 4.31613 9.51221 2.31613 7.01221 2.31613Z" />
-                            </svg>
-                        </div>
+                                        d="M7.01221 0.316132C8.73611 0.316132 10.3894 1.00095 11.6084 2.21994C12.8274 3.43892 13.5122 5.09222 13.5122 6.81613C13.5122 8.42613 12.9222 9.90613 11.9522 11.0461L12.2222 11.3161H13.0122L18.0122 16.3161L16.5122 17.8161L11.5122 12.8161V12.0261L11.2422 11.7561C10.1022 12.7261 8.62221 13.3161 7.01221 13.3161C5.2883 13.3161 3.635 12.6313 2.41601 11.4123C1.19703 10.1933 0.512207 8.54004 0.512207 6.81613C0.512207 5.09222 1.19703 3.43892 2.41601 2.21994C3.635 1.00095 5.2883 0.316132 7.01221 0.316132ZM7.01221 2.31613C4.51221 2.31613 2.51221 4.31613 2.51221 6.81613C2.51221 9.31613 4.51221 11.3161 7.01221 11.3161C9.51221 11.3161 11.5122 9.31613 11.5122 6.81613C11.5122 4.31613 9.51221 2.31613 7.01221 2.31613Z" />
+                                </svg>
+                            </button>
+                        </form>
 
                         <div class="flexbuttonset">
                             <div id="gridView">
@@ -291,76 +159,6 @@
         </div>
     </div>
     <div id="filterSection"></div>
-    <script>
-        // for grid view logic
-        // variable decletation
-        const flexbuttonset = document.getElementById("flexbuttonset");
-        const mainViewContent = document.getElementById("mainViewContent");
-        const gridView = document.getElementById("gridView");
-        const listView = document.getElementById("listView");
-
-        // initial set view type in localstorage
-        !localStorage.getItem("view") && localStorage.setItem("view", "grid");
-
-        // actions for list view
-        const listviewFun = () => {
-            listView.style.display = "block";
-            gridView.style.display = "none";
-            mainViewContent.classList.add("flexContent");
-            mainViewContent.classList.remove("gridContent");
-        };
-        // actions for grid view
-        const gridviewFun = () => {
-            listView.style.display = "none";
-            gridView.style.display = "block";
-            mainViewContent.classList.remove("flexContent");
-            mainViewContent.classList.add("gridContent");
-        };
-
-        // localstorage logic
-        if (localStorage.getItem("view") !== "grid") {
-            listviewFun();
-        } else {
-            gridviewFun();
-        }
-        // button click logic
-        gridView.addEventListener("click", () => {
-            localStorage.setItem("view", "list");
-            listviewFun();
-        });
-        listView.addEventListener("click", () => {
-            gridviewFun();
-            localStorage.setItem("view", "grid");
-        });
-        2;
-
-        // for responsive filter section
-        const filtersec = document.querySelector(".filtersec");
-        const filterNotes = document.querySelector(".filterNotes");
-        const crosssection = document.querySelector("#crosssection");
-        const filterSection = document.querySelector("#filterSection");
-        filtersec.style.left = "-350px";
-        const togglesection = () => {
-            if (filtersec.style.left === "-350px") {
-                filtersec.style.left = "0px";
-                filterSection.style.display = "block";
-            } else {
-                filtersec.style.left = "-350px";
-                filterSection.style.display = "none";
-            }
-        };
-        filterNotes.addEventListener("click", () => {
-            if (window.innerWidth < 900) {
-                togglesection();
-            }
-        });
-        crosssection.addEventListener("click", () => {
-            togglesection();
-        });
-        filterSection.addEventListener("click", () => {
-            togglesection();
-        });
-    </script>
 </body>
 
 </html>

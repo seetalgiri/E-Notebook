@@ -1,32 +1,41 @@
-#post {
+#post,
+#cmtPost {
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
-#createPost {
+#cmtPost {
+  padding: 6px;
+}
+#createPost,
+#createPost1,
+#cmtcreatePost {
   padding: 5px 10px;
   width: 80%;
   border: none;
   outline: none;
-  background-color: #dae0e68f;
+  background-color: var(--light-bgcolor);
   border-radius: 2px;
   font-size: 15px;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
 }
 
-#post svg {
-  fill: #353535c6;
-  transition: 0.3s;
+#post svg,
+#cmtPost svg {
+  fill: var(--text-color-light);
+  transition: 0.2s;
   cursor: pointer;
 }
 
-#post svg:hover {
-  fill: black;
+#post svg:hover,
+#cmtPost svg:hover {
+  fill: var(--text-color-dark);
 }
 
-#userPost {
-  background-color: #dae0e68f;
+#userPost,
+#cmtuserPost {
+  background-color: var(--user-Profile-bgcolor);
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -34,7 +43,8 @@
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  color: #353535c6;
+  color: var(--text-color-light);
+  user-select: none !important;
 }
 
 .stream {
@@ -48,36 +58,36 @@
   font-size: 15px;
 }
 .stream li a {
-  border: 1px solid #dae0e6da;
+  border: 1px solid var(--light-border-clor-opacity1);
   padding: 4px 12px;
   border-radius: 2px;
   cursor: pointer;
   display: flex;
-  transition: 0.3s;
+  transition: 0.2s;
   text-decoration: none;
-  color: #353535c6;
+  color: var(--text-color-light);
   align-items: center;
   justify-content: center;
   gap: 5px;
 }
 .stream li a svg {
   margin-bottom: 2px;
-  fill: #353535c6;
+  fill: var(--text-color-light);
 }
 .stream li a:hover,
 .activestr {
-  background-color: #000b32d4;
-  color: white !important;
+  background-color: var(--primary-color-light);
+  color: var(--bg-white) !important;
 }
 .stream li a:hover svg,
 .activestr svg {
-  fill: white !important;
+  fill: var(--bg-white) !important;
 }
 #eachPost {
   width: 100%;
   min-height: 100px;
   border-radius: 2px;
-  background-color: white;
+  background-color: var(--bg-white);
 }
 #contentdev {
   padding: 10px 20px;
@@ -91,7 +101,7 @@
 }
 #profilePost {
   font-weight: 600;
-  background-color: #dae0e68f;
+  background-color: var(--user-Profile-bgcolor);
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -99,7 +109,8 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  color: #353535c6;
+  color: var(--text-color-light);
+  user-select: none;
 }
 #nameMore {
   display: flex;
@@ -111,13 +122,13 @@
   font-size: 17px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #353535e2;
+  color: var(--text-color-light);
 }
 #nameMore #date {
   font-size: 14px;
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
-  color: #353535c6;
+  color: var(--text-color-light);
 }
 
 #contentDIv {
@@ -126,7 +137,7 @@
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  color: #353535c6;
+  color: var(--text-color-light);
 }
 #contentDIv div {
   line-height: 1.51;
@@ -135,7 +146,7 @@
   width: 93%;
   margin: auto;
   height: 1px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--main-head-light);
 }
 #actionDiv {
   min-height: 20px;
@@ -158,17 +169,17 @@
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  color: #353535c6;
+  color: var(--text-color-light);
   transition: 0.4s;
 }
 .actionFlex svg {
-  fill: #353535c6;
+  fill: var(--text-color-light);
 }
 .actionFlex:hover {
-  color: #353535e8 !important;
+  color: var(--text-color-light) !important;
 }
 .actionFlex:hover svg {
-  fill: #353535e8 !important;
+  fill: var(--text-color-light) !important;
 }
 #like svg {
   margin-bottom: 3px;
@@ -177,10 +188,16 @@
   font-weight: 600;
 }
 .liked {
-  color: #00229f !important;
+  color: var(--second-color) !important;
 }
 .liked svg {
-  fill: #00229f !important;
+  fill: var(--second-color) !important;
+}
+.liked:hover {
+  color: var(--primary-color) !important;
+}
+.liked:hover svg {
+  fill: var(--primary-color) !important;
 }
 
 .imagePosst {
@@ -194,6 +211,7 @@
 #fixedContent {
   height: 85vh;
   top: 12vh;
+  /* margin-top: 70px; */
   width: 100%;
   max-width: 300px;
   position: fixed;
@@ -205,7 +223,7 @@
 }
 
 .fixedContentDiv {
-  background-color: white;
+  background-color: var(--bg-white);
   min-height: 100px;
   width: 100%;
   border-radius: 2px;
@@ -221,7 +239,7 @@
   font-weight: 600;
   letter-spacing: 1px;
   margin: 10px;
-  color: #353535a1;
+  color: var(--text-color-light);
 }
 .fixedcontentbox3 {
   display: flex;
@@ -233,7 +251,7 @@
   width: 97%;
   margin: auto;
   height: 1px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
 }
 
 .contentbtns {
@@ -244,28 +262,29 @@
 }
 .contentbtns button {
   padding: 9px 20px;
-  background-color: #000b32d4;
+  background-color: var(--primary-color-light);
   outline: none;
   border: none;
   border-radius: 3px;
   letter-spacing: 1px;
   font-weight: 600;
-  color: white;
+  color: var(--bg-white);
   font-family: Arial, Helvetica, sans-serif;
   cursor: pointer;
   transition: 0.3s !important;
 }
 #notes {
-  border: 1px solid #000b32d4;
-  background-color: white;
-  color: #000b32d4;
+  border: 1px solid var(--primary-color-light);
+  background-color: var(--bg-white);
+  color: var(--primary-color-light);
 }
-#createpost:hover {
-  background-color: #000b32;
+#createpost:hover,
+#createpost1:hover {
+  background-color: var(--primary-color);
 }
 #notes:hover {
-  color: white;
-  background-color: #000b32;
+  color: var(--bg-white);
+  background-color: var(--primary-color);
 }
 #divfixedTopcontent {
   margin: 15px;
@@ -276,7 +295,7 @@
   font-size: 14px;
   text-align: center;
   margin: 4px 0 8px 0px;
-  color: #353535c6;
+  color: var(--text-color-light);
 }
 .linksforContent {
   margin: -2px 0 6px 0;
@@ -293,13 +312,13 @@
 .linksforContent li a {
   text-decoration: none;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   font-size: 14px;
   transition: 0.2s;
 }
 
 .linksforContent li a:hover {
-  color: black !important;
+  color: var(--text-color-dark) !important;
 }
 #headerDiv2 {
   display: flex;
@@ -319,13 +338,13 @@
 .clsLogo {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   font-size: 18px;
 }
 .clsContentl {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   font-size: 14px;
   text-align: justify;
   letter-spacing: 1px;
@@ -341,7 +360,7 @@
   margin: 10px 10px;
   display: flex;
   gap: 12px;
-  color: #000b32af;
+  color: var(--primary-color-light);
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
@@ -368,13 +387,13 @@
   font-weight: 600;
   bottom: 5px;
   letter-spacing: 0;
-  color: #000b3286;
+  color: var(--primary-color-light);
   cursor: pointer;
   transition: 0.2s;
 }
 
 .clearRec:hover {
-  color: rgba(0, 0, 0, 0.914);
+  color: var(--username-light);
 }
 
 #postModal {
@@ -383,7 +402,7 @@
   z-index: 100000000000000;
 }
 #postModalRel {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-bg-modal);
   position: relative;
   height: 100%;
   width: 100%;
@@ -396,7 +415,7 @@
   width: 50%;
   max-width: 600px;
   min-width: 300px;
-  background-color: white;
+  background-color: var(--bg-white);
   border-radius: 3px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
@@ -411,7 +430,7 @@
   margin: 0 15px;
   letter-spacing: 2px;
   font-size: 16px;
-  color: #000b3286;
+  color: var(--primary-color);
   text-transform: uppercase;
 }
 .headContent .cross {
@@ -421,11 +440,11 @@
   font-size: 22px;
   cursor: pointer;
   user-select: none;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-color-light);
   width: 20px;
 }
 .headContent .cross:hover {
-  color: rgba(0, 0, 0, 1);
+  color: var(--text-color-dark);
 }
 #postModal {
   display: none;
@@ -433,7 +452,7 @@
 .LinedivModal {
   height: 1px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
 }
 #bodyDivModal {
   height: 100%;
@@ -451,7 +470,9 @@
   font-size: 16px;
   letter-spacing: 1px;
   width: 100%;
+  background: transparent;
   height: 100%;
+  color: var(--text-color-light);
 }
 .buttonclscontent,
 .buttonclscontentPlc {
@@ -462,12 +483,12 @@
   border-radius: 2px;
 }
 .border {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-border-clor-opacity1);
 }
 .buttonclscontentPlc {
   height: 200px;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--light-border-clor-opacity1);
   border-radius: 2px;
   display: flex;
   justify-content: center;
@@ -494,19 +515,19 @@
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
-  color: white;
-  background-color: #000b32d4;
+  color: var(--bg-white);
+  background-color: var(--primary-color-light);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .inactivebtnPost:hover {
-  color: white !important;
-  background-color: #000b32d4 !important;
+  color: var(--bg-white) !important;
+  background-color: var(--primary-color-light) !important;
 }
 .inactivebtnPost {
-  border: 1px solid #000b32d4 !important;
-  background-color: white !important;
-  color: #000b32d4 !important;
+  border: 1px solid var(--primary-color-light) !important;
+  background-color: var(--bg-white) !important;
+  color: var(--primary-color-light) !important;
 }
 .filechoose {
   display: flex;
@@ -518,17 +539,17 @@
 .filechoose svg {
   height: 24px;
   width: 24px;
-  fill: rgba(0, 0, 0, 0.6);
+  fill: var(--text-color-light);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .filechoose svg:hover {
-  fill: rgba(0, 0, 0, 1);
+  fill: var(--text-color-dark);
 }
 .Divisionsection {
   width: 1px;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: var(--light-border-clor-opacity1);
   margin-right: 10px;
   margin-left: -10px;
 }
@@ -550,24 +571,23 @@
   justify-content: center;
 }
 .postBtn button {
-  background-color: red;
   width: 100%;
   height: 100%;
   border: none;
   outline: none;
   font-size: 17px;
   letter-spacing: 2px;
-  background-color: #000b32d4;
-  color: white;
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
   cursor: pointer;
   border-radius: 2px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .postBtn button:hover {
-  background-color: #001253d4;
+  background-color: var(--primary-color);
 }
 .dropdown {
   width: 10px;
@@ -584,11 +604,11 @@
   height: 4px;
   width: 4px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: var(--text-color-light);
 }
 
 .dropdown:hover .dotLine {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--username-light);
 }
 
 .buttonclscontentPlcreq {
@@ -621,13 +641,13 @@
 
 #userNameAndDate span:nth-child(1) {
   font-family: Arial, Helvetica, sans-serif;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   letter-spacing: 1px;
   font-size: 14px;
   font-weight: 600;
 }
 #userNameAndDate span:nth-child(2) {
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   letter-spacing: 1px;
   font-size: 12px;
   font-family: Arial, Helvetica, sans-serif;
@@ -635,7 +655,7 @@
 .commentdata {
   margin: 5px 40px;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-color-light);
   font-size: 15px;
   text-align: justify;
 }
@@ -649,12 +669,12 @@
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--text-color-light);
   font-size: 14px;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 #moreComment a:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--username-light);
 }
 
 @media screen and (max-width: 950px) {
@@ -702,6 +722,7 @@
     height: 30px;
     width: 30px;
     font-size: 16px;
+    user-select: none;
   }
   #headerDiv {
     gap: 15px;
@@ -710,9 +731,11 @@
     max-height: 500px;
   }
   #contentdev {
-    padding: 0px 15px 10px 15px;
+    padding: 0px 15px 20px 15px;
   }
-  #createPost {
+  #createPost,
+  #createPost1,
+  #cmtcreatePost {
     width: 60%;
   }
   .stream li:nth-child(2) {
@@ -746,6 +769,8 @@
   font-size: 15px;
   letter-spacing: 1px;
   outline: none;
+  background-color: transparent;
+  color: var(--text-color-light);
 }
 .flex {
   display: flex;
@@ -753,4 +778,102 @@
 }
 .justify-between {
   justify-content: space-between;
+}
+
+ul li {
+  list-style: none;
+  cursor: pointer;
+}
+
+#selecterStream .selectSreamradio {
+  float: left;
+  margin: 0 0px 0 0;
+  padding: 13px;
+  width: 70px;
+  position: relative;
+  display: flex;
+}
+
+#selecterStream .selectSreamradio label,
+#selecterStream .selectSreamradio input {
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--light-border-clor-opacity2);
+  border-radius: 2px;
+}
+
+#selecterStream .selectSreamradio input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+  cursor: pointer;
+}
+
+#selecterStream .selectSreamradio input[type="radio"]:checked + label {
+  background: var(--primary-color-light);
+  color: var(--bg-white);
+}
+#selecterStream .selectSreamradio input[type="radio"]:checked + label svg {
+  fill: var(--bg-white) !important;
+}
+
+#selecterStream .selectSreamradio label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
+  color: var(--text-color-light);
+}
+
+#selecterStream .selectSreamradio svg {
+  padding-bottom: 1px;
+  fill: var(--text-color-light);
+}
+
+#filerequestModal #selectFiles {
+  width: 48%;
+  border: 1px solid var(--light-border-clor-opacity1);
+  height: 40px;
+  color: var(--text-color-light) !important;
+  border-radius: 3px;
+  border: 1px solid var(--light-border-clor-opacity1);
+  cursor: pointer;
+}
+#filerequestModal #secYrName {
+  width: 48%;
+  color: var(--text-color-light) !important;
+  height: 40px;
+  border-radius: 2px;
+}
+#filerequestModal #semYr {
+  width: 100%;
+  height: 100%;
+  gap: 5px !important;
+  border-radius: 3px;
+  padding: 0 10px 0 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+  background-color: transparent;
+  color: var(--text-color-light);
+  border: none;
+  border: 1px solid var(--light-border-clor-opacity1);
+}
+
+#filerequestModal .filechoose {
+  height: 80% !important;
+  gap: 10px !important;
+}
+.saperations {
+  background: var(--light-border-clor-opacity1);
+  height: 1px;
+  width: 94%;
+  margin: auto;
+  margin-top: -5px;
+  margin-bottom: 7px;
 }

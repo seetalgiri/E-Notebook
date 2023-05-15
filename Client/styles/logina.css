@@ -1,29 +1,18 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 #container {
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
-  /* background-color: rgb(225, 225, 225);    */
   justify-content: center;
   gap: 60px;
   flex-direction: column;
-  background-color: #dae0e68f;
+  background-color: var(--light-bgcolor);
 }
-
-/* #loginform {
-  border-radius: 8px;
-} */
 
 #loginform form {
   min-width: 400px;
   max-width: 600px;
-  background-color: white;
+  background-color: var(--bg-white);
   padding: 40px 45px 50px 45px;
   border-radius: 5px;
 }
@@ -56,25 +45,25 @@ form .input-box {
   outline: none;
   display: flex;
   justify-content: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--light-border-clor-opacity2);
   border-radius: 3px;
   position: relative;
 }
 .input-box label {
   position: absolute;
   left: 10px;
-  background-color: white;
+  background-color: var(--bg-white);
   padding: 0 4px;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   top: -8px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .input-box label:hover {
-  color: black;
+  color: var(--text-color-dark);
 }
 
 .input-box input {
@@ -87,34 +76,35 @@ form .input-box {
   border-radius: 5px;
   margin-left: 11px;
   margin-right: 35px;
-  color: #353535c6;
+  background: transparent;
+  color: var(--text-color-light);
 }
 #login {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-family: Arial, Helvetica, sans-serif;
-  color: #353535a2;
+  color: var(--text-color-light);
   font-size: 25px;
 }
 .shadow {
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
-    0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 1px 3px 0px var(--shadow-small-shadow1),
+    0px 1px 2px 0px var(--shadow-small-shadow2);
 }
 
 .input-box svg:hover {
-  fill: rgba(0, 0, 0, 1);
+  fill: var(--text-color-dark);
 }
 .input-box svg {
   position: absolute;
   right: 10px;
   margin-top: 14px;
   cursor: pointer;
-  fill: rgba(0, 0, 0, 0.6);
+  fill: var(--text-color-light);
 }
 
 #loginform form a {
   text-decoration: none;
-  color: #000b32d4;
+  color: var(--username-light);
 }
 #loginform form button {
   width: 100%;
@@ -124,46 +114,53 @@ form .input-box {
   letter-spacing: 2px;
   margin-top: 10px;
   border: none;
-  background-color: #000b32d4;
+  background-color: var(--primary-color-light);
   border-radius: 4px;
-  color: white;
+  color: var(--bg-white);
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 #loginform form button:hover {
-  background-color: #000b32;
+  background-color: var(--primary-color);
 }
 
 #inputfields .dontHaveAcc {
   margin-top: 10px;
-  color: rgb(0, 0, 0, 0.7);
+  color: var(--text-color-light);
   letter-spacing: 1px;
   width: 100%;
   font-size: 14px;
   font-family: Arial, Helvetica, sans-serif;
 }
-#inputfields .dontHaveAcc a {
-  color: #000b32d4;
-  font-weight: 500;
+#inputfields .gobackHw {
+  margin-top: 0px;
+  font-size: 13px;
+  margin-bottom: -10px;
+}
+#inputfields .gobackHwRg {
+  margin-top: 5px;
+  font-size: 13px;
 }
 select {
   width: 100%;
   margin-top: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--light-border-clor-opacity2);
   padding: 15px;
   border-radius: 3px;
   cursor: pointer;
   outline: none;
   font-size: 16px;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   text-transform: capitalize;
+  background: transparent;
 }
 select option {
   font-size: 18px;
   text-transform: capitalize;
   cursor: pointer;
+  background-color: var(--bg-white);
 }
 .selectdiv {
   width: 100%;
@@ -173,18 +170,18 @@ select option {
 .selectdiv label {
   position: absolute;
   left: 10px;
-  background-color: white;
+  background-color: var(--bg-white);
   padding: 0 4px;
   letter-spacing: 1px;
-  color: #353535c6;
+  color: var(--text-color-light);
   top: 2px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .selectdiv label:hover {
-  color: black;
+  color: var(--text-color-dark);
 }
 .regCont {
   display: flex;
@@ -205,12 +202,12 @@ select option {
 .longLine {
   width: 3px;
   height: 120px;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: var(--main-head-light);
 }
 .shortLine {
   width: 3px;
   height: 25px;
-  background-color: rgb(0, 0, 0, 0.4);
+  background-color: var(--main-head-light);
 }
 .icons {
   padding: 2px;
@@ -221,7 +218,7 @@ select option {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  color: #353535c6 !important;
+  color: var(--text-color-light) !important;
 }
 .rightDiv h1 {
   letter-spacing: 1px;
@@ -235,13 +232,13 @@ select option {
 }
 
 .icons svg {
-  fill: #353535c6 !important;
+  fill: var(--text-color-light) !important;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 .icons svg:hover {
-  fill: #000b32d4 !important;
+  fill: var(--text-color-dark) !important;
 }
-#showIcon{
+#showIcon {
   display: none;
 }

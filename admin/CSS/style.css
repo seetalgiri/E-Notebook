@@ -3,13 +3,10 @@
   padding: 0;
   box-sizing: border-box;
 }
-:root {
-  --primaryColor: "#3E4E59";
-}
 body {
   height: 100%;
   width: 100%;
-  background-color: #f7f8fc;
+  background-color: var(--light-bgcolor);
 }
 #navigations {
   display: flex;
@@ -17,9 +14,11 @@ body {
 #sidenav {
   height: 100vh;
   width: 90px;
-  background-color: #fff;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 1px 3px 0px #00000014, 0px 1px 2px 0px #0000000a;
+  background-color: var(--bg-white);
   z-index: 10000;
+  border-right: var(--light-border-clor-opacity2);
+  transition: 0.1s;
 }
 #sidenav #hamburger {
   height: 80px;
@@ -38,7 +37,7 @@ body {
 #sidenav #hamburger .div3 {
   height: 5.5px;
   width: 15px;
-  background-color: #3e4e59;
+  background-color: var(--text-color-dark);
   border-radius: 20px;
 }
 #sidenav #hamburger .div2 {
@@ -55,7 +54,7 @@ body {
 #sidenav .sidnavLine {
   width: 100%;
   height: 1px;
-  background-color: #dbdaff;
+  background-color: var(--light-border-clor-opacity2);
 }
 #sideNavLikes {
   margin-top: 80px;
@@ -83,7 +82,7 @@ body {
   left: 0;
   height: 50px;
   width: 5.5px;
-  background-color: #5957d4;
+  background-color: var(--second-color);
   border-radius: 0 10px 10px 0;
   transition: 0.5s;
 }
@@ -108,8 +107,8 @@ body {
 }
 #sideNavLikes li .addressTracker1 p {
   width: 100%;
-  background-color: #38376e;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   font-size: 15px;
@@ -126,7 +125,7 @@ body {
   position: absolute;
   height: 12px;
   width: 12px;
-  background-color: #38376e;
+  background-color: var(--primary-color);
   left: -6px;
   transform: rotateZ(45deg);
   z-index: -1;
@@ -142,24 +141,25 @@ body {
 }
 
 svg {
-  fill: #2d3941;
+  fill: var(--text-color-light);
 }
 
 #sidenav a:hover svg {
-  fill: #38376e !important;
-  transition: 0.3s;
+  fill: var(--text-color-dark) !important;
+  transition: 0.2s;
 }
 
 #topnav {
   height: 80px;
   width: 100%;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 1px 3px 0px #00000014, 0px 1px 2px 0px #0000000a;
   display: flex;
   align-items: center;
   position: relative;
   z-index: 100;
   position: absolute;
   padding-left: 90px;
+  background: var(--bg-white);
 }
 #topnav .grid {
   width: 20%;
@@ -173,7 +173,7 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   gap: 3px;
-  color: #3e4e59;
+  color: var(--primary-color);
 }
 #searchsec {
   display: flex;
@@ -187,7 +187,7 @@ svg {
   position: relative;
 }
 #searchsec input {
-  box-shadow: 2px 2px 4px rgba(183, 149, 255, 0.25);
+  box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
   border-radius: 3px;
   z-index: 9;
   padding: 7px;
@@ -198,7 +198,9 @@ svg {
   width: 280px;
   padding-right: 33px;
   padding-left: 10px;
-  color: #2d3941;
+  color: var(--text-color-light);
+  border: 1px solid var(--light-border-clor-opacity1);
+  background: transparent;
 }
 
 #searchsec button {
@@ -251,8 +253,10 @@ svg {
   width: 96%;
   height: 93%;
   border-radius: 10px;
-  box-shadow: 0px 0px 5px 3px rgba(170, 167, 255, 0.17);
+  box-shadow: 0px 10px 15px -3px #0000001a, 0px 4px 6px -2px #0000000d;
   padding: 20px;
+  background-color: var(--bg-white);
+  position: relative;
 }
 
 .crossDiv2 {
@@ -274,7 +278,7 @@ svg {
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
   font-size: 17px;
-  color: #38376e;
+  color: var(--text-color-dark);
   margin-right: 5px;
   display: none;
 }
@@ -284,4 +288,135 @@ svg {
   align-items: center;
   text-decoration: none;
   padding: 6px 12px;
+  width: 180px;
+  border-radius: 2px;
+}
+
+/* for pagintion  */
+.pagination {
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+
+.pagination a {
+  color: var(--text-color-dark);
+  float: left;
+  height: 35px;
+  width: 35px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid var(--light-border-clor-opacity2);
+  margin: 0 4px;
+}
+
+.pagination a.activePage {
+  background-color: var(--second-color-light);
+  color: var(--bg-white);
+  border: 1px solid var(--light-border-clor-opacity2) !important;
+}
+
+.pagination a:hover:not(.activePage) {
+  background-color: var(--second-color) !important;
+  color: var(--bg-white);
+}
+.rightArrow {
+  padding-bottom: 5px;
+  padding-left: 2px;
+  font-size: 22px;
+}
+.leftArrow {
+  padding-bottom: 5px;
+  padding-right: 2px;
+  font-size: 22px;
+}
+
+.noticePost form {
+  gap: 13px !important;
+  margin-top: 12px !important;
+  padding: 5 !important;
+}
+.noticePost {
+  width: 94% !important;
+}
+.noticePost .flex {
+  gap: 3px;
+}
+.noticePost input {
+  border: 1px solid var(--light-border-clor-opacity2) !important;
+}
+#adminProfilemainDiv {
+  position: relative;
+}
+
+#listItemsAdminPp {
+  position: absolute;
+  max-height: 100px;
+  width: 120px;
+  right: -20px;
+  top: 45px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+#listItemsAdminPp ul {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  background-color: var(--bg-white);
+  border: 1px solid var(--light-border-clor-opacity1);
+}
+
+#listItemsAdminPp ul li {
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
+  width: 100%;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  user-select: none;
+}
+#listItemsAdminPp ul li a {
+  color: var(--text-color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+  text-decoration: none;
+}
+#listItemsAdminPp ul li svg {
+  margin-bottom: 1.5px;
+}
+#listItemsAdminPp ul li a:hover svg {
+  fill: var(--bg-white);
+}
+
+#listItemsAdminPp ul li a:hover {
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+}
+#adminProfile {
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  border: 1px solid var(--light-border-clor-opacity1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.2em;
+  height: 25px;
+  background-color: var(--bg-white);
+  transition: 0.3s;
+  font-size: 13px;
+  color: var(--text-color-dark);
+}
+
+input[type="file"]::file-selector-button:hover {
+  cursor: pointer;
+  background-color: var(--second-color);
+  color: var(--bg-white);
 }

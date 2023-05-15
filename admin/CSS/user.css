@@ -1,0 +1,135 @@
+.contentDiv {
+  overflow: hidden;
+}
+#gridItems {
+  display: grid;
+  max-height: 550px;
+  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  row-gap: 20px;
+  margin: auto;
+  max-width: 1300px;
+}
+.userCard {
+  background-color: var(--light-bgcolor);
+  display: flex;
+  max-width: 300px;
+  width: 280px;
+  border-radius: 3px;
+  max-height: 110px;
+  flex-direction: column;
+  padding: 10px;
+  position: relative;
+}
+.headProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.userProfile {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: var(--primary-color-light);
+  display: grid;
+  place-content: center;
+  font-weight: 600;
+  color: var(--bg-white);
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.content .username {
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--text-color-light);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.content .email {
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+.saperateContent {
+  display: flex;
+  color: var(--text-color-light) !important;
+}
+
+.contentList {
+  margin: 8px 0;
+  margin-left: 17%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  letter-spacing: 1px;
+  position: relative;
+  /* justify-content: center; */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px !important;
+}
+.isadminshow {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+}
+.isadminshow svg {
+  fill: var(--primary-color-light);
+}
+.Title {
+  margin-right: 6px;
+  font-weight: 600;
+}
+.hambar {
+  width: 10px;
+  position: absolute;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  scale: 1.5;
+  flex-direction: column;
+  top: 13px;
+  cursor: pointer;
+  z-index: 100000;
+}
+.hambarcontent {
+  height: 2px;
+  width: 2px;
+  background-color: var(--text-color-light);
+  border-radius: 50%;
+}
+.hambar:hover .hambarcontent {
+  background-color: var(--text-color-dark);
+}
+.hamlist {
+  position: absolute;
+  font-size: 10px;
+  width: 80px;
+  background-color: var(--bg-white);
+  top: 14px;
+  left: -70px;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 10000000000;
+}
+.hamlist ul li {
+  letter-spacing: 1px;
+  list-style: none;
+  padding: 5px 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color-light);
+}
+
+.hamlist ul li:hover {
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
+}
+.border-b {
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
+}
+/* .listHambar {
+  display: none;
+} */

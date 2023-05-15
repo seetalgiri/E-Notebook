@@ -1,27 +1,23 @@
 #home {
-  background-color: aquamarine;
+  background-color: var(--light-bgcolor);
 }
 .line {
   height: 2px;
   position: absolute;
-  /* width: 100%; */
-  background-image: linear-gradient(from-pink-500, bg-gradient-to-r);
 }
 
 .home {
   width: 95%;
-  background-color: #e0e0e0;
+  background-color: var(--light-bgcolor);
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin: auto; */
   margin: 40px 40px;
   flex-direction: column;
 }
 
 .home .heading {
   width: 92%;
-  /* background: #000; */
   display: flex;
   justify-content: start;
   align-items: center;
