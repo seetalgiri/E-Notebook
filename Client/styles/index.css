@@ -668,6 +668,11 @@
     width: 100% !important;
   }
 }
+@media screen and (max-width: 950px) {
+  #postModalContent {
+    width: 90% !important;
+  }
+}
 
 @media screen and (max-width: 600px) {
   #contentDIv {
@@ -730,4 +735,22 @@
   #moreComment a {
     font-size: 12px;
   }
+}
+
+.inputFldsSendreq {
+  width: 48%;
+  height: 100%;
+  gap: 5px !important;
+  border-radius: 3px;
+  padding: 0 10px 0 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+}
+.flex {
+  display: flex;
+  gap: 10px;
+}
+.justify-between {
+  justify-content: space-between;
 }

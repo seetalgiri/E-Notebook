@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 $con = mysqli_connect("localhost", "root","", "e_notebook");
@@ -27,6 +28,8 @@ if (isset($_POST['register'])) {
 ?>
 
 
+=======
+>>>>>>> 6a1821a628206ac0becda33ea5646fc8bffd4da0
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,7 +83,7 @@ if (isset($_POST['register'])) {
       </div>
     </div>
     <div id="loginform">
-      <form method="post" class="shadow" action="./register.php">
+      <form method="post" class="shadow" action="../../Server/Auth.php">
         <div id="inputfields" class="register">
           <h3 id="login">Register</h3>
           <div class="input-box">
