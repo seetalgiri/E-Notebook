@@ -7,15 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Previous Questions</title>
+    <!-- ==================== CSS Imported ======================== -->
     <!-- for global css  -->
     <link rel="stylesheet" href="./Client/styles/globalsa.css" />
-
+    <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/note.css" />
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+
+    <!-- ==================== JS Imported ======================== -->
+    <script src="./Client/logic/notesqns.js" defer></script>
 
 </head>
 
@@ -154,76 +157,6 @@
         </div>
     </div>
     <div id="filterSection"></div>
-    <script>
-        // for grid view logic
-        // variable decletation
-        const flexbuttonset = document.getElementById("flexbuttonset");
-        const mainViewContent = document.getElementById("mainViewContent");
-        const gridView = document.getElementById("gridView");
-        const listView = document.getElementById("listView");
-
-        // initial set view type in localstorage
-        !localStorage.getItem("view") && localStorage.setItem("view", "grid");
-
-        // actions for list view
-        const listviewFun = () => {
-            listView.style.display = "block";
-            gridView.style.display = "none";
-            mainViewContent.classList.add("flexContent");
-            mainViewContent.classList.remove("gridContent");
-        };
-        // actions for grid view
-        const gridviewFun = () => {
-            listView.style.display = "none";
-            gridView.style.display = "block";
-            mainViewContent.classList.remove("flexContent");
-            mainViewContent.classList.add("gridContent");
-        };
-
-        // localstorage logic
-        if (localStorage.getItem("view") !== "grid") {
-            listviewFun();
-        } else {
-            gridviewFun();
-        }
-        // button click logic
-        gridView.addEventListener("click", () => {
-            localStorage.setItem("view", "list");
-            listviewFun();
-        });
-        listView.addEventListener("click", () => {
-            gridviewFun();
-            localStorage.setItem("view", "grid");
-        });
-        2;
-
-        // for responsive filter section
-        const filtersec = document.querySelector(".filtersec");
-        const filterprevyrqn = document.querySelector(".filterNotes");
-        const crosssection = document.querySelector("#crosssection");
-        const filterSection = document.querySelector("#filterSection");
-        filtersec.style.left = "-350px";
-        const togglesection = () => {
-            if (filtersec.style.left === "-350px") {
-                filtersec.style.left = "0px";
-                filterSection.style.display = "block";
-            } else {
-                filtersec.style.left = "-350px";
-                filterSection.style.display = "none";
-            }
-        };
-        filterprevyrqn.addEventListener("click", () => {
-            if (window.innerWidth < 940) {
-                togglesection();
-            }
-        });
-        crosssection.addEventListener("click", () => {
-            togglesection();
-        });
-        filterSection.addEventListener("click", () => {
-            togglesection();
-        });
-    </script>
 </body>
 
 </html>

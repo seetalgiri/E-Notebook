@@ -160,6 +160,7 @@ select option {
   font-size: 18px;
   text-transform: capitalize;
   cursor: pointer;
+  background-color: var(--bg-white);
 }
 .selectdiv {
   width: 100%;
