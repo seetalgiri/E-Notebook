@@ -8,8 +8,8 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Syllabus</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global css  -->
-    <link rel="stylesheet" href="./Client/styles/globalsa.css" />
+    <!-- for globald.css  -->
+    <link rel="stylesheet" href="./Client/styles/globald.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
