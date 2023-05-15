@@ -8,7 +8,7 @@
     <title>E-NoteBook Request Post</title>
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./CSS/faculity.css">
+    <link rel="stylesheet" href="./CSS/faculitya.css">
     <style>
         select {
             padding: 10px;

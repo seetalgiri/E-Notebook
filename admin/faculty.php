@@ -85,17 +85,7 @@ if (isset($_POST['updateadd'])) {
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./CSS/faculity.css">
-    <style>
-    select {
-        padding: 10px;
-        border: 1px solid #555;
-        border-radius: 4px;
-        outline: none;
-        cursor: pointer !important;
-        font-size: 17px !important;
-    }
-    </style>
+    <link rel="stylesheet" href="./CSS/faculitya.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sideNav.js" defer></script>
