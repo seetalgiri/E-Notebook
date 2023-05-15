@@ -342,7 +342,18 @@
   z-index: 100;
   position: relative;
   margin-top: 2px;
+  display: flex;
 }
+#searchName {
+  border: none;
+  background: var(--bg-white);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 16px;
+  cursor: pointer;
+}
+
 #searchNotes input {
   padding: 7px 45px;
   width: 100%;
