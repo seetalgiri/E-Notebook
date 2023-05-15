@@ -9,25 +9,8 @@
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
-    <style>
-        select {
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer !important;
-            font-size: 17px !important;
-        }
+    <link rel="stylesheet" href="./CSS/requestpost.css">
 
-        td,
-        th {
-            min-width: 110px;
-        }
-
-        .twoBtn {
-            min-width: 40px;
-        }
-    </style>
     <!-- for JS Logic  -->
     <script src="./logic/sideNav.js" defer></script>
 </head>

@@ -10,64 +10,7 @@
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
-    <style>
-        select {
-            padding: 10px;
-            border: 1px solid #555;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer !important;
-            font-size: 17px !important;
-        }
-
-        td,
-        th {
-            min-width: 110px;
-        }
-
-        .twoBtn {
-            min-width: 40px;
-        }
-
-        textarea {
-            background-color: transparent;
-            resize: none;
-            outline: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            color: var(--text-color-light);
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 15px;
-            letter-spacing: 1px;
-            height: 105px;
-        }
-
-        .NotePostModalContent {
-            height: 500px !important;
-        }
-
-        .NotePostModalContent #sideDivForm {
-            height: 510px !important;
-        }
-
-        .flexButtons {
-            display: flex !important;
-            flex: row !important;
-            gap: 5px !important;
-        }
-
-        .fbselectStr {
-            width: 50% !important;
-        }
-
-        #sideDivForm form {
-            width: 90%;
-        }
-
-        #modalContent {
-            width: 500px !important;
-        }
-    </style>
+    <link rel="stylesheet" href="./CSS/notepost.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sideNav.js" defer></script>
