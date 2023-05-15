@@ -1,5 +1,6 @@
 <?php
-$con = mysqli_connect("localhost", "root", "", "");
+
+$con = mysqli_connect("localhost", "root","", "e_notebook");
 if (!$con) {
   die("Database connection failed");
 }
@@ -8,14 +9,14 @@ if (!$con) {
 if (isset($_POST['register'])) {
   $name = $_POST['username'];
   $password = $_POST['password'];
-  $email = $_POST['email'];
+  $stream = $_POST['stream'];
 
   // convert password into hash password
-  $hash = password_hash($password, PASSWORD_BCRYPT);
-  $password = $hash;
+  // $hash = password_hash($password, PASSWORD_BCRYPT);
+  // $password = $hash;
 
   // post data into server db named auth
-  $query = "INSERT INTO `auth` (`name`,`password`,`email`) VALUES ('$name','$password','$email')";
+  $query = "INSERT INTO `registration` (`name`,`password`,`stream`) VALUES ('$name','$password','$stream')";
   $result = mysqli_query($con, $query);
   if ($result) {
     echo "Data inserted into server db";
@@ -23,8 +24,6 @@ if (isset($_POST['register'])) {
     echo "Cannot insert data into server db";
   }
 }
-
-
 ?>
 
 

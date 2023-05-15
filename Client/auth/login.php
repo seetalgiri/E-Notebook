@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost", "root", "");
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
 if (!$con) {
   die("Database connection failed");
 }
@@ -9,7 +9,7 @@ if (isset($_POST['login'])) {
   $email = $_POST['email'];
   $password = $_POST['password'];
   // fetch data from db and check if password and email are correct
-  $sql = "SELECT * FROM `auth` WHERE `email` = '$email'";
+  $sql = "SELECT * FROM `registration` WHERE `email` = '$email'";
   $rowEmail = mysqli_query($con, $sql);
   if (mysqli_num_rows($rowEmail) > 0) {
     $userdata = mysqli_fetch_assoc($rowEmail);
