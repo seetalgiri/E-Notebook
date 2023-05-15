@@ -82,6 +82,7 @@ if (isset($_POST['updateadd'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Faculty</title>
+    <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculity.css">
@@ -95,6 +96,10 @@ if (isset($_POST['updateadd'])) {
         font-size: 17px !important;
     }
     </style>
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sideNav.js" defer></script>
+    <script src="./logic/faculity.js" defer></script>
 </head>
 
 <body>
@@ -192,59 +197,6 @@ if (isset($_POST['updateadd'])) {
             </div>
         </div>
     </div>
-
-    <script>
-    const modalContent = document.getElementById("modalContent");
-    const svgbtn = document.querySelector("#sideButton svg");
-    modalContent.style.right = '-378px';
-    svgbtn.style.transform = '  rotateZ(180deg)';
-
-    function modalBtnclk() {
-        if (modalContent.style.right === "0px") {
-            modalContent.style.right = '-378px';
-            svgbtn.style.transform = 'rotateZ(180deg)';
-        } else {
-            modalContent.style.right = '0px';
-            svgbtn.style.transform = 'rotateZ(0deg)';
-        }
-    }
-
-    window.onclick = function(event) {
-        const parentId = event.target.parentNode.id;
-        const par = event.target;
-        if (event.target.id !== "forms" && parentId !== 'sidenav' && parentId !== 'sideButton' && parentId !==
-            "modalContent" && parentId !== "forms" && parentId !== "editbtn") {
-            if (modalContent.style.right !== '-378px') {
-                modalContent.style.right = '-378px';
-                svgbtn.style.transform = 'rotateZ(180deg)';
-            }
-        }
-
-        if (event.target.id !== 'adminProfile1' && event.target.id !== 'adminppLink' && parentId !==
-            "adminppLink" && parentId !== "adminProfile1") {
-            listItemsAdminPp.style.display = "none";
-        }
-
-        const parentId1 = event.target.parentNode.id;
-        const parentId2 = event.target.parentNode.id;
-        if (event.target.id !== 'sidenav' && event.target.id !== 'hamburger' && parentId1 !== "hamburger" &&
-            parentId2 !== "sideNavLikes") {
-            if (sidenav.style.width === '220px') {
-                hambarclk()
-            }
-        }
-    }
-
-    function openmodal(id) {
-        modalContent.style.right = '0px';
-        svgbtn.style.transform = 'rotateZ(0deg)';
-    }
-    var searchParams = new URLSearchParams(window.location.search);
-    var editParam = searchParams.get("edit");
-    if (Number(editParam)) {
-        openmodal();
-    }
-    </script>
 
 </body>
 

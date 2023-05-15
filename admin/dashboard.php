@@ -6,9 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Dashboard</title>
+    <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globalsa.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/dashboard.css">
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sideNav.js" defer></script>
 </head>
 
 <body>
