@@ -161,3 +161,100 @@ body {
   margin: auto;
   overflow-x: hidden;
 }
+ul li {
+  list-style: none;
+  cursor: pointer;
+}
+
+#selecterStream .selectSreamradio {
+  float: left;
+  margin: 0 0px 0 0;
+  padding: 13px;
+  width: 70px;
+  position: relative;
+  display: flex;
+}
+
+#selecterStream .selectSreamradio label,
+#selecterStream .selectSreamradio input {
+  gap: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--light-border-clor-opacity2);
+  border-radius: 2px;
+}
+
+#selecterStream .selectSreamradio input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+  cursor: pointer;
+}
+
+#selecterStream .selectSreamradio input[type="radio"]:checked + label {
+  background: var(--primary-color-light);
+  color: var(--bg-white);
+}
+#selecterStream .selectSreamradio input[type="radio"]:checked + label svg {
+  fill: var(--bg-white) !important;
+}
+
+#selecterStream .selectSreamradio label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
+  color: var(--text-color-light);
+}
+
+#selecterStream .selectSreamradio svg {
+  padding-bottom: 1px;
+  fill: var(--text-color-light);
+}
+
+#filerequestModal #selectFiles {
+  width: 48%;
+  border: 1px solid var(--light-border-clor-opacity1);
+  height: 40px;
+  color: var(--text-color-light) !important;
+  border-radius: 3px;
+  border: 1px solid var(--light-border-clor-opacity1);
+  cursor: pointer;
+}
+#filerequestModal #secYrName {
+  width: 48%;
+  color: var(--text-color-light) !important;
+  height: 40px;
+  border-radius: 2px;
+}
+#filerequestModal #semYr {
+  width: 100%;
+  height: 100%;
+  gap: 5px !important;
+  border-radius: 3px;
+  padding: 0 10px 0 10px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  outline: none;
+  background-color: transparent;
+  color: var(--text-color-light);
+  border: none;
+  border: 1px solid var(--light-border-clor-opacity1);
+}
+
+#filerequestModal .filechoose {
+  height: 80% !important;
+  gap: 10px !important;
+}
+.saperations {
+  background: var(--light-border-clor-opacity1);
+  height: 1px;
+  width: 94%;
+  margin: auto;
+  margin-top: -5px;
+  margin-bottom: 7px;
+}
