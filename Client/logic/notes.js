@@ -65,7 +65,7 @@ filterNotes.addEventListener("click", () => {
 crossSection.addEventListener("click", toggleSection);
 filterSection.addEventListener("click", toggleSection);
 
-let sem = `<select name='sem' id='semyearsel'>              
+let sem = `<option>Select Semester</option>
                     <option value='1'>First Semester</option>
                     <option value='2'>Second Semester</option>
                     <option value='3'>Third Semester</option>
@@ -74,17 +74,17 @@ let sem = `<select name='sem' id='semyearsel'>
                     <option value='6'>Sixth Semester</option>
                     <option value='7'>Seventh Semester</option>
                     <option value='8'>Eighth Semester</option>
-                    </select>`;
+                    `;
 
-let year = `<select name='year' id='semyearsel'>
+let year = `<option>Select Year</option>    
                     <option value='1'>First Year</option>
                     <option value='2'>Second Year</option>
                     <option value='3'>Third Year</option>
                     <option value='4'>Fourth Year</option>
-                    </select>`;
+                   `;
 
 // setting year and sem
-const semyear = document.getElementById("semyear");
+const semyear = document.getElementById("semyearsel");
 const initialval = document.querySelector("#mySelect option");
 
 let initialvaltype = initialval.getAttribute("data_yearsem");
@@ -96,8 +96,10 @@ function myFunction() {
   var selectedOption = selectElement.options[selectElement.selectedIndex];
   let type = selectedOption.getAttribute("data_yearsem");
   if (Number(type) === 1) {
+    semyear.setAttribute("name", "year");
     HTML = year;
   } else {
+    semyear.setAttribute("name", "sem");
     HTML = sem;
   }
   semyear.innerHTML = HTML;

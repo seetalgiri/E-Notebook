@@ -33,7 +33,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
     <!-- ==================== JS Imported ======================== -->
-    <script src="./Client/logic/notesqn.js" defer></script>
+    <script src="./Client/logic/notes.js" defer></script>
 
 </head>
 
@@ -65,6 +65,7 @@ $resfac = mysqli_query($con, $sql);
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
+                                    <option value="">Select Subject</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {
@@ -74,14 +75,13 @@ $resfac = mysqli_query($con, $sql);
                                     ?>
                                 </select>
                             </div>
-                            <div id="semyear" class="flex"></div>
+                            <div id="semyear" class="flex">
+                                <select id='semyearsel'>
+                                </select>
+                            </div>
 
                             <select name="subject" id="subject">
                                 <option value="">Select Subject</option>
-                                <option value="1">BCA</option>
-                                <option value="2">BBM</option>
-                                <option value="3">BSW</option>
-                                <option value="4">MBS</option>
                             </select>
                             <button class="filterBTn">Filter</button>
                         </form>
@@ -172,6 +172,89 @@ $resfac = mysqli_query($con, $sql);
         </div>
     </div>
     <div id="filterSection"></div>
+    <script>
+    let data = [];
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./Server/subjectName.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            data = jsonData
+        }
+    };
+    xhr.send();
+    var streamDropdown = document.getElementById('mySelect');
+    var semYearDropdown = document.getElementById('semyearsel');
+    var subjectDropdown = document.getElementById('subject');
+
+    streamDropdown.addEventListener('change', handleSubjectChange);
+    semYearDropdown.addEventListener('change', handlesemSubjectChange);
+
+    let totalcontent = '';
+    let filterdcontent = [];
+
+    function handleSubjectChange() {
+        let stream = streamDropdown.value;
+        let streamfiltered = data.filter(e => e.facultyid === stream);
+        filterdcontent = streamfiltered;
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+        let option = "";
+        totalcontent = '';
+
+        streamfiltered.forEach((e) => {
+            if (!option.includes(`value="${e.id}"`)) {
+                option = `<option value="${e.id}">${e.name}</option>`;
+                totalcontent += option;
+            }
+        });
+
+        subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
+    }
+
+
+
+    function handlesemSubjectChange() {
+        let grade = semYearDropdown.value;
+        let streamfiltered = [];
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+        const allDataset = () => {
+            let option = "";
+            totalcontent = '';
+
+            streamfiltered.forEach((e) => {
+                if (!option.includes(`value="${e.id}"`)) {
+                    option = `<option value="${e.id}">${e.name}</option>`;
+                    totalcontent += option;
+                }
+            });
+
+            subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
+        }
+
+        if (filterdcontent.length <= 0) {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = data.filter(e => e.sem === grade);
+                allDataset()
+            } else {
+                streamfiltered = data.filter(e => e.year === grade);
+                allDataset()
+            }
+        } else {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = filterdcontent.filter(e => e.sem === grade);
+                allDataset()
+            } else {
+                streamfiltered = filterdcontent.filter(e => e.year === grade);
+                allDataset()
+            }
+        }
+
+
+    }
+    </script>
 </body>
 
 </html>
