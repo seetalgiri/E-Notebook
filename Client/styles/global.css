@@ -155,3 +155,16 @@
 .eachmode:hover .hoverMode {
   display: block;
 }
+#mySelect,
+#semyear #semyearsel {
+  padding: 7px;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid var(--light-border-clor-opacity1);
+  font-size: 16px !important;
+  border-radius: 1px;
+  background-color: var(--user-Profile-bgcolor);
+  color: var(--text-color-light);
+}

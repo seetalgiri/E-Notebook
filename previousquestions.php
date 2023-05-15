@@ -1,3 +1,18 @@
+<?php
+$show_notification = false;
+
+// to conntct database
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,8 +23,8 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Previous Questions</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globald.css  -->
-    <link rel="stylesheet" href="./Client/styles/globald.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
@@ -18,7 +33,7 @@
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
     <!-- ==================== JS Imported ======================== -->
-    <script src="./Client/logic/notesqns.js" defer></script>
+    <script src="./Client/logic/notesqn.js" defer></script>
 
 </head>
 
@@ -48,20 +63,19 @@
                             <div class="heading shadow">Filter Questions:</div>
                         </div>
                         <form action="#" class="FilterNotes">
-                            <select name="stream" id="steram">
-                                <option value="">Select Stream</option>
-                                <option value="1">BCA</option>
-                                <option value="2">BBM</option>
-                                <option value="3">BSW</option>
-                                <option value="4">MBS</option>
-                            </select>
-                            <select name="semYear" id="semYear">
-                                <option value="">Select Year/Sem</option>
-                                <option value="1">1st</option>
-                                <option value="2">2nd</option>
-                                <option value="3">3rd</option>
-                                <option value="4">4th</option>
-                            </select>
+                            <div id="forms" class="flex">
+                                <select name="facultyid" id="mySelect" onchange="myFunction()">
+                                    <?php
+                                    if (mysqli_num_rows($resfac) > 0) {
+                                        while ($row = mysqli_fetch_assoc($resfac)) {
+                                            echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div id="semyear" class="flex"></div>
+
                             <select name="subject" id="subject">
                                 <option value="">Select Subject</option>
                                 <option value="1">BCA</option>
