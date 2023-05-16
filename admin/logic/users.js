@@ -41,6 +41,7 @@ hambarArr.forEach((hambarElement) => {
 
 // Global click event listener to hide hamlist elements when clicking outside
 window.addEventListener("click", (event) => {
+  let parentId = event.target.clickedElement.parentNode;
   const clickedElement = event.target;
   if (
     !clickedElement.classList.contains("hambar") &&
