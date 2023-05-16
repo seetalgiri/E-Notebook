@@ -92,7 +92,7 @@ $resfac = mysqli_query($con, $sql);
                     </div>
                     <div id="forms" class="flex">
                         <label for="dOrder">Choose Faculty:</label>
-                        <select name="facultyid" id="mySelect" onchange="myFunction()">
+                        <select name="facultyid" id="mySelect">
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
                                 while ($row = mysqli_fetch_assoc($resfac)) {
