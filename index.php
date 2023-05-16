@@ -44,7 +44,8 @@
                     <div class="streamDiv">
                         <div class="stream streamChooseDiv" id="selecterStream">
                             <li class="selectSreamradio">
-                                <input type="radio" id="a25" name="stream" value="ALL" checked />
+                                <?php echo ($_GET['news'] == 'all') ? "<input type='radio' id='Bbmrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='all' onchange='updateURL(this.value)'>"; ?>
+
                                 <label class="btn btn-default" for="a25"><span>ALL</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -52,7 +53,8 @@
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <input type="radio" id="BcaRad" name="stream" value="BCA" />
+                                <?php echo ($_GET['news'] == 'bca') ? "<input type='radio' id='Bbmrad' name='stream' value='bca' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bca' onchange='updateURL(this.value)'>"; ?>
+
                                 <label class="btn btn-default" for="BcaRad"><span>BCA</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -60,7 +62,8 @@
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <input type="radio" id="Bbmrad" name="stream" value="BBM" />
+                                <?php echo ($_GET['news'] == 'bbm') ? "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)'>"; ?>
+
                                 <label class="btn btn-default" for="Bbmrad"><span>BBM</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -68,7 +71,7 @@
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <input type="radio" id="BBsRad" name="stream" value="BBS" />
+                                <?php echo ($_GET['news'] == 'bbs') ? "<input type='radio' id='Bbmrad' name='stream' value='bbs' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbs' onchange='updateURL(this.value)'>"; ?>
                                 <label class="btn btn-default" for="BBsRad"><span>BBS</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -76,7 +79,7 @@
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <input type="radio" id="BswRad" name="stream" value="BSW" />
+                                <?php echo ($_GET['news'] == 'bsw') ? "<input type='radio' id='Bbmrad' name='stream' value='bsw' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bsw' onchange='updateURL(this.value)'>"; ?>
                                 <label class="btn btn-default" for="BswRad"><span>BSW</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -281,6 +284,15 @@
             </div>
         </div>
     </div>
+    <script>
+        function updateURL(newsValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('news', newsValue);
+
+            const newURL = window.location.pathname + '?' + urlParams.toString();
+            history.replaceState(null, '', newURL);
+        }
+    </script>
 </body>
 
 </html>
