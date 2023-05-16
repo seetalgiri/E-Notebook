@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
+    <link rel="stylesheet" href="./CSS/modal.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sideNav.js" defer></script>
@@ -38,10 +39,10 @@
                         <td>Digital Logic</td>
                         <td>Chapter 1: Introduction this lorem </td>
                         <td class='edit twoBtn' id='editbtn'>
-                            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24'
+                            <svg id="modalOpen" width='20' height='15' viewBox='0 0 23 16'
                                 xmlns='http://www.w3.org/2000/svg'>
                                 <path
-                                    d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
+                                    d='M11.868 5.40091C11.0724 5.40091 10.3093 5.71698 9.74671 6.27959C9.1841 6.8422 8.86803 7.60526 8.86803 8.40091C8.86803 9.19656 9.1841 9.95962 9.74671 10.5222C10.3093 11.0848 11.0724 11.4009 11.868 11.4009C12.6637 11.4009 13.4267 11.0848 13.9893 10.5222C14.552 9.95962 14.868 9.19656 14.868 8.40091C14.868 7.60526 14.552 6.8422 13.9893 6.27959C13.4267 5.71698 12.6637 5.40091 11.868 5.40091ZM11.868 13.4009C10.5419 13.4009 9.27017 12.8741 8.33249 11.9364C7.39481 10.9988 6.86803 9.72699 6.86803 8.40091C6.86803 7.07483 7.39481 5.80306 8.33249 4.86538C9.27017 3.92769 10.5419 3.40091 11.868 3.40091C13.1941 3.40091 14.4659 3.92769 15.4036 4.86538C16.3412 5.80306 16.868 7.07483 16.868 8.40091C16.868 9.72699 16.3412 10.9988 15.4036 11.9364C14.4659 12.8741 13.1941 13.4009 11.868 13.4009ZM11.868 0.900909C6.86803 0.900909 2.59803 4.01091 0.868027 8.40091C2.59803 12.7909 6.86803 15.9009 11.868 15.9009C16.868 15.9009 21.138 12.7909 22.868 8.40091C21.138 4.01091 16.868 0.900909 11.868 0.900909Z' />
                             </svg>
                         </td>
                         <td class='delete twoBtn'>
@@ -64,7 +65,35 @@
                 </div>
             </div>
         </div>
+        <div id="modal">
+            <div id="background">
+                <div id="contentModal">
+                    <!-- For close button -->
+                    <button id="crossModal">X</button>
+                    <div class="formContent">
+                        Hello world
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <script>
+        const modal = document.getElementById("modal");
+        const modalOpen = document.getElementById("modalOpen");
+        const crossModal = document.getElementById("crossModal");
+        const background = document.getElementById('background');
+        const params = new URLSearchParams(window.location.search);
+        modalOpen.addEventListener("click", () => {
+            modal.style.display = "block";
+        })
+        background.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+        crossModal.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+    </script>
 </body>
 
 </html>
