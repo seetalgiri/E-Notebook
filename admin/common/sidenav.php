@@ -163,6 +163,9 @@
             <ul>
 
                 <li>
+                    <div id='toggleMode' class="moodAdmin">Dark</div>
+                </li>
+                <li>
                     <a href="#">
                         <svg width="25" height="25" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
                             <path

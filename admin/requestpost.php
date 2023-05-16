@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
-    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sideNav.js" defer></script>
+    <script src="./logic/sidenavs.js" defer></script>
 </head>
 
 <body>
@@ -65,18 +65,64 @@
                 </div>
             </div>
         </div>
-        <div id="modal">
-            <div id="background">
-                <div id="contentModal">
-                    <!-- For close button -->
+
+    </div>
+    <div id="modal">
+        <div id="background">
+            <div id="contentModal">
+
+                <div class="ModalHead">
                     <button id="crossModal">X</button>
                     <div class="formContent">
-                        Hello world
+                        Post Request
+                    </div>
+                </div>
+                <div id="mainCOntent">
+                    <div class="itemContentmodal">
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">Stream:</span>
+                            <span class="dis">BCA</span>
+                        </div>
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">Sem/Year:</span>
+                            <span class="dis">1st Sem</span>
+                        </div>
+                    </div>
+                    <div class="itemContentmodal">
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">Sub Name:</span>
+                            <span class="dis">CFA </span>
+                        </div>
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">Note Name:</span>
+                            <span class="dis">Chapter1: Intorduction </span>
+                        </div>
+                    </div>
+                    <div class="shadow streamsmalldiv filesizeshow">
+                        <span class="head">File:</span>
+                        <span class="dis">Chapter1: Intorduction </span>
+
+                        <div id="downloadstreamfile">
+                            <svg width="15" height="18" viewBox="0 0 15 18" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.250732 17.4755H14.2507V15.4755H0.250732M14.2507 6.47546H10.2507V0.475464H4.25073V6.47546H0.250732L7.25073 13.4755L14.2507 6.47546Z" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="shadow streambigdiv">
+                        <span class="head">Description:</span>
+                        <span class="dis">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt a,
+                            consectetur reprehenderit tempore eligendi aliquam libero dolorem corporis. Quis,
+                            distinctio. </span>
+                    </div>
+                    <div class="itemContentmodal">
+                        <div class="shadow streamsmalldiv buttonsModal rejectreq"><button>Rejected</button></div>
+                        <div class="shadow streamsmalldiv buttonsModal"><button>Accepted</button></div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <script>
         const modal = document.getElementById("modal");
@@ -84,12 +130,13 @@
         const crossModal = document.getElementById("crossModal");
         const background = document.getElementById('background');
         const params = new URLSearchParams(window.location.search);
+        modal.style.display = "block";
         modalOpen.addEventListener("click", () => {
             modal.style.display = "block";
         })
-        background.addEventListener('click', () => {
-            modal.style.display = "none";
-        });
+        // background.addEventListener('click', () => {
+        //     modal.style.display = "none";
+        // });
         crossModal.addEventListener('click', () => {
             modal.style.display = "none";
         });

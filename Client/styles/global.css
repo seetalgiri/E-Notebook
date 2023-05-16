@@ -110,7 +110,11 @@
     0px 1px 2px 0px var(--shadow-small-shadow2);
   transition: 0.2s;
 }
-
+.moodAdmin {
+  background-color: var(--bg-white) !important;
+  color: var(--text-color-light);
+  transition: 0.2s;
+}
 .hidden {
   display: none;
 }

@@ -8,8 +8,8 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globals.css  -->
-    <link rel="stylesheet" href="./Client/styles/globals.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
