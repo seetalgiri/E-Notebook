@@ -1,3 +1,17 @@
+<?php
+$show_notification = false;
+
+// to conntct database
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,45 +90,49 @@
             <div id="sideDivForm" class='noticePost'>
                 <form action="#" method="get" id="forms">
                     <h3>Add Faculty:</h3>
-                    <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
+                    <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
                         <label for="fname">Enter Post Description:</label>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Enter Note Description..."></textarea>
+                        <textarea name="description" id="" cols="30" rows="10"
+                            placeholder="Enter Note Description..."></textarea>
                     </div>
                     <div class='flexButtons'>
+
                         <div id="forms" class="flex fbselectStr">
                             <label for="stdType">Select Stream:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">ALL</option>
-                                <option value="2">BCA</option>
-                                <option value="2">BBM</option>
-                                <option value="2">BSW</option>
+                            <select name="facultyid" id="mySelect" onchange="myFunction()"
+                                style="padding: 11px; border-radius: 3px">
+                                <option value="">Select Stream</option>
+                                <?php
+                                if (mysqli_num_rows($resfac) > 0) {
+                                    while ($row = mysqli_fetch_assoc($resfac)) {
+                                        echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                    }
+                                }
+                                ?>
                             </select>
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="stdType">Select Grade:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">First Year</option>
-                                <option value="2">Second Year</option>
-                                <option value="2">Third Year</option>
-                                <option value="2">Fourth Year</option>
+                            <select id='semyearsel'>
+                                <option>Select Semester</option>
                             </select>
                         </div>
+
+
+
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
                             <label for="stdType">Subject Name:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">CFA</option>
-                                <option value="2">DL</option>
-                                <option value="2">Math</option>
-                                <option value="2">Social</option>
-                                <option value="2">English</option>
+                            <select name="subject" id="subject">
+                                <option value="">Select Subject</option>
                             </select>
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="image">Select Image:</label>
-                            <input type="file" name="image" id="image" accept="image">
+                            <input type="file" name="image" id="image" accept="application/pdf">
+
                         </div>
                     </div>
                     <div id="forms" class="flex">
@@ -135,7 +153,7 @@
     <script>
         let data = [];
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "./Server/subjectName.php", true);
+        xhr.open("GET", "../Server/subjectName.php", true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
@@ -214,6 +232,53 @@
 
 
         }
+
+
+
+        // crossSection.addEventListener("click", toggleSection);
+        // filterSection.addEventListener("click", toggleSection);
+
+        let sem = `<option>Select Semester</option>
+                    <option value='1'>First Semester</option>
+                    <option value='2'>Second Semester</option>
+                    <option value='3'>Third Semester</option>
+                    <option value='4'>Fourth Semester</option>
+                    <option value='5'>Fifth Semester</option>
+                    <option value='6'>Sixth Semester</option>
+                    <option value='7'>Seventh Semester</option>
+                    <option value='8'>Eighth Semester</option>
+                    `;
+
+        let year = `<option>Select Year</option>    
+                    <option value='1'>First Year</option>
+                    <option value='2'>Second Year</option>
+                    <option value='3'>Third Year</option>
+                    <option value='4'>Fourth Year</option>
+                   `;
+
+        // setting year and sem
+        const initialval = document.querySelector("#mySelect option");
+        const semyear = document.getElementById("semyearsel");
+
+
+        let initialvaltype = initialval.getAttribute("data_yearsem");
+        let HTML = Number(initialvaltype) === 1 ? year : sem;
+
+        // changing faculty value;
+        function myFunction() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            let type = selectedOption.getAttribute("data_yearsem");
+            if (Number(type) === 1) {
+                semyear.setAttribute("name", "year");
+                HTML = year;
+            } else {
+                semyear.setAttribute("name", "sem");
+                HTML = sem;
+            }
+            semyear.innerHTML = HTML;
+        }
+    // let type = myFunction();
     </script>
 
 </body>
