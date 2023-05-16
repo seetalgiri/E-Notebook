@@ -41,7 +41,7 @@ hambarArr.forEach((hambarElement) => {
 
 // Global click event listener to hide hamlist elements when clicking outside
 window.addEventListener("click", (event) => {
-  let parentId = event.target.clickedElement.parentNode;
+  let parentId = event.target.parentNode.id;
   const clickedElement = event.target;
   if (
     !clickedElement.classList.contains("hambar") &&
@@ -65,4 +65,14 @@ window.addEventListener("click", (event) => {
 // Function called when a hambar list item is clicked
 const btnClicked = () => {
   console.log("Clicked");
+  // var url = window.location.href;
+
+  // if (url.includes("?")) {
+  //   url += "&delete=1";
+  // } else {
+  //   url += "?delete=1";
+  // }
+
+  // // Set the modified URL
+  // window.location.href = url;
 };
