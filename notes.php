@@ -178,7 +178,7 @@ $resfac = mysqli_query($con, $sql);
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "./Server/subjectName.php", true);
-        xhr.onreadystatechange = func tion() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData

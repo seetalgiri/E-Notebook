@@ -627,12 +627,39 @@
 
 #commentContent {
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: 50vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1) inset;
+}
+#commentContent::-webkit-scrollbar {
+  width: 5px;
+}
+
+#commentContent::-webkit-scrollbar-track {
+  background-color: var(--light-bgcolor);
+}
+
+#commentContent::-webkit-scrollbar-thumb {
+  background-color: var(--light-border-clor-opacity2);
+  border-radius: 3px;
+}
+
+#commentContent::-webkit-scrollbar-thumb:hover {
+  background-color: #777;
 }
 .eachcomment {
-  min-height: 60px;
+  min-height: 110px;
   padding: 5px 10px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+}
+#morecomments {
+  display: none;
 }
 #cmtuserDet {
   display: flex;
@@ -796,7 +823,7 @@ ul li {
   float: left;
   margin: 0 0px 0 0;
   padding: 13px;
-  width: 70px;
+  width: 65px;
   position: relative;
   display: flex;
 }

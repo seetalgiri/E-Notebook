@@ -37,21 +37,7 @@ const NotesInnterHtml = ` <form action="" id="filerequestModal">
 <div class="buttonclscontent maincontentfotChoose">
   <div class="streamDiv">
     <div class="stream streamChooseDiv" id="selecterStream">
-      <li class="selectSreamradio">
-        <input type="radio" id="all" name="stream" value="all" checked />
-        <label class="btn btn-default" for="all"
-          ><span>ALL</span>
-          <svg
-            width="14"
-            height="15"
-            viewBox="0 0 16 18"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z"
-            /></svg
-        ></label>
-      </li>
+     
       <li class="selectSreamradio">
         <input type="radio" id="bca" value="bca" name="stream" />
         <label class="btn btn-default" for="bca"

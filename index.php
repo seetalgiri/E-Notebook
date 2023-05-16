@@ -13,7 +13,7 @@
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/index.css" />
+    <link rel="stylesheet" href="./Client/styles/indexs.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -193,20 +193,70 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="moreComment">
-                                <a class="More" href="#">View More comments</a>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- for post comment  -->
-                            <div id="cmtPost" class="shadow">
-                                <div id="cmtuserPost">G</div>
-                                <input type="text" name="comment" id="cmtcreatePost"
-                                    placeholder="Comment your thoughts..." autocomplete="off">
-                                <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
-                                </svg>
-                            </div>
+                            <form action="#">
+                                <div id="cmtPost" class="shadow">
+                                    <div id="cmtuserPost">G</div>
+                                    <input type="text" name="comment" id="cmtcreatePost"
+                                        placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                    <button style="background-color: transparent;border: none;display: flex;">
+                                        <svg width="20" height="17" viewBox="0 0 19 16"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
@@ -214,69 +264,7 @@
                 <!-- end of each post  -->
 
             </div>
-            <div id="fixedContent">
-                <div class="fixedcontentbox1 fixedContentDiv shadow">
-                    <div id="divfixedTopcontent">
-                        <div id="headerDiv2">
-                            <div id="profilePost" class="shadow">G</div>
-                            <div id="nameMore">
-                                <div id="name">Gaurab Sunar</div>
-                                <div id="date">
-                                    <span>gaurabsunar9@gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="divline mt-2"></div>
-                        <div class="logoandContent">
-                            <h3 class="clsLogo">E-NoteBook</h3>
-                            <p class="clsContentl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                                placeat.</p>
-                        </div>
-                    </div>
-                    <div class="divline"></div>
-                    <div class="contentbtns">
-                        <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
-                        <a href="notes.php">
-
-                            <button id="notes" class="shadow SeeNoteIndex" style="width: 100%">See Notes</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="fixedcontentbox2 fixedContentDiv shadow">
-                    <h3 id="recentTitle">Recent Post:</h3>
-                    <div class="firstBox">
-                        <img src="https://images.unsplash.com/photo-1681068420510-cb528c65d595?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
-                            alt="">
-                        <div id="ing">
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                                <div id="dateRec">
-                                    2079-02-31
-                                </div>
-                            </div>
-                            <div class="clearRec">
-                                Clear
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="fixedcontentbox3 fixedContentDiv shadow">
-                    <h3 id="recentTitle">Contents:</h3>
-                    <div class="linksforContent">
-                        <li><a href="#">Notes</a></li>
-                        <li><a href="#">Question paper</a></li>
-                        <li><a href="#">Syllabus</a></li>
-                        <li><a href="#">Created By</a></li>
-                    </div>
-
-                    <div class="divline"></div>
-                    <footer class="footercontent">
-                        E-NoteBook © <span id="currentYear"></span> | All rights reserved
-                    </footer>
-
-
-                </div>
-            </div>
+            <?php include './Client/Common/fixedcontent.php'; ?>
         </div>
     </div>
 
