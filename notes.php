@@ -66,7 +66,7 @@ $resfac = mysqli_query($con, $sql);
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
-                                    <option value="">Select Subject</option>
+                                    <option value="">Select Stream</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {
@@ -178,7 +178,7 @@ $resfac = mysqli_query($con, $sql);
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "./Server/subjectName.php", true);
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = func tion() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData

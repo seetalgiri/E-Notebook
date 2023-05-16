@@ -65,7 +65,7 @@ $resfac = mysqli_query($con, $sql);
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
-                                    <option value="">Select Subject</option>
+                                    <option value="">Select Stream</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {
