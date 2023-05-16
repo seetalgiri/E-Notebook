@@ -118,7 +118,7 @@ if (isset($_POST['updateadd'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Suject Name</title>
     <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
 
     <!-- for JS Logic  -->

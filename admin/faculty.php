@@ -84,7 +84,7 @@ if (isset($_POST['updateadd'])) {
     <title>E-NoteBook Faculty</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
 
     <!-- for JS Logic  -->

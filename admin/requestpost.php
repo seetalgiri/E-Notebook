@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
     <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./CSS/faculitya.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
@@ -125,21 +125,20 @@
         </div>
     </div>
     <script>
-        const modal = document.getElementById("modal");
-        const modalOpen = document.getElementById("modalOpen");
-        const crossModal = document.getElementById("crossModal");
-        const background = document.getElementById('background');
-        const params = new URLSearchParams(window.location.search);
+    const modal = document.getElementById("modal");
+    const modalOpen = document.getElementById("modalOpen");
+    const crossModal = document.getElementById("crossModal");
+    const background = document.getElementById('background');
+    const params = new URLSearchParams(window.location.search);
+    modalOpen.addEventListener("click", () => {
         modal.style.display = "block";
-        modalOpen.addEventListener("click", () => {
-            modal.style.display = "block";
-        })
-        // background.addEventListener('click', () => {
-        //     modal.style.display = "none";
-        // });
-        crossModal.addEventListener('click', () => {
-            modal.style.display = "none";
-        });
+    })
+    // background.addEventListener('click', () => {
+    //     modal.style.display = "none";
+    // });
+    crossModal.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
     </script>
 </body>
 
