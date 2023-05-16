@@ -74,7 +74,7 @@
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="./faculty.php" method="post" id="forms">
+                <form action="#" method="get" id="forms">
                     <h3>Add Faculty:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
