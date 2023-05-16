@@ -165,6 +165,9 @@
   border: 1px solid var(--light-border-clor-opacity1);
   font-size: 16px !important;
   border-radius: 1px;
-  background-color: var(--user-Profile-bgcolor);
+  background: var(--bg-white);
   color: var(--text-color-light);
+}
+#modalContent {
+  right: 0;
 }

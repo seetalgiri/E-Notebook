@@ -558,10 +558,14 @@
   display: flex;
 }
 .streamDiv {
-  width: 100%;
+  width: 95%;
 }
 .streamChooseDiv {
   justify-content: space-between !important;
+}
+#category {
+  display: flex;
+  justify-content: space-around;
 }
 .postBtn {
   height: 35px;

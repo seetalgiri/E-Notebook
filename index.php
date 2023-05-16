@@ -8,12 +8,12 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globals.css  -->
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexs.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -41,38 +41,49 @@
                     </svg>
                 </div>
                 <div id="category" class="shadow">
-                    <div class="stream">
-                        <li name="gaurab"><a href="?news=all" class="activestr"><span>ALL</span> <svg width="15"
-                                    height="16" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-
-                        <li><a href="?news=bbm" class=""><span>BBM</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bca" class=""><span>BCA</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bsw" class=""><span>BSW</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bbs" class=""><span>BBS</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
+                    <div class="streamDiv">
+                        <div class="stream streamChooseDiv" id="selecterStream">
+                            <li class="selectSreamradio">
+                                <input type="radio" id="a25" name="stream" value="ALL" checked />
+                                <label class="btn btn-default" for="a25"><span>ALL</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <input type="radio" id="BcaRad" name="stream" value="BCA" />
+                                <label class="btn btn-default" for="BcaRad"><span>BCA</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <input type="radio" id="Bbmrad" name="stream" value="BBM" />
+                                <label class="btn btn-default" for="Bbmrad"><span>BBM</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <input type="radio" id="BBsRad" name="stream" value="BBS" />
+                                <label class="btn btn-default" for="BBsRad"><span>BBS</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <input type="radio" id="BswRad" name="stream" value="BSW" />
+                                <label class="btn btn-default" for="BswRad"><span>BSW</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                        </div>
                     </div>
                 </div>
 
