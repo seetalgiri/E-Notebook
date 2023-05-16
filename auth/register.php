@@ -15,8 +15,9 @@
     <div id="container" class="regCont">
         <div class="rightDiv">
             <h1>E-NoteBook</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nostrum dolorem unde incidunt, natus
-                cupiditate!</p>
+            <p style="letter-spacing: 2px">Unlock Knowledge, Ace Your Journey: eNotebook - Your Gateway to Comprehensive
+                Notes and Study Material.
+            </p>
         </div>
 
         <div id="socialmedia">

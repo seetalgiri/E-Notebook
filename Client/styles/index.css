@@ -558,6 +558,9 @@
   display: flex;
 }
 .streamDiv {
+  width: 100%;
+}
+#category .streamDiv {
   width: 95%;
 }
 .streamChooseDiv {

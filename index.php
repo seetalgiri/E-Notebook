@@ -44,25 +44,37 @@
                     <div class="streamDiv">
                         <div class="stream streamChooseDiv" id="selecterStream">
                             <li class="selectSreamradio">
-                                <?php echo ($_GET['news'] == 'all') ? "<input type='radio' id='Bbmrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='all' onchange='updateURL(this.value)'>"; ?>
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : 'all';
+                                echo ($news == 'all') ? "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)'>";
+                                ?>
 
-                                <label class="btn btn-default" for="a25"><span>ALL</span>
+
+                                <label class="btn btn-default" for="allrad"><span>ALL</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <?php echo ($_GET['news'] == 'bca') ? "<input type='radio' id='Bbmrad' name='stream' value='bca' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bca' onchange='updateURL(this.value)'>"; ?>
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bca') ? "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)'>";
+                                ?>
 
-                                <label class="btn btn-default" for="BcaRad"><span>BCA</span>
+
+                                <label class="btn btn-default" for="bcarad"><span>BCA</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <?php echo ($_GET['news'] == 'bbm') ? "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)'>"; ?>
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bbm') ? "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)'>";
+                                ?>
+
 
                                 <label class="btn btn-default" for="Bbmrad"><span>BBM</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
@@ -71,16 +83,24 @@
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <?php echo ($_GET['news'] == 'bbs') ? "<input type='radio' id='Bbmrad' name='stream' value='bbs' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbs' onchange='updateURL(this.value)'>"; ?>
-                                <label class="btn btn-default" for="BBsRad"><span>BBS</span>
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bbs') ? "<input type='radio' id='bbsrad' name='stream' value='bbs' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bbsrad' name='stream' value='bbs' onchange='updateURL(this.value)'>";
+                                ?>
+
+                                <label class="btn btn-default" for="bbsrad"><span>BBS</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
                                     </svg></label>
                             </li>
                             <li class="selectSreamradio">
-                                <?php echo ($_GET['news'] == 'bsw') ? "<input type='radio' id='Bbmrad' name='stream' value='bsw' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bsw' onchange='updateURL(this.value)'>"; ?>
-                                <label class="btn btn-default" for="BswRad"><span>BSW</span>
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bsw') ? "<input type='radio' id='bswrad' name='stream' value='bsw' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bswrad' name='stream' value='bsw' onchange='updateURL(this.value)'>";
+                                ?>
+
+                                <label class="btn btn-default" for="bswrad"><span>BSW</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
