@@ -30,7 +30,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -211,7 +211,7 @@ $resfac = mysqli_query($con, $sql);
                 }
             });
 
-            subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
+            subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
         }
 
 
@@ -233,7 +233,7 @@ $resfac = mysqli_query($con, $sql);
                     }
                 });
 
-                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
+                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
             }
 
             if (filterdcontent.length <= 0) {

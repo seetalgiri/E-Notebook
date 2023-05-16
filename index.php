@@ -236,7 +236,10 @@
                     <div class="divline"></div>
                     <div class="contentbtns">
                         <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
-                        <button id="notes" class="shadow">See Notes</button>
+                        <a href="notes.php">
+
+                            <button id="notes" class="shadow SeeNoteIndex" style="width: 100%">See Notes</button>
+                        </a>
                     </div>
                 </div>
                 <div class="fixedcontentbox2 fixedContentDiv shadow">
