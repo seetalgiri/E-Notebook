@@ -260,20 +260,20 @@
 </div>
 
 <script>
-    const notbtn = document.getElementById("notbtn");
-    const notificationfull = document.getElementById("notificationfull");
-    const notrapper = document.getElementById("notrapper");
-    notbtn.addEventListener("click", () => {
-        if (notrapper.style.display === "none" || notrapper.style.display === "") {
-            notrapper.style.display = "block"
-            notificationfull.style.display = "block"
-        } else {
-            notrapper.style.display = "none"
-            notificationfull.style.display = "none"
-        }
-    });
-    notificationfull.addEventListener("click", () => {
+const notbtn = document.getElementById("notbtn");
+const notificationfull = document.getElementById("notificationfull");
+const notrapper = document.getElementById("notrapper");
+notbtn.addEventListener("click", () => {
+    if (notrapper.style.display === "none" || notrapper.style.display === "") {
+        notrapper.style.display = "block"
+        notificationfull.style.display = "block"
+    } else {
         notrapper.style.display = "none"
         notificationfull.style.display = "none"
-    })
+    }
+});
+notificationfull.addEventListener("click", () => {
+    notrapper.style.display = "none"
+    notificationfull.style.display = "none"
+})
 </script>

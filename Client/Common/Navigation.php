@@ -16,7 +16,9 @@
             </li>
         </ul>
         <div id="user" class="login">
-            <a href="./auth/register.php">
+
+            <!-- ======================================== for login button ======================================== -->
+            <a href="./auth/register.php" style="margin-right: -20px;">
                 <button class="shadow-lg">
                     <span> Login </span>
                     <svg width="15" height="18" viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg">
@@ -25,6 +27,28 @@
                     </svg>
                 </button>
             </a>
+
+            <!-- ======================================== for user profile ======================================== -->
+            <!-- <div class="profileCls topProfileDesktop" id="profileMainContainer">
+                <svg onclick="openProfileModal()" id="adminProfile22" width="35" height="40" viewBox="0 0 21 21"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10.4091 17.5812C7.9091 17.5812 5.6991 16.3012 4.4091 14.3812C4.4391 12.3812 8.4091 11.2812 10.4091 11.2812C12.4091 11.2812 16.3791 12.3812 16.4091 14.3812C15.1191 16.3012 12.9091 17.5812 10.4091 17.5812ZM10.4091 3.38123C11.2048 3.38123 11.9678 3.6973 12.5304 4.25991C13.093 4.82251 13.4091 5.58558 13.4091 6.38123C13.4091 7.17688 13.093 7.93994 12.5304 8.50255C11.9678 9.06516 11.2048 9.38123 10.4091 9.38123C9.61345 9.38123 8.85039 9.06516 8.28778 8.50255C7.72517 7.93994 7.4091 7.17688 7.4091 6.38123C7.4091 5.58558 7.72517 4.82251 8.28778 4.25991C8.85039 3.6973 9.61345 3.38123 10.4091 3.38123ZM10.4091 0.381226C9.09588 0.381226 7.79552 0.639883 6.58227 1.14243C5.36901 1.64498 4.26662 2.38157 3.33804 3.31016C1.46267 5.18552 0.409103 7.72906 0.409103 10.3812C0.409103 13.0334 1.46267 15.5769 3.33804 17.4523C4.26662 18.3809 5.36901 19.1175 6.58227 19.62C7.79552 20.1226 9.09588 20.3812 10.4091 20.3812C13.0613 20.3812 15.6048 19.3277 17.4802 17.4523C19.3555 15.5769 20.4091 13.0334 20.4091 10.3812C20.4091 4.85123 15.9091 0.381226 10.4091 0.381226Z" />
+                </svg>
+                <div id="profilecards" class="shadow-lg">
+                    <div id="cmtuserDet">
+                        <div id="userPost">G</div>
+                        <div id="userNameAndDate">
+                            <span>Gaurab sunar</span>
+                            <span>gaurabsunar@gmail.com</span>
+                        </div>
+                    </div>
+                    <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
+                    <div>
+                        <button id="logoutBtn">LOGOUT</button>
+                    </div>
+                </div>
+            </div> -->
         </div>
     </div>
     <div id="hamburgerNav">
@@ -34,57 +58,102 @@
     </div>
     <div class="navCloseDIv"></div>
     <div class='Mode' id='toggleMode'></div>
+
+    <!-- ======================================== for user profile ======================================== -->
+    <!-- <div class="profileCls topProfilemobile" id="profileMainContainer">
+        <svg onclick="openProfileModal()" id="adminProfile22" width="35" height="40" viewBox="0 0 21 21"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M10.4091 17.5812C7.9091 17.5812 5.6991 16.3012 4.4091 14.3812C4.4391 12.3812 8.4091 11.2812 10.4091 11.2812C12.4091 11.2812 16.3791 12.3812 16.4091 14.3812C15.1191 16.3012 12.9091 17.5812 10.4091 17.5812ZM10.4091 3.38123C11.2048 3.38123 11.9678 3.6973 12.5304 4.25991C13.093 4.82251 13.4091 5.58558 13.4091 6.38123C13.4091 7.17688 13.093 7.93994 12.5304 8.50255C11.9678 9.06516 11.2048 9.38123 10.4091 9.38123C9.61345 9.38123 8.85039 9.06516 8.28778 8.50255C7.72517 7.93994 7.4091 7.17688 7.4091 6.38123C7.4091 5.58558 7.72517 4.82251 8.28778 4.25991C8.85039 3.6973 9.61345 3.38123 10.4091 3.38123ZM10.4091 0.381226C9.09588 0.381226 7.79552 0.639883 6.58227 1.14243C5.36901 1.64498 4.26662 2.38157 3.33804 3.31016C1.46267 5.18552 0.409103 7.72906 0.409103 10.3812C0.409103 13.0334 1.46267 15.5769 3.33804 17.4523C4.26662 18.3809 5.36901 19.1175 6.58227 19.62C7.79552 20.1226 9.09588 20.3812 10.4091 20.3812C13.0613 20.3812 15.6048 19.3277 17.4802 17.4523C19.3555 15.5769 20.4091 13.0334 20.4091 10.3812C20.4091 4.85123 15.9091 0.381226 10.4091 0.381226Z" />
+        </svg>
+        <div id="profilecards" class="shadow-lg">
+            <div id="cmtuserDet">
+                <div id="userPost">G</div>
+                <div id="userNameAndDate">
+                    <span>Gaurab sunar</span>
+                    <span>gaurabsunar@gmail.com</span>
+                </div>
+            </div>
+            <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
+            <div>
+                <button id="logoutBtn">LOGOUT</button>
+            </div>
+        </div>
+    </div> -->
 </nav>
+<div id="modalCLoseDIvOutside"></div>
 <script>
-var navLinks = document.getElementsByTagName("a");
-const currentUrl = window.location.href;
-const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
-const clsPage = currentPage.split(".")[0]
+    var navLinks = document.getElementsByTagName("a");
+    const currentUrl = window.location.href;
+    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+    const clsPage = currentPage.split(".")[0]
 
 
-const classes = document.querySelectorAll(".navLinks");
-classes[0].classList.add("active");
-if (clsPage.length > 1) {
-    for (let i = 0; i < classes.length; i++) {
-        if (classes[i].classList.contains(clsPage)) {
-            classes[i].classList.add("active");
-        } else {
-            classes[i].classList.remove("active");
+    const classes = document.querySelectorAll(".navLinks");
+    classes[0].classList.add("active");
+    if (clsPage.length > 1) {
+        for (let i = 0; i < classes.length; i++) {
+            if (classes[i].classList.contains(clsPage)) {
+                classes[i].classList.add("active");
+            } else {
+                classes[i].classList.remove("active");
+            }
         }
     }
-}
 
-const hamburgerNav = document.getElementById("hamburgerNav");
-const navsectionLink = document.querySelector(".navsectionLink");
-const navCloseDIv = document.querySelector(".navCloseDIv");
-navsectionLink.style.right = "-120%";
-const navToggleFuction = () => {
-    if (navsectionLink.style.right === "-120%") {
-        navsectionLink.style.right = "0px";
-        navsectionLink.style.paddingBottom = "10vh";
-        hamburgerNav.classList.add("crossNav");
-        navCloseDIv.style.display = "block";
-    } else {
-        navsectionLink.style.right = "-120%";
-        hamburgerNav.classList.remove("crossNav");
-        navCloseDIv.style.display = "none";
+    const hamburgerNav = document.getElementById("hamburgerNav");
+    const navsectionLink = document.querySelector(".navsectionLink");
+    const navCloseDIv = document.querySelector(".navCloseDIv");
+    const adminProfile22 = document.getElementById("adminProfile22");
+    const profilecards = document.getElementById("profilecards");
+    const modalCLoseDIvOutside = document.getElementById("modalCLoseDIvOutside");
+
+    const openProfileModal = () => {
+        if (profilecards.style.display == "none" || profilecards.style.display == "") {
+            profilecards.style.display = "block";
+            modalCLoseDIvOutside.style.display = "block";
+            document.body.style.overflow = "hidden";
+        } else {
+            profilecards.style.display = "none";
+            modalCLoseDIvOutside.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
     }
-};
-
-hamburgerNav.addEventListener("click", () => {
-    navToggleFuction();
-});
-
-navCloseDIv.addEventListener("click", () => {
-    navToggleFuction();
-});
+    modalCLoseDIvOutside.addEventListener("click", () => {
+        profilecards.style.display = "none";
+        modalCLoseDIvOutside.style.display = "none";
+        document.body.style.overflow = "auto";
+    });
 
 
-const bodyMode = document.getElementsByTagName('body')[0];
-const toggleMode = document.getElementById('toggleMode')
+    navsectionLink.style.right = "-120%";
+    const navToggleFuction = () => {
+        if (navsectionLink.style.right === "-120%") {
+            navsectionLink.style.right = "0px";
+            navsectionLink.style.paddingBottom = "10vh";
+            hamburgerNav.classList.add("crossNav");
+            navCloseDIv.style.display = "block";
+        } else {
+            navsectionLink.style.right = "-120%";
+            hamburgerNav.classList.remove("crossNav");
+            navCloseDIv.style.display = "none";
+        }
+    };
+
+    hamburgerNav.addEventListener("click", () => {
+        navToggleFuction();
+    });
+
+    navCloseDIv.addEventListener("click", () => {
+        navToggleFuction();
+    });
 
 
-const LightHTML = `<div id='eachModeLight' class="light eachmode">
+    const bodyMode = document.getElementsByTagName('body')[0];
+    const toggleMode = document.getElementById('toggleMode')
+
+
+    const LightHTML = `<div id='eachModeLight' class="light eachmode">
             <svg onclick="modeClick()" width="22" height="22" viewBox="0 0 22 22" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -93,7 +162,7 @@ const LightHTML = `<div id='eachModeLight' class="light eachmode">
             </svg>
             <div class="hoverMode">Light Mode</div>
         </div>`
-const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
+    const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
         <svg onclick="modeClick()" width="20" height="22" viewBox="0 0 20 22" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
@@ -104,35 +173,35 @@ const DarkHTML = `<div id='eachModeDark' class="dark eachmode">
     </div>`
 
 
-if (localStorage.getItem('mode') === 'dark') {
-    bodyMode.classList.add('Darkmode');
-    toggleMode.innerHTML = LightHTML
-} else {
-    bodyMode.classList.remove('Darkmode');
-    toggleMode.innerHTML = DarkHTML
-}
-// for dark and light mode
-const modeClick = () => {
     if (localStorage.getItem('mode') === 'dark') {
-        toggleMode.innerHTML = DarkHTML
-        bodyMode.classList.remove('Darkmode');
-        localStorage.setItem('mode', 'light');
-    } else {
-        toggleMode.innerHTML = LightHTML
         bodyMode.classList.add('Darkmode');
-        localStorage.setItem('mode', 'dark');
-    }
-}
-window.addEventListener("scroll", function() {
-    let scrollY = Math.ceil(window.scrollY || window.pageYOffset);
-    if (scrollY > 140) {
-        toggleMode.style.right = "-100px"
-        toggleMode.style.opacity = "0"
-
+        toggleMode.innerHTML = LightHTML
     } else {
-        toggleMode.style.right = "0px"
-        toggleMode.style.opacity = "1"
-
+        bodyMode.classList.remove('Darkmode');
+        toggleMode.innerHTML = DarkHTML
     }
-});
+    // for dark and light mode
+    const modeClick = () => {
+        if (localStorage.getItem('mode') === 'dark') {
+            toggleMode.innerHTML = DarkHTML
+            bodyMode.classList.remove('Darkmode');
+            localStorage.setItem('mode', 'light');
+        } else {
+            toggleMode.innerHTML = LightHTML
+            bodyMode.classList.add('Darkmode');
+            localStorage.setItem('mode', 'dark');
+        }
+    }
+    window.addEventListener("scroll", () => {
+        let scrollY = Math.ceil(window.scrollY || window.pageYOffset);
+        if (scrollY > 140) {
+            toggleMode.style.right = "-100px"
+            toggleMode.style.opacity = "0"
+
+        } else {
+            toggleMode.style.right = "0px"
+            toggleMode.style.opacity = "1"
+
+        }
+    });
 </script>

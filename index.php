@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <link rel="stylesheet" href="./Client/styles/indexs.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
+    <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/index.js" defer></script>
@@ -296,20 +296,20 @@
         </div>
     </div>
     <script>
-        function updateURL(newsValue) {
-            const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('news', newsValue);
+    function updateURL(newsValue) {
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('news', newsValue);
 
-            const newURL = window.location.pathname + '?' + urlParams.toString();
-            history.replaceState(null, '', newURL);
-            const cmtcreatePost = document.getElementById('cmtcreatePost');
+        const newURL = window.location.pathname + '?' + urlParams.toString();
+        history.replaceState(null, '', newURL);
+        const cmtcreatePost = document.getElementById('cmtcreatePost');
 
-        }
+    }
 
-        function commentFOcusIconclk() {
-            cmtcreatePost.focus()
-            console.log("first")
-        }
+    function commentFOcusIconclk() {
+        cmtcreatePost.focus()
+        console.log("first")
+    }
     </script>
 </body>
 

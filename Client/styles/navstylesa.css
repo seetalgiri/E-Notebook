@@ -44,7 +44,7 @@ nav {
   font-family: Arial, Helvetica, sans-serif;
 }
 #user {
-  width: 20%;
+  width: 15%;
 }
 .login {
   display: flex;
@@ -272,4 +272,61 @@ nav {
   top: -6px;
   background-color: var(--text-color-dark);
   right: 10px;
+}
+.profileCls {
+  position: relative;
+}
+#adminProfile22 {
+  fill: var(--primary-color-light);
+  cursor: pointer;
+}
+#profilecards {
+  position: absolute;
+  top: 55px;
+  right: -10px;
+  height: 150px;
+  width: 230px;
+  background-color: var(--bg-white);
+  border-radius: 2px;
+  padding: 15px 10px;
+  display: none;
+  z-index: 100000000000000000000;
+}
+
+#profilecards #userPost {
+  scale: 1.2;
+}
+#logoutBtn {
+  padding: 6px 30px;
+  width: 100%;
+}
+#streamprofile {
+  padding: 15px 7px;
+  display: flex;
+  gap: 5px;
+  font-size: 14px;
+}
+#streamprofile span {
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#modalCLoseDIvOutside {
+  position: absolute;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.1);
+  display: none;
+}
+.topProfilemobile {
+  display: none;
+}
+@media screen and (max-width: 940px) {
+  .topProfileDesktop {
+    display: none;
+  }
+  .topProfilemobile {
+    display: block;
+    right: 70px;
+  }
 }
