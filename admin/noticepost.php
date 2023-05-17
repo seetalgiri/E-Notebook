@@ -87,11 +87,11 @@ $resfac = mysqli_query($con, $sql);
                     <h3>Add Faculty:</h3>
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
-                        <label for="fname">Enter Post Description:</label>
-                        <textarea name="description" id="" cols="30" rows="10"></textarea>
+                        <label for="description">Enter Post Description:</label>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="dOrder">Choose Faculty:</label>
+                        <label for="mySelect">Choose Faculty:</label>
                         <select name="facultyid" id="mySelect">
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
@@ -103,7 +103,7 @@ $resfac = mysqli_query($con, $sql);
                         </select>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="dOrder">Select Image:</label>
+                        <label for="image">Select Image:</label>
                         <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
                     </div>
 

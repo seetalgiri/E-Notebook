@@ -118,27 +118,44 @@
                     </div>
                     <div class="itemContentmodal">
                         <div class="shadow streamsmalldiv buttonsModal rejectreq"><button>Rejected</button></div>
-                        <div class="shadow streamsmalldiv buttonsModal"><button>Accepted</button></div>
+                        <div class="shadow streamsmalldiv buttonsModal" onclick="AcceptBtnClk()">
+                            <button>Accepted</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        const modal = document.getElementById("modal");
-        const modalOpen = document.getElementById("modalOpen");
-        const crossModal = document.getElementById("crossModal");
-        const background = document.getElementById('background');
-        const params = new URLSearchParams(window.location.search);
-        modalOpen.addEventListener("click", () => {
-            modal.style.display = "block";
-        })
-        // background.addEventListener('click', () => {
-        //     modal.style.display = "none";
-        // });
-        crossModal.addEventListener('click', () => {
-            modal.style.display = "none";
-        });
+    const modal = document.getElementById("modal");
+    const modalOpen = document.getElementById("modalOpen");
+    const crossModal = document.getElementById("crossModal");
+    const background = document.getElementById('background');
+    const params = new URLSearchParams(window.location.search);
+    modalOpen.addEventListener("click", () => {
+        modal.style.display = "block";
+    })
+    // background.addEventListener('click', () => {
+    //     modal.style.display = "none";
+    // });
+    crossModal.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+
+    function AcceptBtnClk() {
+        var currentUrl = window.location.href;
+        var url = new URL(currentUrl);
+
+        // Replace the filename
+        url.pathname = url.pathname.replace("requestpost.php", "notepost.php");
+
+        // Add additional parameters
+        url.searchParams.set("chaptername", "Chapter 1: Introduction");
+        url.searchParams.set("description", "Lorem ipsum dolor sit amet ");
+        var newUrl = url.href;
+        history.pushState(null, null, newUrl);
+        location.reload();
+    }
     </script>
 </body>
 

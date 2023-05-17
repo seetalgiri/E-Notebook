@@ -194,7 +194,7 @@ if (isset($_POST['updateadd'])) {
                     <h3>Add Subject name:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
-                        <label for="dOrder">Choose Faculty:</label>
+                        <label for="mySelect">Choose Faculty:</label>
                         <select name="facultyid" id="mySelect" onchange="myFunction()">
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
