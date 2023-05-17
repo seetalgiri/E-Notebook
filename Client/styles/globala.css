@@ -40,6 +40,9 @@
   --shadow-large-shadow1: #0000001a;
   --shadow-large-shadow2: #0000000d;
   --image-color: 1;
+
+  /* for notification hover color  */
+  --nothov-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ====================== For Dark Mode ====================== */
@@ -77,6 +80,9 @@
   --shadow-large-shadow2: #0000000d;
 
   --image-color: 5;
+
+  /* for notification hover color  */
+  --nothov-color: rgba(0, 0, 0, 0.2);
 }
 
 /* ====================== For Light Mode ====================== */

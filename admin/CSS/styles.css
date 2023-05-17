@@ -473,7 +473,6 @@ input[type="file"]::file-selector-button:hover {
   margin: 0 auto;
   border-radius: 2px;
   text-decoration: none !important;
-  color: var(--text-color-light) !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -482,10 +481,11 @@ input[type="file"]::file-selector-button:hover {
   transition: 0.2s;
   gap: 1px;
   background-color: var(--bg-white);
+  color: var(--text-color-light) !important;
 }
 .eachContent:hover {
-  color: var(--bg-white) !important;
-  background-color: var(--second-color);
+  color: var(--text-color-dark) !important;
+  background-color: var(--nothov-color);
 }
 .divsecNotification {
   font-family: Arial, Helvetica, sans-serif;
