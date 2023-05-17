@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
-    <link rel="stylesheet" href="../Client/styles/globala.css">
-    <link rel="stylesheet" href="./css/stylesa.css">
-    <link rel="stylesheet" href="./CSS/faculitya.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
 
@@ -74,28 +74,28 @@
                 <div class="ModalHead">
                     <button id="crossModal">X</button>
                     <div class="formContent">
-                        Post Request
+                        Post Request From <span id="reqUserName">Gaurab sunar</span>
                     </div>
                 </div>
                 <div id="mainCOntent">
                     <div class="itemContentmodal">
                         <div class="shadow streamsmalldiv">
                             <span class="head">Stream:</span>
-                            <span class="dis">BCA</span>
+                            <span class="dis" id="reqstreamcontent">BCA</span>
                         </div>
                         <div class="shadow streamsmalldiv">
                             <span class="head">Sem/Year:</span>
-                            <span class="dis">1st Sem</span>
+                            <span class="dis" id="reqSemYearContent">1st Sem</span>
                         </div>
                     </div>
                     <div class="itemContentmodal">
                         <div class="shadow streamsmalldiv">
                             <span class="head">Sub Name:</span>
-                            <span class="dis">CFA </span>
+                            <span class="dis" id="reqsubnameContent">CFA </span>
                         </div>
                         <div class="shadow streamsmalldiv">
                             <span class="head">Note Name:</span>
-                            <span class="dis">Chapter1: Intorduction </span>
+                            <span class="dis" id="reqnoteNameContent">Chapter1: Intorduction </span>
                         </div>
                     </div>
                     <div class="shadow streamsmalldiv filesizeshow">
@@ -112,7 +112,8 @@
                     </div>
                     <div class="shadow streambigdiv">
                         <span class="head">Description:</span>
-                        <span class="dis">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt a,
+                        <span class="dis" id="reqdescriptionContent">Lorem ipsum dolor sit amet consectetur, adipisicing
+                            elit. Deserunt a,
                             consectetur reprehenderit tempore eligendi aliquam libero dolorem corporis. Quis,
                             distinctio. </span>
                     </div>
@@ -127,35 +128,43 @@
         </div>
     </div>
     <script>
-    const modal = document.getElementById("modal");
-    const modalOpen = document.getElementById("modalOpen");
-    const crossModal = document.getElementById("crossModal");
-    const background = document.getElementById('background');
-    const params = new URLSearchParams(window.location.search);
-    modalOpen.addEventListener("click", () => {
-        modal.style.display = "block";
-    })
-    // background.addEventListener('click', () => {
-    //     modal.style.display = "none";
-    // });
-    crossModal.addEventListener('click', () => {
-        modal.style.display = "none";
-    });
+        const modal = document.getElementById("modal");
+        const modalOpen = document.getElementById("modalOpen");
+        const crossModal = document.getElementById("crossModal");
+        const background = document.getElementById('background');
+        const params = new URLSearchParams(window.location.search);
+        modalOpen.addEventListener("click", () => {
+            modal.style.display = "block";
+        })
+        // background.addEventListener('click', () => {
+        //     modal.style.display = "none";
+        // });
+        crossModal.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
 
-    function AcceptBtnClk() {
-        var currentUrl = window.location.href;
-        var url = new URL(currentUrl);
+        function AcceptBtnClk() {
+            var currentUrl = window.location.href;
+            var url = new URL(currentUrl);
+            url.pathname = url.pathname.replace("requestpost.php", "notepost.php");
+            let reqstreamcontent = document.getElementById('reqstreamcontent').innerText;
+            let reqSemYearContent = document.getElementById('reqSemYearContent').innerText;
+            let reqsubnameContent = document.getElementById('reqsubnameContent').innerText;
+            let reqnoteNameContent = document.getElementById('reqnoteNameContent').innerText;
+            let reqdescriptionContent = document.getElementById('reqdescriptionContent').innerText;
+            let reqUserName = document.getElementById('reqUserName').innerText;
 
-        // Replace the filename
-        url.pathname = url.pathname.replace("requestpost.php", "notepost.php");
-
-        // Add additional parameters
-        url.searchParams.set("chaptername", "Chapter 1: Introduction");
-        url.searchParams.set("description", "Lorem ipsum dolor sit amet ");
-        var newUrl = url.href;
-        history.pushState(null, null, newUrl);
-        location.reload();
-    }
+            // Add additional parameters
+            url.searchParams.set("description", reqdescriptionContent);
+            url.searchParams.set("stream", reqstreamcontent);
+            url.searchParams.set("sem_year", reqSemYearContent);
+            url.searchParams.set("subname", reqsubnameContent);
+            url.searchParams.set("username", reqUserName);
+            url.searchParams.set("chaptername", reqnoteNameContent);
+            var newUrl = url.href;
+            history.pushState(null, null, newUrl);
+            location.reload();
+        }
     </script>
 </body>
 

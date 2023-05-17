@@ -117,9 +117,9 @@ if (isset($_POST['updateadd'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Suject Name</title>
-    <link rel="stylesheet" href="../Client/styles/globala.css">
-    <link rel="stylesheet" href="./css/stylesa.css">
-    <link rel="stylesheet" href="./CSS/faculitya.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/faculity.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenavs.js" defer></script>

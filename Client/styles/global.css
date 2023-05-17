@@ -175,3 +175,14 @@
   min-height: 50px;
   width: 100%;
 }
+#PostDesctiption {
+  height: 125px;
+  scrollbar-width: thin;
+}
+#PostDesctiption::-webkit-scrollbar {
+  width: 5px;
+}
+#PostDesctiption::-webkit-scrollbar-thumb {
+  background-color: var(--light-bgcolor);
+  border-radius: 4px;
+}

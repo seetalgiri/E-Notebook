@@ -8,8 +8,8 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globala.css  -->
-    <link rel="stylesheet" href="./Client/styles/globala.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
@@ -296,20 +296,20 @@
         </div>
     </div>
     <script>
-    function updateURL(newsValue) {
-        const urlParams = new URLSearchParams(window.location.search);
-        urlParams.set('news', newsValue);
+        function updateURL(newsValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('news', newsValue);
 
-        const newURL = window.location.pathname + '?' + urlParams.toString();
-        history.replaceState(null, '', newURL);
-        const cmtcreatePost = document.getElementById('cmtcreatePost');
+            const newURL = window.location.pathname + '?' + urlParams.toString();
+            history.replaceState(null, '', newURL);
+            const cmtcreatePost = document.getElementById('cmtcreatePost');
 
-    }
+        }
 
-    function commentFOcusIconclk() {
-        cmtcreatePost.focus()
-        console.log("first")
-    }
+        function commentFOcusIconclk() {
+            cmtcreatePost.focus()
+            console.log("first")
+        }
     </script>
 </body>
 
