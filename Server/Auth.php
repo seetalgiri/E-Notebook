@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //variable declaration for database connection
 $commonHost = "localhost";
 $commonUser = "root";
@@ -28,17 +30,27 @@ else {
         if (mysqli_num_rows($emailResult) > 1) {
             echo "User already registered";
         } else {
-            //insert into the database
+            // Insert into the database
             $regQuery = "INSERT INTO `users` (`name`, `email`, `password`, `stream`) VALUES ('$name', '$email', '$hashedPass', '$stream')";
 
-            //execute the query
+            // Execute the query
             $regResponse = mysqli_query($con, $regQuery);
 
             if (!$regResponse) {
-                echo "cannot insert into database";
+                echo "Cannot insert into the database";
             } else {
-                echo "register successfully";
+                // Retrieve the inserted data's ID
+                $insertedId = mysqli_insert_id($con);
+
+                // Set session variables
+                $_SESSION['id'] = $insertedId;
+                $_SESSION['username'] = $name;
+                $_SESSION['email'] = $email;
+                // Redirect to index.php
+                header("Location: ../index.php");
+                exit();
             }
+
         }
     }
 
