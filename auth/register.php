@@ -62,7 +62,8 @@
                     <h3 id="login">Register</h3>
                     <div class="input-box">
                         <label for="Username">Username</label>
-                        <input type="text" id="Username" name="username" placeholder="Enter your Username" />
+                        <input type="text" id="Username" name="username" placeholder="Enter your Username"
+                            autocomplete="off" />
                         <svg width="16" height="16" viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M8.30737 0.443001C9.36824 0.443001 10.3857 0.864428 11.1358 1.61457C11.8859 2.36472 12.3074 3.38213 12.3074 4.443C12.3074 5.50387 11.8859 6.52128 11.1358 7.27143C10.3857 8.02157 9.36824 8.443 8.30737 8.443C7.24651 8.443 6.22909 8.02157 5.47895 7.27143C4.7288 6.52128 4.30737 5.50387 4.30737 4.443C4.30737 3.38213 4.7288 2.36472 5.47895 1.61457C6.22909 0.864428 7.24651 0.443001 8.30737 0.443001ZM8.30737 10.443C12.7274 10.443 16.3074 12.233 16.3074 14.443V16.443H0.307373V14.443C0.307373 12.233 3.88737 10.443 8.30737 10.443Z" />
@@ -71,7 +72,7 @@
                     </div>
                     <div class="input-box">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" />
+                        <input type="email" id="email" name="email" placeholder="Enter your email" autocomplete="off" />
                         <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM19.6 8.25L12.53 12.67C12.21 12.87 11.79 12.87 11.47 12.67L4.4 8.25C4.29973 8.19371 4.21192 8.11766 4.14189 8.02645C4.07186 7.93525 4.02106 7.83078 3.99258 7.71937C3.96409 7.60796 3.9585 7.49194 3.97616 7.37831C3.99381 7.26468 4.03434 7.15581 4.09528 7.0583C4.15623 6.96079 4.23632 6.87666 4.33073 6.811C4.42513 6.74533 4.53187 6.69951 4.6445 6.6763C4.75712 6.65309 4.87328 6.65297 4.98595 6.67595C5.09863 6.69893 5.20546 6.74453 5.3 6.81L12 11L18.7 6.81C18.7945 6.74453 18.9014 6.69893 19.014 6.67595C19.1267 6.65297 19.2429 6.65309 19.3555 6.6763C19.4681 6.69951 19.5749 6.74533 19.6693 6.811C19.7637 6.87666 19.8438 6.96079 19.9047 7.0583C19.9657 7.15581 20.0062 7.26468 20.0238 7.37831C20.0415 7.49194 20.0359 7.60796 20.0074 7.71937C19.9789 7.83078 19.9281 7.93525 19.8581 8.02645C19.7881 8.11766 19.7003 8.19371 19.6 8.25Z" />
@@ -79,7 +80,8 @@
                     </div>
                     <div class="input-box">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" />
+                        <input type="password" id="password" name="password" placeholder="Enter your password"
+                            autocomplete="off" />
                         <div class="password">
                             <svg id="showIcon" width="17" height="17" viewBox="0 0 16 16"
                                 xmlns="http://www.w3.org/2000/svg" onclick="eyeOpen()">
@@ -114,27 +116,27 @@
         </div>
     </div>
     <script>
-        const password = document.getElementById("password");
-        const hideIcon = document.getElementById("hideIcon");
-        const showIcon = document.getElementById("showIcon");
+    const password = document.getElementById("password");
+    const hideIcon = document.getElementById("hideIcon");
+    const showIcon = document.getElementById("showIcon");
 
-        const eyeOpen = () => {
-            showIcon.style.display = "none";
-            hideIcon.style.display = "block";
-            password.setAttribute("type", "password");
-        }
-        const eyeClose = () => {
-            showIcon.style.display = "block";
-            hideIcon.style.display = "none";
-            password.setAttribute("type", "text");
-        }
-        const bodyMode = document.getElementsByTagName('body')[0];
+    const eyeOpen = () => {
+        showIcon.style.display = "none";
+        hideIcon.style.display = "block";
+        password.setAttribute("type", "password");
+    }
+    const eyeClose = () => {
+        showIcon.style.display = "block";
+        hideIcon.style.display = "none";
+        password.setAttribute("type", "text");
+    }
+    const bodyMode = document.getElementsByTagName('body')[0];
 
-        if (localStorage.getItem('mode') === 'dark') {
-            bodyMode.classList.add('Darkmode');
-        } else {
-            bodyMode.classList.remove('Darkmode');
-        }
+    if (localStorage.getItem('mode') === 'dark') {
+        bodyMode.classList.add('Darkmode');
+    } else {
+        bodyMode.classList.remove('Darkmode');
+    }
     </script>
 </body>
 

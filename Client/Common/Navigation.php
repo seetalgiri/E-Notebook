@@ -1,21 +1,24 @@
 <?php
 // Start session
 session_start();
-
-// Check if session variables exist
+$id = 0;
 if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'])) {
-    // Access session variables
     $username = $_SESSION['username'];
     $id = (int) $_SESSION['id'];
     $email = $_SESSION['email'];
+}
 
-    // Display session data
-    // echo "Username: $username<br>";
-    // echo "ID: $id<br>";
-    // echo "Email: $email<br>";
-} else {
-    // Session variables do not exist
-    echo "Session data not available.";
+// Check if the logout button is clicked
+if (isset($_POST['logoutBtn'])) {
+    // Clear all session variables
+    session_unset();
+
+    // Destroy the session
+    session_destroy();
+
+    // Redirect to the login page or any other desired location
+    header("Location: index.php");
+    exit();
 }
 
 ?>
@@ -63,9 +66,9 @@ if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'])) {
                 </div>
             </div>
             <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
-            <div>
-                <button id="logoutBtn">LOGOUT</button>
-            </div>
+                <form method="POST" action="" class="logoutbtn">
+                    <button type="submit" name="logoutBtn">LOGOUT</button>
+                </form>
         </div>
     </div>';
             ?>
@@ -85,7 +88,7 @@ if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'])) {
 
     <!-- ======================================== for user profile11. ======================================== -->
     <?php
-    echo $id > 1 ? '
+    echo $id >= 1 ? '
     <div class="profileCls topProfilemobile" id="profileMainContainer">
         <svg onclick="openProfileModal()" id="adminProfile22" width="35" height="40" viewBox="0 0 21 21"
             xmlns="http://www.w3.org/2000/svg">
@@ -101,9 +104,9 @@ if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'])) {
                 </div>
             </div>
             <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
-            <div>
-                <button id="logoutBtn">LOGOUT</button>
-            </div>
+            <form method="POST" action="" class="logoutbtn">
+            <button type="submit" name="logoutBtn">LOGOUT</button>
+        </form>
         </div>
     </div>' : '';
     ?>

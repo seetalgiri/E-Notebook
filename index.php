@@ -13,7 +13,7 @@
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexs.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
 
@@ -28,8 +28,8 @@
     <div id="home" style="padding-bottom: 60px;">
         <div id="contentDiv">
             <div id="dynamicContent">
-                <div id="post" class="shadow" onclick="modalOpen()">
-                    <div id="userPost">G</div>
+                <?php echo $id >= 1 ? '<div id="post" class="shadow" onclick="modalOpen()">
+                    <div id="userPost">' . ucfirst(substr($username, 0, 1)) . '</div>
                     <input type="text" name="search" id="createPost" placeholder="Create Post" readonly
                         autocomplete="off">
                     <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -39,7 +39,8 @@
                     <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
                     </svg>
-                </div>
+                </div>' : ''; ?>
+
                 <div id="category" class="shadow">
                     <div class="streamDiv">
                         <div class="stream streamChooseDiv" id="selecterStream">
@@ -61,8 +62,6 @@
                                 $news = isset($_GET['news']) ? $_GET['news'] : '';
                                 echo ($news == 'bca') ? "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)'>";
                                 ?>
-
-
                                 <label class="btn btn-default" for="bcarad"><span>BCA</span>
                                     <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -244,9 +243,9 @@
                             </div>
 
                             <!-- for post comment  -->
-                            <form action="#">
+                            <?php echo $id >= 1 ? '<form action="#">
                                 <div id="cmtPost" class="shadow">
-                                    <div id="cmtuserPost">G</div>
+                                    <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
                                     <input type="text" name="comment" id="cmtcreatePost"
                                         placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
                                     <button style="background-color: transparent;border: none;display: flex;">
@@ -256,7 +255,8 @@
                                         </svg>
                                     </button>
                                 </div>
-                            </form>
+                            </form>' : ''; ?>
+
                         </div>
 
                     </div>

@@ -1,20 +1,23 @@
 <div id="fixedContent">
     <div class="fixedcontentbox1 fixedContentDiv shadow">
         <div id="divfixedTopcontent">
-            <div id="headerDiv2">
-                <div id="profilePost" class="shadow">G</div>
-                <div id="nameMore">
-                    <div id="name">Gaurab Sunar</div>
-                    <div id="date">
-                        <span>gaurabsunar9@gmail.com</span>
+            <?php echo $id >= 1 ? '<div id="userprofile">
+                <div id="headerDiv2">
+                    <div id="profilePost" class="shadow">' . ucfirst(substr($username, 0, 1)) . '</div>
+                    <div id="nameMore">
+                        <div id="name">' . $username . '</div>
+                        <div id="date">
+                            <span>' . $email . '</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="divline mt-2"></div>
+                <div class="divline mt-2"></div>
+            </div>' : '' ?>
+
             <div class="logoandContent">
                 <h3 class="clsLogo">E-NoteBook</h3>
-                <p class="clsContentl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                    placeat.</p>
+                <p class="clsContentl">Unlock Knowledge, Ace Your Journey: eNotebook - Your Gateway to Comprehensive
+                    Notes and Study Material.</p>
             </div>
         </div>
         <div class="divline"></div>

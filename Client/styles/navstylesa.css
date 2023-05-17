@@ -71,6 +71,23 @@ nav {
   transition: 0.3s !important;
   color: var(--text-color-light);
 }
+.logoutbtn button {
+  padding: 7px 65px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+  font-size: 17px;
+  scale: 0.9;
+  border: 1px solid var(--primary-color-light);
+  outline-color: var(--primary-color-light);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--bg-white);
+  transition: 0.3s !important;
+  color: var(--text-color-light);
+}
 .login button span {
   margin-top: 2px;
   color: var(--primary-color-light);
