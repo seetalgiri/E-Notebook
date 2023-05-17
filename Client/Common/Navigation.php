@@ -60,7 +60,8 @@ const navCloseDIv = document.querySelector(".navCloseDIv");
 navsectionLink.style.right = "-120%";
 const navToggleFuction = () => {
     if (navsectionLink.style.right === "-120%") {
-        navsectionLink.style.right = "-12px";
+        navsectionLink.style.right = "0px";
+        navsectionLink.style.paddingBottom = "10vh";
         hamburgerNav.classList.add("crossNav");
         navCloseDIv.style.display = "block";
     } else {
