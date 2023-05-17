@@ -138,8 +138,8 @@ form input::-webkit-outer-spin-button {
 }
 select {
   padding: 10px;
-  border: 1px solid #555;
-  border-radius: 4px;
+  border: 1px solid var(--light-border-clor-opacity1);
+  border-radius: 2px;
   outline: none;
   cursor: pointer !important;
   font-size: 17px !important;

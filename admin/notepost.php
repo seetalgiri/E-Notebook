@@ -1,3 +1,17 @@
+<?php
+$show_notification = false;
+
+// to conntct database
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +21,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./CSS/faculitya.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/notepost.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sideNav.js" defer></script>
-    <script src="./logic/notepost.js" defer></script>
+    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/noteposts.js" defer></script>
 </head>
 
 <body>
@@ -74,47 +88,50 @@
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="./faculty.php" method="post" id="forms">
+                <form action="#" method="get" id="forms">
                     <h3>Add Faculty:</h3>
-                    <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
+                    <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
-                        <label for="fname">Enter Post Description:</label>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="Enter Note Description..."></textarea>
+                        <label for="PostDesctiption">Enter Post Description:</label>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="10"
+                            placeholder="Enter Note Description..."></textarea>
                     </div>
                     <div class='flexButtons'>
+
                         <div id="forms" class="flex fbselectStr">
-                            <label for="stdType">Select Stream:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">ALL</option>
-                                <option value="2">BCA</option>
-                                <option value="2">BBM</option>
-                                <option value="2">BSW</option>
+                            <label for="mySelect">Select Stream:</label>
+                            <select name="facultyid" id="mySelect" onchange="myFunction()"
+                                style="padding: 11px; border-radius: 3px">
+                                <option value="">Select Stream</option>
+                                <?php
+                                if (mysqli_num_rows($resfac) > 0) {
+                                    while ($row = mysqli_fetch_assoc($resfac)) {
+                                        echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                    }
+                                }
+                                ?>
                             </select>
                         </div>
                         <div id="forms" class="flex fbselectStr">
-                            <label for="stdType">Select Grade:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">First Year</option>
-                                <option value="2">Second Year</option>
-                                <option value="2">Third Year</option>
-                                <option value="2">Fourth Year</option>
+                            <label for="semyearsel">Select Grade:</label>
+                            <select id='semyearsel'>
+                                <option>Select Semester</option>
                             </select>
                         </div>
+
+
+
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
-                            <label for="stdType">Subject Name:</label>
-                            <select name="yearsem" id="stdType">
-                                <option value="1">CFA</option>
-                                <option value="2">DL</option>
-                                <option value="2">Math</option>
-                                <option value="2">Social</option>
-                                <option value="2">English</option>
+                            <label for="subject">Subject Name:</label>
+                            <select name="subject" id="subject">
+                                <option value="">Select Subject</option>
                             </select>
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="image">Select Image:</label>
-                            <input type="file" name="image" id="image" accept="image">
+                            <input type="file" name="image" id="image" accept="application/pdf">
                         </div>
                     </div>
                     <div id="forms" class="flex">
@@ -129,6 +146,138 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+        let data = [];
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "../Server/subjectName.php", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var jsonData = JSON.parse(xhr.responseText);
+                data = jsonData
+            }
+        };
+        xhr.send();
+        var streamDropdown = document.getElementById('mySelect');
+        var semYearDropdown = document.getElementById('semyearsel');
+        var subjectDropdown = document.getElementById('subject');
+
+        streamDropdown.addEventListener('change', handleSubjectChange);
+        semYearDropdown.addEventListener('change', handlesemSubjectChange);
+
+        let totalcontent = '';
+        let filterdcontent = [];
+
+        function handleSubjectChange() {
+            let stream = streamDropdown.value;
+            let streamfiltered = data.filter(e => e.facultyid === stream);
+            filterdcontent = streamfiltered;
+            subjectDropdown.innerHTML = "";
+            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+            let option = "";
+            totalcontent = '';
+
+            streamfiltered.forEach((e) => {
+                if (!option.includes(`value="${e.id}"`)) {
+                    option = `<option value="${e.id}">${e.name}</option>`;
+                    totalcontent += option;
+                }
+            });
+
+            subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+        }
+
+
+
+        function handlesemSubjectChange() {
+            let grade = semYearDropdown.value;
+            let streamfiltered = [];
+            subjectDropdown.innerHTML = "";
+            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+            const allDataset = () => {
+                let option = "";
+                totalcontent = '';
+
+                streamfiltered.forEach((e) => {
+                    if (!option.includes(`value="${e.id}"`)) {
+                        option = `<option value="${e.id}">${e.name}</option>`;
+                        totalcontent += option;
+                    }
+                });
+
+                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+            }
+
+            if (filterdcontent.length <= 0) {
+                if (semYearDropdown.children.length > 7) {
+                    streamfiltered = data.filter(e => e.sem === grade);
+                    allDataset()
+                } else {
+                    streamfiltered = data.filter(e => e.year === grade);
+                    allDataset()
+                }
+            } else {
+                if (semYearDropdown.children.length > 7) {
+                    streamfiltered = filterdcontent.filter(e => e.sem === grade);
+                    allDataset()
+                } else {
+                    streamfiltered = filterdcontent.filter(e => e.year === grade);
+                    allDataset()
+                }
+            }
+
+
+        }
+
+
+
+        // crossSection.addEventListener("click", toggleSection);
+        // filterSection.addEventListener("click", toggleSection);
+
+        let sem = `<option>Select Semester</option>
+                    <option value='1'>First Semester</option>
+                    <option value='2'>Second Semester</option>
+                    <option value='3'>Third Semester</option>
+                    <option value='4'>Fourth Semester</option>
+                    <option value='5'>Fifth Semester</option>
+                    <option value='6'>Sixth Semester</option>
+                    <option value='7'>Seventh Semester</option>
+                    <option value='8'>Eighth Semester</option>
+                    `;
+
+        let year = `<option>Select Year</option>    
+                    <option value='1'>First Year</option>
+                    <option value='2'>Second Year</option>
+                    <option value='3'>Third Year</option>
+                    <option value='4'>Fourth Year</option>
+                   `;
+
+        // setting year and sem
+        const initialval = document.querySelector("#mySelect option");
+        const semyear = document.getElementById("semyearsel");
+
+
+        let initialvaltype = initialval.getAttribute("data_yearsem");
+        let HTML = Number(initialvaltype) === 1 ? year : sem;
+
+        // changing faculty value;
+        function myFunction() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            let type = selectedOption.getAttribute("data_yearsem");
+            if (Number(type) === 1) {
+                semyear.setAttribute("name", "year");
+                HTML = year;
+            } else {
+                semyear.setAttribute("name", "sem");
+                HTML = sem;
+            }
+            semyear.innerHTML = HTML;
+        }
+    </script>
 
 </body>
 

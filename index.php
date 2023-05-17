@@ -8,14 +8,14 @@
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globala.css  -->
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexs.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/index.js" defer></script>
@@ -28,8 +28,8 @@
     <div id="home" style="padding-bottom: 60px;">
         <div id="contentDiv">
             <div id="dynamicContent">
-                <div id="post" class="shadow" onclick="modalOpen()">
-                    <div id="userPost">G</div>
+                <?php echo $id >= 1 ? '<div id="post" class="shadow" onclick="modalOpen()">
+                    <div id="userPost">' . ucfirst(substr($username, 0, 1)) . '</div>
                     <input type="text" name="search" id="createPost" placeholder="Create Post" readonly
                         autocomplete="off">
                     <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
@@ -39,40 +39,73 @@
                     <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
                     </svg>
-                </div>
-                <div id="category" class="shadow">
-                    <div class="stream">
-                        <li name="gaurab"><a href="?news=all" class="activestr"><span>ALL</span> <svg width="15"
-                                    height="16" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
+                </div>' : ''; ?>
 
-                        <li><a href="?news=bbm" class=""><span>BBM</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bca" class=""><span>BCA</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bsw" class=""><span>BSW</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
-                        <li><a href="?news=bbs" class=""><span>BBS</span> <svg width="15" height="16"
-                                    viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
-                                </svg>
-                            </a></li>
+                <div id="category" class="shadow">
+                    <div class="streamDiv">
+                        <div class="stream streamChooseDiv" id="selecterStream">
+                            <li class="selectSreamradio">
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : 'all';
+                                echo ($news == 'all') ? "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)'>";
+                                ?>
+
+
+                                <label class="btn btn-default" for="allrad"><span>ALL</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bca') ? "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bcarad' name='stream' value='bca' onchange='updateURL(this.value)'>";
+                                ?>
+                                <label class="btn btn-default" for="bcarad"><span>BCA</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bbm') ? "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='Bbmrad' name='stream' value='bbm' onchange='updateURL(this.value)'>";
+                                ?>
+
+
+                                <label class="btn btn-default" for="Bbmrad"><span>BBM</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bbs') ? "<input type='radio' id='bbsrad' name='stream' value='bbs' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bbsrad' name='stream' value='bbs' onchange='updateURL(this.value)'>";
+                                ?>
+
+                                <label class="btn btn-default" for="bbsrad"><span>BBS</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                            <li class="selectSreamradio">
+                                <?php
+                                $news = isset($_GET['news']) ? $_GET['news'] : '';
+                                echo ($news == 'bsw') ? "<input type='radio' id='bswrad' name='stream' value='bsw' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='bswrad' name='stream' value='bsw' onchange='updateURL(this.value)'>";
+                                ?>
+
+                                <label class="btn btn-default" for="bswrad"><span>BSW</span>
+                                    <svg width="14" height="15" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z" />
+                                    </svg></label>
+                            </li>
+                        </div>
                     </div>
                 </div>
 
@@ -119,7 +152,7 @@
                                 <span id="counterLike" class="counter">101</span>
                                 <!-- <span>Likes</span> -->
                             </div>
-                            <div id="comment" class="actionFlex">
+                            <div id="comment" class="actionFlex" onclick="commentFOcusIconclk()">
                                 <svg width="17" height="17" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M4.5 8.625C4.40054 8.625 4.30516 8.58549 4.23484 8.51517C4.16451 8.44484 4.125 8.34946 4.125 8.25V7.125H2.625C2.42609 7.125 2.23532 7.04598 2.09467 6.90533C1.95402 6.76468 1.875 6.57391 1.875 6.375V2.625C1.875 2.42609 1.95402 2.23532 2.09467 2.09467C2.23532 1.95402 2.42609 1.875 2.625 1.875H7.875C8.07391 1.875 8.26468 1.95402 8.40533 2.09467C8.54598 2.23532 8.625 2.42609 8.625 2.625V6.375C8.625 6.57391 8.54598 6.76468 8.40533 6.90533C8.26468 7.04598 8.07391 7.125 7.875 7.125H6.3375L4.95 8.51625C4.875 8.58375 4.785 8.625 4.6875 8.625H4.5ZM1.125 5.625H0.375V1.125C0.375 0.926088 0.454018 0.735322 0.59467 0.59467C0.735322 0.454018 0.926088 0.375 1.125 0.375H7.125V1.125H1.125V5.625Z" />
@@ -159,20 +192,71 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div id="moreComment">
-                                <a class="More" href="#">View More comments</a>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="eachcomment">
+                                    <div class="commentcontent">
+                                        <div id="cmtuserDet">
+                                            <div id="userPost">G</div>
+                                            <div id="userNameAndDate">
+                                                <span>Gaurab sunar</span>
+                                                <span>2021-21-2</span>
+                                            </div>
+                                        </div>
+                                        <div class="commentdata">
+                                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
+                                            Rem vel officia, quae
+                                            aliquam voluptatem possimus odio quam?
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- for post comment  -->
-                            <div id="cmtPost" class="shadow">
-                                <div id="cmtuserPost">G</div>
-                                <input type="text" name="comment" id="cmtcreatePost"
-                                    placeholder="Comment your thoughts..." autocomplete="off">
-                                <svg width="19" height="16" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
-                                </svg>
-                            </div>
+                            <?php echo $id >= 1 ? '<form action="#">
+                                <div id="cmtPost" class="shadow">
+                                    <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
+                                    <input type="text" name="comment" id="cmtcreatePost"
+                                        placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                    <button style="background-color: transparent;border: none;display: flex;">
+                                        <svg width="20" height="17" viewBox="0 0 19 16"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>' : ''; ?>
+
                         </div>
 
                     </div>
@@ -180,66 +264,7 @@
                 <!-- end of each post  -->
 
             </div>
-            <div id="fixedContent">
-                <div class="fixedcontentbox1 fixedContentDiv shadow">
-                    <div id="divfixedTopcontent">
-                        <div id="headerDiv2">
-                            <div id="profilePost" class="shadow">G</div>
-                            <div id="nameMore">
-                                <div id="name">Gaurab Sunar</div>
-                                <div id="date">
-                                    <span>gaurabsunar9@gmail.com</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="divline mt-2"></div>
-                        <div class="logoandContent">
-                            <h3 class="clsLogo">E-NoteBook</h3>
-                            <p class="clsContentl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus,
-                                placeat.</p>
-                        </div>
-                    </div>
-                    <div class="divline"></div>
-                    <div class="contentbtns">
-                        <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
-                        <button id="notes" class="shadow">See Notes</button>
-                    </div>
-                </div>
-                <div class="fixedcontentbox2 fixedContentDiv shadow">
-                    <h3 id="recentTitle">Recent Post:</h3>
-                    <div class="firstBox">
-                        <img src="https://images.unsplash.com/photo-1681068420510-cb528c65d595?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
-                            alt="">
-                        <div id="ing">
-                            <div class="content">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                                <div id="dateRec">
-                                    2079-02-31
-                                </div>
-                            </div>
-                            <div class="clearRec">
-                                Clear
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="fixedcontentbox3 fixedContentDiv shadow">
-                    <h3 id="recentTitle">Contents:</h3>
-                    <div class="linksforContent">
-                        <li><a href="#">Notes</a></li>
-                        <li><a href="#">Question paper</a></li>
-                        <li><a href="#">Syllabus</a></li>
-                        <li><a href="#">Created By</a></li>
-                    </div>
-
-                    <div class="divline"></div>
-                    <footer class="footercontent">
-                        E-NoteBook © <span id="currentYear"></span> | All rights reserved
-                    </footer>
-
-
-                </div>
-            </div>
+            <?php include './Client/Common/fixedcontent.php'; ?>
         </div>
     </div>
 
@@ -270,6 +295,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function updateURL(newsValue) {
+            const urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('news', newsValue);
+
+            const newURL = window.location.pathname + '?' + urlParams.toString();
+            history.replaceState(null, '', newURL);
+            const cmtcreatePost = document.getElementById('cmtcreatePost');
+
+        }
+
+        function commentFOcusIconclk() {
+            cmtcreatePost.focus()
+            console.log("first")
+        }
+    </script>
 </body>
 
 </html>

@@ -1,3 +1,17 @@
+<?php
+$show_notification = false;
+
+// to conntct database
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,14 +20,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notice Post</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./CSS/faculitya.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noticepost.css">
 
 
     <!-- for JS Logic  -->
-    <script src="./logic/sideNav.js" defer></script>
+    <script src="./logic/sidenavs.js" defer></script>
     <script src="./logic/noticepost.js" defer></script>
 </head>
 
@@ -69,26 +83,30 @@
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="./faculty.php" method="post" id="forms">
+                <form action="#" method="get" id="forms">
                     <h3>Add Faculty:</h3>
-                    <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
+                    <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
-                        <label for="fname">Enter Post Description:</label>
-                        <textarea name="" id="" cols="30" rows="10"></textarea>
+                        <label for="description">Enter Post Description:</label>
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="stdType">Select Stream:</label>
-                        <select name="yearsem" id="stdType">
-                            <option value="1">ALL</option>
-                            <option value="2">BCA</option>
-                            <option value="2">BBM</option>
-                            <option value="2">BSW</option>
+                        <label for="mySelect">Choose Faculty:</label>
+                        <select name="facultyid" id="mySelect">
+                            <?php
+                            if (mysqli_num_rows($resfac) > 0) {
+                                while ($row = mysqli_fetch_assoc($resfac)) {
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                }
+                            }
+                            ?>
                         </select>
                     </div>
                     <div id="forms" class="flex">
-                        <label for="dOrder">Select Image:</label>
-                        <input type="file" name="image" id="image" type='image'>
+                        <label for="image">Select Image:</label>
+                        <input type="file" name="image" id="image" accept="image/png, image/jpeg, image/jpg">
                     </div>
+
                     <div id=" forms" class="buttonformFac">
                         <button type='submit' name='updateadd'>Post</button>
                         <button type="reset">Reset</button>

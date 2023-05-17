@@ -23,14 +23,14 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Syllabus</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globala.css  -->
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -65,7 +65,7 @@ $resfac = mysqli_query($con, $sql);
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
-                                    <option value="">Select Subject</option>
+                                    <option value="">Select Stream</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {

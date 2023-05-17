@@ -23,14 +23,14 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Previous Questions</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globala.css  -->
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -65,7 +65,7 @@ $resfac = mysqli_query($con, $sql);
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
-                                    <option value="">Select Subject</option>
+                                    <option value="">Select Stream</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {
@@ -173,54 +173,32 @@ $resfac = mysqli_query($con, $sql);
     </div>
     <div id="filterSection"></div>
     <script>
-    let data = [];
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "./Server/subjectName.php", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var jsonData = JSON.parse(xhr.responseText);
-            data = jsonData
-        }
-    };
-    xhr.send();
-    var streamDropdown = document.getElementById('mySelect');
-    var semYearDropdown = document.getElementById('semyearsel');
-    var subjectDropdown = document.getElementById('subject');
-
-    streamDropdown.addEventListener('change', handleSubjectChange);
-    semYearDropdown.addEventListener('change', handlesemSubjectChange);
-
-    let totalcontent = '';
-    let filterdcontent = [];
-
-    function handleSubjectChange() {
-        let stream = streamDropdown.value;
-        let streamfiltered = data.filter(e => e.facultyid === stream);
-        filterdcontent = streamfiltered;
-        subjectDropdown.innerHTML = "";
-        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
-        let option = "";
-        totalcontent = '';
-
-        streamfiltered.forEach((e) => {
-            if (!option.includes(`value="${e.id}"`)) {
-                option = `<option value="${e.id}">${e.name}</option>`;
-                totalcontent += option;
+        let data = [];
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "./Server/subjectName.php", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var jsonData = JSON.parse(xhr.responseText);
+                data = jsonData
             }
-        });
+        };
+        xhr.send();
+        var streamDropdown = document.getElementById('mySelect');
+        var semYearDropdown = document.getElementById('semyearsel');
+        var subjectDropdown = document.getElementById('subject');
 
-        subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
-    }
+        streamDropdown.addEventListener('change', handleSubjectChange);
+        semYearDropdown.addEventListener('change', handlesemSubjectChange);
 
+        let totalcontent = '';
+        let filterdcontent = [];
 
-
-    function handlesemSubjectChange() {
-        let grade = semYearDropdown.value;
-        let streamfiltered = [];
-        subjectDropdown.innerHTML = "";
-        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
-
-        const allDataset = () => {
+        function handleSubjectChange() {
+            let stream = streamDropdown.value;
+            let streamfiltered = data.filter(e => e.facultyid === stream);
+            filterdcontent = streamfiltered;
+            subjectDropdown.innerHTML = "";
+            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
             let option = "";
             totalcontent = '';
 
@@ -234,26 +212,48 @@ $resfac = mysqli_query($con, $sql);
             subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
         }
 
-        if (filterdcontent.length <= 0) {
-            if (semYearDropdown.children.length > 7) {
-                streamfiltered = data.filter(e => e.sem === grade);
-                allDataset()
-            } else {
-                streamfiltered = data.filter(e => e.year === grade);
-                allDataset()
+
+
+        function handlesemSubjectChange() {
+            let grade = semYearDropdown.value;
+            let streamfiltered = [];
+            subjectDropdown.innerHTML = "";
+            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+            const allDataset = () => {
+                let option = "";
+                totalcontent = '';
+
+                streamfiltered.forEach((e) => {
+                    if (!option.includes(`value="${e.id}"`)) {
+                        option = `<option value="${e.id}">${e.name}</option>`;
+                        totalcontent += option;
+                    }
+                });
+
+                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option>Not Found</option>';
             }
-        } else {
-            if (semYearDropdown.children.length > 7) {
-                streamfiltered = filterdcontent.filter(e => e.sem === grade);
-                allDataset()
+
+            if (filterdcontent.length <= 0) {
+                if (semYearDropdown.children.length > 7) {
+                    streamfiltered = data.filter(e => e.sem === grade);
+                    allDataset()
+                } else {
+                    streamfiltered = data.filter(e => e.year === grade);
+                    allDataset()
+                }
             } else {
-                streamfiltered = filterdcontent.filter(e => e.year === grade);
-                allDataset()
+                if (semYearDropdown.children.length > 7) {
+                    streamfiltered = filterdcontent.filter(e => e.sem === grade);
+                    allDataset()
+                } else {
+                    streamfiltered = filterdcontent.filter(e => e.year === grade);
+                    allDataset()
+                }
             }
+
+
         }
-
-
-    }
     </script>
 </body>
 

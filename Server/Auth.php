@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //variable declaration for database connection
 $commonHost = "localhost";
 $commonUser = "root";
@@ -28,44 +30,64 @@ else {
         if (mysqli_num_rows($emailResult) > 1) {
             echo "User already registered";
         } else {
-            //insert into the database
+            // Insert into the database
             $regQuery = "INSERT INTO `users` (`name`, `email`, `password`, `stream`) VALUES ('$name', '$email', '$hashedPass', '$stream')";
 
-            //execute the query
+            // Execute the query
             $regResponse = mysqli_query($con, $regQuery);
 
             if (!$regResponse) {
-                echo "cannot insert into database";
+                echo "Cannot insert into the database";
             } else {
-                echo "register successfully";
+                // Retrieve the inserted data's ID
+                $insertedId = mysqli_insert_id($con);
+
+                // Set session variables
+                $_SESSION['id'] = $insertedId;
+                $_SESSION['username'] = $name;
+                $_SESSION['email'] = $email;
+                // Redirect to index.php
+                header("Location: ../index.php");
+                exit();
             }
+
         }
     }
 
     //check button is clicked or not
     if (isset($_POST['login'])) {
 
-        //get data from the frontend
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = $_POST['email']; // Assuming the email is obtained from the login form
+        $password = $_POST['password']; // Assuming the password is obtained from the login form
 
-        //fetch user query
+        // Prepare the SQL query to select user data based on the provided email
         $emailQuery = "SELECT * FROM `users` WHERE `email` = '$email'";
+
         $resEmail = mysqli_query($con, $emailQuery);
-        //check whether user is registered or not
+
+        // Check whether the user is registered or not
         if (mysqli_num_rows($resEmail) < 1) {
-            echo "Invalid credential";
+            header("Location: /e_notebook/auth/login.php");
+
         } else {
             $user = mysqli_fetch_assoc($resEmail);
             $hashedPass = $user['password'];
-
-            //compare hashed and plain password
+            // Compare the hashed and plain passwords
             if (password_verify($password, $hashedPass)) {
-                echo "login successfully";
+                // Login successful
+                // Set session variables
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['name'];
+                $_SESSION['email'] = $user['email'];
+
+                // Redirect to index.php or any other page you desire
+                header("Location: ../index.php");
+                exit();
             } else {
-                echo "Invalid credential";
+                header("Location: /e_notebook/auth/login.php");
             }
         }
+
     }
 }
 

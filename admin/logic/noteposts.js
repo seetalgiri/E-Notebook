@@ -7,12 +7,39 @@ function modalBtnclk() {
   if (modalContent.style.right === "0px") {
     modalContent.style.right = "-475px";
     svgbtn.style.transform = "rotateZ(180deg)";
+    removeParams();
   } else {
     modalContent.style.right = "0px";
     svgbtn.style.transform = "rotateZ(0deg)";
   }
 }
+// when url have chaptername and description modal open
+var urlParams = new URLSearchParams(window.location.search);
+var chaptername = urlParams.get("chaptername");
+var description = urlParams.get("description");
+var username = urlParams.get("username");
+var subname = urlParams.get("subname");
+var stream = urlParams.get("stream");
+var sem_year = urlParams.get("sem_year");
+const PostDesctiption = document.getElementById("PostDesctiption");
+const noteName = document.getElementById("noteName");
 
+if (chaptername && description) {
+  modalContent.style.right = "0px";
+  svgbtn.style.transform = "rotateZ(0deg)";
+  var discontent = `${description}\nStream: ${stream}\nSem/year: ${sem_year}\nSubject Name: ${subname}\nUsername: ${username}`;
+  PostDesctiption.value = discontent;
+  noteName.value = chaptername;
+}
+
+const removeParams = () => {
+  var url = new URL(window.location.href);
+  url.search = ""; // Remove all parameters
+
+  var newUrl = url.href;
+
+  history.pushState(null, null, newUrl);
+};
 window.onclick = function (event) {
   const parentId = event.target.parentNode.id;
   const par = event.target;
