@@ -7,7 +7,7 @@ if (!$con) {
     die("Database connection failed");
 }
 
-// to show all data in frontend
+// to show all faculty data in frontend
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 

@@ -1,3 +1,18 @@
+<?php
+$show_notification = false;
+
+// to connect database
+$con = mysqli_connect("localhost", "root", "", "e_notebook");
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all faculty data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +64,7 @@
       </div>
     </div>
     <div id="loginform">
-      <form method="post" class="shadow" action="../../Server/Auth.php">
+      <form method="post" class="shadow" action="../../Server/auth/register.php">
         <div id="inputfields" class="register">
           <h3 id="login">Register</h3>
           <div class="input-box">
@@ -83,9 +98,14 @@
           <div class="selectdiv">
             <label for="stream">Stream</label>
             <select name="stream" id="stream">
-              <option value="all">All</option>
-              <option value="bca">BCA</option>
-              <option value="bbm">BBM</option>
+              <option value="all">alldata</option>
+              <?php
+                            if (mysqli_num_rows($resfac) > 0) {
+                                while ($row = mysqli_fetch_assoc($resfac)) {
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                }
+                            }
+                            ?>
               <option value="others">others</option>
             </select>
           </div>

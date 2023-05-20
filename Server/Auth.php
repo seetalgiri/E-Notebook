@@ -5,7 +5,7 @@ session_start();
 $commonHost = "localhost";
 $commonUser = "root";
 $commonPassword = "";
-$commonDbname = "s_enotebook";
+$commonDbname = "e_notebook";
 //database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 
