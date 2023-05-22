@@ -154,32 +154,54 @@ $resfac = mysqli_query($con, $sql);
 
 
     <script>
-        let data = [];
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "../Server/subjectName.php", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var jsonData = JSON.parse(xhr.responseText);
-                data = jsonData
+    let data = [];
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../Server/subjectName.php", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            data = jsonData
+        }
+    };
+    xhr.send();
+    var streamDropdown = document.getElementById('mySelect');
+    var semYearDropdown = document.getElementById('semyearsel');
+    var subjectDropdown = document.getElementById('subject');
+
+    streamDropdown.addEventListener('change', handleSubjectChange);
+    semYearDropdown.addEventListener('change', handlesemSubjectChange);
+
+    let totalcontent = '';
+    let filterdcontent = [];
+
+    function handleSubjectChange() {
+        let stream = streamDropdown.value;
+        let streamfiltered = data.filter(e => e.facultyid === stream);
+        filterdcontent = streamfiltered;
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+        let option = "";
+        totalcontent = '';
+
+        streamfiltered.forEach((e) => {
+            if (!option.includes(`value="${e.id}"`)) {
+                option = `<option value="${e.id}">${e.name}</option>`;
+                totalcontent += option;
             }
-        };
-        xhr.send();
-        var streamDropdown = document.getElementById('mySelect');
-        var semYearDropdown = document.getElementById('semyearsel');
-        var subjectDropdown = document.getElementById('subject');
+        });
 
-        streamDropdown.addEventListener('change', handleSubjectChange);
-        semYearDropdown.addEventListener('change', handlesemSubjectChange);
+        subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+    }
 
-        let totalcontent = '';
-        let filterdcontent = [];
 
-        function handleSubjectChange() {
-            let stream = streamDropdown.value;
-            let streamfiltered = data.filter(e => e.facultyid === stream);
-            filterdcontent = streamfiltered;
-            subjectDropdown.innerHTML = "";
-            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+    function handlesemSubjectChange() {
+        let grade = semYearDropdown.value;
+        let streamfiltered = [];
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+        const allDataset = () => {
             let option = "";
             totalcontent = '';
 
@@ -193,55 +215,33 @@ $resfac = mysqli_query($con, $sql);
             subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
         }
 
-
-
-        function handlesemSubjectChange() {
-            let grade = semYearDropdown.value;
-            let streamfiltered = [];
-            subjectDropdown.innerHTML = "";
-            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
-
-            const allDataset = () => {
-                let option = "";
-                totalcontent = '';
-
-                streamfiltered.forEach((e) => {
-                    if (!option.includes(`value="${e.id}"`)) {
-                        option = `<option value="${e.id}">${e.name}</option>`;
-                        totalcontent += option;
-                    }
-                });
-
-                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
-            }
-
-            if (filterdcontent.length <= 0) {
-                if (semYearDropdown.children.length > 7) {
-                    streamfiltered = data.filter(e => e.sem === grade);
-                    allDataset()
-                } else {
-                    streamfiltered = data.filter(e => e.year === grade);
-                    allDataset()
-                }
+        if (filterdcontent.length <= 0) {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = data.filter(e => e.sem === grade);
+                allDataset()
             } else {
-                if (semYearDropdown.children.length > 7) {
-                    streamfiltered = filterdcontent.filter(e => e.sem === grade);
-                    allDataset()
-                } else {
-                    streamfiltered = filterdcontent.filter(e => e.year === grade);
-                    allDataset()
-                }
+                streamfiltered = data.filter(e => e.year === grade);
+                allDataset()
             }
-
-
+        } else {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = filterdcontent.filter(e => e.sem === grade);
+                allDataset()
+            } else {
+                streamfiltered = filterdcontent.filter(e => e.year === grade);
+                allDataset()
+            }
         }
 
 
+    }
 
-        // crossSection.addEventListener("click", toggleSection);
-        // filterSection.addEventListener("click", toggleSection);
 
-        let sem = `<option>Select Semester</option>
+
+    // crossSection.addEventListener("click", toggleSection);
+    // filterSection.addEventListener("click", toggleSection);
+
+    let sem = `<option>Select Semester</option>
                     <option value='1'>First Semester</option>
                     <option value='2'>Second Semester</option>
                     <option value='3'>Third Semester</option>
@@ -252,35 +252,35 @@ $resfac = mysqli_query($con, $sql);
                     <option value='8'>Eighth Semester</option>
                     `;
 
-        let year = `<option>Select Year</option>    
+    let year = `<option>Select Year</option>    
                     <option value='1'>First Year</option>
                     <option value='2'>Second Year</option>
                     <option value='3'>Third Year</option>
                     <option value='4'>Fourth Year</option>
                    `;
 
-        // setting year and sem
-        const initialval = document.querySelector("#mySelect option");
-        const semyear = document.getElementById("semyearsel");
+    // setting year and sem
+    const initialval = document.querySelector("#mySelect option");
+    const semyear = document.getElementById("semyearsel");
 
 
-        let initialvaltype = initialval.getAttribute("data_yearsem");
-        let HTML = Number(initialvaltype) === 1 ? year : sem;
+    let initialvaltype = initialval.getAttribute("data_yearsem");
+    let HTML = Number(initialvaltype) === 1 ? year : sem;
 
-        // changing faculty value;
-        function myFunction() {
-            var selectElement = document.getElementById("mySelect");
-            var selectedOption = selectElement.options[selectElement.selectedIndex];
-            let type = selectedOption.getAttribute("data_yearsem");
-            if (Number(type) === 1) {
-                semyear.setAttribute("name", "year");
-                HTML = year;
-            } else {
-                semyear.setAttribute("name", "sem");
-                HTML = sem;
-            }
-            semyear.innerHTML = HTML;
+    // changing faculty value;
+    function myFunction() {
+        var selectElement = document.getElementById("mySelect");
+        var selectedOption = selectElement.options[selectElement.selectedIndex];
+        let type = selectedOption.getAttribute("data_yearsem");
+        if (Number(type) === 1) {
+            semyear.setAttribute("name", "year");
+            HTML = year;
+        } else {
+            semyear.setAttribute("name", "sem");
+            HTML = sem;
         }
+        semyear.innerHTML = HTML;
+    }
     </script>
 
 </body>

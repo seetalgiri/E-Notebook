@@ -1,3 +1,20 @@
+<?php
+
+// importaing configurations 
+include '../Configuration.php';
+
+//database connection
+$con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
+
+if (!$con) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `faculty`";
+$resfac = mysqli_query($con, $sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -102,8 +119,13 @@
                         <label for="stream">Stream</label>
                         <select name="stream" id="stream">
                             <option value="all">All</option>
-                            <option value="bca">BCA</option>
-                            <option value="bbm">BBM</option>
+                            <?php
+                            if (mysqli_num_rows($resfac) > 0) {
+                                while ($row = mysqli_fetch_assoc($resfac)) {
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                }
+                            }
+                            ?>
                             <option value="others">others</option>
                         </select>
                     </div>
@@ -116,27 +138,27 @@
         </div>
     </div>
     <script>
-    const password = document.getElementById("password");
-    const hideIcon = document.getElementById("hideIcon");
-    const showIcon = document.getElementById("showIcon");
+        const password = document.getElementById("password");
+        const hideIcon = document.getElementById("hideIcon");
+        const showIcon = document.getElementById("showIcon");
 
-    const eyeOpen = () => {
-        showIcon.style.display = "none";
-        hideIcon.style.display = "block";
-        password.setAttribute("type", "password");
-    }
-    const eyeClose = () => {
-        showIcon.style.display = "block";
-        hideIcon.style.display = "none";
-        password.setAttribute("type", "text");
-    }
-    const bodyMode = document.getElementsByTagName('body')[0];
+        const eyeOpen = () => {
+            showIcon.style.display = "none";
+            hideIcon.style.display = "block";
+            password.setAttribute("type", "password");
+        }
+        const eyeClose = () => {
+            showIcon.style.display = "block";
+            hideIcon.style.display = "none";
+            password.setAttribute("type", "text");
+        }
+        const bodyMode = document.getElementsByTagName('body')[0];
 
-    if (localStorage.getItem('mode') === 'dark') {
-        bodyMode.classList.add('Darkmode');
-    } else {
-        bodyMode.classList.remove('Darkmode');
-    }
+        if (localStorage.getItem('mode') === 'dark') {
+            bodyMode.classList.add('Darkmode');
+        } else {
+            bodyMode.classList.remove('Darkmode');
+        }
     </script>
 </body>
 
