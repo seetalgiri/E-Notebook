@@ -347,3 +347,46 @@ nav {
     right: 70px;
   }
 }
+#cmtuserDet {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#userNameAndDate {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+#userPost,
+#cmtuserPost {
+  background-color: var(--user-Profile-bgcolor);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-color-light);
+  user-select: none !important;
+}
+#userNameAndDate span:nth-child(1) {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 600;
+}
+#nameMore #date {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color-light);
+}
+#userNameAndDate span:nth-child(2) {
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+}

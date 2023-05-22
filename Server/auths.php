@@ -48,6 +48,7 @@ else {
                 $_SESSION['id'] = $insertedId;
                 $_SESSION['username'] = $name;
                 $_SESSION['email'] = $email;
+                $_SESSION['stream'] = $stream;
 
                 // Redirect to index.php
                 header("Location: ../index.php");
@@ -78,6 +79,7 @@ else {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
+                $_SESSION['stream'] = $user['stream'];
 
                 // Redirect to index.php or any other page you desire
                 header("Location: ../index.php");

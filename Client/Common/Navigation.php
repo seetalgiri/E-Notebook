@@ -2,10 +2,11 @@
 // Start session
 session_start();
 $id = 0;
-if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'])) {
+if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'], $_SESSION['stream'])) {
     $username = $_SESSION['username'];
     $id = (int) $_SESSION['id'];
     $email = $_SESSION['email'];
+    $stream = $_SESSION['stream'];
 }
 
 // Check if the logout button is clicked
@@ -65,7 +66,7 @@ if (isset($_POST['logoutBtn'])) {
                     <span>' . $email . '</span>
                 </div>
             </div>
-            <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
+            <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
                 <form method="POST" action="" class="logoutbtn">
                     <button type="submit" name="logoutBtn">LOGOUT</button>
                 </form>
@@ -97,13 +98,13 @@ if (isset($_POST['logoutBtn'])) {
         </svg>
         <div id="profilecards" class="shadow-lg">
             <div id="cmtuserDet">
-                <div id="userPost">G</div>
-                <div id="userNameAndDate">
-                    <span>Gaurab sunar</span>
-                    <span>gaurabsunar@gmail.com</span>
-                </div>
+            <div id="userPost">' . ucfirst(substr($username, 0, 1)) . '</div>
+            <div id="userNameAndDate">
+                <span>' . $username . '</span>
+                <span>' . $email . '</span>
             </div>
-            <div id="streamprofile"><span>Stream:</span><span>BCA</span></div>
+            </div>
+            <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
             <form method="POST" action="" class="logoutbtn">
             <button type="submit" name="logoutBtn">LOGOUT</button>
         </form>

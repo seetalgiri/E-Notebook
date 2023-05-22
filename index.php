@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstylesa.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/index.js" defer></script>
