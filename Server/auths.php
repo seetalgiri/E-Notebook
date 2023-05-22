@@ -31,8 +31,9 @@ else {
         if (mysqli_num_rows($emailResult) > 0) {
             echo "User already registered";
         } else {
+            $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             // Insert into the database
-            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`) VALUES ('$name', '$email', '$password', '$stream')";
+            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`) VALUES ('$name', '$email', '$hashedPass', '$stream')";
 
             // Execute the query
             $regResponse = mysqli_query($con, $regQuery);
@@ -57,12 +58,11 @@ else {
 
     // Check if the login button is clicked or not
     if (isset($_POST['login'])) {
-        $email = $_POST['email']; // Assuming the email is obtained from the login form
-        $password = $_POST['password']; // Assuming the password is obtained from the login form
+        $email = $_POST['email'];
+        $password = $_POST['password'];
 
-        // Prepare the SQL query to select user data based on the provided email and password
-        $loginQuery = "SELECT * FROM `auth` WHERE `email` = '$email' AND `password` = '$password'";
-
+        // Prepare the SQL query to select user data based on the provided email
+        $loginQuery = "SELECT * FROM `auth` WHERE `email` = '$email'";
         $resLogin = mysqli_query($con, $loginQuery);
 
         // Check whether the user is registered or not
@@ -70,16 +70,24 @@ else {
             echo "User not registered or password incorrect";
         } else {
             $user = mysqli_fetch_assoc($resLogin);
+            $hashedPassword = $user['password'];
 
-            // Set session variables
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['username'] = $user['name'];
-            $_SESSION['email'] = $user['email'];
+            // Verify the password
+            if (password_verify($password, $hashedPassword)) {
+                // Setting value session variables
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['username'] = $user['name'];
+                $_SESSION['email'] = $user['email'];
 
-            // Redirect to index.php or any other page you desire
-            header("Location: ../index.php");
-            exit();
+                // Redirect to index.php or any other page you desire
+                header("Location: ../index.php");
+                exit();
+            } else {
+                // Password is incorrect
+                echo "User not registered or password incorrect";
+            }
         }
     }
+
 }
 ?>
