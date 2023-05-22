@@ -13,7 +13,7 @@
 <body>
     <div id="container">
         <div id="loginform">
-            <form method="post" class="shadow" action="../../Server/Auth.php">
+            <form method="post" class="shadow" action="../Server/auth/login.php">
                 <div id="inputfields">
                     <h3 id="login">Login</h3>
                     <div class="input-box">

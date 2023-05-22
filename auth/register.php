@@ -57,7 +57,7 @@
             </div>
         </div>
         <div id="loginform">
-            <form method="post" class="shadow" action="../Server/Auth.php">
+            <form method="post" class="shadow" action="../Server/auth/register.php">
                 <div id="inputfields" class="register">
                     <h3 id="login">Register</h3>
                     <div class="input-box">

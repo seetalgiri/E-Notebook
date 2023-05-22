@@ -12,6 +12,7 @@ if (isset($_POST['register'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $email = $_POST['email'];
+  echo "$password";
 
   // convert password into hash password
   $hash = password_hash($password, PASSWORD_BCRYPT);
