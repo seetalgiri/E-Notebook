@@ -1,8 +1,12 @@
 <?php
 $show_notification = false;
 
-// to conntct database
-$con = mysqli_connect("localhost", "root", "", "e_notebook");
+// importaing configurations 
+include '../Configuration.php';
+
+//database connection
+$con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
+
 if (!$con) {
     die("Database connection failed");
 }

@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-//variable declaration for database connection
-$commonHost = "localhost";
-$commonUser = "root";
-$commonPassword = "";
-$commonDbname = "s_enotebook";
+// importaing configurations 
+include '../Configuration.php';
+
 //database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 
@@ -27,7 +25,7 @@ else {
         //check if email is exist or not
         $emailQuery = "SELECT * FROM `users` WHERE `email` = '$email'";
         $emailResult = mysqli_query($con, $emailQuery);
-        if (mysqli_num_rows($emailResult) > 1) {
+        if (false === true) {
             echo "User already registered";
         } else {
             // Insert into the database

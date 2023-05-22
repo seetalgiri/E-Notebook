@@ -1,12 +1,9 @@
 <?php
-// Assuming you have a database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "e_notebook";
+// importaing configurations 
+include '../Configuration.php';
 
-// Create a connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+//database connection
+$conn = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 
 // Check connection
 if ($conn->connect_error) {
