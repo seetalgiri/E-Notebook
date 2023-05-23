@@ -74,7 +74,11 @@ $resfac = mysqli_query($con, $sql);
             </div>
         </div>
         <div id="loginform">
+<<<<<<< HEAD
             <form method="post" class="shadow" action="../Server/auths.php">
+=======
+            <form method="post" class="shadow" action="../Server/auth/register.php">
+>>>>>>> ef8fdd33aeb35a0c121ac4a768827acd0a63d297
                 <div id="inputfields" class="register">
                     <h3 id="login">Register</h3>
                     <div class="input-box">

@@ -13,7 +13,11 @@
 <body>
     <div id="container">
         <div id="loginform">
+<<<<<<< HEAD
             <form method="post" class="shadow" action="../Server/auths.php">
+=======
+            <form method="post" class="shadow" action="../Server/auth/login.php">
+>>>>>>> ef8fdd33aeb35a0c121ac4a768827acd0a63d297
                 <div id="inputfields">
                     <h3 id="login">Login</h3>
                     <div class="input-box">
