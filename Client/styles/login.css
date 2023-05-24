@@ -10,11 +10,20 @@
 }
 
 #loginform form {
-  min-width: 400px;
+  min-width: 340px;
   max-width: 600px;
   background-color: var(--bg-white);
   padding: 40px 45px 50px 45px;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 950px) {
+  .rightDiv {
+    display: none !important;
+  }
+  #socialmedia {
+    display: none !important;
+  }
 }
 
 #inputfields {

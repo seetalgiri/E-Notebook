@@ -830,6 +830,11 @@ ul li {
   position: relative;
   display: flex;
 }
+@media screen and (max-width: 600px) {
+  #selecterStream .selectSreamradio {
+    width: 65px;
+  }
+}
 
 #selecterStream .selectSreamradio label,
 #selecterStream .selectSreamradio input {
