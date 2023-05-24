@@ -30,7 +30,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -135,7 +135,7 @@ $resfac = mysqli_query($con, $sql);
                     <div id="mainViewContent" class="gridContent">
                         <div class="eachBox">
                             <div class="boxcontentNote">
-                                <h3>Chapter 1: Introduction to computer this is me...</h3>
+                                <h3>Chapter 1: This is test I have title...</h3>
                                 <div class="auth">
                                     <svg width="14" height="14" viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -144,15 +144,19 @@ $resfac = mysqli_query($con, $sql);
 
                                     <span>Author:</span> Gaurab sunar
                                 </div>
-                                <svg width="17" height="20" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"
-                                    class="bookmark">
-                                    <path
-                                        d="M4.82 15L9 17.28V20H2C0.89 20 0 19.11 0 18V2C0 0.9 0.89 0 2 0H3V7L5.5 5.5L8 7V0H14C15.1 0 16 0.89 16 2V10.54L14.5 9.72L4.82 15ZM20 15L14.5 12L9 15L14.5 18L20 15ZM11 17.09V19.09L14.5 21L18 19.09V17.09L14.5 19L11 17.09Z" />
-                                </svg>
+
 
                                 <div class="NoteAction">
                                     <div class="date"><span>Date:</span> 2023-01-01</div>
                                     <div class="svgsNote">
+                                        <div class="likecontent">
+                                            <svg width="17" height="15" viewBox="0 0 20 21"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" />
+                                            </svg>
+                                            <span class="likecount">101</span>
+                                        </div>
                                         <svg width="20" height="14" viewBox="0 0 18 12"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -178,7 +182,7 @@ $resfac = mysqli_query($con, $sql);
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "./Server/subjectName.php", true);
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = func tion() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData

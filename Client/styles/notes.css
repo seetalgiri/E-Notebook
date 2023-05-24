@@ -418,13 +418,14 @@
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: start;
+  padding-left: 2px;
   position: relative;
 }
 
 .gridContent .boxcontentNote {
   margin: 8px;
-  margin-right: 25px;
+  margin-right: 8px;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   gap: 2px;
@@ -434,14 +435,14 @@
 }
 .gridContent .boxcontentNote h3 {
   font-size: 14px;
-  /* text-align: justify; */
+  letter-spacing: 1px;
   text-transform: capitalize;
   line-height: 1.5;
   color: var(--text-color-light);
 }
 .gridContent .boxcontentNote .auth,
 .gridContent .boxcontentNote .date {
-  font-size: 13px;
+  font-size: 12px;
 }
 .gridContent .boxcontentNote div span {
   font-weight: 600;
@@ -470,7 +471,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   font-size: 14px;
 }
 .gridContent .boxcontentNote .auth {
@@ -532,7 +533,7 @@
   display: none;
 }
 .flexContent .svgsNote {
-  width: 60px;
+  width: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -648,7 +649,7 @@
     padding-bottom: 7px;
   }
   .flexContent .svgsNote {
-    width: 48px;
+    width: 90px;
   }
   #searchNotes {
     width: 90%;
@@ -673,11 +674,14 @@
   .flexContent .auth {
     display: none;
   }
-  .svgsNote svg:nth-child(2) {
+  .svgsNote svg:nth-child(3) {
     height: 14px;
   }
-  .svgsNote svg:nth-child(1) {
+  .svgsNote svg:nth-child(2) {
     height: 11px;
+  }
+  .svgsNote svg:nth-child(1) {
+    height: 12px;
   }
   .gridContent {
     justify-content: center;
@@ -685,6 +689,16 @@
   #actualNote {
     padding: 10px;
     padding-top: 15px;
+  }
+  .likecount {
+    font-size: 10px !important;
+    padding-top: 1px;
+  }
+  .flexContent .svgsNote {
+    width: 80px;
+  }
+  .likecontent {
+    gap: 0px;
   }
 }
 

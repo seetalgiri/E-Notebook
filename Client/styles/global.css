@@ -201,3 +201,16 @@
 body {
   background-color: var(--bodyBackground-color) !important;
 }
+.likecontent {
+  font-size: 12px !important;
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+}
+.likecount {
+  color: var(--text-color-light);
+  font-size: 12px !important;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+}
