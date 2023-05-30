@@ -38,7 +38,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexs.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -176,7 +176,7 @@ $resfac = mysqli_query($con, $sql);
                                     <span id="counterLike${data.id}" class="counter">${data.post_like.length}</span>
                                     <!-- <span>Likes</span> -->
                                 </div>
-                                <div id="comment" class="actionFlex" onclick="commentFOcusIconclk()">
+                                <div id="comment" class="actionFlex" onclick="commentFOcusIconclk(${data.id}, <?php echo $id ?>)">
                                     <svg width="17" height="17" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M4.5 8.625C4.40054 8.625 4.30516 8.58549 4.23484 8.51517C4.16451 8.44484 4.125 8.34946 4.125 8.25V7.125H2.625C2.42609 7.125 2.23532 7.04598 2.09467 6.90533C1.95402 6.76468 1.875 6.57391 1.875 6.375V2.625C1.875 2.42609 1.95402 2.23532 2.09467 2.09467C2.23532 1.95402 2.42609 1.875 2.625 1.875H7.875C8.07391 1.875 8.26468 1.95402 8.40533 2.09467C8.54598 2.23532 8.625 2.42609 8.625 2.625V6.375C8.625 6.57391 8.54598 6.76468 8.40533 6.90533C8.26468 7.04598 8.07391 7.125 7.875 7.125H6.3375L4.95 8.51625C4.875 8.58375 4.785 8.625 4.6875 8.625H4.5ZM1.125 5.625H0.375V1.125C0.375 0.926088 0.454018 0.735322 0.59467 0.59467C0.735322 0.454018 0.926088 0.375 1.125 0.375H7.125V1.125H1.125V5.625Z" />
                                     </svg>
@@ -220,7 +220,7 @@ $resfac = mysqli_query($con, $sql);
                                 <?php echo $id >= 1 ? '<form action="#">
                                 <div id="cmtPost" class="shadow">
                                     <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
-                                    <input type="text" name="comment" id="cmtcreatePost"
+                                    <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}"
                                         placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
                                     <button style="background-color: transparent;border: none;display: flex;">
                                         <svg width="20" height="17" viewBox="0 0 19 16"
@@ -272,7 +272,6 @@ $resfac = mysqli_query($con, $sql);
 
                 const fragment = document.createDocumentFragment();
                 const allDynamicPostContent = document.getElementById("allDynamicPostContent");
-                console.log(finalData);
 
                 finalData.forEach(e => {
                     const eachPost = HTMLContent(e);
@@ -315,9 +314,13 @@ $resfac = mysqli_query($con, $sql);
 
         }
 
-        function commentFOcusIconclk() {
-            cmtcreatePost.focus()
-            console.log("first")
+        function commentFOcusIconclk(postId, userId) {
+            if (userId > 0) {
+                const comentFld = document.querySelector(`.comentFld${postId}`)
+                comentFld.focus()
+            } else {
+                window.location.href = 'http://localhost/e_notebook/auth/login.php';
+            }
         }
 
 
@@ -350,7 +353,6 @@ $resfac = mysqli_query($con, $sql);
                         let counterLike = document.getElementById(`counterLike${data.postId}`)
                         counterLike.innerText = data.likeCount
                     }
-                    console.log(data)
                 } catch (error) {
                     console.error('Error:', error);
                 }

@@ -938,3 +938,6 @@ ul li {
     max-height: 25vh;
   }
 }
+#actionDiv svg {
+  margin-bottom: 2px;
+}
