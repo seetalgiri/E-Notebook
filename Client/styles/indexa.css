@@ -6,7 +6,7 @@
 }
 #cmtPost {
   padding: 6px;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
 #createPost,
 #createPost1,
@@ -89,6 +89,7 @@
   min-height: 100px;
   border-radius: 2px;
   background-color: var(--bg-white);
+  padding-top: 12px;
 }
 #contentdev {
   padding: 1px 20px;
@@ -355,6 +356,7 @@
 }
 .mt-2 {
   margin-top: 12px;
+  margin-bottom: 10px;
 }
 .d-none {
   display: none;
