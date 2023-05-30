@@ -260,7 +260,7 @@ $resfac = mysqli_query($con, $sql);
                 const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
                 const data = await response.json();
                 let finalData = data.data.reverse();
-                let recentImage = finalData;
+                let recentImage = finalData[0];
 
                 // Convert post_like string to array and remove values less than 1
                 finalData.forEach(e => {
@@ -305,7 +305,7 @@ $resfac = mysqli_query($con, $sql);
 
                 // for recent post
                 const recentPostdata = document.getElementById("recentPostdata");
-                recentPostdata.innerHTML = recentPostMethod(recentImage[0]);
+                recentPostdata.innerHTML = recentPostMethod(recentImage);
 
                 if (finalData.length < 1) {
                     allDynamicPostContent.innerHTML = "<h3 id='NotFoundNews'>Sorry! News Not Found</h3>"
