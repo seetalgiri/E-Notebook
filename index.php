@@ -165,7 +165,7 @@ $resfac = mysqli_query($con, $sql);
                                 <div class="capitalize-first-letter">
                                 ${data.postdes}
                                 </div>
-                                <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}">
+                                <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}" loading="lazy">
                             </div>
                             <div class="divline"></div>
 
@@ -414,7 +414,6 @@ $resfac = mysqli_query($con, $sql);
                     if (data.status === 'success') {
                         // Create a new comment element
                         const commentElement = document.createElement('div');
-                        commentElement.classList.add('eachcomment');
                         commentElement.innerHTML = commentData(data.comment);
 
                         // Append the new comment to the comments container
