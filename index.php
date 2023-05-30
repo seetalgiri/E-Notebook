@@ -217,7 +217,7 @@ $resfac = mysqli_query($con, $sql);
                                 </div>
 
                                 <!-- for post comment  -->
-                                <?php echo $id >= 1 ? '<form action="#">
+                                <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="submitComment(event)">
                                 <div id="cmtPost" class="shadow">
                                     <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
                                     <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}"
@@ -358,6 +358,60 @@ $resfac = mysqli_query($con, $sql);
                 }
             }
         };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ================================ for commnet logic -=================================
+        function submitComment(event) {
+            event.preventDefault(); // Prevent form submission from reloading the page
+
+            const commentInput = document.getElementById("cmtcreatePost");
+            const comment = commentInput.value.trim();
+
+            if (comment !== "") {
+                const postId = 12
+                const userId = 12
+
+                const commentData = {
+                    postId: postId,
+                    userId: userId,
+                    comment: comment
+                };
+                console.log(commentData)
+
+                // // Send the comment data using fetch
+                // fetch('http://localhost/e_notebook/Server/comment.php', {
+                //         method: 'POST',
+                //         headers: {
+                //             'Content-Type': 'application/json'
+                //         },
+                //         body: JSON.stringify(commentData)
+                //     })
+                //     .then(response => response.json())
+                //     .then(data => {
+                //         // Handle the response data
+                //         console.log(data);
+                //     })
+                //     .catch(error => {
+                //         // Handle any errors
+                //         console.error(error);
+                //     });
+            }
+        }
     </script>
 </body>
 
