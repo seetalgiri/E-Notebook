@@ -1,0 +1,67 @@
+#noteBookSVG svg {
+  height: 400px;
+}
+
+.contentDivmain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 545px;
+  width: 100%;
+  gap: 10%;
+}
+
+.boxes {
+  width: 40%;
+}
+#contentDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 60px;
+}
+#contentDiv h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  color: var(--text-color-light);
+}
+
+#contentDiv p {
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  font-size: 16px;
+  color: var(--text-color-light);
+  line-height: 1.5;
+}
+
+#noteBookSVG {
+  width: 50%;
+  display: flex;
+}
+.socialmedia {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 30px;
+}
+.bigline {
+  width: 100px;
+  height: 3px;
+  background-color: var(--text-color-light);
+}
+
+.smallline {
+  width: 20px;
+  height: 3px;
+  background-color: var(--text-color-light);
+}
+
+footer {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}

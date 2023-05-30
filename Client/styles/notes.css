@@ -1,0 +1,709 @@
+/* common classes  */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.item-center {
+  align-items: center;
+}
+.bl-thin {
+  border-left: 1px solid var(--light-border-clor-opacity1);
+}
+.bl-lite {
+  border-left: 1px solid var(--light-border-clor-opacity1);
+}
+.br-thin {
+  border-right: 1px solid var(--light-border-clor-opacity2);
+}
+.br-lite {
+  border-right: 1px solid var(--light-border-clor-opacity1);
+}
+.bt-thin {
+  border-top: 1px solid var(--light-border-clor-opacity2);
+}
+.bt-lite {
+  border-top: 1px solid var(--light-border-clor-opacity1);
+}
+.bb-thin {
+  border-bottom: 1px solid var(--light-border-clor-opacity2);
+}
+.bb-lite {
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
+}
+.gap {
+  gap: 10px;
+}
+
+/* main section classes  */
+#subHead h4 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color-light);
+}
+#mainnoteSec {
+  min-height: 100vh;
+}
+.actualCOntent {
+  height: 100vh;
+  width: 100%;
+  padding-top: 10vh;
+  background-color: var(--light-bgcolor);
+}
+#notessection {
+  height: 99%;
+  width: 100%;
+  max-width: 1500px;
+  margin: auto;
+}
+.filtersec {
+  /* height: 86vh; */
+  width: 20%;
+  min-width: 300px;
+  background-color: var(--bg-white);
+  border-radius: 2px;
+  margin: 10px;
+  transition: 0.2s;
+  overflow: auto;
+  max-height: 620px;
+}
+.filerContentfixed {
+  position: relative;
+  padding: 15px 10px;
+}
+.FilterNotes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 10px;
+}
+#steram,
+#semYear,
+#subject {
+  padding: 7px;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid var(--light-border-clor-opacity1);
+  font-size: 16px !important;
+  border-radius: 1px;
+  background-color: var(--bg-white);
+  color: var(--text-color-light);
+}
+.headings {
+  height: 30px;
+  margin-bottom: 15px;
+}
+.filterBTn {
+  background-color: var(--user-Profile-bgcolor);
+  padding: 8px;
+  border: 1px solid var(--primary-color-light);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  cursor: pointer;
+  border-radius: 1px;
+  color: var(--primary-color-light);
+}
+.footerDIv {
+  height: 100%;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  /* background-color: red; */
+}
+.disremember {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--text-color-light);
+  padding: 0 5px;
+}
+.filterBTn:hover {
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
+}
+.mt-20px {
+  margin-top: 20px;
+}
+.headingTopicse {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.HeadingPage {
+  position: absolute;
+  top: -100%;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--main-head-light);
+  user-select: none;
+  left: 0px;
+}
+
+.borderLines {
+  width: 100%;
+  height: 1px;
+  background-color: var(--light-border-clor-opacity1);
+  margin-top: 16px;
+}
+.heading {
+  min-width: 160px;
+  height: 30px;
+  background-color: var(--light-bgcolor);
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--text-color-light);
+}
+.topics {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.headingTopicse .topics span {
+  font-size: 14px !important;
+}
+.topics span {
+  font-size: 13px !important;
+  color: var(--text-color-dark) !important;
+  letter-spacing: 1px !important;
+}
+.topics span:nth-child(1) {
+  font-weight: 600;
+  height: 10px;
+  letter-spacing: 1px !important;
+}
+
+.topics span:nth-child(2) {
+  width: 100%;
+  margin-left: 5px;
+  letter-spacing: 1px !important;
+}
+
+#actualNote {
+  height: 100%;
+  width: 99%;
+  padding: 20px;
+}
+.topicHead {
+  padding: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  text-decoration: underline;
+}
+.leftLineTopic {
+  height: 1px;
+  width: 100px;
+  background-color: var(--light-border-clor-opacity1);
+}
+.rightLineTopic {
+  height: 1px;
+  width: 60%;
+  background-color: var(--main-head-light);
+}
+.NotesdivContent {
+  height: 100%;
+  width: 100%;
+  max-height: 505px;
+  position: relative;
+}
+.noteLineSec {
+  position: absolute;
+  top: -10px;
+  left: 40px;
+  height: 100%;
+  background-color: var(--light-border-clor-opacity2);
+  width: 1px;
+}
+.chapters-contents {
+  width: 90%;
+  float: right;
+  margin-top: 15px;
+  height: 100%;
+}
+
+.IntroChap {
+  width: 100%;
+  height: 1px;
+  background-color: var(--main-head-light);
+}
+.chapterNameTop {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  border-bottom: 1px solid var(--light-border-clor-opacity1);
+  width: 80%;
+  padding: 10px 20px 5px 20px;
+  position: relative;
+  margin: 20px 0;
+  color: var(--text-color-light);
+  fill: var(--text-color-light);
+}
+.NotesdivContent {
+  overflow: hidden;
+}
+.chapterNameTop::before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 1px;
+  border-bottom: 1px solid var(--main-head-light);
+  left: -77px;
+}
+
+.ChapterName {
+  width: 75%;
+}
+#actions {
+  width: 25%;
+}
+.noteActions {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.noteActions:hover svg {
+  fill: var(--text-color-dark);
+}
+.noteActions:hover {
+  color: var(--text-color-dark);
+}
+#authName {
+  position: absolute;
+  left: 100%;
+  width: 100%;
+  display: flex;
+}
+#authName div {
+  padding: 6px 18px 6px 10px;
+  border-radius: 1px;
+  margin-left: 25px;
+  text-transform: capitalize;
+  background-color: var(--primary-color-light);
+  color: var(--bg-white);
+  display: flex;
+  gap: 4px;
+  position: relative;
+  align-items: center;
+  font-size: 13px;
+  position: relative;
+}
+
+#authName div::before {
+  content: "";
+  position: absolute;
+  height: 10px;
+  width: 10px;
+  background-color: var(--primary-color-light);
+  left: -4px;
+  bottom: 7px;
+  transform: rotateZ(45deg);
+}
+
+#authName div svg {
+  position: absolute;
+  right: 0px;
+  top: 1px;
+  fill: var(--bg-white);
+}
+.linecontentNote {
+  width: 100%;
+  margin-bottom: -5px !important;
+  margin: auto;
+  height: 1px;
+  background-color: var(--light-border-clor-opacity1);
+}
+
+#searchNotes {
+  width: 95%;
+  height: 100%;
+  z-index: 100;
+  position: relative;
+  margin-top: 2px;
+  display: flex;
+}
+#searchName {
+  border: none;
+  background: var(--bg-white);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding-left: 16px;
+  cursor: pointer;
+}
+
+#searchNotes input {
+  padding: 7px 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  background-color: var(--bg-white);
+  border-radius: 1px;
+}
+#searchNotes svg:hover {
+  fill: var(--text-color-dark);
+  cursor: pointer;
+}
+.searchBtn {
+  fill: var(--text-color-light);
+  position: absolute;
+  right: 10px;
+  top: 8px;
+}
+.filterNotes {
+  fill: var(--text-color-light);
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
+.headingsChapter {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 20px auto;
+  position: relative;
+  justify-content: center;
+}
+.flexbuttonset {
+  position: absolute;
+}
+
+/* for grid vied  */
+.gridContent {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
+  column-gap: 30px;
+  /* justify-content: center; */
+  max-width: 1100px;
+  margin: 20px auto;
+  align-items: start;
+  row-gap: 30px;
+  max-height: 80vh;
+  overflow: auto;
+  margin-top: 40px;
+}
+.gridContent .eachBox {
+  height: 110px;
+  background-color: var(--bg-white);
+  border-radius: 2px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-content: center;
+  justify-content: start;
+  padding-left: 2px;
+  position: relative;
+}
+
+.gridContent .boxcontentNote {
+  margin: 8px;
+  margin-right: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+}
+.gridContent .boxcontentNote h3 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  line-height: 1.5;
+  color: var(--text-color-light);
+}
+.gridContent .boxcontentNote .auth,
+.gridContent .boxcontentNote .date {
+  font-size: 12px;
+}
+.gridContent .boxcontentNote div span {
+  font-weight: 600;
+}
+.gridContent .eachBox .bookmark {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  fill: var(--text-color-light);
+}
+.gridContent .NoteAction {
+  width: 93%;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  color: var(--text-color-light);
+}
+.gridContent .NoteAction .date {
+  font-weight: 600 !important;
+}
+.gridContent .NoteAction .svgsNote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+.gridContent .boxcontentNote .auth {
+  margin-top: 2px;
+}
+.gridContent .auth {
+  font-weight: 600;
+  color: var(--text-color-light) !important;
+}
+.svgsNote svg {
+  fill: var(--text-color-light);
+  cursor: pointer;
+}
+.svgsNote svg:hover {
+  fill: var(--text-color-dark);
+}
+
+/* for list view  */
+.flexContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+.flexContent .eachBox {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+.flexContent .eachBox {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+.flexContent .eachBox .boxcontentNote {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--light-border-clor-opacity2);
+  padding: 0 3% 7px 3%;
+}
+
+.flexContent .bookmark,
+.flexContent .date,
+.flexContent .auth span {
+  display: none;
+}
+.flexContent h3 {
+  font-size: 14px;
+  text-transform: capitalize;
+  line-height: 1.5;
+  color: var(--text-color-light);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.flexContent .auth span {
+  display: none;
+}
+.flexContent .svgsNote {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexContent .auth {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: var(--text-color-light);
+}
+#toggleViwegrid,
+#toggleViweline {
+  width: 23px;
+  border: none;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: transparent;
+}
+#toggleViwegrid {
+  height: 23px;
+}
+#toggleViweline {
+  gap: 4px;
+}
+#toggleViwegrid .linegr,
+#toggleViweline .linegr {
+  width: 22px;
+  height: 4px;
+  background-color: var(--text-color-light);
+  border-radius: 1px;
+}
+
+#toggleViwegrid:hover .linegr,
+#toggleViweline:hover .linegr {
+  background-color: var(--text-color-dark);
+}
+
+.flexbuttonset {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.gridview {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+  flex-wrap: wrap;
+}
+.gridview .box {
+  background-color: var(--text-color-light);
+  height: 9px;
+  width: 9px;
+}
+
+.gridview:hover .box {
+  background-color: var(--text-color-dark);
+}
+.auth svg {
+  fill: var(--text-color-light);
+  margin-bottom: -1px;
+}
+#crosssection {
+  display: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+#crosssection {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  z-index: 100000000;
+  color: var(--text-color-light);
+}
+#crosssection:hover {
+  color: var(--text-color-dark);
+}
+#filterSection {
+  position: absolute;
+  inset: 0;
+  background-color: var(--light-border-clor-opacity2);
+  z-index: 100000000 !important;
+  display: none;
+  font-weight: 700;
+}
+
+.headingTopicse .topics span {
+  color: var(--text-color-light) !important;
+}
+
+@media screen and (max-width: 940px) {
+  .filtersec {
+    position: absolute;
+    left: 0;
+    left: -260px;
+    background-color: var(--bg-white);
+    z-index: 100000000000 !important;
+  }
+  #crosssection {
+    display: block;
+  }
+}
+@media screen and (max-width: 680px) {
+  .flexContent .eachBox .boxcontentNote {
+    width: 100%;
+    padding: 0;
+    padding-bottom: 7px;
+  }
+  .flexContent .svgsNote {
+    width: 90px;
+  }
+  #searchNotes {
+    width: 90%;
+  }
+  .HeadingPage {
+    font-size: 20px;
+  }
+  .FilterNotes {
+    gap: 10px;
+  }
+  .headingsChapter {
+    margin-top: 30px;
+  }
+  .gridContent {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 300px));
+  }
+}
+@media screen and (max-width: 500px) {
+  .flexContent h3 {
+    font-size: 12px;
+  }
+  .flexContent .auth {
+    display: none;
+  }
+  .svgsNote svg:nth-child(3) {
+    height: 14px;
+  }
+  .svgsNote svg:nth-child(2) {
+    height: 11px;
+  }
+  .svgsNote svg:nth-child(1) {
+    height: 12px;
+  }
+  .gridContent {
+    justify-content: center;
+  }
+  #actualNote {
+    padding: 10px;
+    padding-top: 15px;
+  }
+  .likecount {
+    font-size: 10px !important;
+    padding-top: 1px;
+  }
+  .flexContent .svgsNote {
+    width: 80px;
+  }
+  .likecontent {
+    gap: 0px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  #searchNotes {
+    width: 80%;
+  }
+}

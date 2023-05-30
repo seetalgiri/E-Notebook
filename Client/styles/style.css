@@ -1,0 +1,48 @@
+#home {
+  background-color: var(--light-bgcolor);
+}
+.line {
+  height: 2px;
+  position: absolute;
+}
+
+.home {
+  width: 95%;
+  background-color: var(--light-bgcolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 40px;
+  flex-direction: column;
+}
+
+.home .heading {
+  width: 92%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.home .content {
+  font-size: larger;
+  width: 85%;
+}
+
+.profile {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  background-image: url("path/to/image.jpg");
+}
+
+.profile img {
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.name .yname {
+  font-size: x-large;
+  font-weight: 500;
+}

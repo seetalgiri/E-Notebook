@@ -1,0 +1,259 @@
+#container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-direction: column;
+  background-color: var(--light-bgcolor);
+}
+
+#loginform form {
+  min-width: 400px;
+  max-width: 600px;
+  background-color: var(--bg-white);
+  padding: 40px 45px 50px 45px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 950px) {
+  #loginform form {
+    min-width: 340px !important;
+  }
+  .rightDiv {
+    display: none !important;
+  }
+  #socialmedia {
+    display: none !important;
+  }
+  #loginform form {
+    padding: 40px 30px 50px 30px;
+  }
+}
+
+#inputfields {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.register {
+  gap: 5px !important;
+}
+
+.register #login {
+  margin-top: -7px;
+  bottom: 5px;
+}
+.register button {
+  margin-bottom: -10px;
+}
+form .input-box {
+  width: 100%;
+  height: 50px;
+  gap: 10px;
+  position: relative;
+  margin-top: 15px;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--light-border-clor-opacity2);
+  border-radius: 3px;
+  position: relative;
+}
+.input-box label {
+  position: absolute;
+  left: 10px;
+  background-color: var(--bg-white);
+  padding: 0 4px;
+  letter-spacing: 1px;
+  color: var(--text-color-light);
+  top: -8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.input-box label:hover {
+  color: var(--text-color-dark);
+}
+
+.input-box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  padding-left: 2px;
+  border-radius: 5px;
+  margin-left: 11px;
+  margin-right: 35px;
+  background: transparent;
+  color: var(--text-color-light);
+}
+#login {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-color-light);
+  font-size: 25px;
+}
+.shadow {
+  box-shadow: 0px 1px 3px 0px var(--shadow-small-shadow1),
+    0px 1px 2px 0px var(--shadow-small-shadow2);
+}
+
+.input-box svg:hover {
+  fill: var(--text-color-dark);
+}
+.input-box svg {
+  position: absolute;
+  right: 10px;
+  margin-top: 14px;
+  cursor: pointer;
+  fill: var(--text-color-light);
+}
+
+#loginform form a {
+  text-decoration: none;
+  color: var(--username-light);
+}
+#loginform form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  border: none;
+  background-color: var(--primary-color-light);
+  border-radius: 4px;
+  color: var(--bg-white);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#loginform form button:hover {
+  background-color: var(--primary-color);
+}
+
+#inputfields .dontHaveAcc {
+  margin-top: 10px;
+  color: var(--text-color-light);
+  letter-spacing: 1px;
+  width: 100%;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#inputfields .gobackHw {
+  margin-top: 0px;
+  font-size: 13px;
+  margin-bottom: -10px;
+}
+#inputfields .gobackHwRg {
+  margin-top: 5px;
+  font-size: 13px;
+}
+select {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid var(--light-border-clor-opacity2);
+  padding: 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: var(--text-color-light);
+  text-transform: capitalize;
+  background: transparent;
+}
+select option {
+  font-size: 18px;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: var(--bg-white);
+}
+.selectdiv {
+  width: 100%;
+  position: relative;
+  margin-top: 5px;
+}
+.selectdiv label {
+  position: absolute;
+  left: 10px;
+  background-color: var(--bg-white);
+  padding: 0 4px;
+  letter-spacing: 1px;
+  color: var(--text-color-light);
+  top: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.selectdiv label:hover {
+  color: var(--text-color-dark);
+}
+.regCont {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.rightDiv {
+  width: 40%;
+  max-width: 500px;
+}
+#socialmedia {
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.longLine {
+  width: 3px;
+  height: 120px;
+  background-color: var(--main-head-light);
+}
+.shortLine {
+  width: 3px;
+  height: 25px;
+  background-color: var(--main-head-light);
+}
+.icons {
+  padding: 2px;
+  margin: 3px;
+  border-radius: 2px;
+}
+.rightDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: var(--text-color-light) !important;
+}
+.rightDiv h1 {
+  letter-spacing: 1px;
+  font-size: 28px;
+}
+.rightDiv p {
+  letter-spacing: 1px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.icons svg {
+  fill: var(--text-color-light) !important;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.icons svg:hover {
+  fill: var(--text-color-dark) !important;
+}
+#showIcon {
+  display: none;
+}
