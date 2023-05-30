@@ -220,7 +220,7 @@ $resfac = mysqli_query($con, $sql);
                                 <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
                                     <div id="cmtPost" class="shadow">
                                         <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
-                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}" placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id} cmtcreatePost${data.id}" placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
                                         <button style="background-color: transparent;border: none;display: flex;">
                                         <svg width="20" height="17" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
@@ -349,10 +349,11 @@ $resfac = mysqli_query($con, $sql);
 
 
         // ================================ for commnet logic -=================================
+        // JavaScript code
         async function submitCommentAsync(event, postId, userId, userName) {
             event.preventDefault();
 
-            const commentInput = document.getElementById("cmtcreatePost");
+            const commentInput = document.querySelector(`.cmtcreatePost${postId}`);
             const comment = commentInput.value.trim();
 
             if (comment !== "") {
@@ -362,22 +363,22 @@ $resfac = mysqli_query($con, $sql);
                     comment,
                     userName
                 };
-                console.log(commentData)
+                console.log(commentData);
 
-                // try {
-                //     const response = await fetch('http://localhost/e_notebook/Server/comment.php', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Content-Type': 'application/json'
-                //         },
-                //         body: JSON.stringify(commentData)
-                //     });
+                try {
+                    const response = await fetch('http://localhost/e_notebook/Server/Home/comment.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(commentData)
+                    });
 
-                //     const data = await response.json();
-                //     console.log(data);
-                // } catch (error) {
-                //     console.error(error);
-                // }
+                    const data = await response.json();
+                    console.log(data);
+                } catch (error) {
+                    console.error(error);
+                }
             }
         }
     </script>
