@@ -82,8 +82,8 @@ $resfac = mysqli_query($con, $sql);
 
                                 while ($row = mysqli_fetch_assoc($resfac)) {
                                     $news = isset($_GET['news']) ? $_GET['news'] : '';
-                                    $streamValue = $row['id'];
-                                    $streamId = $row['id'] . 'rad';
+                                    $streamValue = $row['faculity_name'];
+                                    $streamId = $row['faculity_name'] . 'rad';
 
                                     echo '<li class="selectSreamradio">';
                                     echo ($news == $streamValue) ? "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)'>";
@@ -96,6 +96,7 @@ $resfac = mysqli_query($con, $sql);
                             }
                             ?>
                         </div>
+
 
 
 
@@ -181,7 +182,7 @@ $resfac = mysqli_query($con, $sql);
                                         <path d="M4.5 8.625C4.40054 8.625 4.30516 8.58549 4.23484 8.51517C4.16451 8.44484 4.125 8.34946 4.125 8.25V7.125H2.625C2.42609 7.125 2.23532 7.04598 2.09467 6.90533C1.95402 6.76468 1.875 6.57391 1.875 6.375V2.625C1.875 2.42609 1.95402 2.23532 2.09467 2.09467C2.23532 1.95402 2.42609 1.875 2.625 1.875H7.875C8.07391 1.875 8.26468 1.95402 8.40533 2.09467C8.54598 2.23532 8.625 2.42609 8.625 2.625V6.375C8.625 6.57391 8.54598 6.76468 8.40533 6.90533C8.26468 7.04598 8.07391 7.125 7.875 7.125H6.3375L4.95 8.51625C4.875 8.58375 4.785 8.625 4.6875 8.625H4.5ZM1.125 5.625H0.375V1.125C0.375 0.926088 0.454018 0.735322 0.59467 0.59467C0.735322 0.454018 0.926088 0.375 1.125 0.375H7.125V1.125H1.125V5.625Z" />
                                     </svg>
 
-                                    <span id="counterComment" class="counter">${data.comment.length}</span>
+                                    <span id="counterComment${data.id}" class="counter">${data.comment.length}</span>
                                     <!-- <span>Comments</span> -->
                                 </div>
                                 <div id="share" class="actionFlex">
@@ -254,11 +255,12 @@ $resfac = mysqli_query($con, $sql);
             return eachCmt;
         };
 
-        const fetchData = async () => {
+        const fetchData = async (showType) => {
             try {
                 const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
                 const data = await response.json();
-                const finalData = data.data.reverse();
+                let finalData = data.data.reverse();
+                let recentImage = finalData;
 
                 // Convert post_like string to array and remove values less than 1
                 finalData.forEach(e => {
@@ -270,6 +272,10 @@ $resfac = mysqli_query($con, $sql);
 
                 const fragment = document.createDocumentFragment();
                 const allDynamicPostContent = document.getElementById("allDynamicPostContent");
+                if (showType !== 'all') {
+                    const FilteredData = finalData.filter((e) => e.stream === showType);
+                    finalData = FilteredData;
+                }
 
                 finalData.forEach(e => {
                     const eachPost = HTMLContent(e);
@@ -299,14 +305,13 @@ $resfac = mysqli_query($con, $sql);
 
                 // for recent post
                 const recentPostdata = document.getElementById("recentPostdata");
-                recentPostdata.innerHTML = recentPostMethod(finalData[0]);
+                recentPostdata.innerHTML = recentPostMethod(recentImage[0]);
             } catch (error) {
                 console.error(error);
             }
         };
 
 
-        fetchData();
 
         const recentPostContentFulldiv = document.getElementById("recentPostContentFulldiv")
 
@@ -411,6 +416,10 @@ $resfac = mysqli_query($con, $sql);
                         // Append the new comment to the comments container
                         const commentsContainer = document.querySelector(`.commentContent${postId}`);
                         commentsContainer.appendChild(commentElement);
+                        const counterLike = document.getElementById(`counterComment${postId}`);
+                        let likeNum = Number(counterLike.innerText) + 1;
+                        counterLike.innerText = likeNum
+
                     } else {
                         console.error(data.message);
                     }
@@ -434,6 +443,28 @@ $resfac = mysqli_query($con, $sql);
                 return [];
             }
         };
+
+
+        const params = () => {
+            // Get the current URL
+            var url = new URL(window.location.href);
+            // Get the value of the "news" parameter
+            var newsParam = url.searchParams.get("news");
+            // Log the value of the "news" parameter
+            return newsParam.toLocaleLowerCase()
+        }
+
+        // =========================== get url parameter =========================
+        const selectSreamradio = document.getElementsByClassName("selectSreamradio");
+        for (let i = 0; i < selectSreamradio.length; i++) {
+            selectSreamradio[i].addEventListener('change', (event) => {
+                fetchData(params());
+            });
+        };
+
+        window.onload = function() {
+            fetchData(params());
+        }
     </script>
 </body>
 
