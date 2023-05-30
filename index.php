@@ -217,15 +217,14 @@ $resfac = mysqli_query($con, $sql);
                                 </div>
 
                                 <!-- for post comment  -->
-                                <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="submitComment(event, ${data.id},' . $id . ', \'' . $username . '\' ); event.preventDefault()">
+                                <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
                                     <div id="cmtPost" class="shadow">
                                         <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
-                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}"
-                                            placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}" placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
                                         <button style="background-color: transparent;border: none;display: flex;">
-                                            <svg width="20" height="17" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
-                                            </svg>
+                                        <svg width="20" height="17" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
+                                        </svg>
                                         </button>
                                     </div>
                                 </form>' : ''; ?>
@@ -350,39 +349,35 @@ $resfac = mysqli_query($con, $sql);
 
 
         // ================================ for commnet logic -=================================
-        function submitComment(event, postId, userId, userName) {
-            event.preventDefault(); // Prevent form submission from reloading the page
+        async function submitCommentAsync(event, postId, userId, userName) {
+            event.preventDefault();
 
             const commentInput = document.getElementById("cmtcreatePost");
             const comment = commentInput.value.trim();
 
             if (comment !== "") {
-
                 const commentData = {
-                    postId: postId,
-                    userId: userId,
-                    comment: comment,
-                    userName: userName
+                    postId,
+                    userId,
+                    comment,
+                    userName
                 };
                 console.log(commentData)
 
-                // Send the comment data using fetch
-                fetch('http://localhost/e_notebook/Server/comment.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(commentData)
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Handle the response data
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        // Handle any errors
-                        console.error(error);
-                    });
+                // try {
+                //     const response = await fetch('http://localhost/e_notebook/Server/comment.php', {
+                //         method: 'POST',
+                //         headers: {
+                //             'Content-Type': 'application/json'
+                //         },
+                //         body: JSON.stringify(commentData)
+                //     });
+
+                //     const data = await response.json();
+                //     console.log(data);
+                // } catch (error) {
+                //     console.error(error);
+                // }
             }
         }
     </script>
