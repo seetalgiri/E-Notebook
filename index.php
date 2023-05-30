@@ -197,11 +197,8 @@ $resfac = mysqli_query($con, $sql);
                             <!-- for comment pot -->
                             <div>
                                 <!-- for thers comment  -->
-                                ${
-                                    data.comment.length > 0 ? 
-                                `<div id="commentContent" class="commentContent${data.id}">
+                                <div id="commentContent" class="commentContent${data.id}">
                                 </div>
-                                `:''}
 
                                 <!-- for post comment  -->
                                 <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
@@ -387,7 +384,7 @@ $resfac = mysqli_query($con, $sql);
                 for (let i = 0; i < allCommentfld.length; i++) {
                     allCommentfld[i].value = "";
                 }
-                const commentData = {
+                const commentDataLocal = {
                     postId,
                     userId,
                     comment,
@@ -400,15 +397,29 @@ $resfac = mysqli_query($con, $sql);
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify(commentData)
+                        body: JSON.stringify(commentDataLocal)
                     });
 
                     const data = await response.json();
+
+                    if (data.status === 'success') {
+                        // Create a new comment element
+                        const commentElement = document.createElement('div');
+                        commentElement.classList.add('eachcomment');
+                        commentElement.innerHTML = commentData(data.comment);
+
+                        // Append the new comment to the comments container
+                        const commentsContainer = document.querySelector(`.commentContent${postId}`);
+                        commentsContainer.appendChild(commentElement);
+                    } else {
+                        console.error(data.message);
+                    }
                 } catch (error) {
                     console.error(error);
                 }
             }
         }
+
 
         // Function to fetch comments based on post ID
         const fetchComments = async (postId) => {

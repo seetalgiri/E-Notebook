@@ -46,8 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sqlUpdate = "UPDATE news SET comment = '$updatedComment' WHERE id = $postId";
         mysqli_query($con, $sqlUpdate);
 
+        // Get the recently added comment data
+        $sqlComment = "SELECT * FROM comments WHERE id = $commentId";
+        $resultComment = mysqli_query($con, $sqlComment);
+        $recentComment = mysqli_fetch_assoc($resultComment);
+
         // Comment insertion successful
-        $response = array('status' => 'success', 'message' => 'Comment added successfully');
+        $response = array('status' => 'success', 'message' => 'Comment added successfully', 'comment' => $recentComment);
     } else {
         // Comment insertion failed
         $response = array('status' => 'error', 'message' => 'Failed to add comment');

@@ -46,7 +46,7 @@ if (isset($_POST['postnews'])) {
                 $newFileName = uniqid('', true) . '.' . $fileExt;
 
                 // Set the destination path to store the uploaded image
-                $destination = 'uploads/' . $newFileName;
+                $destination = '../uploads/' . $newFileName;
 
                 $extaNewFile = $uploadFIleFront . $newFileName;
                 // Move the uploaded file to the destination
@@ -72,7 +72,7 @@ if (isset($_POST['postnews'])) {
 
     // Execute the SQL statement
     if (mysqli_query($conn, $sql)) {
-        header("Location: ../index.php");
+        header("Location: ../../index.php");
     } else {
         echo 'Error: ' . mysqli_error($conn);
     }
