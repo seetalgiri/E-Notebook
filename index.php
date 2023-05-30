@@ -455,7 +455,7 @@ $resfac = mysqli_query($con, $sql);
             // Get the value of the "news" parameter
             var newsParam = url.searchParams.get("news");
             // Log the value of the "news" parameter
-            return newsParam.toLocaleLowerCase()
+            return newsParam !== null ? newsParam.toLocaleLowerCase() : "all"
         }
 
         // =========================== get url parameter =========================
