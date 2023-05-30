@@ -785,7 +785,7 @@
     display: none;
   }
   #commentContent {
-    margin: 10px 0 20px 0;
+    margin: 10px 0 10px 0;
     padding: 10px 3px;
   }
   #postModalContent {
@@ -952,4 +952,7 @@ ul li {
   justify-content: center;
   margin-top: 50px;
   color: var(--text-color-light);
+}
+.commentcontent {
+  width: 100%;
 }
