@@ -38,7 +38,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexs.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -306,6 +306,10 @@ $resfac = mysqli_query($con, $sql);
                 // for recent post
                 const recentPostdata = document.getElementById("recentPostdata");
                 recentPostdata.innerHTML = recentPostMethod(recentImage[0]);
+
+                if (finalData.length < 1) {
+                    allDynamicPostContent.innerHTML = "<h3 id='NotFoundNews'>Sorry! News Not Found</h3>"
+                }
             } catch (error) {
                 console.error(error);
             }

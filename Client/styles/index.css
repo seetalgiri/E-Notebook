@@ -943,3 +943,13 @@ ul li {
 #actionDiv svg {
   margin-bottom: 2px;
 }
+#NotFoundNews {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  color: var(--text-color-light);
+}
