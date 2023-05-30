@@ -217,22 +217,19 @@ $resfac = mysqli_query($con, $sql);
                                 </div>
 
                                 <!-- for post comment  -->
-                                <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="submitComment(event)">
-                                <div id="cmtPost" class="shadow">
-                                    <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
-                                    <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}"
-                                        placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
-                                    <button style="background-color: transparent;border: none;display: flex;">
-                                        <svg width="20" height="17" viewBox="0 0 19 16"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            </form>' : ''; ?>
-
+                                <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="submitComment(event, ${data.id},' . $id . ', \'' . $username . '\' ); event.preventDefault()">
+                                    <div id="cmtPost" class="shadow">
+                                        <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
+                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id}"
+                                            placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                        <button style="background-color: transparent;border: none;display: flex;">
+                                            <svg width="20" height="17" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>' : ''; ?>
                             </div>
-
                         </div>
                     </div>
                     
@@ -257,11 +254,9 @@ $resfac = mysqli_query($con, $sql);
                         </div>`
             return recentPost;
         }
-
-
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost/e_notebook/Server/indexdataget.php');
+                const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
                 const data = await response.json();
                 const finalData = data.data.reverse();
 
@@ -290,11 +285,7 @@ $resfac = mysqli_query($con, $sql);
                 console.error(error);
             }
         };
-
-
         fetchData();
-
-
         const recentPostContentFulldiv = document.getElementById("recentPostContentFulldiv")
 
         const recentClearClk = () => {
@@ -322,8 +313,6 @@ $resfac = mysqli_query($con, $sql);
                 window.location.href = 'http://localhost/e_notebook/auth/login.php';
             }
         }
-
-
         // sending data into backend for like post
         const likeBtnclk = async (postId, userId) => {
             if (userId < 1) {
@@ -337,7 +326,7 @@ $resfac = mysqli_query($con, $sql);
                 }
 
                 try {
-                    const response = await fetch('./server/indexlikeupdate.php', {
+                    const response = await fetch('./server/Home/indexlikeupdate.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -360,56 +349,40 @@ $resfac = mysqli_query($con, $sql);
         };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // ================================ for commnet logic -=================================
-        function submitComment(event) {
+        function submitComment(event, postId, userId, userName) {
             event.preventDefault(); // Prevent form submission from reloading the page
 
             const commentInput = document.getElementById("cmtcreatePost");
             const comment = commentInput.value.trim();
 
             if (comment !== "") {
-                const postId = 12
-                const userId = 12
 
                 const commentData = {
                     postId: postId,
                     userId: userId,
-                    comment: comment
+                    comment: comment,
+                    userName: userName
                 };
                 console.log(commentData)
 
-                // // Send the comment data using fetch
-                // fetch('http://localhost/e_notebook/Server/comment.php', {
-                //         method: 'POST',
-                //         headers: {
-                //             'Content-Type': 'application/json'
-                //         },
-                //         body: JSON.stringify(commentData)
-                //     })
-                //     .then(response => response.json())
-                //     .then(data => {
-                //         // Handle the response data
-                //         console.log(data);
-                //     })
-                //     .catch(error => {
-                //         // Handle any errors
-                //         console.error(error);
-                //     });
+                // Send the comment data using fetch
+                fetch('http://localhost/e_notebook/Server/comment.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(commentData)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Handle the response data
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        // Handle any errors
+                        console.error(error);
+                    });
             }
         }
     </script>
