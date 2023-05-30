@@ -38,7 +38,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexa.css" />
+    <link rel="stylesheet" href="./Client/styles/indexs.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -199,23 +199,7 @@ $resfac = mysqli_query($con, $sql);
                                 <!-- for thers comment  -->
                                 ${
                                     data.comment.length > 0 ? 
-                                `<div id="commentContent">
-                                    <div class="eachcomment">
-                                        <div class="commentcontent">
-                                            <div id="cmtuserDet">
-                                                <div id="userPost">G</div>
-                                                <div id="userNameAndDate">
-                                                    <span>Gaurab sunar</span>
-                                                    <span>2021-21-2</span>
-                                                </div>
-                                            </div>
-                                            <div class="commentdata">
-                                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, quo sed.
-                                                Rem vel officia, quae
-                                                aliquam voluptatem possimus odio quam?
-                                            </div>
-                                        </div>
-                                    </div>
+                                `<div id="commentContent" class="commentContent${data.id}">
                                 </div>
                                 `:''}
 
@@ -223,7 +207,7 @@ $resfac = mysqli_query($con, $sql);
                                 <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
                                     <div id="cmtPost" class="shadow">
                                         <div id="cmtuserPost">' . ucfirst(substr($username, 0, 1)) . '</div>
-                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id} cmtcreatePost${data.id}" placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
+                                        <input type="text" name="comment" id="cmtcreatePost" class="comentFld${data.id} cmtcreatePost${data.id} allCommentfld" placeholder="Comment your thoughts..." autocomplete="off" style="height: 32px;">
                                         <button style="background-color: transparent;border: none;display: flex;">
                                         <svg width="20" height="17" viewBox="0 0 19 16" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M0 16V10L8 8L0 6V0L19 8L0 16Z" />
@@ -256,6 +240,23 @@ $resfac = mysqli_query($con, $sql);
                         </div>`
             return recentPost;
         }
+
+        const commentData = (data) => {
+            let eachCmt = `<div class="eachcomment">
+                    <div class="commentcontent">
+                        <div id="cmtuserDet">
+                            <div id="userPost">${data.author[0].toUpperCase()}</div>
+                            <div id="userNameAndDate">
+                                <span>${data.author}</span>
+                                <span>${data.date}</span>
+                            </div>
+                        </div>
+                        <div class="commentdata">${data.cmt_des}</div>
+                    </div>
+                </div>`;
+            return eachCmt;
+        };
+
         const fetchData = async () => {
             try {
                 const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
@@ -269,7 +270,6 @@ $resfac = mysqli_query($con, $sql);
                 finalData.forEach(e => {
                     e.comment = e.comment.split(',').map(Number).filter(value => value >= 1);
                 });
-                console.log(finalData)
 
                 const fragment = document.createDocumentFragment();
                 const allDynamicPostContent = document.getElementById("allDynamicPostContent");
@@ -279,10 +279,26 @@ $resfac = mysqli_query($con, $sql);
                     const div = document.createElement('div');
                     div.innerHTML = eachPost;
                     fragment.appendChild(div);
+
+                    // Fetch comments for each post
+                    fetchComments(e.id)
+                        .then(comments => {
+                            const commentsContainer = document.querySelector(`.commentContent${e.id}`)
+                            comments.forEach(comment => {
+                                const commentHtml = commentData(comment);
+                                const commentDiv = document.createElement('div');
+                                commentDiv.innerHTML = commentHtml;
+                                commentsContainer.appendChild(commentDiv);
+                            });
+                        })
+                        .catch(error => console.error(error));
                 });
 
                 allDynamicPostContent.innerHTML = '';
                 allDynamicPostContent.appendChild(fragment);
+
+                // ================================= for comment in post ===================================
+                const eachcomment = document.getElementById("eachcomment");
 
                 // for recent post
                 const recentPostdata = document.getElementById("recentPostdata");
@@ -291,7 +307,10 @@ $resfac = mysqli_query($con, $sql);
                 console.error(error);
             }
         };
+
+
         fetchData();
+
         const recentPostContentFulldiv = document.getElementById("recentPostContentFulldiv")
 
         const recentClearClk = () => {
@@ -356,7 +375,7 @@ $resfac = mysqli_query($con, $sql);
 
 
         // ================================ for commnet logic -=================================
-        // JavaScript code
+        // JavaScript code for commnet post logic
         async function submitCommentAsync(event, postId, userId, userName) {
             event.preventDefault();
 
@@ -364,13 +383,16 @@ $resfac = mysqli_query($con, $sql);
             const comment = commentInput.value.trim();
 
             if (comment !== "") {
+                const allCommentfld = document.getElementsByClassName("allCommentfld");
+                for (let i = 0; i < allCommentfld.length; i++) {
+                    allCommentfld[i].value = "";
+                }
                 const commentData = {
                     postId,
                     userId,
                     comment,
                     userName
                 };
-                console.log(commentData);
 
                 try {
                     const response = await fetch('http://localhost/e_notebook/Server/Home/comment.php', {
@@ -382,12 +404,25 @@ $resfac = mysqli_query($con, $sql);
                     });
 
                     const data = await response.json();
-                    console.log(data);
                 } catch (error) {
                     console.error(error);
                 }
             }
         }
+
+        // Function to fetch comments based on post ID
+        const fetchComments = async (postId) => {
+            try {
+                const response = await fetch(`http://localhost/e_notebook/Server/Home/getcomment.php?postId=${postId}`, {
+                    method: 'GET'
+                });
+                const comments = await response.json();
+                return comments;
+            } catch (error) {
+                console.error(error);
+                return [];
+            }
+        };
     </script>
 </body>
 
