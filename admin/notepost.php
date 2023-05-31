@@ -89,7 +89,7 @@ $resfac = mysqli_query($con, $sql);
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="#" method="get" id="forms">
+                <form action="../Server/Notes/uploadnote.php" method="get" id="forms">
                     <h3>Add Faculty:</h3>
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
@@ -150,7 +150,7 @@ $resfac = mysqli_query($con, $sql);
                     </div>
 
                     <div id=" forms" class="buttonformFac">
-                        <button type='submit' name='updateadd'>Post</button>
+                        <button type='submit' name='notePostUpload'>Post</button>
                         <button type="reset">Reset</button>
                     </div>
                 </form>
