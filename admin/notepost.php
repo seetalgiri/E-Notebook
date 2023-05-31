@@ -58,17 +58,14 @@ $resfac = mysqli_query($con, $sql);
                         <td>Digital Logic</td>
                         <td>Chapter 1: Introduction this lorem </td>
                         <td class='edit twoBtn' id='editbtn'>
-                            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24'
-                                xmlns='http://www.w3.org/2000/svg'>
-                                <path
-                                    d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
+                            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
                             </svg>
                         </td>
                         <td class='delete twoBtn'>
                             <a name='deletebtn' $row[" id"] . "\">
                                 <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
-                                    <path
-                                        d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z' />
+                                    <path d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z' />
                                 </svg>
                             </a>
                         </td>
@@ -97,15 +94,13 @@ $resfac = mysqli_query($con, $sql);
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
-                        <textarea name="description" id="PostDesctiption" cols="30" rows="10"
-                            placeholder="Enter Note Description..."></textarea>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="10" placeholder="Enter Note Description..."></textarea>
                     </div>
                     <div class='flexButtons'>
 
                         <div id="forms" class="flex fbselectStr">
                             <label for="mySelect">Select Stream:</label>
-                            <select name="facultyid" id="mySelect" onchange="myFunction()"
-                                style="padding: 11px; border-radius: 3px">
+                            <select name="facultyid" id="mySelect" onchange="myFunction()" style="padding: 11px; border-radius: 3px">
                                 <option value="">Select Stream</option>
                                 <?php
                                 if (mysqli_num_rows($resfac) > 0) {
@@ -138,10 +133,22 @@ $resfac = mysqli_query($con, $sql);
                             <input type="file" name="image" id="image" accept="application/pdf">
                         </div>
                     </div>
-                    <div id="forms" class="flex">
-                        <label for="noteName">Enter Note Name:</label>
-                        <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name">
+                    <div class='flexButtons'>
+                        <div id="forms" class="flex fbselectStr">
+                            <label for="section">Select File Section:</label>
+                            <select name="section" id="section">
+                                <option value="">Select Section</option>
+                                <option value="note">Note</option>
+                                <option value="prevqn">Prev Question</option>
+                                <option value="syllabus">Syllabus</option>
+                            </select>
+                        </div>
+                        <div id="forms" class="flex" style="width: 50%;">
+                            <label for="noteName">Enter Note Name:</label>
+                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;">
+                        </div>
                     </div>
+
                     <div id=" forms" class="buttonformFac">
                         <button type='submit' name='updateadd'>Post</button>
                         <button type="reset">Reset</button>
@@ -157,7 +164,7 @@ $resfac = mysqli_query($con, $sql);
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "../Server/subjectName.php", true);
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData

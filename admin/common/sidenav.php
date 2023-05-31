@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 // checking if user is admin/superadmin or not
 function goHome()
 {
