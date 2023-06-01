@@ -266,7 +266,10 @@ $resultNotes = mysqli_query($con, $sqlNote);
                 }
             });
 
+            totalcontent = `<option value="">Select Subject</option>` + totalcontent;
+
             subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+
         }
 
 
@@ -288,7 +291,10 @@ $resultNotes = mysqli_query($con, $sqlNote);
                     }
                 });
 
+                totalcontent = `<option value="">Select Subject</option>` + totalcontent;
+
                 subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+
             }
 
             if (filterdcontent.length <= 0) {
@@ -308,8 +314,6 @@ $resultNotes = mysqli_query($con, $sqlNote);
                     allDataset()
                 }
             }
-
-
         }
     </script>
 </body>

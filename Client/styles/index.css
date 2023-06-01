@@ -776,7 +776,7 @@
   #createPost,
   #createPost1,
   #cmtcreatePost {
-    width: 60%;
+    width: 75%;
   }
   .stream li:nth-child(2) {
     display: none;
