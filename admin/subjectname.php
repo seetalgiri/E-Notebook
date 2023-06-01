@@ -73,7 +73,7 @@ if (isset($_GET["id"])) {
 // for edit btn
 // to show edting data
 $name = "";
-$dorder = "";
+$facultyId = "";
 $idnum = "";
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
@@ -82,11 +82,11 @@ if (isset($_GET["edit"])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $name = $row["name"];
-        $dorder = $row["facultyid"];
+        $facultyId = $row["facultyid"];
         $idnum = $row["id"];
     } else {
         $name = "";
-        $dorder = "";
+        $facultyId = "";
         $idnum = "";
     }
 }
@@ -96,14 +96,14 @@ if (isset($_POST['updateadd'])) {
     $year = -1;
     $sem = -1;
     $fname = $_POST['sub_name'];
-    $dOrder = $_POST['facultyid'];
+    $facultyId = $_POST['facultyid'];
     if (isset($_POST['year'])) {
         $year = $_POST['year'];
     } else {
         $sem = $_POST['sem'];
     }
     $id = $_POST['idnum'];
-    $sql = "UPDATE subname SET name = '$fname',facultyid = '$dOrder', year=$year, sem=$sem WHERE id = $id";
+    $sql = "UPDATE subname SET name = '$fname',facultyid = '$facultyId', year=$year, sem=$sem WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF']);
     } else {
@@ -203,12 +203,14 @@ if (isset($_POST['updateadd'])) {
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
                                 while ($row = mysqli_fetch_assoc($resfac)) {
-                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                    $selected = ($row["id"] == $facultyId) ? "selected" : ""; // Check if faculty id matches $facultyid
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . " " . $selected . ">" . $row["faculity_name"] . "</option> ";
                                 }
                             }
                             ?>
                         </select>
                     </div>
+
 
                     <div id="semyear" class="flex">
 
@@ -216,8 +218,7 @@ if (isset($_POST['updateadd'])) {
 
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
-                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name"
-                            value="<?php echo $name; ?>">
+                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name" value="<?php echo $name; ?>">
 
                     </div>
                     <div id="forms" class="buttonformFac">
