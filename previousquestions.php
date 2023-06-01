@@ -29,7 +29,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
     <!-- ==================== JS Imported ======================== -->

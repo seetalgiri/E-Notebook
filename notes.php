@@ -11,6 +11,29 @@ if (!$con) {
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
+
+// ================================ for pagination (start) ==========================================
+$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes";
+$resultRowNum = mysqli_query($con, $querytotalnumberROw);
+$rowNumbers = mysqli_fetch_assoc($resultRowNum);
+$totalRowNumber = $rowNumbers['total'];
+
+// for total page 
+$recordsPerPage = 10;
+$totalPages = ceil($totalRowNumber / $recordsPerPage);
+
+// my current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+
+// get data 
+$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
+$resultNotes = mysqli_query($con, $sqlNote);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +53,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -131,9 +154,15 @@ $resfac = mysqli_query($con, $sql);
                     <div class="linecontentNote"></div>
                     <!-- <div class="flexContent"> -->
                     <div id="mainViewContent" class="gridContent">
+                        <?php
+                        while ($row = mysqli_fetch_assoc($resultNotes)) {
+                            $postDes = $row['post_des'] != "" ? $row['post_des'] : "-";
+                            $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
+                            $noteId = $row['id'];
+                            echo '
                         <div class="eachBox">
                             <div class="boxcontentNote">
-                                <h3>Chapter 1: This is test I have title...</h3>
+                                <h3>' . $noteName . '</h3>
                                 <div class="auth">
                                     <svg width="14" height="14" viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M18.1 8.5L19.5 9.91L12.97 16.5L9.5 13L10.9 11.59L12.97 13.67L18.1 8.5ZM7 13L10 16H0V14C0 11.79 3.58 10 8 10L9.89 10.11L7 13ZM8 0C9.06087 0 10.0783 0.421427 10.8284 1.17157C11.5786 1.92172 12 2.93913 12 4C12 5.06087 11.5786 6.07828 10.8284 6.82843C10.0783 7.57857 9.06087 8 8 8C6.93913 8 5.92172 7.57857 5.17157 6.82843C4.42143 6.07828 4 5.06087 4 4C4 2.93913 4.42143 1.92172 5.17157 1.17157C5.92172 0.421427 6.93913 0 8 0Z" />
@@ -144,7 +173,7 @@ $resfac = mysqli_query($con, $sql);
 
 
                                 <div class="NoteAction">
-                                    <div class="date"><span>Date:</span> 2023-01-01</div>
+                                    <div class="date"><span>Date:</span> ' . $row['date'] . '</div>
                                     <div class="svgsNote">
                                         <div class="likecontent">
                                             <svg width="17" height="15" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg">
@@ -160,14 +189,41 @@ $resfac = mysqli_query($con, $sql);
                                         </svg>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+';
+                        }
+
+                        ?>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
     <div id="filterSection"></div>
+    <!-- ================================= for pagination =============================== -->
+    <div class="pagination">
+        <?php
+        if ($currentPage > 1) {
+            echo '<a href="?page=' . ($currentPage - 1) . '" class="leftArrow">&laquo;</a>';
+        } else {
+            echo '<a class="leftArrow">&laquo;</a>';
+        }
+
+        for ($i = 1; $i <= $totalPages; $i++) {
+            $activeClass = ($currentPage == $i) ? 'activePage' : '';
+            echo '<a href="?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
+        }
+
+        if ($currentPage < $totalPages) {
+            echo '<a href="?page=' . ($currentPage + 1) . '" class="rightArrow">&raquo;</a>';
+        } else {
+            echo '<a class="rightArrow">&raquo;</a>';
+        }
+        ?>
+    </div>
 
     <script>
         let data = [];

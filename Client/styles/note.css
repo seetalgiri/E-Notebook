@@ -397,7 +397,7 @@
 
 /* for grid vied  */
 .gridContent {
-  width: 95%;
+  width: 97%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
   column-gap: 30px;
@@ -706,4 +706,46 @@
   #searchNotes {
     width: 80%;
   }
+}
+/* for pagintion  */
+.pagination {
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+}
+
+.pagination a {
+  color: var(--text-color-dark);
+  float: left;
+  height: 35px;
+  width: 35px;
+  display: grid;
+  place-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid var(--light-border-clor-opacity2);
+  margin: 0 4px;
+}
+
+.pagination a.activePage {
+  background-color: var(--second-color-light);
+  color: var(--bg-white);
+  border: 1px solid var(--light-border-clor-opacity2) !important;
+}
+
+.pagination a:hover:not(.activePage) {
+  background-color: var(--second-color) !important;
+  color: var(--bg-white);
+}
+.rightArrow {
+  padding-bottom: 5px;
+  padding-left: 2px;
+  font-size: 22px;
+}
+.leftArrow {
+  padding-bottom: 5px;
+  padding-right: 2px;
+  font-size: 22px;
 }
