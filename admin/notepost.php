@@ -56,7 +56,7 @@ $sub_name = "";
 $sub_id = "";
 $note_file = "";
 $note_name = "";
-$note_cate = "";
+$note_category = "";
 $stream_na = "";
 $note_like = "";
 
@@ -204,7 +204,7 @@ if (isset($_GET['edit'])) {
                         <div id="forms" class="flex fbselectStr">
                             <label for="semyearsel">Select Grade:</label>
                             <select id='semyearsel'>
-                                <option>Select Semester</option>
+                                <option value="">Select Semester</option>
                             </select>
                         </div>
                     </div>
@@ -225,11 +225,12 @@ if (isset($_GET['edit'])) {
                             <label for="section">Select File Section:</label>
                             <select name="section" id="section">
                                 <option value="">Select Section</option>
-                                <option value="note">Note</option>
-                                <option value="prevqn">Prev Question</option>
-                                <option value="syllabus">Syllabus</option>
+                                <option value="note" <?php echo ($note_category == 'note') ? 'selected' : ''; ?>>Note</option>
+                                <option value="prevqn" <?php echo ($note_category == 'prevqn') ? 'selected' : ''; ?>>Prev Question</option>
+                                <option value="syllabus" <?php echo ($note_category == 'syllabus') ? 'selected' : ''; ?>>Syllabus</option>
                             </select>
                         </div>
+
                         <div id="forms" class="flex" style="width: 50%;">
                             <label for="noteName">Enter Note Name:</label>
                             <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
@@ -335,22 +336,21 @@ if (isset($_GET['edit'])) {
         // crossSection.addEventListener("click", toggleSection);
         // filterSection.addEventListener("click", toggleSection);
 
-        let sem = `<option>Select Semester</option>
-                    <option value='1'>First Semester</option>
-                    <option value='2'>Second Semester</option>
-                    <option value='3'>Third Semester</option>
-                    <option value='4'>Fourth Semester</option>
-                    <option value='5'>Fifth Semester</option>
-                    <option value='6'>Sixth Semester</option>
-                    <option value='7'>Seventh Semester</option>
-                    <option value='8'>Eighth Semester</option>
+        let sem = `<option value="1" <?php if ($sem == "1") echo "selected"; ?>>First Semester</option>
+                                <option value="2" <?php if ($sem == "2") echo "selected"; ?>>Second Semester</option>
+                                <option value="3" <?php if ($sem == "3") echo "selected"; ?>>Third Semester</option>
+                                <option value="4" <?php if ($sem == "4") echo "selected"; ?>>Fourth Semester</option>
+                                <option value="5" <?php if ($sem == "5") echo "selected"; ?>>Fifth Semester</option>
+                                <option value="6" <?php if ($sem == "6") echo "selected"; ?>>Sixth Semester</option>
+                                <option value="7" <?php if ($sem == "7") echo "selected"; ?>>Seventh Semester</option>
+                                <option value="8" <?php if ($sem == "8") echo "selected"; ?>>Eighth Semester</option>
                     `;
 
-        let year = `<option>Select Year</option>    
-                    <option value='1'>First Year</option>
-                    <option value='2'>Second Year</option>
-                    <option value='3'>Third Year</option>
-                    <option value='4'>Fourth Year</option>
+        let year = ` <option value="">Select Year</option>
+                    <option value="1" <?php if ($year == "1") echo "selected"; ?>>First Year</option>
+                    <option value="2" <?php if ($year == "2") echo "selected"; ?>>Second Year</option>
+                    <option value="3" <?php if ($year == "3") echo "selected"; ?>>Third Year</option>
+                    <option value="4" <?php if ($year == "4") echo "selected"; ?>>Fourth Year</option>
                    `;
 
         // setting year and sem
@@ -375,6 +375,23 @@ if (isset($_GET['edit'])) {
             }
             semyear.innerHTML = HTML;
         }
+
+
+
+        // When editing get sem/year and subject name
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editParam = urlParams.get('edit');
+            if (editParam) {
+                myFunction();
+                handleSubjectChange()
+                setTimeout(() => {
+                    handleSubjectChange();
+                    handlesemSubjectChange()
+                }, 100);
+                // handlesemSubjectChange();
+            }
+        };
     </script>
 
 </body>
