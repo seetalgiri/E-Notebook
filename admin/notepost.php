@@ -16,9 +16,29 @@ $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
 
-// Fetching data from the database
-$sqlNote = "SELECT * FROM `notes`";
+
+// ================================ for pagination (start) ==========================================
+$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes";
+$resultRowNum = mysqli_query($con, $querytotalnumberROw);
+$rowNumbers = mysqli_fetch_assoc($resultRowNum);
+$totalRowNumber = $rowNumbers['total'];
+
+// for total page 
+$recordsPerPage = 10;
+$totalPages = ceil($totalRowNumber / $recordsPerPage);
+
+// my current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+
+// get data 
+$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
+
+
+
 
 if (!$resultNotes) {
     die("Error fetching data: " . mysqli_error($con));
@@ -92,10 +112,10 @@ if (isset($_GET['edit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculity.css">
-    <link rel="stylesheet" href="./CSS/notepost.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./CSS/noteposts.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenavs.js" defer></script>
@@ -152,13 +172,26 @@ if (isset($_GET['edit'])) {
 
                 </table>
 
+                <!-- ================================= for pagination =============================== -->
                 <div class="pagination">
-                    <a href="#" class="leftArrow">&laquo;</a>
-                    <a href="#">1</a>
-                    <a href="#" class="activePage">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <a href="#" class="rightArrow">&raquo;</a>
+                    <?php
+                    if ($currentPage > 1) {
+                        echo '<a href="?page=' . ($currentPage - 1) . '" class="leftArrow">&laquo;</a>';
+                    } else {
+                        echo '<a class="leftArrow">&laquo;</a>';
+                    }
+
+                    for ($i = 1; $i <= $totalPages; $i++) {
+                        $activeClass = ($currentPage == $i) ? 'activePage' : '';
+                        echo '<a href="?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
+                    }
+
+                    if ($currentPage < $totalPages) {
+                        echo '<a href="?page=' . ($currentPage + 1) . '" class="rightArrow">&raquo;</a>';
+                    } else {
+                        echo '<a class="rightArrow">&raquo;</a>';
+                    }
+                    ?>
                 </div>
             </div>
         </div>

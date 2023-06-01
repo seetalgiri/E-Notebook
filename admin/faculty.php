@@ -89,9 +89,9 @@ if (isset($_POST['updateadd'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Faculty</title>
     <!-- for CSS Style  -->
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculity.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/faculitys.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenavs.js" defer></script>
@@ -145,14 +145,14 @@ if (isset($_POST['updateadd'])) {
                     }
                     ?>
                 </table>
-                <div class="pagination">
+                <!-- <div class="pagination">
                     <a href="#" class="leftArrow">&laquo;</a>
                     <a href="#">1</a>
                     <a href="#" class="activePage">2</a>
                     <a href="#">3</a>
                     <a href="#">4</a>
                     <a href="#" class="rightArrow">&raquo;</a>
-                </div>
+                </div> -->
             </div>
         </div>
         <div id="modalContent">

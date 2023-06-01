@@ -214,3 +214,26 @@ body {
   font-weight: 600;
   font-family: Arial, Helvetica, sans-serif;
 }
+.rightArrow {
+  padding-bottom: 3px;
+  padding-left: 2px;
+  user-select: none;
+}
+
+.leftArrow {
+  padding-bottom: 3px;
+  padding-right: 2px;
+  user-select: none;
+}
+#imageDIvforModal {
+  height: 365px !important;
+  object-fit: cover !important;
+  min-width: 300px !important;
+  overflow: hidden;
+}
+#imageDIvforModal img {
+  max-height: 370px !important;
+  min-height: 300px !important;
+  object-fit: cover !important;
+  min-width: 300px !important;
+}

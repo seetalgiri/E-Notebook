@@ -363,6 +363,7 @@ svg {
   top: 45px;
   border-radius: 3px;
   overflow: hidden;
+  display: none;
 }
 
 #listItemsAdminPp ul {

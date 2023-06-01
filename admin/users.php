@@ -13,9 +13,28 @@ if (!$con) {
     die("Database connection failed");
 }
 
-// to so all data in frontend
-$sql = "SELECT * FROM `auth`";
+
+// ================================ for pagination (start) ==========================================
+$querytotalnumberROw = "SELECT COUNT(*) as total FROM auth";
+$resultRowNum = mysqli_query($con, $querytotalnumberROw);
+$rowNumbers = mysqli_fetch_assoc($resultRowNum);
+$totalRowNumber = $rowNumbers['total'];
+
+// for total page 
+$recordsPerPage = 10;
+$totalPages = ceil($totalRowNumber / $recordsPerPage);
+
+// my current page
+$currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+
+$offset = ($currentPage - 1) * $recordsPerPage;
+
+
+// get data 
+$sql = "SELECT * FROM auth LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
+
+
 
 if (isset($_GET['add_admin'])) {
     $admin = $_GET['add_admin'];
@@ -151,8 +170,8 @@ if (mysqli_num_rows($res) > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Users</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/users.css">
 
     <!-- for JS Logic  -->
@@ -201,15 +220,26 @@ if (mysqli_num_rows($res) > 0) {
                     }
                     ?>
 
+                    <!-- ================================= for pagination =============================== -->
                     <div class="pagination">
-                        <a href="#" class="leftArrow">&laquo;</a>
-                        <a href="#">1</a>
-                        <a href="#" class="activePage">2</a>
-                        <a href="#">3</a>
-                        <a href="#">4</a>
-                        <a href="#">5</a>
-                        <a href="#">6</a>
-                        <a href="#" class="rightArrow">&raquo;</a>
+                        <?php
+                        if ($currentPage > 1) {
+                            echo '<a href="?page=' . ($currentPage - 1) . '" class="leftArrow">&laquo;</a>';
+                        } else {
+                            echo '<a class="leftArrow">&laquo;</a>';
+                        }
+
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            $activeClass = ($currentPage == $i) ? 'activePage' : '';
+                            echo '<a href="?page=' . $i . '" class="' . $activeClass . '">' . $i . '</a>';
+                        }
+
+                        if ($currentPage < $totalPages) {
+                            echo '<a href="?page=' . ($currentPage + 1) . '" class="rightArrow">&raquo;</a>';
+                        } else {
+                            echo '<a class="rightArrow">&raquo;</a>';
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -44,4 +44,5 @@ textarea {
 
 #modalContent {
   width: 500px !important;
+  right: -475px;
 }
