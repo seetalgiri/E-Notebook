@@ -31,8 +31,43 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 // get data 
 $sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
+if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset($_GET['year']))) {
+    $sem = "";
+    $year = "";
+    $facultyId = $_GET['facultyid'];
+    $subjectId = $_GET['subject'];
+    if (strlen($facultyId) > 0) {
 
 
+        $sqlNote = "SELECT * FROM notes";
+
+        if (strlen($facultyId) > 0) {
+            $sqlNote .= " WHERE stream_id = '$facultyId'";
+        }
+
+        // Add filters based on the available parameters
+        if (isset($_GET['sem'])) {
+            $sem = $_GET['sem'];
+            if (strlen($sem) > 0) {
+                $sqlNote .= " AND sem = '$sem'";
+            }
+        } elseif (isset($_GET['year'])) {
+            $year = $_GET['year'];
+            if (strlen($year) > 0) {
+                $sqlNote .= " AND year = '$year'";
+            }
+        }
+
+
+        if (strlen($subjectId) > 0) {
+            $sqlNote .= " AND sub_id = '$subjectId'";
+        }
+
+        $sqlNote .= " LIMIT $offset, $recordsPerPage";
+
+        $resultNotes = mysqli_query($con, $sqlNote);
+    }
+}
 
 ?>
 
@@ -56,7 +91,7 @@ $resultNotes = mysqli_query($con, $sqlNote);
     <link rel="stylesheet" href="./Client/styles/notea.css" />
 
     <!-- ==================== JS Imported ======================== -->
-    <script src="./Client/logic/notes.js" defer></script>
+    <script src="./Client/logic/note.js" defer></script>
 
 
 </head>

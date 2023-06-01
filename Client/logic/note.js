@@ -65,7 +65,7 @@ filterNotes.addEventListener("click", () => {
 crossSection.addEventListener("click", toggleSection);
 filterSection.addEventListener("click", toggleSection);
 
-let sem = `<option>Select Semester</option>
+let sem = `<option value="">Select Semester</option>
                     <option value='1'>First Semester</option>
                     <option value='2'>Second Semester</option>
                     <option value='3'>Third Semester</option>
@@ -76,7 +76,7 @@ let sem = `<option>Select Semester</option>
                     <option value='8'>Eighth Semester</option>
                     `;
 
-let year = `<option>Select Year</option>    
+let year = `<option value="">Select Year</option>    
                     <option value='1'>First Year</option>
                     <option value='2'>Second Year</option>
                     <option value='3'>Third Year</option>
