@@ -91,7 +91,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             }
 
             // Prepare the update query
-            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName, sem = '$sem', year = '$year'
+            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName, sem = '$sem', year = '$year', sub_name = '$subName'
             WHERE id = '$update'";
 
             // Execute the update query
@@ -101,7 +101,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
                 echo "Error updating record: " . mysqli_error($con);
             }
         } else {
-            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', stream_name = '$facultyName', sem = '$sem', year = '$year'
+            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', stream_name = '$facultyName', sem = '$sem', year = '$year', sub_name = '$subName'
             WHERE id = '$update'";
 
             if (mysqli_query($con, $updateQuery)) {
@@ -147,8 +147,8 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             if (move_uploaded_file($file_tmp, $destination)) {
                 $lastPath = $notePath . $unique_filename;
                 // Prepare the insert query
-                $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, stream_name, sem, year)
-                            VALUES ('$description', '$facultyid', '$subjectid', '$lastPath', '$noteName', '$section', '$facultyName', '$sem', '$year')";
+                $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, stream_name, sem, year, sub_name)
+                            VALUES ('$description', '$facultyid', '$subjectid', '$lastPath', '$noteName', '$section', '$facultyName', '$sem', '$year', '$subName')";
 
                 // Execute the insert query
                 if (mysqli_query($con, $insertQuery)) {
