@@ -79,19 +79,8 @@ if (isset($_GET['edit'])) {
         $note_category = $note['note_category'];
         $stream_name = $note['stream_name'];
         $note_like = $note['note_like'];
-        // echo "<h1>Edit note des: " . $post_des . "</h1>";
-        // echo "<h1>Edit note streamid: " . $stream_id . "</h1>";
-        // echo "<h1>Edit note sem: " . $sem . "</h1>";
-        // echo "<h1>Edit note year: " . $year . "</h1>";
-        // echo "<h1>Edit note sub_name: " . $sub_name . "</h1>";
-        // echo "<h1>Edit note sub_id: " . $sub_id . "</h1>";
-        // echo "<h1>Edit note note_name: " . $note_name . "</h1>";
-        // echo "<h1>Edit note note_category: " . $note_category . "</h1>";
-        // echo "<h1>Edit note stream_name: " . $stream_name . "</h1>";
-        // echo "<h1>Edit note note_like: " . $note_like . "</h1>";
     }
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -230,14 +219,14 @@ if (isset($_GET['edit'])) {
                                 <option value="syllabus" <?php echo ($note_category == 'syllabus') ? 'selected' : ''; ?>>Syllabus</option>
                             </select>
                         </div>
-
                         <div id="forms" class="flex" style="width: 50%;">
                             <label for="noteName">Enter Note Name:</label>
                             <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
                         </div>
                     </div>
+                    <?php echo isset($_GET['edit']) ? '<input type="hidden" name="update" id="" value="' . $_GET['edit'] . '">' : ''; ?>
                     <div id=" forms" class="buttonformFac">
-                        <button type='submit' name='notePostUpload'>Post</button>
+                        <button type='submit' name=<?php echo isset($_GET['edit']) ? 'noteUpdateUpload' : 'notePostUpload'; ?>><?php echo isset($_GET['edit']) ? 'Update' : 'Post'; ?></button>
                         <button type="reset">Reset</button>
                     </div>
                 </form>

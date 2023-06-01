@@ -1,8 +1,6 @@
 <?php
-
+// Include the necessary files
 include '../../admin/UserSessionData.php';
-
-// Importing configurations
 include '../../Configuration.php';
 
 // Database connection
@@ -12,17 +10,16 @@ if (!$con) {
     die("Could not connect to the database");
 }
 
-if (isset($_POST['notePostUpload'])) {
+if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
     $description = isset($_POST['description']) ? $_POST['description'] : "";
     $facultyid = isset($_POST['facultyid']) ? $_POST['facultyid'] : 0;
     $subjectid = isset($_POST['subject']) ? $_POST['subject'] : 0;
-    $year = isset($_POST['year']) ? $_POST['year'] : 0;
-    $sem = isset($_POST['sem']) ? $_POST['sem'] : 0;
     $section = isset($_POST['section']) ? $_POST['section'] : "";
     $noteName = isset($_POST['noteName']) ? $_POST['noteName'] : "";
+    $sem = isset($_POST['sem']) ? $_POST['sem'] : "";
+    $year = isset($_POST['year']) ? $_POST['year'] : "";
     $facultyName = "";
     $subName = "";
-    $note_like = "";
 
     // Prepare the faculty name query
     if ($facultyid != 0 && $facultyid != "") {
@@ -52,60 +49,121 @@ if (isset($_POST['notePostUpload'])) {
         die("Please select subject");
     }
 
-    // File upload handling
-    if (isset($_FILES['note'])) {
-        $file = $_FILES['note'];
-        $file_name = $file['name'];
-        $file_tmp = $file['tmp_name'];
-        $file_size = $file['size'];
-        $file_error = $file['error'];
+    if (isset($_POST['noteUpdateUpload'])) {
+        $update = $_POST['update'];
 
-        // Check if the file is a PDF
-        $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        if ($file_ext !== "pdf") {
-            die("Only PDF files are allowed!");
-        }
+        if (isset($_FILES['note']) && $_FILES['note']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['note'];
+            $file_name = $file['name'];
+            $file_tmp = $file['tmp_name'];
+            $file_size = $file['size'];
 
-        // Define the upload directory based on section
-        if ($section == "syllabus") {
-            $upload_dir = '../uploads/syllabus/';
-            $notePath =  $uploadFIleFront . 'syllabus/';
-        } elseif ($section == "prevqn") {
-            $upload_dir = '../uploads/prevqn/';
-            $notePath =  $uploadFIleFront . 'prevqn/';
-        } else {
-            $upload_dir = '../uploads/notes/';
-            $notePath =  $uploadFIleFront . 'notes/';
-        }
+            // Check if the file is a PDF
+            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            if ($file_ext !== "pdf") {
+                die("Only PDF files are allowed!");
+            }
 
-        // Generate a unique filename
-        $unique_filename = uniqid('', true) . '.' . $file_ext;
-
-        // Set the destination path to store the uploaded file
-        $destination = $upload_dir . $unique_filename;
-
-        // Move the uploaded file to the desired location
-        if (move_uploaded_file($file_tmp, $destination)) {
-            $notePath .= $unique_filename;
-            // Prepare the insert query
-            $insertQuery = "INSERT INTO notes (post_des, stream_id, sem, year, sub_name, sub_id, note_file, note_name, note_category, stream_name, note_like)
-                            VALUES ('$description', '$facultyid', '$sem', '$year', '$subName', '$subjectid', '$notePath', '$noteName', '$section', '$facultyName', '$note_like')";
-
-            // Execute the insert query
-            if (mysqli_query($con, $insertQuery)) {
-                echo "Record inserted successfully!";
+            // Define the upload directory based on section
+            if ($section == "syllabus") {
+                $upload_dir = '../uploads/syllabus/';
+                $notePath =  $uploadFIleFront . 'syllabus/';
+            } elseif ($section == "prevqn") {
+                $upload_dir = '../uploads/prevqn/';
+                $notePath =  $uploadFIleFront . 'prevqn/';
             } else {
-                echo "Error inserting record: " . mysqli_error($con);
+                $upload_dir = '../uploads/notes/';
+                $notePath =  $uploadFIleFront . 'notes/';
+            }
+
+            // Generate a unique filename
+            $unique_filename = uniqid('', true) . '.' . $file_ext;
+
+            // Set the destination path to store the uploaded file
+            $destination = $upload_dir . $unique_filename;
+
+            // Move the uploaded file to the desired location
+            if (move_uploaded_file($file_tmp, $destination)) {
+                $lastPath = $notePath . $unique_filename;
+            } else {
+                echo "Error uploading file.";
+                exit;
+            }
+
+            // Prepare the update query
+            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName, sem = '$sem', year = '$year'
+            WHERE id = '$update'";
+
+            // Execute the update query
+            if (mysqli_query($con, $updateQuery)) {
+                echo "Record updated successfully!";
+            } else {
+                echo "Error updating record: " . mysqli_error($con);
             }
         } else {
-            echo "Error uploading file.";
+            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', stream_name = '$facultyName', sem = '$sem', year = '$year'
+            WHERE id = '$update'";
+
+            if (mysqli_query($con, $updateQuery)) {
+                echo "Record updated successfully!";
+            } else {
+                echo "Error updating record: " . mysqli_error($con);
+            }
         }
     } else {
-        echo "No file uploaded.";
+        // File upload handling
+        if (isset($_FILES['note'])) {
+            $file = $_FILES['note'];
+            $file_name = $file['name'];
+            $file_tmp = $file['tmp_name'];
+            $file_size = $file['size'];
+            $file_error = $file['error'];
+
+            // Check if the file is a PDF
+            $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            if ($file_ext !== "pdf") {
+                die("Only PDF files are allowed!");
+            }
+
+            // Define the upload directory based on section
+            if ($section == "syllabus") {
+                $upload_dir = '../uploads/syllabus/';
+                $notePath =  $uploadFIleFront . 'syllabus/';
+            } elseif ($section == "prevqn") {
+                $upload_dir = '../uploads/prevqn/';
+                $notePath =  $uploadFIleFront . 'prevqn/';
+            } else {
+                $upload_dir = '../uploads/notes/';
+                $notePath =  $uploadFIleFront . 'notes/';
+            }
+
+            // Generate a unique filename
+            $unique_filename = uniqid('', true) . '.' . $file_ext;
+
+            // Set the destination path to store the uploaded file
+            $destination = $upload_dir . $unique_filename;
+
+            // Move the uploaded file to the desired location
+            if (move_uploaded_file($file_tmp, $destination)) {
+                $lastPath = $notePath . $unique_filename;
+                // Prepare the insert query
+                $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, stream_name, sem, year)
+                            VALUES ('$description', '$facultyid', '$subjectid', '$lastPath', '$noteName', '$section', '$facultyName', '$sem', '$year')";
+
+                // Execute the insert query
+                if (mysqli_query($con, $insertQuery)) {
+                    echo "Record inserted successfully!";
+                } else {
+                    echo "Error inserting record: " . mysqli_error($con);
+                }
+            } else {
+                echo "Error uploading file.";
+            }
+        } else {
+            echo "No file uploaded.";
+        }
     }
 
     // Close the database connection
     mysqli_close($con);
-} else {
-    echo 'Bad job';
 }
