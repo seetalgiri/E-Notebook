@@ -91,7 +91,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             }
 
             // Prepare the update query
-            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName, sem = '$sem', year = '$year', sub_name = '$subName'
+            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName', sem = '$sem', year = '$year', sub_name = '$subName'
             WHERE id = '$update'";
 
             // Execute the update query
