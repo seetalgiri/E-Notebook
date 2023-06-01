@@ -47,6 +47,40 @@ if (isset($_GET['deletenote'])) {
 }
 
 
+if (isset($_GET['edit'])) {
+    $id = $_GET['edit'];
+    $edoitsql = "SELECT * FROM `notes` WHERE `id` = $id ";
+    $editres = mysqli_query($con, $edoitsql);
+    if (!$editres) {
+        echo "Note not found";
+    } else {
+        // (post_des, stream_id, sem, year, sub_name, sub_id, note_file, note_name, note_category, stream_name, note_like)
+        $note = mysqli_fetch_array($editres);
+        $post_des = $note['post_des'];
+        $stream_id = $note['stream_id'];
+        $sem = $note['sem'];
+        $year = $note['year'];
+        $sub_name = $note['sub_name'];
+        $sub_id = $note['sub_id'];
+        $note_file = $note['note_file'];
+        $note_name = $note['note_name'];
+        $note_category = $note['note_category'];
+        $stream_name = $note['stream_name'];
+        $note_like = $note['note_like'];
+        echo "<h1>Edit note des: " . $post_des . "</h1>";
+        echo "<h1>Edit note streamid: " . $stream_id . "</h1>";
+        echo "<h1>Edit note sem: " . $sem . "</h1>";
+        echo "<h1>Edit note year: " . $year . "</h1>";
+        echo "<h1>Edit note sub_name: " . $sub_name . "</h1>";
+        echo "<h1>Edit note sub_id: " . $sub_id . "</h1>";
+        echo "<h1>Edit note note_name: " . $note_name . "</h1>";
+        echo "<h1>Edit note note_category: " . $note_category . "</h1>";
+        echo "<h1>Edit note stream_name: " . $stream_name . "</h1>";
+        echo "<h1>Edit note note_like: " . $note_like . "</h1>";
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,18 +131,20 @@ if (isset($_GET['deletenote'])) {
                         <td>{$row['sub_name']}</td>
                         <td>{$noteName}</td>
                         <td class='edit twoBtn' id='editbtn'>
-            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
-            <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
-
-            </svg>
-        </td>
-        <td class='delete twoBtn'>
-        <a href='?deletenote={$noteId}'>
-                <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
-                    <path d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z'/>
+            <a href='?edit={$noteId}'>
+                <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
+                <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
                 </svg>
             </a>
+
         </td>
+        <td class='delete twoBtn'>
+            <a href='?deletenote={$noteId}'>
+                    <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
+                        <path d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z'/>
+                    </svg>
+                </a>
+            </td>
         </tr>";
                     }
                     ?>
