@@ -47,6 +47,19 @@ if (isset($_GET['deletenote'])) {
 }
 
 
+$note = "";
+$post_des = "";
+$stream_id = "";
+$sem = "";
+$year = "";
+$sub_name = "";
+$sub_id = "";
+$note_file = "";
+$note_name = "";
+$note_cate = "";
+$stream_na = "";
+$note_like = "";
+
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $edoitsql = "SELECT * FROM `notes` WHERE `id` = $id ";
@@ -54,7 +67,6 @@ if (isset($_GET['edit'])) {
     if (!$editres) {
         echo "Note not found";
     } else {
-        // (post_des, stream_id, sem, year, sub_name, sub_id, note_file, note_name, note_category, stream_name, note_like)
         $note = mysqli_fetch_array($editres);
         $post_des = $note['post_des'];
         $stream_id = $note['stream_id'];
@@ -67,16 +79,16 @@ if (isset($_GET['edit'])) {
         $note_category = $note['note_category'];
         $stream_name = $note['stream_name'];
         $note_like = $note['note_like'];
-        echo "<h1>Edit note des: " . $post_des . "</h1>";
-        echo "<h1>Edit note streamid: " . $stream_id . "</h1>";
-        echo "<h1>Edit note sem: " . $sem . "</h1>";
-        echo "<h1>Edit note year: " . $year . "</h1>";
-        echo "<h1>Edit note sub_name: " . $sub_name . "</h1>";
-        echo "<h1>Edit note sub_id: " . $sub_id . "</h1>";
-        echo "<h1>Edit note note_name: " . $note_name . "</h1>";
-        echo "<h1>Edit note note_category: " . $note_category . "</h1>";
-        echo "<h1>Edit note stream_name: " . $stream_name . "</h1>";
-        echo "<h1>Edit note note_like: " . $note_like . "</h1>";
+        // echo "<h1>Edit note des: " . $post_des . "</h1>";
+        // echo "<h1>Edit note streamid: " . $stream_id . "</h1>";
+        // echo "<h1>Edit note sem: " . $sem . "</h1>";
+        // echo "<h1>Edit note year: " . $year . "</h1>";
+        // echo "<h1>Edit note sub_name: " . $sub_name . "</h1>";
+        // echo "<h1>Edit note sub_id: " . $sub_id . "</h1>";
+        // echo "<h1>Edit note note_name: " . $note_name . "</h1>";
+        // echo "<h1>Edit note note_category: " . $note_category . "</h1>";
+        // echo "<h1>Edit note stream_name: " . $stream_name . "</h1>";
+        // echo "<h1>Edit note note_like: " . $note_like . "</h1>";
     }
 }
 
@@ -170,13 +182,11 @@ if (isset($_GET['edit'])) {
             <div id="sideDivForm" class='noticePost'>
                 <form action="../Server/Notes/uploadnote.php" method="post" id="forms" enctype="multipart/form-data">
                     <h3>Add Faculty:</h3>
-                    <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
-                        <textarea name="description" id="PostDesctiption" cols="30" rows="10" placeholder="Enter Note Description..."></textarea>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="10" placeholder="Enter Note Description..."><?php echo $post_des; ?></textarea>
                     </div>
                     <div class='flexButtons'>
-
                         <div id="forms" class="flex fbselectStr">
                             <label for="mySelect">Select Stream:</label>
                             <select name="facultyid" id="mySelect" onchange="myFunction()" style="padding: 11px; border-radius: 3px">
@@ -184,7 +194,8 @@ if (isset($_GET['edit'])) {
                                 <?php
                                 if (mysqli_num_rows($resfac) > 0) {
                                     while ($row = mysqli_fetch_assoc($resfac)) {
-                                        echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                        $selected = ($row['id'] == $stream_id) ? 'selected' : '';
+                                        echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . " $selected>" . $row["faculity_name"] . "</option> ";
                                     }
                                 }
                                 ?>
@@ -196,9 +207,6 @@ if (isset($_GET['edit'])) {
                                 <option>Select Semester</option>
                             </select>
                         </div>
-
-
-
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
@@ -224,15 +232,15 @@ if (isset($_GET['edit'])) {
                         </div>
                         <div id="forms" class="flex" style="width: 50%;">
                             <label for="noteName">Enter Note Name:</label>
-                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;">
+                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
                         </div>
                     </div>
-
                     <div id=" forms" class="buttonformFac">
                         <button type='submit' name='notePostUpload'>Post</button>
                         <button type="reset">Reset</button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>
