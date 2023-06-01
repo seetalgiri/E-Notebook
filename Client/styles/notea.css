@@ -60,7 +60,7 @@
   background-color: var(--light-bgcolor);
 }
 #notessection {
-  height: 99%;
+  height: 92%;
   width: 100%;
   max-width: 1500px;
   margin: auto;
@@ -330,7 +330,7 @@
 }
 .linecontentNote {
   width: 100%;
-  margin-bottom: -5px !important;
+  margin-bottom: -15px !important;
   margin: auto;
   height: 1px;
   background-color: var(--light-border-clor-opacity1);
@@ -407,8 +407,12 @@
   align-items: start;
   row-gap: 30px;
   max-height: 80vh;
-  overflow: auto;
   margin-top: 40px;
+}
+@media screen and (max-width: 600px) {
+  .gridContent {
+    row-gap: 10px !important;
+  }
 }
 .gridContent .eachBox {
   height: 110px;
@@ -633,8 +637,7 @@
 @media screen and (max-width: 940px) {
   .filtersec {
     position: absolute;
-    left: 0;
-    left: -260px;
+    left: -350px;
     background-color: var(--bg-white);
     z-index: 100000000000 !important;
   }
@@ -689,16 +692,19 @@
   #actualNote {
     padding: 10px;
     padding-top: 15px;
+    overflow: auto;
   }
   .likecount {
     font-size: 10px !important;
     padding-top: 1px;
+    margin-right: 6px;
   }
   .flexContent .svgsNote {
     width: 80px;
   }
   .likecontent {
     gap: 0px;
+    margin-left: -10px;
   }
 }
 
@@ -710,16 +716,22 @@
 /* for pagintion  */
 .pagination {
   display: inline-block;
-  position: absolute;
-  bottom: 15px;
-  right: 20px;
+  position: fixed;
+  bottom: 0px;
+  padding: 10px;
+  right: 0px;
+  background-color: var(--light-bgcolor);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 .pagination a {
   color: var(--text-color-dark);
   float: left;
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   display: grid;
   place-content: center;
   border-radius: 50%;
@@ -727,6 +739,20 @@
   transition: background-color 0.3s;
   border: 1px solid var(--light-border-clor-opacity2);
   margin: 0 4px;
+  font-size: 14px;
+}
+#mainViewContent {
+  padding-bottom: 30px;
+  /* overflow: auto; */
+}
+
+.leftArrow {
+  padding-bottom: 2px !important;
+  padding-right: 2px !important;
+  user-select: none !important;
+}
+.rightArrow {
+  padding-bottom: 3px !important;
 }
 
 .pagination a.activePage {
