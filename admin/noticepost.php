@@ -57,6 +57,8 @@ if (isset($_GET['delete'])) {
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noticepost.css">
+    <link rel="stylesheet" href="./CSS/modal.css">
+
 
 
     <!-- for JS Logic  -->
@@ -95,7 +97,7 @@ if (isset($_GET['delete'])) {
         <td>{$row['stream']}</td>
         <td>{$row['author']}</td>
         <td class='edit' id='editbtn'>
-            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
+            <svg id='modalOpen' onclick='modalOpen(" . $row['id'] . ")'  width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
             </svg>
         </td>
@@ -162,6 +164,80 @@ if (isset($_GET['delete'])) {
             </div>
         </div>
     </div>
+
+    <div id="modal">
+        <div id="background">
+            <div id="contentModal" style="height: 600px !important;">
+
+                <div class="ModalHead">
+                    <button id="crossModal">X</button>
+                    <div class="formContent">
+                        Post From <span id="reqUserName"></span>
+                    </div>
+                </div>
+                <div id="mainCOntent">
+                    <div class="itemContentmodal">
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">Faculty:</span>
+                            <span class="dis" id="reqstreamcontent">-</span>
+                        </div>
+                        <div class="shadow streamsmalldiv">
+                            <span class="head">User Name:</span>
+                            <span class="dis" id="reqSemYearContent">-</span>
+                        </div>
+                    </div>
+
+                    <div class="shadow streambigdiv" style="max-height: 100px!important; overflow: hidden;">
+                        <span class="head">Description:</span>
+                        <span class="dis" id="reqdescriptionContent">-</span>
+                    </div>
+                    <div id="imageDIvforModal" style="display: flex; align-items: center; justify-content: center;">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById("modal");
+        const crossModal = document.getElementById("crossModal");
+        const background = document.getElementById('background');
+        const params = new URLSearchParams(window.location.search);
+
+        const modalOpen = async (id) => {
+            const data = await fetchData()
+            const reqUserName = document.getElementById("reqUserName");
+            const imageDIvforModal = document.getElementById("imageDIvforModal");
+            const reqdescriptionContent = document.getElementById("reqdescriptionContent");
+            const reqSemYearContent = document.getElementById("reqSemYearContent");
+            const reqstreamcontent = document.getElementById("reqstreamcontent");
+            const oneData = data.filter((e) => e.id == id)
+
+            const img = `<img src="${oneData[0].image}" alt="" style="min-height: 370px; max-width: 360px; min-width: 450px; margin: 0px auto;">`
+
+            reqUserName.innerText = oneData[0].author;
+            imageDIvforModal.innerHTML = img;
+            reqdescriptionContent.innerText = String(oneData[0].postdes).length > 180 ? oneData[0].postdes + "..." : oneData[0].postdes;
+            reqSemYearContent.innerText = oneData[0].author;
+            reqstreamcontent.innerText = oneData[0].stream;
+            modal.style.display = "block";
+        }
+        crossModal.addEventListener('click', () => {
+            modal.style.display = "none";
+        });
+
+        const fetchData = async (showType) => {
+            try {
+                const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
+                const data = await response.json();
+                let finalData = data.data.reverse()
+                return finalData;
+            } catch (e) {
+                console.log(e)
+            }
+        }
+    </script>
 
 </body>
 
