@@ -96,7 +96,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
             // Execute the update query
             if (mysqli_query($con, $updateQuery)) {
-                echo "Record updated successfully!";
+                header("Location: ../../admin/notepost.php");
             } else {
                 echo "Error updating record: " . mysqli_error($con);
             }
@@ -105,7 +105,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             WHERE id = '$update'";
 
             if (mysqli_query($con, $updateQuery)) {
-                echo "Record updated successfully!";
+                header("Location: ../../admin/notepost.php");
             } else {
                 echo "Error updating record: " . mysqli_error($con);
             }
@@ -152,7 +152,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
                 // Execute the insert query
                 if (mysqli_query($con, $insertQuery)) {
-                    echo "Record inserted successfully!";
+                    header("Location: ../../admin/notepost.php");
                 } else {
                     echo "Error inserting record: " . mysqli_error($con);
                 }
