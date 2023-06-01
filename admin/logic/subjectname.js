@@ -105,5 +105,3 @@ function myFunction() {
   }
   semyear.innerHTML = HTML;
 }
-let type = myFunction();
-console.log(type);

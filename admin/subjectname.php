@@ -75,6 +75,7 @@ if (isset($_GET["id"])) {
 $name = "";
 $facultyId = "";
 $idnum = "";
+$semYr = "";
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
     $sql = "SELECT * FROM subname WHERE id = $id";
@@ -84,6 +85,7 @@ if (isset($_GET["edit"])) {
         $name = $row["name"];
         $facultyId = $row["facultyid"];
         $idnum = $row["id"];
+        $semYr = $row["sem"] != -1 ? $row["sem"] : $row["year"];
     } else {
         $name = "";
         $facultyId = "";
@@ -213,6 +215,7 @@ if (isset($_POST['updateadd'])) {
 
 
                     <div id="semyear" class="flex">
+
 
                     </div>
 
