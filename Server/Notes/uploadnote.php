@@ -66,8 +66,17 @@ if (isset($_POST['notePostUpload'])) {
             die("Only PDF files are allowed!");
         }
 
-        // Define the upload directory
-        $upload_dir = '../uploads/notes/';
+        // Define the upload directory based on section
+        if ($section == "syllabus") {
+            $upload_dir = '../uploads/syllabus/';
+            $notePath =  $uploadFIleFront . 'syllabus/';
+        } elseif ($section == "prevqn") {
+            $upload_dir = '../uploads/prevqn/';
+            $notePath =  $uploadFIleFront . 'prevqn/';
+        } else {
+            $upload_dir = '../uploads/notes/';
+            $notePath =  $uploadFIleFront . 'notes/';
+        }
 
         // Generate a unique filename
         $unique_filename = uniqid('', true) . '.' . $file_ext;
@@ -77,7 +86,7 @@ if (isset($_POST['notePostUpload'])) {
 
         // Move the uploaded file to the desired location
         if (move_uploaded_file($file_tmp, $destination)) {
-            $notePath =  $uploadFIleFront . 'notes/' . $unique_filename;
+            $notePath .= $unique_filename;
             // Prepare the insert query
             $insertQuery = "INSERT INTO notes (post_des, stream_id, sem, year, sub_name, sub_id, note_file, note_name, note_category, stream_name, note_like)
                             VALUES ('$description', '$facultyid', '$sem', '$year', '$subName', '$subjectid', '$notePath', '$noteName', '$section', '$facultyName', '$note_like')";
