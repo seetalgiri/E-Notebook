@@ -89,7 +89,7 @@ $resfac = mysqli_query($con, $sql);
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="../Server/Notes/uploadnote.php" method="get" id="forms">
+                <form action="../Server/Notes/uploadnote.php" method="post" id="forms" enctype="multipart/form-data">
                     <h3>Add Faculty:</h3>
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
@@ -130,7 +130,7 @@ $resfac = mysqli_query($con, $sql);
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="image">Select Image:</label>
-                            <input type="file" name="image" id="image" accept="application/pdf">
+                            <input type="file" name="note" id="image" accept="application/pdf">
                         </div>
                     </div>
                     <div class='flexButtons'>

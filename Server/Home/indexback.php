@@ -1,5 +1,5 @@
 <?php
-// importing session datas
+// Importing session datas
 include '../../admin/UserSessionData.php';
 
 // Importing configurations 
@@ -12,9 +12,7 @@ if (!$conn) {
     die("Could not connect to the database");
 }
 
-
-
-// =====================================to post data in database=========================
+// Check if the form is submitted
 if (isset($_POST['postnews'])) {
     $postdes = $_POST['post'];
     $stream = strtolower($_POST['stream']);
@@ -40,25 +38,19 @@ if (isset($_POST['postnews'])) {
 
         // Check if the file has a valid extension
         if (in_array($fileExt, $allowedExtensions)) {
-            // Check if there is no error
-            if ($fileError === 0) {
-                // Set a unique name for the file
-                $newFileName = uniqid('', true) . '.' . $fileExt;
+            // Generate a unique name for the file
+            $newFileName = uniqid('', true) . '.' . $fileExt;
 
-                // Set the destination path to store the uploaded image
-                $destination = '../uploads/' . $newFileName;
+            // Set the destination path to store the uploaded image
+            $destination = '../uploads/images/' . $newFileName;
 
-                $extaNewFile = $uploadFIleFront . $newFileName;
-                // Move the uploaded file to the destination
-                if (move_uploaded_file($fileTmp, $destination)) {
-                    // Construct the SQL statement with image data
-                    $sql = "INSERT INTO `news` (`postdes`, `image`, `stream`, `author`, `post_like`, `comment`) VALUES ('$postdes', '$extaNewFile', '$stream', '$author', '$like', '$comment')";
-                } else {
-                    echo 'Error uploading file.';
-                    exit;
-                }
+            // Move the uploaded file to the destination
+            if (move_uploaded_file($fileTmp, $destination)) {
+                // Construct the SQL statement with image data
+                $imagePath =  $uploadFIleFront . 'images/' . $newFileName;
+                $sql = "INSERT INTO `news` (`postdes`, `image`, `stream`, `author`, `post_like`, `comment`) VALUES ('$postdes', '$imagePath', '$stream', '$author', '$like', '$comment')";
             } else {
-                echo 'Error: ' . $fileError;
+                echo 'Error uploading file.';
                 exit;
             }
         } else {
@@ -73,6 +65,7 @@ if (isset($_POST['postnews'])) {
     // Execute the SQL statement
     if (mysqli_query($conn, $sql)) {
         header("Location: ../../index.php");
+        exit;
     } else {
         echo 'Error: ' . mysqli_error($conn);
     }
