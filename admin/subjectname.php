@@ -129,7 +129,7 @@ if (isset($_POST['updateadd'])) {
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenavs.js" defer></script>
-    <script src="./logic/subjectname.js" defer></script>
+    <script src="./logic/subjectnames.js" defer></script>
 
 </head>
 
@@ -214,9 +214,14 @@ if (isset($_POST['updateadd'])) {
                     </div>
 
 
-                    <div id="semyear" class="flex">
+                    <!-- <div id="semyear" class="flex">
 
-
+                    </div> -->
+                    <div id="forms" class="flex fbselectStr">
+                        <label for="semyearsel">Select Grade:</label>
+                        <select id='semyearsel'>
+                            <option value="">Select Semester</option>
+                        </select>
                     </div>
 
                     <div id="forms" class="flex">
@@ -237,6 +242,61 @@ if (isset($_POST['updateadd'])) {
         </div>
 
     </div>
+
+
+
+    <script>
+        let semH = `<option value="1" <?php if ($semYr == "1") echo "selected"; ?>>First Semester</option>
+                                <option value="2" <?php if ($semYr == "2") echo "selected"; ?>>Second Semester</option>
+                                <option value="3" <?php if ($semYr == "3") echo "selected"; ?>>Third Semester</option>
+                                <option value="4" <?php if ($semYr == "4") echo "selected"; ?>>Fourth Semester</option>
+                                <option value="5" <?php if ($semYr == "5") echo "selected"; ?>>Fifth Semester</option>
+                                <option value="6" <?php if ($semYr == "6") echo "selected"; ?>>Sixth Semester</option>
+                                <option value="7" <?php if ($semYr == "7") echo "selected"; ?>>Seventh Semester</option>
+                                <option value="8" <?php if ($semYr == "8") echo "selected"; ?>>Eighth Semester</option>
+                    `;
+
+        let yearH = ` <option value="">Select Year</option>
+                    <option value="1" <?php if ($semYr == "1") echo "selected"; ?>>First Year</option>
+                    <option value="2" <?php if ($semYr == "2") echo "selected"; ?>>Second Year</option>
+                    <option value="3" <?php if ($semYr == "3") echo "selected"; ?>>Third Year</option>
+                    <option value="4" <?php if ($semYr == "4") echo "selected"; ?>>Fourth Year</option>
+                   `;
+
+        // setting year and sem
+        const initialval = document.querySelector("#mySelect option");
+        const semyear = document.getElementById("semyearsel");
+
+
+        let initialvaltype = initialval.getAttribute("data_yearsem");
+        let HTML = Number(initialvaltype) === 1 ? yearH : semH;
+
+        // changing faculty value;
+        function myFunction() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            let type = selectedOption.getAttribute("data_yearsem");
+            if (Number(type) === 1) {
+                semyear.setAttribute("name", "year");
+                HTML = yearH;
+            } else {
+                semyear.setAttribute("name", "sem");
+                HTML = semH;
+            }
+            semyear.innerHTML = HTML;
+        }
+
+
+
+        // When editing get sem/year and subject name
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const editParam = urlParams.get('edit');
+            if (editParam) {
+                myFunction();
+            }
+        };
+    </script>
 
 
 

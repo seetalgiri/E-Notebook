@@ -64,44 +64,4 @@ if (Number(editParam)) {
   openmodal();
 }
 
-// to select semester and year
 // value of sem and year
-let sem = `<label id="semyear" for="semyeard">Choose Semester:</label>
-                    <select name='sem' id='semyearsel'>              
-                    <option value='1'>First Semester</option>
-                    <option value='2'>Second Semester</option>
-                    <option value='3'>Third Semester</option>
-                    <option value='4'>Fourth Semester</option>
-                    <option value='5'>Fifth Semester</option>
-                    <option value='6'>Sixth Semester</option>
-                    <option value='7'>Seventh Semester</option>
-                    <option value='8'>Eighth Semester</option>
-                    </select>`;
-
-let year = `<label id="semyear" for="semyeard">Choose Year:</label>
-                    <select name='year' id='semyearsel'>
-                    <option value='1'>First Year</option>
-                    <option value='2'>Second Year</option>
-                    <option value='3'>Third Year</option>
-                    <option value='4'>Fourth Year</option>
-                    </select>`;
-
-// setting year and sem
-const semyear = document.getElementById("semyear");
-const initialval = document.querySelector("#mySelect option");
-
-let initialvaltype = initialval.getAttribute("data_yearsem");
-let HTML = Number(initialvaltype) === 1 ? year : sem;
-
-// changing faculty value;
-function myFunction() {
-  var selectElement = document.getElementById("mySelect");
-  var selectedOption = selectElement.options[selectElement.selectedIndex];
-  let type = selectedOption.getAttribute("data_yearsem");
-  if (Number(type) === 1) {
-    HTML = year;
-  } else {
-    HTML = sem;
-  }
-  semyear.innerHTML = HTML;
-}
