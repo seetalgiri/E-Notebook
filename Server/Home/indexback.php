@@ -13,7 +13,7 @@ if (!$conn) {
 }
 
 // Check if the form is submitted
-if (isset($_POST['postnews'])) {
+if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
     $postdes = $_POST['post'];
     $stream = strtolower($_POST['stream']);
     $author = $username;
@@ -64,7 +64,11 @@ if (isset($_POST['postnews'])) {
 
     // Execute the SQL statement
     if (mysqli_query($conn, $sql)) {
-        header("Location: ../../index.php");
+        if (isset($_POST['postnewsadmin'])) {
+            header("Location: ../../admin/noticepost.php");
+        } else {
+            header("Location: ../../index.php");
+        }
         exit;
     } else {
         echo 'Error: ' . mysqli_error($conn);
