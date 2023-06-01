@@ -45,6 +45,7 @@ if (isset($_GET["id"])) {
 // to show edting data
 $name = "";
 $dorder = "";
+$yearsem = "";
 $idnum = "";
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
@@ -54,6 +55,7 @@ if (isset($_GET["edit"])) {
         $row = mysqli_fetch_assoc($result);
         $name = $row["faculity_name"];
         $dorder = $row["displayorder"];
+        $yearsem = $row["yearsem"];
         $idnum = $row["id"];
     } else {
         $name = "";
@@ -170,10 +172,11 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
                         <select name="yearsem" id="stdType">
-                            <option value="1">Years</option>
-                            <option value="2">Semester</option>
+                            <option value="1" <?php if ($yearsem == "1") echo "selected"; ?>>Years</option>
+                            <option value="2" <?php if ($yearsem == "2") echo "selected"; ?>>Semester</option>
                         </select>
                     </div>
+
                     <div id="forms" class="flex">
                         <label for="dOrder">Enter Display order:</label>
                         <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value="<?php echo $dorder; ?>">
