@@ -63,5 +63,3 @@ var editParam = searchParams.get("edit");
 if (Number(editParam)) {
   openmodal();
 }
-
-// value of sem and year

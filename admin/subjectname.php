@@ -202,6 +202,7 @@ if (isset($_POST['updateadd'])) {
                     <div id="forms" class="flex">
                         <label for="mySelect">Choose Faculty:</label>
                         <select name="facultyid" id="mySelect" onchange="myFunction()">
+                            <option value="">Select Faculty</option>
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
                                 while ($row = mysqli_fetch_assoc($resfac)) {
@@ -219,7 +220,7 @@ if (isset($_POST['updateadd'])) {
                     </div> -->
                     <div id="forms" class="flex fbselectStr">
                         <label for="semyearsel">Select Grade:</label>
-                        <select id='semyearsel'>
+                        <select id='semyearsel' name="sem">
                             <option value="">Select Semester</option>
                         </select>
                     </div>
