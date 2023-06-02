@@ -91,7 +91,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="stylesheet" href="./Client/styles/notea.css" />
 
     <!-- ==================== JS Imported ======================== -->
-    <script src="./Client/logic/note.js" defer></script>
+    <!-- <script src="./Client/logic/note.js" defer></script> -->
 
 
 </head>
@@ -124,11 +124,12 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                         <form action="#" class="FilterNotes">
                             <div id="forms" class="flex">
                                 <select name="facultyid" id="mySelect" onchange="myFunction()">
-                                    <option value="">Select Stream</option>
+                                    <option value="" data-yearsem="2">Select Stream</option>
                                     <?php
                                     if (mysqli_num_rows($resfac) > 0) {
                                         while ($row = mysqli_fetch_assoc($resfac)) {
-                                            echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+                                            $selected = (isset($_GET['facultyid']) && $_GET['facultyid'] == $row["id"]) ? "selected" : "";
+                                            echo "<option value='" . $row["id"] . "' data-yearsem='" . $row['yearsem'] . "' $selected>" . $row["faculity_name"] . "</option>";
                                         }
                                     }
                                     ?>
@@ -271,7 +272,10 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
-                data = jsonData
+                data = jsonData;
+                handleSubjectChange();
+                handlesemSubjectChange();
+                myFunction();
             }
         };
         xhr.send();
@@ -319,11 +323,13 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                 let option = "";
                 totalcontent = '';
 
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedSubject = urlParams.get('subject') == null ? "" : urlParams.get('subject');
+
                 streamfiltered.forEach((e) => {
-                    if (!option.includes(`value="${e.id}"`)) {
-                        option = `<option value="${e.id}">${e.name}</option>`;
-                        totalcontent += option;
-                    }
+                    let selected = (e.id == selectedSubject) ? 'selected' : '';
+                    let option = `<option value="${e.id}" ${selected}>${e.name}</option>`;
+                    totalcontent += option;
                 });
 
                 totalcontent = `<option value="">Select Subject</option>` + totalcontent;
@@ -349,6 +355,127 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                     allDataset()
                 }
             }
+        }
+
+        window.onload = () => {
+            myFunction();
+            handlesemSubjectChange();
+            setTimeout(() => {
+                handleSubjectChange()
+                handlesemSubjectChange()
+            }, 200);
+        }
+
+
+
+        // Grid View Logic
+        const flexButtonSet = document.getElementById("flexbuttonset");
+        const mainViewContent = document.getElementById("mainViewContent");
+        const gridViewButton = document.querySelector("#gridView");
+        const listViewButton = document.querySelector("#listView");
+
+        // Set initial view type in local storage
+        if (!localStorage.getItem("view")) {
+            localStorage.setItem("view", "grid");
+        }
+
+        // Functions for list view and grid view
+        const switchToListView = () => {
+            listViewButton.style.display = "block";
+            gridViewButton.style.display = "none";
+            mainViewContent.classList.add("flexContent");
+            mainViewContent.classList.remove("gridContent");
+        };
+
+        const switchToGridView = () => {
+            listViewButton.style.display = "none";
+            gridViewButton.style.display = "block";
+            mainViewContent.classList.remove("flexContent");
+            mainViewContent.classList.add("gridContent");
+        };
+
+        // Local storage logic
+        if (localStorage.getItem("view") !== "grid") {
+            switchToListView();
+        } else {
+            switchToGridView();
+        }
+
+        // Button click logic
+        gridViewButton.addEventListener("click", () => {
+            localStorage.setItem("view", "list");
+            switchToListView();
+        });
+
+        listViewButton.addEventListener("click", () => {
+            localStorage.setItem("view", "grid");
+            switchToGridView();
+        });
+
+        // Responsive Filter Section
+        const filterSec = document.querySelector(".filtersec");
+        const filterNotes = document.querySelector(".filterNotes");
+        const crossSection = document.querySelector("#crosssection");
+        const filterSection = document.querySelector("#filterSection");
+
+        filterSec.style.left = "-350px";
+
+        const toggleSection = () => {
+            filterSec.style.left = filterSec.style.left === "-350px" ? "0px" : "-350px";
+            filterSection.style.display =
+                filterSec.style.left === "-350px" ? "none" : "block";
+        };
+
+        filterNotes.addEventListener("click", () => {
+            if (window.innerWidth < 940) {
+                toggleSection();
+            }
+        });
+
+        crossSection.addEventListener("click", toggleSection);
+        filterSection.addEventListener("click", toggleSection);
+
+        let sem = `<option value="">Select Semester</option>
+            <option value='1' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 1) ? 'selected' : ''; ?> >First Semester</option>
+            <option value='2' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 2) ? 'selected' : ''; ?> >Second Semester</option>
+            <option value='3' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 3) ? 'selected' : ''; ?> >Third Semester</option>
+            <option value='4' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 4) ? 'selected' : ''; ?> >Fourth Semester</option>
+            <option value='5' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 5) ? 'selected' : ''; ?> >Fifth Semester</option>
+            <option value='6' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 6) ? 'selected' : ''; ?> >Sixth Semester</option>
+            <option value='7' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 7) ? 'selected' : ''; ?> >Seventh Semester</option>
+            <option value='8' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 8) ? 'selected' : ''; ?> >Eighth Semester</option>
+                    `;
+
+        let year = `<option value="">Select Year</option>    
+        <option value='1' <?php echo (isset($_GET['year']) && $_GET['year'] == 1) ? 'selected' : ''; ?>>First Year</option>
+        <option value='2' <?php echo (isset($_GET['year']) && $_GET['year'] == 2) ? 'selected' : ''; ?>>Second Year</option>
+        <option value='3' <?php echo (isset($_GET['year']) && $_GET['year'] == 3) ? 'selected' : ''; ?>>Third Year</option>
+        <option value='4' <?php echo (isset($_GET['year']) && $_GET['year'] == 4) ? 'selected' : ''; ?>>Fourth Year</option>
+
+                   `;
+
+        // setting year and sem
+        const semyear = document.getElementById("semyearsel");
+        const initialval = document.querySelector("#mySelect option");
+
+        let initialvaltype = initialval.getAttribute("data-yearsem");
+        let HTML = Number(initialvaltype) === 1 ? year : sem;
+
+        // changing faculty value;
+        function myFunction() {
+            var selectElement = document.getElementById("mySelect");
+            var selectedOption = selectElement.options[selectElement.selectedIndex];
+            let type = selectedOption.getAttribute("data-yearsem");
+            console.log(selectElement)
+            console.log(type)
+            if (Number(type) === 1) {
+                semyear.setAttribute("name", "year");
+                HTML = year;
+            } else {
+                semyear.setAttribute("name", "sem");
+                HTML = sem;
+            }
+            semyear.innerHTML = HTML;
         }
     </script>
 </body>

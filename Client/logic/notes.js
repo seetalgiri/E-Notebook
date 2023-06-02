@@ -66,14 +66,14 @@ crossSection.addEventListener("click", toggleSection);
 filterSection.addEventListener("click", toggleSection);
 
 let sem = `<option value="">Select Semester</option>
-                    <option value='1'>First Semester</option>
-                    <option value='2'>Second Semester</option>
-                    <option value='3'>Third Semester</option>
-                    <option value='4'>Fourth Semester</option>
-                    <option value='5'>Fifth Semester</option>
-                    <option value='6'>Sixth Semester</option>
-                    <option value='7'>Seventh Semester</option>
-                    <option value='8'>Eighth Semester</option>
+            <option value='1' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 1) ? 'selected' : ''; ?> >First Semester</option>
+            <option value='2' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 2) ? 'selected' : ''; ?> >Second Semester</option>
+            <option value='3' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 3) ? 'selected' : ''; ?> >Third Semester</option>
+            <option value='4' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 4) ? 'selected' : ''; ?> >Fourth Semester</option>
+            <option value='5' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 5) ? 'selected' : ''; ?> >Fifth Semester</option>
+            <option value='6' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 6) ? 'selected' : ''; ?> >Sixth Semester</option>
+            <option value='7' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 7) ? 'selected' : ''; ?> >Seventh Semester</option>
+            <option value='8' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 8) ? 'selected' : ''; ?> >Eighth Semester</option>
                     `;
 
 let year = `<option value="">Select Year</option>    
