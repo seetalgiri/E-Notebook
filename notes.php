@@ -276,9 +276,21 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                     <div class="modal-content">
                         <div class="modal-header">
                             <h2>PDF Viewer</h2>
-                            <p>
-                                Some additional information or description can be placed here.
-                            </p>
+                            <p>Name: Microprocessor</p>
+                            <p>Author: Gaurab Sunar</p>
+                            <p>Date: 2023-12-12</p>
+                            <p>Description:</p>
+                            <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nobis repellat delectus consequatur doloremque cupiditate laborum, tenetur inventore minima debitis ducimus asperiores fugit reprehenderit enim laboriosam corporis non voluptatum. Quas vero reiciendis sed? Autem dolor beatae doloremque eligendi minus numquam facilis quasi eos unde? Maiores ratione commodi earum.entore minima debitis ducimus asperiores fugit reprehenderit enim laboriosam corporis non voluptatum. Quas vero reiciendis sed? Autem dolor beatae doloremque eligendi minus numquam facilis quasi eos unde?  Enim, dicta?</p>
+                            <button class="downScroll"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect width="96" height="96" fill="url(#pattern0)"/>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="2" height="2">
+<use xlink:href="#image0_202_2" transform="scale(0.0104167)"/>
+</pattern>
+<image id="image0_202_2"  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAABe0lEQVR4nO3ZsU0EMRCF4dcCgRN6InQL9EQLTq8nAge0YIS0wQac4GDtmfH8n0S8x87/jgAJAAAAAAAAAAAAAAAAAAAAAABkdJP0bP0hHCqS2ooHDUkfkl5XPCyIKqkf72a6cfrJvoZyVH9+J9OdH5Z5DfVUvekBsq2hfFO9iwNkWEO9U72bA+y6hvJD9e4OsNMa6i+qd3mA6GsoD1Tv+gAR11AfrN79AaKsofyx+jAH8LyG+o/qQx3A2xrKBdWHPMBwsIarqg97gGG0hqurD3+AsXANM6pfeoAXSe8Tf4HbpDXMrH4cR/067hJPkt4CraFOrr4dB17O+xrKTtVHW0PdtXrvaygZqve6hpqtei9rKJmrv2fVS6lUb7uGQfX2fxtG1u/63dbQI37X77KGtmv13tfQM1TvdQ0tW/Ve1tAzV2+9hkb1NmvoVG+3hkb1NmvoVG+3hkb1NmvoVG+3hkb1NmvoVG/3/4ZG9QAAAAAAAAAAAAAAAADkyCcp7nvqn9osJAAAAABJRU5ErkJggg=="/>
+</defs>
+</svg>
+</button>
                         </div>
                         <div class="modal-body">
                             <iframe id="pdfViewer" src="" frameborder="0"></iframe>

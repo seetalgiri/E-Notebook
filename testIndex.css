@@ -31,7 +31,7 @@
   width: 526px;
   height: 500px;
   overflow-y: auto;
-  background-color: white;
+  background-color:white;
   scroll-behavior: smooth;
   z-index: 1000000000000000000000000000000;
 }
@@ -40,6 +40,31 @@
 }
 .modal-header {
   height: 100%;
+  padding: 30px;
+  font-family: arial;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  text-align: justify;
+}
+.downScroll{
+  margin-top: 25px;
+  height: 28px;
+  width: 100%;
+  border-radius: 2px;  
+  background-color: rgba(221, 226, 232, 1);
+}
+.downScroll svg{
+  height: 100%;
+}
+.downScroll:hover{
+  cursor: pointer;
+  background-color: var(--second-color);
+  border: none;
+}
+.paragraph{
+  color: rgba(0, 0, 0, 0.808);
 }
 #pdfViewer {
   width: 520px;
