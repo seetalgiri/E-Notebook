@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+#pdfModalContentmini {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(93, 93, 93, 0.2);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  z-index: 1000000000000000000000000000000;
+}
+#actualContet {
+  width: 526px;
+  height: 500px;
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: -50px;
+  right: -40px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 40px;
+}
+.modal-content {
+  width: 526px;
+  height: 500px;
+  overflow-y: auto;
+  background-color: white;
+  scroll-behavior: smooth;
+  z-index: 1000000000000000000000000000000;
+}
+.modal-body {
+  height: 100%;
+}
+.modal-header {
+  height: 100%;
+}
+#pdfViewer {
+  width: 520px;
+  height: 500px;
+}
+
+#pdfModalContent {
+  display: none;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background-color: rgb(170, 170, 170);
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

@@ -88,7 +88,8 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./testIndex.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
@@ -196,46 +197,44 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                             $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
                             $noteId = $row['id'];
                             echo '
-                        <div class="eachBox">
-                            <div class="boxcontentNote">
-                                <h3>' . $noteName . '</h3>
-                                <div class="auth">
-                                    <svg width="14" height="14" viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M18.1 8.5L19.5 9.91L12.97 16.5L9.5 13L10.9 11.59L12.97 13.67L18.1 8.5ZM7 13L10 16H0V14C0 11.79 3.58 10 8 10L9.89 10.11L7 13ZM8 0C9.06087 0 10.0783 0.421427 10.8284 1.17157C11.5786 1.92172 12 2.93913 12 4C12 5.06087 11.5786 6.07828 10.8284 6.82843C10.0783 7.57857 9.06087 8 8 8C6.93913 8 5.92172 7.57857 5.17157 6.82843C4.42143 6.07828 4 5.06087 4 4C4 2.93913 4.42143 1.92172 5.17157 1.17157C5.92172 0.421427 6.93913 0 8 0Z" />
-                                    </svg>
-
-                                    <span>Author:</span> Gaurab sunar
-                                </div>
-
-
-                                <div class="NoteAction">
-                                    <div class="date"><span>Date:</span> ' . $row['date'] . '</div>
-                                    <div class="svgsNote">
-                                        <div class="likecontent">
-                                            <svg width="17" height="15" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" />
-                                            </svg>
-                                            <span class="likecount">101</span>
-                                        </div>
-                                        <a href=' . $row['note_file'] . ' target="blank">
-                                        <svg width="20" height="14" viewBox="0 0 18 12" style="margin-right:6px;" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 3.75C8.40326 3.75 7.83097 3.98705 7.40901 4.40901C6.98705 4.83097 6.75 5.40326 6.75 6C6.75 6.59674 6.98705 7.16903 7.40901 7.59099C7.83097 8.01295 8.40326 8.25 9 8.25C9.59674 8.25 10.169 8.01295 10.591 7.59099C11.0129 7.16903 11.25 6.59674 11.25 6C11.25 5.40326 11.0129 4.83097 10.591 4.40901C10.169 3.98705 9.59674 3.75 9 3.75ZM9 9.75C8.00544 9.75 7.05161 9.35491 6.34835 8.65165C5.64509 7.94839 5.25 6.99456 5.25 6C5.25 5.00544 5.64509 4.05161 6.34835 3.34835C7.05161 2.64509 8.00544 2.25 9 2.25C9.99456 2.25 10.9484 2.64509 11.6517 3.34835C12.3549 4.05161 12.75 5.00544 12.75 6C12.75 6.99456 12.3549 7.94839 11.6517 8.65165C10.9484 9.35491 9.99456 9.75 9 9.75ZM9 0.375C5.25 0.375 2.0475 2.7075 0.75 6C2.0475 9.2925 5.25 11.625 9 11.625C12.75 11.625 15.9525 9.2925 17.25 6C15.9525 2.7075 12.75 0.375 9 0.375Z" />
-                                        </svg>
-                                        </a>
-                                         <a href=' . $row['note_file'] . ' download=' . $row['note_name'] . ".pdf" . '>
-                                            <svg width="15" height="18" viewBox="0 0 13 16" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0.958496 15.5H12.0418V13.75H0.958496M12.0418 5.875H8.87516V0.625H4.12516V5.875H0.958496L6.50016 12L12.0418 5.875Z" />
-                                            </svg>
-                                         </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-';
+    <div class="eachBox">
+        <div class="boxcontentNote">
+            <h3>' . $noteName . '</h3>
+            <div class="auth">
+                <svg width="14" height="14" viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.1 8.5L19.5 9.91L12.97 16.5L9.5 13L10.9 11.59L12.97 13.67L18.1 8.5ZM7 13L10 16H0V14C0 11.79 3.58 10 8 10L9.89 10.11L7 13ZM8 0C9.06087 0 10.0783 0.421427 10.8284 1.17157C11.5786 1.92172 12 2.93913 12 4C12 5.06087 11.5786 6.07828 10.8284 6.82843C10.0783 7.57857 9.06087 8 8 8C6.93913 8 5.92172 7.57857 5.17157 6.82843C4.42143 6.07828 4 5.06087 4 4C4 2.93913 4.42143 1.92172 5.17157 1.17157C5.92172 0.421427 6.93913 0 8 0Z" />
+                </svg>
+                <span>Author:</span> Gaurab sunar
+            </div>
+            <div class="NoteAction">
+                <div class="date"><span>Date:</span> ' . $row['date'] . '</div>
+                <div class="svgsNote">
+                    <div class="likecontent">
+                        <svg width="17" height="15" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" />
+                        
+                        </svg>
+                        <span class="likecount">101</span>
+                    </div>
+                    <a onclick="viewIconClick(\'' . $row['note_file'] . '\')">
+                    <svg width="20" height="14" viewBox="0 0 18 12" style="margin-right:6px;" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 3.75C8.40326 3.75 7.83097 3.98705 7.40901 4.40901C6.98705 4.83097 6.75 5.40326 6.75 6C6.75 6.59674 6.98705 7.16903 7.40901 7.59099C7.83097 8.01295 8.40326 8.25 9 8.25C9.59674 8.25 10.169 8.01295 10.591 7.59099C11.0129 7.16903 11.25 6.59674 11.25 6C11.25 5.40326 11.0129 4.83097 10.591 4.40901C10.169 3.98705 9.59674 3.75 9 3.75ZM9 9.75C8.00544 9.75 7.05161 9.35491 6.34835 8.65165C5.64509 7.94839 5.25 6.99456 5.25 6C5.25 5.00544 5.64509 4.05161 6.34835 3.34835C7.05161 2.64509 8.00544 2.25 9 2.25C9.99456 2.25 10.9484 2.64509 11.6517 3.34835C12.3549 4.05161 12.75 5.00544 12.75 6C12.75 6.99456 12.3549 7.94839 11.6517 8.65165C10.9484 9.35491 9.99456 9.75 9 9.75ZM9 0.375C5.25 0.375 2.0475 2.7075 0.75 6C2.0475 9.2925 5.25 11.625 9 11.625C12.75 11.625 15.9525 9.2925 17.25 6C15.9525 2.7075 12.75 0.375 9 0.375Z" />
+                    </a>
+                    
+                    </svg>
+                    <a href="' . $row['note_file'] . '" download="' . $row['note_name'] . '.pdf' . '">
+                        <svg width="15" height="18" viewBox="0 0 13 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.958496 15.5H12.0418V13.75H0.958496M12.0418 5.875H8.87516V0.625H4.12516V5.875H0.958496L6.50016 12L12.0418 5.875Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    ';
                         }
-
                         ?>
+
                     </div>
                 </div>
 
@@ -264,6 +263,31 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         }
         ?>
     </div>
+
+
+    <!-- ========================== for view icon ============================= -->
+    <div id="pdfModalContent">
+        <div id="pdfModalContentmini">
+            <div id="pdfModal" class="modal">
+                <div id="actualContet">
+                    <span class="close">&times;</span>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>PDF Viewer</h2>
+                            <p>
+                                Some additional information or description can be placed here.
+                            </p>
+                        </div>
+                        <div class="modal-body">
+                            <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ========================== for view icon ============================= -->
+
 
     <script>
         let data = [];
@@ -477,6 +501,28 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             }
             semyear.innerHTML = HTML;
         }
+
+
+
+
+
+        // =======================================================================
+        var pdfModal = document.getElementById("pdfModalContent");
+        var pdfViewer = document.getElementById("pdfViewer");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        const viewIconClick = (url) => {
+            console.log("first")
+            var pdfUrl = url;
+            pdfViewer.src = pdfUrl;
+            pdfModal.style.display = "block";
+
+            console.log(url)
+        }
+
+        closeBtn.addEventListener("click", function() {
+            pdfModal.style.display = "none";
+        });
     </script>
 </body>
 

@@ -62,7 +62,7 @@
 #notessection {
   height: 92%;
   width: 100%;
-  max-width: 1500px;
+  max-width: 1620px;
   margin: auto;
 }
 .filtersec {
@@ -204,7 +204,7 @@
 #actualNote {
   height: 100%;
   width: 99%;
-  padding: 20px;
+  padding: 20px 0;
   overflow: auto;
 }
 .topicHead {
