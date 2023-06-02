@@ -12,7 +12,8 @@ $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
 
-// ================================ for pagination (start) ==========================================$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes WHERE note_category = 'note'";
+// ================================ for pagination (start) ==========================================
+$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes WHERE note_category = 'note'";
 $resultRowNum = mysqli_query($con, $querytotalnumberROw);
 $rowNumbers = mysqli_fetch_assoc($resultRowNum);
 $totalRowNumber = $rowNumbers['total'];
@@ -67,6 +68,26 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         $resultNotes = mysqli_query($con, $sqlNote);
     }
 }
+
+
+
+// Retrieve the search value from the GET request
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
+// Escape the search value to prevent SQL injection
+$search = mysqli_real_escape_string($con, $search);
+
+// Check if the search value is set
+if (!empty($search)) {
+    // Query with the search value
+    $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
+    $resultNotes = mysqli_query($con, $sqlNote);
+} else {
+    // Query without the search value
+    $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
+    $resultNotes = mysqli_query($con, $sqlNote);
+}
+
 
 ?>
 
