@@ -12,8 +12,7 @@ $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
 
-// ================================ for pagination (start) ==========================================
-$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes";
+// ================================ for pagination (start) ==========================================$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes WHERE note_category = 'note'";
 $resultRowNum = mysqli_query($con, $querytotalnumberROw);
 $rowNumbers = mysqli_fetch_assoc($resultRowNum);
 $totalRowNumber = $rowNumbers['total'];
@@ -29,7 +28,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset($_GET['year']))) {
     $sem = "";
@@ -39,10 +38,10 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     if (strlen($facultyId) > 0) {
 
 
-        $sqlNote = "SELECT * FROM notes";
+        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note'";
 
         if (strlen($facultyId) > 0) {
-            $sqlNote .= " WHERE stream_id = '$facultyId'";
+            $sqlNote .= " AND stream_id = '$facultyId'";
         }
 
         // Add filters based on the available parameters
@@ -551,18 +550,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         closeBtn.addEventListener("click", function() {
             pdfModal.style.display = "none";
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
