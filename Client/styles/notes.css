@@ -532,6 +532,7 @@
   line-height: 1.5;
   color: var(--text-color-light);
   font-family: Arial, Helvetica, sans-serif;
+  min-width: 50%;
 }
 
 .flexContent .auth span {
@@ -701,7 +702,7 @@
     margin-right: 6px;
   }
   .flexContent .svgsNote {
-    width: 80px;
+    width: 60px;
   }
   .likecontent {
     gap: 0px;
@@ -878,4 +879,33 @@
 
 .modal-content::-webkit-scrollbar-thumb:hover {
   background-color: #555;
+}
+
+@media screen and (max-width: 615px) {
+  #actualContet {
+    width: 300px;
+  }
+  .modal-content {
+    width: 300px;
+  }
+  #pdfViewer {
+    width: 294px;
+  }
+  #mainViewContent {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .modal-header h2 {
+    font-size: 20px;
+  }
+  .modal-header p {
+    font-size: 14px;
+  }
+  .downScroll span {
+    font-size: 12px;
+  }
+  .downScroll img {
+    height: 60px;
+    width: 47px;
+  }
 }

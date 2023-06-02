@@ -88,9 +88,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
-    <link rel="stylesheet" href="./testIndex.css" />
-
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
 
@@ -502,8 +500,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             var selectElement = document.getElementById("mySelect");
             var selectedOption = selectElement.options[selectElement.selectedIndex];
             let type = selectedOption.getAttribute("data-yearsem");
-            console.log(selectElement)
-            console.log(type)
             if (Number(type) === 1) {
                 semyear.setAttribute("name", "year");
                 HTML = year;
@@ -546,7 +542,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             if (postDes.length > 40) {
                 desdata.style.flexDirection = "column";
             } else {
-                desdata.style.display = "flex";
                 desdata.style.flexDirection = "row";
             }
             desdata.style.gap = "5px";
