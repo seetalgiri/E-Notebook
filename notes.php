@@ -81,8 +81,8 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Notes</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globala.css  -->
-    <link rel="stylesheet" href="./Client/styles/globala.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
@@ -196,6 +196,8 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                             $postDes = $row['post_des'] != "" ? $row['post_des'] : "-";
                             $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
                             $noteId = $row['id'];
+                            $string = $row['note_like'] != null ? $row['note_like'] : '';
+                            $likes = ($string !== '') ? explode(",", $string) : [];
                             echo '
     <div class="eachBox">
         <div class="boxcontentNote">
@@ -209,12 +211,12 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             <div class="NoteAction">
                 <div class="date"><span>Date:</span> ' . $row['date'] . '</div>
                 <div class="svgsNote">
-                    <div class="likecontent">
+                <div id="like' . $noteId . '" class="likecontent actionFlex ' . (in_array($id, $likes) ? "liked" : "") . '" onclick="likeBtnclk(' . $noteId . ', ' . $id . ')">
                         <svg width="17" height="15" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" />
                         
                         </svg>
-                        <span class="likecount">101</span>
+                        <span class="likecount" id="counterLike' . $noteId . '">' . count($likes) . '</span>
                     </div>
                     <a onclick="viewIconClick(\'' . $row['note_file'] . '\')">
                     <svg width="20" height="14" viewBox="0 0 18 12" style="margin-right:6px;" xmlns="http://www.w3.org/2000/svg">
@@ -523,6 +525,57 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         closeBtn.addEventListener("click", function() {
             pdfModal.style.display = "none";
         });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // ======================== for like implementation =================
+        // sending data into backend for like post
+        const likeBtnclk = async (postId, userId) => {
+            if (userId < 1) {
+                window.location.href = 'http://localhost/e_notebook/auth/login.php';
+            } else {
+                const like = document.getElementById(`like${postId}`);
+                if (like.classList.contains('liked')) {
+                    like.classList.remove('liked');
+                } else {
+                    like.classList.add('liked');
+                }
+
+                try {
+                    const response = await fetch('./server/Notes/filelikeupdate.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            postId: postId,
+                            userId: userId,
+                        }),
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        let counterLike = document.getElementById(`counterLike${data.postId}`)
+                        counterLike.innerText = data.likeCount
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            }
+        };
     </script>
 </body>
 
