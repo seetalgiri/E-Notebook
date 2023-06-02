@@ -88,7 +88,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
     <link rel="stylesheet" href="./testIndex.css" />
 
     <!-- ==================== JS Imported ======================== -->
@@ -218,10 +218,11 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                         </svg>
                         <span class="likecount" id="counterLike' . $noteId . '">' . count($likes) . '</span>
                     </div>
-                    <a onclick="viewIconClick(\'' . $row['note_file'] . '\')">
+                    <a onclick="viewIconClick(\'' . $row['note_file'] . '\', \'' . $row['post_des'] . '\', \'' . $row['note_name'] . '\', \'' . $row['date'] . '\', \'' . $row['stream_name'] . '\')">
                     <svg width="20" height="14" viewBox="0 0 18 12" style="margin-right:6px;" xmlns="http://www.w3.org/2000/svg">
                     <path d="M9 3.75C8.40326 3.75 7.83097 3.98705 7.40901 4.40901C6.98705 4.83097 6.75 5.40326 6.75 6C6.75 6.59674 6.98705 7.16903 7.40901 7.59099C7.83097 8.01295 8.40326 8.25 9 8.25C9.59674 8.25 10.169 8.01295 10.591 7.59099C11.0129 7.16903 11.25 6.59674 11.25 6C11.25 5.40326 11.0129 4.83097 10.591 4.40901C10.169 3.98705 9.59674 3.75 9 3.75ZM9 9.75C8.00544 9.75 7.05161 9.35491 6.34835 8.65165C5.64509 7.94839 5.25 6.99456 5.25 6C5.25 5.00544 5.64509 4.05161 6.34835 3.34835C7.05161 2.64509 8.00544 2.25 9 2.25C9.99456 2.25 10.9484 2.64509 11.6517 3.34835C12.3549 4.05161 12.75 5.00544 12.75 6C12.75 6.99456 12.3549 7.94839 11.6517 8.65165C10.9484 9.35491 9.99456 9.75 9 9.75ZM9 0.375C5.25 0.375 2.0475 2.7075 0.75 6C2.0475 9.2925 5.25 11.625 9 11.625C12.75 11.625 15.9525 9.2925 17.25 6C15.9525 2.7075 12.75 0.375 9 0.375Z" />
                     </a>
+
                     
                     </svg>
                     <a href="' . $row['note_file'] . '" download="' . $row['note_name'] . '.pdf' . '">
@@ -275,22 +276,19 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                     <span class="close">&times;</span>
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2>PDF Viewer</h2>
-                            <p>Name: Microprocessor</p>
-                            <p>Author: Gaurab Sunar</p>
-                            <p>Date: 2023-12-12</p>
-                            <p>Description:</p>
-                            <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo nobis repellat delectus consequatur doloremque cupiditate laborum, tenetur inventore minima debitis ducimus asperiores fugit reprehenderit enim laboriosam corporis non voluptatum. Quas vero reiciendis sed? Autem dolor beatae doloremque eligendi minus numquam facilis quasi eos unde? Maiores ratione commodi earum.entore minima debitis ducimus asperiores fugit reprehenderit enim laboriosam corporis non voluptatum. Quas vero reiciendis sed? Autem dolor beatae doloremque eligendi minus numquam facilis quasi eos unde?  Enim, dicta?</p>
-                            <button class="downScroll"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="96" height="96" fill="url(#pattern0)"/>
-<defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="2" height="2">
-<use xlink:href="#image0_202_2" transform="scale(0.0104167)"/>
-</pattern>
-<image id="image0_202_2"  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAABe0lEQVR4nO3ZsU0EMRCF4dcCgRN6InQL9EQLTq8nAge0YIS0wQac4GDtmfH8n0S8x87/jgAJAAAAAAAAAAAAAAAAAAAAAABkdJP0bP0hHCqS2ooHDUkfkl5XPCyIKqkf72a6cfrJvoZyVH9+J9OdH5Z5DfVUvekBsq2hfFO9iwNkWEO9U72bA+y6hvJD9e4OsNMa6i+qd3mA6GsoD1Tv+gAR11AfrN79AaKsofyx+jAH8LyG+o/qQx3A2xrKBdWHPMBwsIarqg97gGG0hqurD3+AsXANM6pfeoAXSe8Tf4HbpDXMrH4cR/067hJPkt4CraFOrr4dB17O+xrKTtVHW0PdtXrvaygZqve6hpqtei9rKJmrv2fVS6lUb7uGQfX2fxtG1u/63dbQI37X77KGtmv13tfQM1TvdQ0tW/Ve1tAzV2+9hkb1NmvoVG+3hkb1NmvoVG+3hkb1NmvoVG+3hkb1NmvoVG/3/4ZG9QAAAAAAAAAAAAAAAADkyCcp7nvqn9osJAAAAABJRU5ErkJggg=="/>
-</defs>
-</svg>
-</button>
+                            <h2 id="heading" style="text-transform: uppercase; letter-spacing: 2px; margin-left: -3px;">Quick View</h2>
+                            <p>Name: <span id="noteName"></span></p>
+                            <p>Author: <span id="author"></span></p>
+                            <p>Stream: <span id="stream"></span></p>
+                            <p>Date: <span id="date"></span></p>
+                            <div id="desdata">
+                                <p>Description:</p>
+                                <p class="paragraph" style="min-height: 170px;" id="des"></p>
+                            </div>
+                            <button class="downScroll">
+                                <span>Quick View</span>
+                                <img src="./images/mouse.gif" alt="" onclick="viewDownPDF()">
+                            </button>
                         </div>
                         <div class="modal-body">
                             <iframe id="pdfViewer" src="" frameborder="0"></iframe>
@@ -525,14 +523,35 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         var pdfViewer = document.getElementById("pdfViewer");
         var closeBtn = document.getElementsByClassName("close")[0];
 
-        const viewIconClick = (url) => {
-            console.log("first")
+        const viewIconClick = (url, postDes, noteName, date, streamName) => {
+            const noteNameHTML = document.getElementById("noteName");
+            const author = document.getElementById("author");
+            const dateHTML = document.getElementById("date");
+            const des = document.getElementById("des");
+            const stream = document.getElementById("stream");
+            const desdata = document.getElementById("desdata");
+
+
             var pdfUrl = url;
             pdfViewer.src = pdfUrl;
             pdfModal.style.display = "block";
+            des.innerText = postDes[0].toUpperCase() + postDes.slice(1);
+            noteNameHTML.innerText = noteName[0].toUpperCase() + noteName.slice(1);
+            author.innerText = "Gaurab";
+            dateHTML.innerText = date;
+            stream.innerText = streamName[0].toUpperCase() + streamName.slice(1);;
 
-            console.log(url)
+
+            desdata.style.display = "flex";
+            if (postDes.length > 40) {
+                desdata.style.flexDirection = "column";
+            } else {
+                desdata.style.display = "flex";
+                desdata.style.flexDirection = "row";
+            }
+            desdata.style.gap = "5px";
         }
+
 
         closeBtn.addEventListener("click", function() {
             pdfModal.style.display = "none";
@@ -587,6 +606,15 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                     console.error('Error:', error);
                 }
             }
+        };
+
+
+
+        // ========================= for scroll down to view pdf ========================
+
+        const viewDownPDF = () => {
+            const modalContent = document.querySelector(".modal-content");
+            modalContent.scrollBy(0, 600);
         };
     </script>
 </body>
