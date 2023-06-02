@@ -129,7 +129,10 @@
                 <span class="close">&times;</span>
                 <div class="modal-header">
                     <h2>PDF Viewer</h2>
-                    <p>Some additional information or description can be placed here.</p>
+                    <p>Note Name</p>
+                    <p>Author Name</p>
+                    <p>Date</p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est error in expedita! Asperiores voluptatibus a quae tempore facilis hic odit quos nesciunt, molestias animi excepturi perferendis. Asperiores sint qui quia consequatur atque voluptatem saepe, blanditiis itaque laboriosam voluptas excepturi reprehenderit molestiae facilis nulla nemo quas! Iste sit dolores quo quam?</p>
                 </div>
                 <div class="modal-body">
                     <iframe id="pdfViewer" src="" frameborder="0"></iframe>
