@@ -88,7 +88,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/notes.css" />
+    <link rel="stylesheet" href="./Client/styles/note.css" />
     <link rel="stylesheet" href="./testIndex.css" />
 
     <!-- ==================== JS Imported ======================== -->
