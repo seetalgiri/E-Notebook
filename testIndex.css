@@ -26,12 +26,13 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 40px;
+  color: var(--text-color-light);
 }
 .modal-content {
   width: 526px;
   height: 500px;
   overflow-y: auto;
-  background-color:white;
+  background-color: var(--bg-white);
   scroll-behavior: smooth;
   z-index: 1000000000000000000000000000000;
 }
@@ -48,23 +49,37 @@
   gap: 7px;
   text-align: justify;
 }
-.downScroll{
+.downScroll {
   margin-top: 25px;
-  height: 28px;
+  max-height: 100px;
   width: 100%;
-  border-radius: 2px;  
-  background-color: rgba(221, 226, 232, 1);
-}
-.downScroll svg{
-  height: 100%;
-}
-.downScroll:hover{
-  cursor: pointer;
-  background-color: var(--second-color);
+  border-radius: 0;
   border: none;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.paragraph{
-  color: rgba(0, 0, 0, 0.808);
+.downScroll img {
+  height: 85px;
+  width: 65px;
+  cursor: pointer;
+  filter: var(--colorInvertImage);
+}
+.downScroll span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color-light);
+}
+.modal-header h2,
+.modal-header p {
+  color: var(--text-color-light);
+}
+.paragraph {
+  color: var(--text-color-light);
 }
 #pdfViewer {
   width: 520px;

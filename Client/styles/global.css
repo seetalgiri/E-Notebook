@@ -46,6 +46,7 @@
 
   /* for body backgorund color  */
   --bodyBackground-color: #dae0e6bb;
+  --colorInvertImage: grayscale(0%) invert(0%);
 }
 
 /* ====================== For Dark Mode ====================== */
@@ -89,6 +90,7 @@
 
   /* for body backgorund color  */
   --bodyBackground-color: #2b2b2b;
+  --colorInvertImage: grayscale(100%) invert(100%);
 }
 
 /* ====================== For Light Mode ====================== */
