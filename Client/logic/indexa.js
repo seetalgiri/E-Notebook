@@ -24,7 +24,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const NotesInnterHtml = ` <form action="" id="filerequestModal">
+const NotesInnterHtml = ` <form id="filerequestModal" action="./Server/Home/requestpost.php" enctype="multipart/form-data" method="post">
 <div class="buttonclscontentPlc buttonclscontentPlcreq">
   <div class="buttontextAreadiv requestNotice">
     <textarea
