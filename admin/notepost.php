@@ -113,7 +113,7 @@ if (isset($_GET['edit'])) {
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculitys.css">
     <link rel="stylesheet" href="./CSS/noteposts.css">
 

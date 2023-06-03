@@ -31,8 +31,9 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sql = "SELECT * FROM requestpost LIMIT $offset, $recordsPerPage";
+$sql = "SELECT * FROM requestpost ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
+
 
 
 if (isset($_GET['deleteid'])) {
@@ -61,7 +62,7 @@ if (isset($_GET['deleteid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
     <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculitys.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
@@ -233,6 +234,9 @@ if (isset($_GET['deleteid'])) {
         // });
         crossModal.addEventListener('click', () => {
             modal.style.display = "none";
+            const newURL = window.location.href.split('?')[0];
+            window.history.replaceState({}, document.title, newURL);
+            window.location.reload();
         });
 
         function AcceptBtnClk() {
@@ -258,6 +262,27 @@ if (isset($_GET['deleteid'])) {
             location.reload();
         }
     </script>
+
+    <?php
+    if (isset($_GET['view'])) {
+        $view = $_GET['view'];
+        $sqlUpdate = "UPDATE `requestpost` SET `status` = 1 WHERE `id` = '$view'";
+        mysqli_query($con, $sqlUpdate);
+
+        // Retrieve the data for the modal content
+        $sqlSelect = "SELECT * FROM `requestpost` WHERE `id` = '$view'";
+        $result = mysqli_query($con, $sqlSelect);
+        $data = mysqli_fetch_assoc($result);
+
+        // Pass the data to the modalOpen function
+        echo '<script>
+        ';
+        echo 'modalOpen(' . json_encode($data) .
+            ');';
+        echo '
+    </script>';
+    }
+    ?>
 </body>
 
 </html>

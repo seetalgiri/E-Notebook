@@ -266,11 +266,6 @@ const NoticeInnerHtml = `<form action="./Server/Home/indexback.php" enctype="mul
                     /></svg
                 ></label>
               </li>
-                  <li class="dropdown">
-                    <div class="dotLine"></div>
-                    <div class="dotLine"></div>
-                    <div class="dotLine"></div>
-                  </li>
                 </div>
               </div>
               </div>
