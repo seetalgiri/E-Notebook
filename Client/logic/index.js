@@ -24,7 +24,7 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const NotesInnterHtml = ` <form action="" id="filerequestModal">
+const NotesInnterHtml = ` <form action="#" id="filerequestModal">
 <div class="buttonclscontentPlc buttonclscontentPlcreq">
   <div class="buttontextAreadiv requestNotice">
     <textarea
@@ -171,14 +171,14 @@ const NotesInnterHtml = ` <form action="" id="filerequestModal">
   />
 </div>
 <div class="buttonclscontent border postBtn">
-  <button>REQUEST</button>
+  <button type="submit" name="request">REQUEST</button>
 </div>
 </form>`;
 
-const NoticeInnerHtml = `<form action="">
+const NoticeInnerHtml = `<form action="../../Server/newsfeed.php" method="post">
             <div class="buttonclscontentPlc">
               <div class="buttontextAreadiv">
-                <textarea name="post" id="postContentMod" placeholder="What is on your mind?"></textarea>
+                <textarea name="post_text" id="postContentMod" placeholder="What is on your mind?"></textarea>
               </div>
             </div>
             <input type="file" id="pdfuploadnote" name="image" accept="image/png, image/jpeg, image/jpg" style="display: none;"> 
@@ -276,7 +276,7 @@ const NoticeInnerHtml = `<form action="">
               </div>
             </div>
             <div class="buttonclscontent border postBtn">
-              <button>POST</button>
+              <button type="submit" name="post" value=""post>POSTssss </button>
             </div>
           </form>`;
 
