@@ -1,5 +1,10 @@
 const modalContent = document.getElementById("modalContent");
 const svgbtn = document.querySelector("#sideButton svg");
+const fname = document.getElementById("fname");
+const stdType = document.querySelectorAll("#stdType option");
+const yrType = Array.from(stdType);
+const idnum = document.getElementById("idnum");
+const submitBtn = document.getElementById("submitBtn");
 modalContent.style.right = "-378px";
 svgbtn.style.transform = "  rotateZ(180deg)";
 
@@ -13,6 +18,8 @@ const reloadPage = () => {
 function modalBtnclk() {
   if (modalContent.style.right === "0px") {
     fname.value = "";
+    yrType[1].removeAttribute("selected");
+    yrType[0].removeAttribute("selected");
     modalContent.style.right = "-378px";
     svgbtn.style.transform = "rotateZ(180deg)";
   } else {
@@ -34,6 +41,8 @@ window.onclick = function (event) {
   ) {
     if (modalContent.style.right !== "-378px") {
       fname.value = "";
+      yrType[1].removeAttribute("selected");
+      yrType[0].removeAttribute("selected");
       modalContent.style.right = "-378px";
       svgbtn.style.transform = "rotateZ(180deg)";
     }
@@ -62,15 +71,22 @@ window.onclick = function (event) {
   }
 };
 // yearsem
-const fname = document.getElementById("fname");
-const stdType = document.querySelectorAll("#stdType option");
 
 function openmodal(data) {
   modalContent.style.right = "0px";
   svgbtn.style.transform = "rotateZ(0deg)";
-  fname.value = data.faculity_name
-  console.log(data)
-  console.log(stdType)
+  fname.value = data.faculity_name;
+  if (Number(data.yearsem) == 1) {
+    yrType[0].setAttribute("selected", "selected");
+    yrType[1].removeAttribute("selected");
+  } else {
+    yrType[0].removeAttribute("selected");
+    yrType[1].setAttribute("selected", "selected");
+  }
+  idnum.value = data.id;
+  submitBtn.setAttribute("name", "updateadd");
+  submitBtn.innerText = "Update";
+  console.log("Exc");
 }
 var searchParams = new URLSearchParams(window.location.search);
 var editParam = searchParams.get("edit");

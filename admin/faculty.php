@@ -119,7 +119,7 @@ if (isset($_GET['search'])) {
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/faculitya.js" defer></script>
+    <script src="./logic/faculityas.js" defer></script>
 </head>
 
 <body>
@@ -185,7 +185,7 @@ if (isset($_GET['search'])) {
             <div id="sideDivForm" style="height: 350px !important;">
                 <form action="./faculty.php" method="post" id="forms">
                     <h3>Add Faculty:</h3>
-                    <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
+                    <input type="hidden" name="idnum" id="idnum">
                     <div id="forms" class="flex">
                         <label for="fname">Enter faculity name:</label>
                         <input type="text" name="fname" required id="fname" placeholder="Name" value="<?php echo $name; ?>">
@@ -193,15 +193,12 @@ if (isset($_GET['search'])) {
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
                         <select name="yearsem" id="stdType">
-                            <option value="1" <?php if ($yearsem == "1") echo "selected"; ?>>Years</option>
-                            <option value="2" <?php if ($yearsem == "2") echo "selected"; ?>>Semester</option>
+                            <option value="1">Years</option>
+                            <option value="2">Semester</option>
                         </select>
                     </div>
                     <div id="forms" class="buttonformFac">
-                        <?php
-                        $message = (intval($idnum) >= 1) ? "<button type='submit' name='updateadd'>Update</button>" : "<button type='submit' name='postadd'>Add</button>";
-                        echo $message;
-                        ?>
+                        <button type='submit' name='postadd' id="submitBtn">Add</button>
                         <button type="reset">Reset</button>
                     </div>
                 </form>
