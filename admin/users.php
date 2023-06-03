@@ -175,7 +175,7 @@ if (mysqli_num_rows($res) > 0) {
     <link rel="stylesheet" href="./css/users.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/user.js" defer></script>
 
 </head>

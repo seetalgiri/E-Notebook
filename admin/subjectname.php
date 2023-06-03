@@ -142,7 +142,7 @@ if (isset($_POST['updateadd'])) {
     <link rel="stylesheet" href="./css/faculitys.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/subjectnames.js" defer></script>
 
 </head>

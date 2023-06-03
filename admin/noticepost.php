@@ -82,7 +82,7 @@ if (isset($_GET['delete'])) {
 
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/noticepost.js" defer></script>
 </head>
 

@@ -16,12 +16,15 @@ const div1 = document.querySelector(".div1");
 const div2 = document.querySelector(".div2");
 const div3 = document.querySelector(".div3");
 const currentUrl = window.location.href;
-const currentPage = currentUrl.substr(currentUrl.lastIndexOf("/") + 1);
+const currentPage = currentUrl
+  .split("?")[0]
+  .substr(currentUrl.lastIndexOf("/") + 1);
 sidenav.style.width = "90px";
 const lists = document.getElementsByClassName("lists");
 const listName = document.getElementsByClassName("listName");
 const borderDesign = document.querySelectorAll(".lists a");
 const addressTracker = document.querySelectorAll(".addressTracker");
+
 for (let i = 0; i < addressTracker.length; i++) {
   if (addressTracker[i].classList.contains(currentPage.slice(0, -4))) {
     addressTracker[i].classList.add("active");
@@ -29,6 +32,7 @@ for (let i = 0; i < addressTracker.length; i++) {
     addressTracker[i].classList.remove("active");
   }
 }
+
 const hambarclk = () => {
   const width = sidenav.style.width;
   if (width === "90px") {
