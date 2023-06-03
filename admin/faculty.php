@@ -119,7 +119,7 @@ if (isset($_GET['search'])) {
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/faculity.js" defer></script>
+    <script src="./logic/faculitys.js" defer></script>
 </head>
 
 <body>
