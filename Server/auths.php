@@ -64,7 +64,11 @@ else {
                 $_SESSION['privilege'] = $privilege;
 
                 // Redirect to index.php
-                header("Location: ../index.php");
+                if($privilege==0){
+                    header("Location: ../admin/dashboard.php");
+                }else{
+                    header("Location: ../index.php");
+                }
                 exit();
             }
         }
@@ -96,7 +100,11 @@ else {
                 $_SESSION['privilege'] = $user['privilege'];
 
                 // Redirect to index.php or any other page you desire
-                header("Location: ../index.php");
+                if($user['privilege']==0){
+                    header("Location: ../admin/dashboard.php");
+                }else{
+                    header("Location: ../index.php");
+                }
                 exit();
             } else {
                 // Password is incorrect
