@@ -103,14 +103,14 @@ if (isset($_GET['search'])) {
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Syllabus</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globals.css  -->
-    <link rel="stylesheet" href="./Client/styles/globals.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
 
