@@ -53,26 +53,6 @@ if (isset($_GET["id"])) {
     }
 }
 
-// for edit btn
-// to show edting data
-$name = "";
-$yearsem = "";
-$idnum = "";
-if (isset($_GET["edit"])) {
-    $id = $_GET["edit"];
-    $sql = "SELECT * FROM faculty WHERE id = $id";
-    $result = mysqli_query($con, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $name = $row["faculity_name"];
-        $yearsem = $row["yearsem"];
-        $idnum = $row["id"];
-    } else {
-        $name = "";
-        $idnum = "";
-    }
-}
-
 // to update changes
 if (isset($_POST['updateadd'])) {
     $fname = $_POST['fname'];
@@ -188,7 +168,7 @@ if (isset($_GET['search'])) {
                     <input type="hidden" name="idnum" id="idnum">
                     <div id="forms" class="flex">
                         <label for="fname">Enter faculity name:</label>
-                        <input type="text" name="fname" required id="fname" placeholder="Name" value="<?php echo $name; ?>">
+                        <input type="text" name="fname" required id="fname" placeholder="Name">
                     </div>
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>

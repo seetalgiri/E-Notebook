@@ -86,7 +86,6 @@ function openmodal(data) {
   idnum.value = data.id;
   submitBtn.setAttribute("name", "updateadd");
   submitBtn.innerText = "Update";
-  console.log("Exc");
 }
 var searchParams = new URLSearchParams(window.location.search);
 var editParam = searchParams.get("edit");
