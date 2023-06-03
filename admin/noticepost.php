@@ -109,7 +109,7 @@ if (isset($_GET['delete'])) {
         <td>" . (strlen($row['postdes']) > 50 ? substr($row['postdes'], 0, 50) . '...' : $row['postdes']) . "</td>
         <td>";
                         if (!empty($row['image'])) {
-                            echo "<img width='30' height='30' alt='postImg' src='" . $row['image'] . "' style='border-radius: 50%;'/>";
+                            echo "<img width='30' height='30' loading='lazy' alt='postImg' src='" . $row['image'] . "' style='border-radius: 50%;'/>";
                         } else {
                             echo "-";
                         }
@@ -249,7 +249,7 @@ if (isset($_GET['delete'])) {
             const reqstreamcontent = document.getElementById("reqstreamcontent");
             const oneData = data.filter((e) => e.id == id)
 
-            const img = `<img src="${oneData[0].image}" alt="" style="min-height: 370px; max-width: 360px; min-width: 450px; margin: 0px auto;">`
+            const img = `<img src="${oneData[0].image}" loading='lazy' alt="" style="min-height: 370px; max-width: 360px; min-width: 450px; margin: 0px auto;">`
 
             reqUserName.innerText = oneData[0].author;
             imageDIvforModal.innerHTML = img;
