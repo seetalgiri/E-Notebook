@@ -81,7 +81,7 @@ if (isset($_GET['search'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
-    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculitys.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
@@ -109,10 +109,16 @@ if (isset($_GET['search'])) {
                     </tr>
                     <?php
                     while ($row = mysqli_fetch_assoc($res)) {
+                        $dis = "";
+                        if (strlen($row['description']) > 45) {
+                            $dis = substr($row['description'], 0, 45) . "...";
+                        } else {
+                            $dis = $row['description'];
+                        }
                         echo "
         <tr>
             <td>{$row['id']}</td>
-            <td>{$row['description']}</td>
+            <td>{$dis}</td>
             <td>{$row['stream']}</td>
             <td>{$row['semYr']}</td>
             <td>{$row['sub_name']}</td>
