@@ -194,6 +194,11 @@ $countREQPost = mysqli_num_rows($resfacREQPost);
                 <li>
                     <div id='toggleMode' class="moodAdmin">Dark</div>
                 </li>
+                <li id="broom">
+                    <svg width="22" height="22" onclick="pageLoad()" style="cursor: pointer;" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.1084 0.161499L18.5284 1.5815L12.8084 7.2915C13.8784 8.8315 14.0284 10.6815 13.1284 11.8815L6.80839 5.5615C8.00839 4.6615 9.85839 4.8115 11.3984 5.8815L17.1084 0.161499ZM3.67839 15.0115C1.66839 13.0015 0.438389 10.6015 0.0983887 8.3615L4.97839 6.2715L12.4184 13.7115L10.3284 18.5915C8.08839 18.2515 5.68839 17.0215 3.67839 15.0115Z" />
+                    </svg>
+                </li>
                 <li class="posrel">
                     <a>
                         <svg id="notbtn" <?php echo ($countREQPost > 0) ? ' onclick="NotbtnClk()"' : '' ?> width="25" height="25" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
@@ -279,4 +284,26 @@ $countREQPost = mysqli_num_rows($resfacREQPost);
         notrapper.style.display = "none"
         notificationfull.style.display = "none"
     })
+    const pageLoad = () => {
+        var url = window.location.href;
+
+        // Remove all parameters
+        var cleanURL = url.split('?')[0];
+
+        // Update the URL
+        window.history.replaceState({}, document.title, cleanURL);
+        window.location.reload()
+    }
+    const broom = document.getElementById('broom')
+    // Get the current URL
+    const currentUrlForBroom = window.location.href;
+
+    // Check if the URL has parameters
+    const hasParamsForB = currentUrlForBroom.includes('?');
+
+    if (hasParamsForB) {
+        broom.style.display = "block";
+    } else {
+        broom.style.display = "none";
+    }
 </script>
