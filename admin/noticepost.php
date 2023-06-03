@@ -61,6 +61,26 @@ if (isset($_GET['delete'])) {
 }
 
 
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM `news` WHERE `postdes` LIKE '%$search%'";
+        $resNoticeGet = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM `news`";
+        $resNoticeGet = mysqli_query($con, $sqlNote);
+    }
+}
+
+
 
 ?>
 
@@ -73,8 +93,8 @@ if (isset($_GET['delete'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notice Post</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculitys.css">
     <link rel="stylesheet" href="./CSS/noticepost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
@@ -82,7 +102,7 @@ if (isset($_GET['delete'])) {
 
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/noticepost.js" defer></script>
 </head>
 
@@ -109,7 +129,7 @@ if (isset($_GET['delete'])) {
         <td>" . (strlen($row['postdes']) > 50 ? substr($row['postdes'], 0, 50) . '...' : $row['postdes']) . "</td>
         <td>";
                         if (!empty($row['image'])) {
-                            echo "<img width='30' height='30' alt='postImg' src='" . $row['image'] . "' style='border-radius: 50%;'/>";
+                            echo "<img width='30' height='30' loading='lazy' alt='postImg' src='" . $row['image'] . "' style='border-radius: 50%;'/>";
                         } else {
                             echo "-";
                         }
@@ -249,7 +269,7 @@ if (isset($_GET['delete'])) {
             const reqstreamcontent = document.getElementById("reqstreamcontent");
             const oneData = data.filter((e) => e.id == id)
 
-            const img = `<img src="${oneData[0].image}" alt="" style="min-height: 370px; max-width: 360px; min-width: 450px; margin: 0px auto;">`
+            const img = `<img src="${oneData[0].image}" loading='lazy' alt="" style="min-height: 370px; max-width: 360px; min-width: 450px; margin: 0px auto;">`
 
             reqUserName.innerText = oneData[0].author;
             imageDIvforModal.innerHTML = img;

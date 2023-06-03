@@ -34,6 +34,26 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 $sql = "SELECT * FROM auth LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
 
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM `auth` WHERE `name` LIKE '%$search%'";
+        $res = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM `auth`";
+        $res = mysqli_query($con, $sqlNote);
+    }
+}
+
+
 
 
 if (isset($_GET['add_admin'])) {
@@ -170,12 +190,12 @@ if (mysqli_num_rows($res) > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Users</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/users.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/user.js" defer></script>
 
 </head>

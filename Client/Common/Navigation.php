@@ -112,7 +112,7 @@ if (isset($_POST['logoutBtn'])) {
 <script>
     var navLinks = document.getElementsByTagName("a");
     const currentUrl = window.location.href;
-    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1).split('?')[0];
     const clsPage = currentPage.split(".")[0]
 
 

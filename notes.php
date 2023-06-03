@@ -13,7 +13,7 @@ $resfac = mysqli_query($con, $sql);
 
 
 // ================================ for pagination (start) ==========================================
-$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes";
+$querytotalnumberROw = "SELECT COUNT(*) as total FROM notes WHERE note_category = 'note'";
 $resultRowNum = mysqli_query($con, $querytotalnumberROw);
 $rowNumbers = mysqli_fetch_assoc($resultRowNum);
 $totalRowNumber = $rowNumbers['total'];
@@ -29,7 +29,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset($_GET['year']))) {
     $sem = "";
@@ -39,10 +39,10 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     if (strlen($facultyId) > 0) {
 
 
-        $sqlNote = "SELECT * FROM notes";
+        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note'";
 
         if (strlen($facultyId) > 0) {
-            $sqlNote .= " WHERE stream_id = '$facultyId'";
+            $sqlNote .= " AND stream_id = '$facultyId'";
         }
 
         // Add filters based on the available parameters
@@ -69,6 +69,28 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     }
 }
 
+
+
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
+        $resultNotes = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
+        $resultNotes = mysqli_query($con, $sqlNote);
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -81,16 +103,14 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Notes</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globals.css  -->
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
     <link rel="stylesheet" href="./Client/styles/note.css" />
-    <link rel="stylesheet" href="./testIndex.css" />
-
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
 
@@ -187,18 +207,27 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
                                 </button>
                             </div>
                         </div>
+                        <div id="mainBroomDiv">
+                            <div id="broom">
+                                <svg onclick="pageLoad()" width="25" height="25" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.1084 0.161499L18.5284 1.5815L12.8084 7.2915C13.8784 8.8315 14.0284 10.6815 13.1284 11.8815L6.80839 5.5615C8.00839 4.6615 9.85839 4.8115 11.3984 5.8815L17.1084 0.161499ZM3.67839 15.0115C1.66839 13.0015 0.438389 10.6015 0.0983887 8.3615L4.97839 6.2715L12.4184 13.7115L10.3284 18.5915C8.08839 18.2515 5.68839 17.0215 3.67839 15.0115Z" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                     <div class="linecontentNote"></div>
                     <!-- <div class="flexContent"> -->
                     <div id="mainViewContent" class="gridContent">
                         <?php
-                        while ($row = mysqli_fetch_assoc($resultNotes)) {
-                            $postDes = $row['post_des'] != "" ? $row['post_des'] : "-";
-                            $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
-                            $noteId = $row['id'];
-                            $string = $row['note_like'] != null ? $row['note_like'] : '';
-                            $likes = ($string !== '') ? explode(",", $string) : [];
-                            echo '
+                        if (mysqli_num_rows($resultNotes) > 0) {
+
+                            while ($row = mysqli_fetch_assoc($resultNotes)) {
+                                $postDes = $row['post_des'] != "" ? $row['post_des'] : "-";
+                                $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
+                                $noteId = $row['id'];
+                                $string = $row['note_like'] != null ? $row['note_like'] : '';
+                                $likes = ($string !== '') ? explode(",", $string) : [];
+                                echo '
     <div class="eachBox">
         <div class="boxcontentNote">
             <h3>' . $noteName . '</h3>
@@ -235,7 +264,17 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         </div>
     </div>
     ';
+                            }
+                        } else {
+                            echo "<div id='notFound'>
+                            <h1 class='noteNotFound'>Sorry, Note Not Found!!!</h1>
+                            <svg onclick='pageLoad()' width='27' height='24' viewBox='0 0 27 24' xmlns='http://www.w3.org/2000/svg'>
+                            <path d='M0.5 12C0.5 18.2125 5.5375 23.25 11.75 23.25C14.7375 23.25 17.6 22.075 19.75 20L17.875 18.125C16.2875 19.8125 14.075 20.75 11.75 20.75C3.95 20.75 0.0500004 11.325 5.5625 5.8125C11.075 0.3 20.5 4.2125 20.5 12H16.75L21.75 17H21.875L26.75 12H23C23 5.7875 17.9625 0.75 11.75 0.75C5.5375 0.75 0.5 5.7875 0.5 12Z' />
+                            </svg>
+                            <p>Load page</p>
+                            </div>";
                         }
+
                         ?>
 
                     </div>
@@ -502,8 +541,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             var selectElement = document.getElementById("mySelect");
             var selectedOption = selectElement.options[selectElement.selectedIndex];
             let type = selectedOption.getAttribute("data-yearsem");
-            console.log(selectElement)
-            console.log(type)
             if (Number(type) === 1) {
                 semyear.setAttribute("name", "year");
                 HTML = year;
@@ -546,7 +583,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             if (postDes.length > 40) {
                 desdata.style.flexDirection = "column";
             } else {
-                desdata.style.display = "flex";
                 desdata.style.flexDirection = "row";
             }
             desdata.style.gap = "5px";
@@ -556,18 +592,6 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         closeBtn.addEventListener("click", function() {
             pdfModal.style.display = "none";
         });
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -616,6 +640,32 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
             const modalContent = document.querySelector(".modal-content");
             modalContent.scrollBy(0, 600);
         };
+
+        const pageLoad = () => {
+            var url = window.location.href;
+
+            // Remove all parameters
+            var cleanURL = url.split('?')[0];
+
+            // Update the URL
+            window.history.replaceState({}, document.title, cleanURL);
+            window.location.reload()
+        }
+
+
+        // Get the current URL
+        const currentUrlForBroom = window.location.href;
+
+        // Check if the URL has parameters
+        const hasParamsForB = currentUrlForBroom.includes('?');
+
+        if (hasParamsForB) {
+            document.getElementById("mainBroomDiv").style.display = "block";
+            document.getElementById("searchNotes").style.width = "92%";
+        } else {
+            document.getElementById("mainBroomDiv").style.display = "none";
+            document.getElementById("searchNotes").style.width = "95%";
+        }
     </script>
 </body>
 

@@ -127,6 +127,26 @@ if (isset($_POST['updateadd'])) {
     }
 }
 
+
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM `subname` WHERE `name` LIKE '%$search%'";
+        $res = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM `subname`";
+        $res = mysqli_query($con, $sqlNote);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -137,12 +157,12 @@ if (isset($_POST['updateadd'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Suject Name</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../Client/styles/globals.css">
+    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculitys.css">
 
     <!-- for JS Logic  -->
-    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/sidenav.js" defer></script>
     <script src="./logic/subjectnames.js" defer></script>
 
 </head>

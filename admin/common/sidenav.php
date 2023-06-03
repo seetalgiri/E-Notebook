@@ -18,6 +18,22 @@ if ($privilege > 1) {
     goHome();
 }
 
+include "../Configuration.php";
+//database connection
+$conREQPost = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
+
+if (!$conREQPost) {
+    die("Database connection failed");
+}
+
+// to show all data in frontend
+$sqlREQPost = "SELECT * FROM `requestpost` WHERE `status` = 0";
+$resfacREQPost = mysqli_query($conREQPost, $sqlREQPost);
+$countREQPost = mysqli_num_rows($resfacREQPost);
+
+
+
+
 ?>
 
 <div id="navigations">
@@ -163,7 +179,7 @@ if ($privilege > 1) {
             </p>
         </div>
         <div id="searchsec">
-            <form action="#">
+            <form>
                 <input type="text" name="search" id="search" placeholder="Search..." />
                 <button>
                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -178,62 +194,48 @@ if ($privilege > 1) {
                 <li>
                     <div id='toggleMode' class="moodAdmin">Dark</div>
                 </li>
+                <li id="broom">
+                    <svg width="22" height="22" onclick="pageLoad()" style="cursor: pointer;" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.1084 0.161499L18.5284 1.5815L12.8084 7.2915C13.8784 8.8315 14.0284 10.6815 13.1284 11.8815L6.80839 5.5615C8.00839 4.6615 9.85839 4.8115 11.3984 5.8815L17.1084 0.161499ZM3.67839 15.0115C1.66839 13.0015 0.438389 10.6015 0.0983887 8.3615L4.97839 6.2715L12.4184 13.7115L10.3284 18.5915C8.08839 18.2515 5.68839 17.0215 3.67839 15.0115Z" />
+                    </svg>
+                </li>
                 <li class="posrel">
                     <a>
-                        <svg id="notbtn" width="25" height="25" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12.5 26.25H17.5C17.5 27.625 16.375 28.75 15 28.75C13.625 28.75 12.5 27.625 12.5 26.25ZM26.25 23.75V25H3.75V23.75L6.25 21.25V13.75C6.25 9.875 8.75 6.5 12.5 5.375V5C12.5 3.625 13.625 2.5 15 2.5C16.375 2.5 17.5 3.625 17.5 5V5.375C21.25 6.5 23.75 9.875 23.75 13.75V21.25L26.25 23.75ZM21.25 13.75C21.25 10.25 18.5 7.5 15 7.5C11.5 7.5 8.75 10.25 8.75 13.75V22.5H21.25V13.75Z" />
+                        <svg id="notbtn" <?php echo ($countREQPost > 0) ? ' onclick="NotbtnClk()"' : '' ?> width="25" height="25" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path d="M12.5 26.25H17.5C17.5 27.625 16.375 28.75 15 28.75C13.625 28.75 12.5 27.625 12.5 26.25ZM26.25 23.75V25H3.75V23.75L6.25 21.25V13.75C6.25 9.875 8.75 6.5 12.5 5.375V5C12.5 3.625 13.625 2.5 15 2.5C16.375 2.5 17.5 3.625 17.5 5V5.375C21.25 6.5 23.75 9.875 23.75 13.75V21.25L26.25 23.75ZM21.25 13.75C21.25 10.25 18.5 7.5 15 7.5C11.5 7.5 8.75 10.25 8.75 13.75V22.5H21.25V13.75Z" />
+                                <circle cx="22" cy="8" r="8" fill="red" />
+                                <text x="22" y="8" text-anchor="middle" alignment-baseline="central" fill="white" font-size="11px">
+                                    <?php echo $countREQPost ?>
+                                </text>
+                            </g>
                         </svg>
                     </a>
                     <div id="notrapper">
                         <div id="notification" class="shadow">
                             <div class="contentnotification">
-                                <a href="#" class="eachContent shadow">
+                                <?php while ($row = mysqli_fetch_array($resfacREQPost)) {
+                                    echo '
+                                <a href="./requestpost.php?view=' . $row['id'] . '" class="eachContent shadow">
                                     <div class="divsecNotification">
                                         <span class="divTitle">Subject Name: </span>
-                                        <span class="divDis">Digital Logic</span>
+                                        <span class="divDis">' . $row['sub_name'] . '</span>
                                     </div>
                                     <div class="divsecNotification">
                                         <span class="divTitle">Sem/Year: </span>
-                                        <span class="divDis">1st Semm</span>
+                                        <span class="divDis">' . $row['semYr'] . '</span>
                                     </div>
                                     <div class="divsecNotification">
                                         <span class="divTitle">Note Name: </span>
-                                        <span class="divDis">Chapter 1 inreoduction</span>
+                                        <span class="divDis">' . $row['note_name'] . '</span>
                                     </div>
                                 </a>
-                                <a href="#" class="eachContent shadow">
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Subject Name: </span>
-                                        <span class="divDis">Digital Logic</span>
-                                    </div>
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Sem/Year: </span>
-                                        <span class="divDis">1st Semm</span>
-                                    </div>
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Note Name: </span>
-                                        <span class="divDis">Chapter 1 inreoduction</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="eachContent shadow">
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Subject Name: </span>
-                                        <span class="divDis">Digital Logic</span>
-                                    </div>
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Sem/Year: </span>
-                                        <span class="divDis">1st Semm</span>
-                                    </div>
-                                    <div class="divsecNotification">
-                                        <span class="divTitle">Note Name: </span>
-                                        <span class="divDis">Chapter 1 inreoduction</span>
-                                    </div>
-                                </a>
+                                ';
+                                } ?>
                             </div>
-                            <!-- <a href="#" class="eachContent shadow"></a>
-                            <a href="#" class="eachContent shadow"></a> -->
                         </div>
                     </div>
+
                 </li>
                 <li id="adminProfilemainDiv">
                     <div id="adminProfile">
@@ -267,10 +269,9 @@ if ($privilege > 1) {
 </div>
 
 <script>
-    const notbtn = document.getElementById("notbtn");
     const notificationfull = document.getElementById("notificationfull");
     const notrapper = document.getElementById("notrapper");
-    notbtn.addEventListener("click", () => {
+    const NotbtnClk = () => {
         if (notrapper.style.display === "none" || notrapper.style.display === "") {
             notrapper.style.display = "block"
             notificationfull.style.display = "block"
@@ -278,9 +279,31 @@ if ($privilege > 1) {
             notrapper.style.display = "none"
             notificationfull.style.display = "none"
         }
-    });
+    }
     notificationfull.addEventListener("click", () => {
         notrapper.style.display = "none"
         notificationfull.style.display = "none"
     })
+    const pageLoad = () => {
+        var url = window.location.href;
+
+        // Remove all parameters
+        var cleanURL = url.split('?')[0];
+
+        // Update the URL
+        window.history.replaceState({}, document.title, cleanURL);
+        window.location.reload()
+    }
+    const broom = document.getElementById('broom')
+    // Get the current URL
+    const currentUrlForBroom = window.location.href;
+
+    // Check if the URL has parameters
+    const hasParamsForB = currentUrlForBroom.includes('?');
+
+    if (hasParamsForB) {
+        broom.style.display = "block";
+    } else {
+        broom.style.display = "none";
+    }
 </script>

@@ -33,12 +33,12 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globals.css  -->
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/index.css" />
+    <link rel="stylesheet" href="./Client/styles/indexas.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -107,6 +107,13 @@ $resfac = mysqli_query($con, $sql);
                     <!-- for each post  -->
 
                 </div>
+                <div id="ShowMoreData">
+                    <div class="SeeMoreLetterLines">
+                        <span class="lines"></span>
+                        <span class="letter" onclick="SeemoreClk()">See more</span>
+                        <span class="lines linesRight"></span>
+                    </div>
+                </div>
 
                 <!-- end of each post  -->
 
@@ -153,17 +160,25 @@ $resfac = mysqli_query($con, $sql);
                                 <div id="nameMore">
                                     <div id="name" class="Capitalize">${data.author}</div>
                                     <div id="date">
-                                        <span>${data.date} .</span>
-                                        <svg width="12" height="12" fill="#5555559f" viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
+                                        <span>${data.date} </span>
+                                        ${
+                                            data.stream.toLowerCase() === "all"? `
+                                            <span>.</span>
+                                            <svg width="12" height="12" viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M3.975 3.8475C3.91 3.6475 3.7225 3.5 3.5 3.5H3.25V2.75C3.25 2.6837 3.22366 2.62011 3.17678 2.57322C3.12989 2.52634 3.0663 2.5 3 2.5H1.5V2H2C2.0663 2 2.12989 1.97366 2.17678 1.92678C2.22366 1.87989 2.25 1.8163 2.25 1.75V1.25H2.75C2.88261 1.25 3.00979 1.19732 3.10355 1.10355C3.19732 1.00979 3.25 0.882608 3.25 0.75V0.6475C3.9825 0.9425 4.5 1.66 4.5 2.5C4.5 3.02 4.3 3.4925 3.975 3.8475ZM2.25 4.4825C1.2625 4.36 0.5 3.52 0.5 2.5C0.5 2.345 0.52 2.195 0.5525 2.0525L1.75 3.25V3.5C1.75 3.63261 1.80268 3.75979 1.89645 3.85355C1.99021 3.94732 2.11739 4 2.25 4M2.5 0C2.1717 0 1.84661 0.0646644 1.54329 0.190301C1.23998 0.315938 0.96438 0.500087 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5C0 3.16304 0.263392 3.79893 0.732233 4.26777C0.96438 4.49991 1.23998 4.68406 1.54329 4.8097C1.84661 4.93534 2.1717 5 2.5 5C3.16304 5 3.79893 4.73661 4.26777 4.26777C4.73661 3.79893 5 3.16304 5 2.5C5 2.1717 4.93534 1.84661 4.8097 1.54329C4.68406 1.23998 4.49991 0.96438 4.26777 0.732233C4.03562 0.500087 3.76002 0.315938 3.45671 0.190301C3.15339 0.0646644 2.8283 0 2.5 0Z" />
-                                        </svg>
+                                            </svg>`:`<span>.</span>
+                                            <svg width="14" height="14" viewBox="0 0 22 18"  xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 0L0 6L11 12L20 7.09V14H22V6M4 10.18V14.18L11 18L18 14.18V10.18L11 14L4 10.18Z" />
+                                            </svg>`
+
+                                        }
 
                                     </div>
                                 </div>
                             </div>
                             <div id="contentDIv">
-                                <div class="capitalize-first-letter">
-                                ${data.postdes}
+                                <div class="capitalize-first-letter" id="DisDataPost">
+                                ${data.postdes.trim().replace(/\n/g, "<br>")}
                                 </div>
                                 <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}" loading="lazy">
                             </div>
@@ -223,7 +238,9 @@ $resfac = mysqli_query($con, $sql);
 
         const recentPostMethod = (data) => {
             const recentPost = `<div class="firstBox" >
-                            <img src="${data.image}" alt="" onclick="recentPostClk()">
+            ${
+                data.image.trim().length > 1 ? `<img src="${data.image}" style="object-fit:cover;" alt="" onclick="recentPostClk()">`:''
+            }
                             <div id="ing">
                                 <div class="content" onclick="recentPostClk()">
                                     <p>${data.postdes.length>50?data.postdes.slice(0,50)+"...":data.postdes}</p>
@@ -255,6 +272,12 @@ $resfac = mysqli_query($con, $sql);
             return eachCmt;
         };
 
+        let showLimit = 15;
+        const SeemoreClk = () => {
+            showLimit = showLimit + 15;
+            fetchData(params())
+        }
+
         const fetchData = async (showType) => {
             try {
                 const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
@@ -270,14 +293,20 @@ $resfac = mysqli_query($con, $sql);
                     e.comment = e.comment.split(',').map(Number).filter(value => value >= 1);
                 });
 
+
+
                 const fragment = document.createDocumentFragment();
                 const allDynamicPostContent = document.getElementById("allDynamicPostContent");
                 if (showType !== 'all') {
                     const FilteredData = finalData.filter((e) => e.stream === showType);
                     finalData = FilteredData;
                 }
-
-                finalData.forEach(e => {
+                if (finalData.length <= showLimit) {
+                    document.getElementById("ShowMoreData").style.display = "none";
+                } else {
+                    document.getElementById("ShowMoreData").style.display = "block";
+                }
+                finalData.slice(0, showLimit).forEach(e => {
                     const eachPost = HTMLContent(e);
                     const div = document.createElement('div');
                     div.innerHTML = eachPost;
@@ -313,6 +342,7 @@ $resfac = mysqli_query($con, $sql);
             } catch (error) {
                 console.error(error);
             }
+            disData();
         };
 
 
@@ -324,6 +354,12 @@ $resfac = mysqli_query($con, $sql);
         }
         const recentPostClk = () => {
             window.scrollTo(0, 0);
+        }
+
+
+        const disData = () => {
+            const DisDataPost = document.getElementById("DisDataPost")
+            // console.log(DisDataPost.innerHTML.trim().replace(/\n/g, "<br>"));
         }
 
         function updateURL(newsValue) {
