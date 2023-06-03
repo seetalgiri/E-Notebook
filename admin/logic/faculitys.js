@@ -3,6 +3,13 @@ const svgbtn = document.querySelector("#sideButton svg");
 modalContent.style.right = "-378px";
 svgbtn.style.transform = "  rotateZ(180deg)";
 
+const reloadPage = () => {
+  const currentURL = window.location.href;
+  const newURL = currentURL.split("?")[0];
+  history.replaceState(null, null, newURL);
+  location.reload();
+};
+
 function modalBtnclk() {
   if (modalContent.style.right === "0px") {
     modalContent.style.right = "-378px";

@@ -103,14 +103,14 @@ if (isset($_GET['search'])) {
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Previous Year Question</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globals.css  -->
-    <link rel="stylesheet" href="./Client/styles/globals.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
 
@@ -182,7 +182,7 @@ if (isset($_GET['search'])) {
                         <h3 class="HeadingPage">Previous Question:</h3>
                         <form id="searchNotes" class="shadow">
                             <?php include './Client/Common/filterSVG.php'; ?>
-                            <input type="text" name="search" id="search" placeholder="Search previous question..." autocomplete="off"/>
+                            <input type="text" name="search" id="search" placeholder="Search previous question..." autocomplete="off" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" />
                             <button id="searchName">
                                 <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M7.01221 0.316132C8.73611 0.316132 10.3894 1.00095 11.6084 2.21994C12.8274 3.43892 13.5122 5.09222 13.5122 6.81613C13.5122 8.42613 12.9222 9.90613 11.9522 11.0461L12.2222 11.3161H13.0122L18.0122 16.3161L16.5122 17.8161L11.5122 12.8161V12.0261L11.2422 11.7561C10.1022 12.7261 8.62221 13.3161 7.01221 13.3161C5.2883 13.3161 3.635 12.6313 2.41601 11.4123C1.19703 10.1933 0.512207 8.54004 0.512207 6.81613C0.512207 5.09222 1.19703 3.43892 2.41601 2.21994C3.635 1.00095 5.2883 0.316132 7.01221 0.316132ZM7.01221 2.31613C4.51221 2.31613 2.51221 4.31613 2.51221 6.81613C2.51221 9.31613 4.51221 11.3161 7.01221 11.3161C9.51221 11.3161 11.5122 9.31613 11.5122 6.81613C11.5122 4.31613 9.51221 2.31613 7.01221 2.31613Z" />
