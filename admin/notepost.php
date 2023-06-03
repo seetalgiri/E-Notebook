@@ -134,7 +134,7 @@ if (isset($_GET['search'])) {
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noteposts.css">
 
     <!-- for JS Logic  -->

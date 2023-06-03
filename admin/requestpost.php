@@ -83,7 +83,7 @@ if (isset($_GET['search'])) {
     <title>E-NoteBook Request Post</title>
     <link rel="stylesheet" href="../Client/styles/global.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
 

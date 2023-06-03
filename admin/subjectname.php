@@ -159,7 +159,7 @@ if (isset($_GET['search'])) {
     <title>E-NoteBook Suject Name</title>
     <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>

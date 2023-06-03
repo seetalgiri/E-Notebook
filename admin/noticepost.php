@@ -95,7 +95,7 @@ if (isset($_GET['search'])) {
     <title>E-Notebook Notice Post</title>
     <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noticepost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
 
