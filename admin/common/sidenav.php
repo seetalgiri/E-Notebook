@@ -179,7 +179,7 @@ $countREQPost = mysqli_num_rows($resfacREQPost);
             </p>
         </div>
         <div id="searchsec">
-            <form action="#">
+            <form>
                 <input type="text" name="search" id="search" placeholder="Search..." />
                 <button>
                     <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
