@@ -660,11 +660,11 @@ if (isset($_GET['search'])) {
         const hasParamsForB = currentUrlForBroom.includes('?');
 
         if (hasParamsForB) {
-            console.log("parameters")
             document.getElementById("mainBroomDiv").style.display = "block";
+            document.getElementById("searchNotes").style.width = "92%";
         } else {
-            console.log("no parameters")
             document.getElementById("mainBroomDiv").style.display = "none";
+            document.getElementById("searchNotes").style.width = "95%";
         }
     </script>
 </body>
