@@ -34,24 +34,6 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 $sql = "SELECT * FROM auth LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
 
-// Retrieve the search value from the GET request]
-if (isset($_GET['search'])) {
-    $search = isset($_GET['search']) ? $_GET['search'] : '';
-
-    // Escape the search value to prevent SQL injection
-    $search = mysqli_real_escape_string($con, $search);
-
-    // Check if the search value is set
-    if (!empty($search)) {
-        // Query with the search value
-        $sqlNote = "SELECT * FROM `auth` WHERE `name` LIKE '%$search%'";
-        $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM `auth`";
-        $res = mysqli_query($con, $sqlNote);
-    }
-}
 
 
 
@@ -102,7 +84,9 @@ function displayUserCard($row, $user)
     <div class="shadow userCard">';
 
     if ($user == 'sAdmin') {
-        echo '
+        if ($row['privilege'] != 0) {
+
+            echo '
         <div class="hambar">
             <div class="hambarcontent"></div>
             <div class="hambarcontent"></div>
@@ -110,25 +94,30 @@ function displayUserCard($row, $user)
             <div class="hamlist shadow-lg listHambar">
                 <ul class="hambarul hambarUserbtn">';
 
-        if ($row['privilege'] == 1) {
-            echo '
+            if ($row['privilege'] == 1) {
+                echo '
                     <a href="?remove_admin=' . $row['id'] . '" class="border-b" onclick="btnClicked()">
                         Remove admin
                     </a>';
-        } else {
-            echo '
+            } else if ($row['privilege'] == 0) {
+                echo '
+            <a class="border-b" onclick="btnClicked()">
+                Super admin
+            </a>';
+            } else {
+                echo '
                     <a href="?add_admin=' . $row['id'] . '" class="border-b" onclick="btnClicked()">
                         Add admin
                     </a>';
-        }
-
-        echo '
+            }
+            echo '
                     <a href="?delete_user=' . $row['id'] . '" onclick="btnClicked()">
                         Delete User
                     </a>
                 </ul>
             </div>
         </div>';
+        }
     }
 
     echo '
@@ -163,12 +152,28 @@ function displayUserCard($row, $user)
     </div>';
 }
 
+// // Retrieve the search value from the GET request]
+// if (isset($_GET['search'])) {
+//     $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+//     // Escape the search value to prevent SQL injection
+//     $search = mysqli_real_escape_string($con, $search);
+
+//     // Check if the search value is set
+//     if (!empty($search)) {
+//         // Query with the search value
+//         $sqlNote = "SELECT * FROM `auth` WHERE `name` LIKE '%$search%'";
+//         $res = mysqli_query($con, $sqlNote);
+//     }
+// }
+
+
 
 // groping admin user and superadmin
+$zeroPrivilegeUsers = [];
+$onePrivilegeUsers = [];
+$twoPrivilegeUsers = [];
 if (mysqli_num_rows($res) > 0) {
-    $zeroPrivilegeUsers = [];
-    $onePrivilegeUsers = [];
-    $twoPrivilegeUsers = [];
     while ($row = mysqli_fetch_assoc($res)) {
         if ($row['privilege'] == 0) {
             $zeroPrivilegeUsers[] = $row;

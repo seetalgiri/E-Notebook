@@ -10,22 +10,34 @@ $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 if (!$con) {
     die("Database connection failed");
 }
-
-// to add content
 if (isset($_POST['postadd'])) {
     $fname = $_POST['fname'];
-    $dOrder = $_POST['dOrder'];
     $yearsem = $_POST['yearsem'];
-    $sql = "INSERT INTO `faculty` (`faculity_name`, `displayorder`, `yearsem`) VALUES ('$fname', '$dOrder', '$yearsem')";
-    if (mysqli_query($con, $sql)) {
-        $show_notification = true;
-    } else {
+
+    // Check if faculty name already exists
+    $checkQuery = "SELECT * FROM `faculty` WHERE `faculity_name` = '$fname'";
+    $result = mysqli_query($con, $checkQuery);
+    if (mysqli_num_rows($result) > 0) {
+        // Faculty name already exists
         $show_notification = false;
+        $error_message = "Faculty name already exists.";
+    } else {
+        // Faculty name doesn't exist, insert new record
+        $sql = "INSERT INTO `faculty` (`faculity_name`, `yearsem`) VALUES ('$fname', '$yearsem')";
+        if (mysqli_query($con, $sql)) {
+            $show_notification = true;
+            header("Location: " . $_SERVER['PHP_SELF']);
+        } else {
+            $show_notification = false;
+            $error_message = "Error inserting data.";
+            header("Location: " . $_SERVER['PHP_SELF']);
+        }
     }
 }
 
+
 // to so all data in frontend
-$sql = "SELECT * FROM `faculty`";
+$sql = "SELECT * FROM `faculty` ORDER BY id DESC";
 $res = mysqli_query($con, $sql);
 
 
@@ -44,7 +56,6 @@ if (isset($_GET["id"])) {
 // for edit btn
 // to show edting data
 $name = "";
-$dorder = "";
 $yearsem = "";
 $idnum = "";
 if (isset($_GET["edit"])) {
@@ -54,12 +65,10 @@ if (isset($_GET["edit"])) {
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $name = $row["faculity_name"];
-        $dorder = $row["displayorder"];
         $yearsem = $row["yearsem"];
         $idnum = $row["id"];
     } else {
         $name = "";
-        $dorder = "";
         $idnum = "";
     }
 }
@@ -67,10 +76,9 @@ if (isset($_GET["edit"])) {
 // to update changes
 if (isset($_POST['updateadd'])) {
     $fname = $_POST['fname'];
-    $dOrder = $_POST['dOrder'];
     $id = $_POST['idnum'];
     $yearsem = $_POST['yearsem'];
-    $sql = "UPDATE faculty SET faculity_name = '$fname',displayorder = '$dOrder', yearsem='$yearsem' WHERE id = $id";
+    $sql = "UPDATE faculty SET faculity_name = '$fname', yearsem='$yearsem' WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF']);
     } else {
@@ -91,10 +99,6 @@ if (isset($_GET['search'])) {
         // Query with the search value
         $sqlNote = "SELECT * FROM faculty WHERE faculity_name LIKE '%$search%'";
         $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM faculty";
-        $res = mysqli_query($con, $sqlNote);
     }
 }
 
@@ -111,7 +115,7 @@ if (isset($_GET['search'])) {
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
@@ -128,7 +132,6 @@ if (isset($_GET['search'])) {
                         <th class="serialname">S.N</th>
                         <th class="facname">Name</th>
                         <th>Year/Semester</th>
-                        <th>Display order</th>
                         <th colspan="2">Action</th>
                     </tr>
                     <?php
@@ -144,7 +147,7 @@ if (isset($_GET['search'])) {
                             } else {
                                 echo "<td>Semester</td>";
                             }
-                            echo "<td>" . $row["displayorder"] . "</td> <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
+                            echo "<td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./faculty.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./faculty.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
@@ -181,7 +184,7 @@ if (isset($_GET['search'])) {
                     <path d="M0.589844 10.58L5.16984 6L0.589844 1.41L1.99984 0L7.99984 6L1.99984 12L0.589844 10.58Z" />
                 </svg>
             </div>
-            <div id="sideDivForm">
+            <div id="sideDivForm" style="height: 350px !important;">
                 <form action="./faculty.php" method="post" id="forms">
                     <h3>Add Faculty:</h3>
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
@@ -195,11 +198,6 @@ if (isset($_GET['search'])) {
                             <option value="1" <?php if ($yearsem == "1") echo "selected"; ?>>Years</option>
                             <option value="2" <?php if ($yearsem == "2") echo "selected"; ?>>Semester</option>
                         </select>
-                    </div>
-
-                    <div id="forms" class="flex">
-                        <label for="dOrder">Enter Display order:</label>
-                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value="<?php echo $dorder; ?>">
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php

@@ -62,10 +62,6 @@ if (isset($_GET['search'])) {
         // Query with the search value
         $sqlNote = "SELECT * FROM `requestpost` WHERE `note_name` LIKE '%$search%' OR `description` LIKE '%$search%'";
         $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM `requestpost`";
-        $res = mysqli_query($con, $sqlNote);
     }
 }
 
@@ -81,9 +77,9 @@ if (isset($_GET['search'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Request Post</title>
-    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/requestpost.css">
     <link rel="stylesheet" href="./CSS/modal.css">
 

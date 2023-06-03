@@ -34,7 +34,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT * FROM notes ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 
 
@@ -122,6 +122,25 @@ if (isset($_GET['search'])) {
     }
 }
 
+function getOrdinal($number)
+{
+    if ($number % 100 >= 11 && $number % 100 <= 13) {
+        return $number . 'th';
+    } else {
+        switch ($number % 10) {
+            case 1:
+                return $number . 'st';
+            case 2:
+                return $number . 'nd';
+            case 3:
+                return $number . 'rd';
+            default:
+                return $number . 'th';
+        }
+    }
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +153,7 @@ if (isset($_GET['search'])) {
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/faculitys.css">
+    <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noteposts.css">
 
     <!-- for JS Logic  -->
@@ -163,12 +182,15 @@ if (isset($_GET['search'])) {
                         $postDes = $row['post_des'] != "" ? $row['post_des'] : "-";
                         $noteName = $row['note_name'] != "" ? $row['note_name'] : "-";
                         $noteId = $row['id'];
-
+                        $sem = $row['sem'];
+                        $year = $row['year'];
+                        $semYr = "";
+                        $sem != 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
                         echo "<tr>
                         <td>{$row['id']}</td>
                         <td>{$postDes}</td>
                         <td>{$row['stream_name']}</td>
-                        <td>{$row['sem']}/{$row['year']}</td>
+                        <td>{$semYr}</td>
                         <td>{$row['sub_name']}</td>
                         <td>{$noteName}</td>
                         <td class='edit twoBtn' id='editbtn'>
