@@ -119,13 +119,25 @@ if (isset($_POST['updateadd'])) {
         $sem = $_POST['sem'];
     }
     $id = $_POST['idnum'];
-    $sql = "UPDATE subname SET name = '$fname',facultyid = '$facultyId', year=$year, sem=$sem WHERE id = $id";
+
+    $facName = "";
+    if (mysqli_num_rows($resfac) > 0) {
+        while ($row = mysqli_fetch_assoc($resfac)) {
+            if ($row['id'] == $facultyId) {
+                $facName = $row['faculity_name'];
+            }
+        }
+    }
+
+    $sql = "UPDATE subname SET name = '$fname', facultyid = '$facultyId', facname = '$facName', year = '$year', sem = '$sem' WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
     } else {
         echo "Error updating record: " . mysqli_error($con);
     }
 }
+
 
 
 // Retrieve the search value from the GET request]
@@ -159,7 +171,7 @@ if (isset($_GET['search'])) {
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/subjectnames.js" defer></script>
+    <script src="./logic/subjectname.js" defer></script>
 
 </head>
 
@@ -256,10 +268,6 @@ if (isset($_GET['search'])) {
                         </select>
                     </div>
 
-
-                    <!-- <div id="semyear" class="flex">
-
-                    </div> -->
                     <div id="forms" class="flex fbselectStr">
                         <label for="semyearsel">Select Grade:</label>
                         <select id='semyearsel' name="sem">
@@ -274,8 +282,7 @@ if (isset($_GET['search'])) {
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
-                        $message = (intval($idnum) >= 1) ? "<button type='submit' name='updateadd'>Update</button>" : "<button type='submit' name='postadd'>Add</button>";
-                        echo $message;
+                        echo "<button id='submitBtn' type='submit' name='" . ((intval($idnum) >= 1) ? 'updateadd' : 'postadd') . "'>" . ((intval($idnum) >= 1) ? 'Update' : 'Add') . "</button>";
                         ?>
                         <button type="reset">Reset</button>
                     </div>

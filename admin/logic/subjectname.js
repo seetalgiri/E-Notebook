@@ -2,11 +2,33 @@ const modalContent = document.getElementById("modalContent");
 const svgbtn = document.querySelector("#sideButton svg");
 modalContent.style.right = "-378px";
 svgbtn.style.transform = "  rotateZ(180deg)";
+const mySelect = document.getElementById("mySelect");
+const fname = document.getElementById("fname");
+const submitBtn = document.getElementById("submitBtn");
+const facultyOptions = mySelect.getElementsByTagName("option");
+const semyearsel = document.getElementById("semyearsel");
+const semOptions = semyearsel.getElementsByTagName("option");
+
+const removefieldValues = () => {
+  facultyOptions[0].selected = true;
+  semOptions[0].selected = true;
+  fname.value = "";
+  submitBtn.setAttribute("name", "postadd");
+  submitBtn.innerText = "Add";
+};
+
+const removeParams = () => {
+  const url = new URL(window.location.href);
+  url.search = "";
+  history.replaceState(null, "", url.href);
+};
 
 function modalBtnclk() {
   if (modalContent.style.right === "0px") {
     modalContent.style.right = "-378px";
     svgbtn.style.transform = "rotateZ(180deg)";
+    removeParams();
+    removefieldValues();
   } else {
     modalContent.style.right = "0px";
     svgbtn.style.transform = "rotateZ(0deg)";
@@ -29,6 +51,8 @@ window.onclick = function (event) {
     if (modalContent.style.right !== "-378px") {
       modalContent.style.right = "-378px";
       svgbtn.style.transform = "rotateZ(180deg)";
+      removefieldValues();
+      removeParams();
     }
   }
 
