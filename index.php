@@ -177,8 +177,8 @@ $resfac = mysqli_query($con, $sql);
                                 </div>
                             </div>
                             <div id="contentDIv">
-                                <div class="capitalize-first-letter">
-                                ${data.postdes}
+                                <div class="capitalize-first-letter" id="DisDataPost">
+                                ${data.postdes.trim().replace(/\n/g, "<br>")}
                                 </div>
                                 <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}" loading="lazy">
                             </div>
@@ -239,7 +239,7 @@ $resfac = mysqli_query($con, $sql);
         const recentPostMethod = (data) => {
             const recentPost = `<div class="firstBox" >
             ${
-                data.image.trim().length > 1 ? `<img src="${data.image}" alt="" onclick="recentPostClk()">`:''
+                data.image.trim().length > 1 ? `<img src="${data.image}" style="object-fit:cover;" alt="" onclick="recentPostClk()">`:''
             }
                             <div id="ing">
                                 <div class="content" onclick="recentPostClk()">
@@ -342,6 +342,7 @@ $resfac = mysqli_query($con, $sql);
             } catch (error) {
                 console.error(error);
             }
+            disData();
         };
 
 
@@ -353,6 +354,12 @@ $resfac = mysqli_query($con, $sql);
         }
         const recentPostClk = () => {
             window.scrollTo(0, 0);
+        }
+
+
+        const disData = () => {
+            const DisDataPost = document.getElementById("DisDataPost")
+            // console.log(DisDataPost.innerHTML.trim().replace(/\n/g, "<br>"));
         }
 
         function updateURL(newsValue) {
