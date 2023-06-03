@@ -62,10 +62,6 @@ if (isset($_GET['search'])) {
         // Query with the search value
         $sqlNote = "SELECT * FROM `requestpost` WHERE `note_name` LIKE '%$search%' OR `description` LIKE '%$search%'";
         $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM `requestpost`";
-        $res = mysqli_query($con, $sqlNote);
     }
 }
 

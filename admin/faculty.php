@@ -37,7 +37,7 @@ if (isset($_POST['postadd'])) {
 
 
 // to so all data in frontend
-$sql = "SELECT * FROM `faculty`";
+$sql = "SELECT * FROM `faculty` ORDER BY id DESC";
 $res = mysqli_query($con, $sql);
 
 
@@ -98,10 +98,6 @@ if (isset($_GET['search'])) {
     if (!empty($search)) {
         // Query with the search value
         $sqlNote = "SELECT * FROM faculty WHERE faculity_name LIKE '%$search%'";
-        $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM faculty";
         $res = mysqli_query($con, $sqlNote);
     }
 }

@@ -34,7 +34,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT * FROM notes ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 
 

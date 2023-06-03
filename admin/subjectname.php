@@ -68,7 +68,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sql = "SELECT * FROM subname LIMIT $offset, $recordsPerPage";
+$sql = "SELECT * FROM subname ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
 
 
@@ -139,10 +139,6 @@ if (isset($_GET['search'])) {
     if (!empty($search)) {
         // Query with the search value
         $sqlNote = "SELECT * FROM `subname` WHERE `name` LIKE '%$search%'";
-        $res = mysqli_query($con, $sqlNote);
-    } else {
-        // Query without the search value
-        $sqlNote = "SELECT * FROM `subname`";
         $res = mysqli_query($con, $sqlNote);
     }
 }
