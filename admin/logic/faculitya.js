@@ -12,6 +12,7 @@ const reloadPage = () => {
 
 function modalBtnclk() {
   if (modalContent.style.right === "0px") {
+    fname.value = "";
     modalContent.style.right = "-378px";
     svgbtn.style.transform = "rotateZ(180deg)";
   } else {
@@ -32,6 +33,7 @@ window.onclick = function (event) {
     parentId !== "editbtn"
   ) {
     if (modalContent.style.right !== "-378px") {
+      fname.value = "";
       modalContent.style.right = "-378px";
       svgbtn.style.transform = "rotateZ(180deg)";
     }
@@ -59,10 +61,16 @@ window.onclick = function (event) {
     }
   }
 };
+// yearsem
+const fname = document.getElementById("fname");
+const stdType = document.querySelectorAll("#stdType option");
 
-function openmodal(id) {
+function openmodal(data) {
   modalContent.style.right = "0px";
   svgbtn.style.transform = "rotateZ(0deg)";
+  fname.value = data.faculity_name
+  console.log(data)
+  console.log(stdType)
 }
 var searchParams = new URLSearchParams(window.location.search);
 var editParam = searchParams.get("edit");
