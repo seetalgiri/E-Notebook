@@ -61,6 +61,26 @@ if (isset($_GET['delete'])) {
 }
 
 
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM `news` WHERE `postdes` LIKE '%$search%'";
+        $resNoticeGet = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM `news`";
+        $resNoticeGet = mysqli_query($con, $sqlNote);
+    }
+}
+
+
 
 ?>
 

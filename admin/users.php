@@ -34,6 +34,26 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 $sql = "SELECT * FROM auth LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
 
+// Retrieve the search value from the GET request]
+if (isset($_GET['search'])) {
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+    // Escape the search value to prevent SQL injection
+    $search = mysqli_real_escape_string($con, $search);
+
+    // Check if the search value is set
+    if (!empty($search)) {
+        // Query with the search value
+        $sqlNote = "SELECT * FROM `auth` WHERE `name` LIKE '%$search%'";
+        $res = mysqli_query($con, $sqlNote);
+    } else {
+        // Query without the search value
+        $sqlNote = "SELECT * FROM `auth`";
+        $res = mysqli_query($con, $sqlNote);
+    }
+}
+
+
 
 
 if (isset($_GET['add_admin'])) {
