@@ -272,9 +272,9 @@ $resfac = mysqli_query($con, $sql);
             return eachCmt;
         };
 
-        let showLimit = 15;
+        let showLimit = 5;
         const SeemoreClk = () => {
-            showLimit = showLimit + 15;
+            showLimit = showLimit + 5;
             fetchData(params())
         }
 
