@@ -48,7 +48,7 @@ if (isset($_POST['requestDis']) && isset($_POST['stream']) && isset($_FILES['fil
             if (move_uploaded_file($fileTmp, $destination)) {
                 // Construct the SQL statement with image data
                 $imagePath = $uploadFIleFront . 'request/' . $newFileName;
-                $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`, `date`) VALUES ('$postdes', '$stream', '$imagePath', '$semYr', '$subname', '$notename', '$author', '$userId', CURRENT_TIMESTAMP)";
+                $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`) VALUES ('$postdes', '$stream', '$imagePath', '$semYr', '$subname', '$notename', '$username', '$id')";
             } else {
                 echo 'Error uploading file.';
                 exit;
@@ -59,7 +59,7 @@ if (isset($_POST['requestDis']) && isset($_POST['stream']) && isset($_FILES['fil
         }
     } else {
         // Construct the SQL statement without image data
-        $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`, `date`) VALUES ('$postdes', '$stream', NULL, '$semYr', '$subname', '$notename', '$author', '$userId', CURRENT_TIMESTAMP)";
+        $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`) VALUES ('$postdes', '$stream', NULL, '$semYr', '$subname', '$notename', '$author', '$id')";
     }
 
     // Execute the SQL statement
