@@ -251,3 +251,37 @@ body {
 .liked svg:hover {
   fill: var(--primary-color) !important;
 }
+.SeeMoreLetterLines {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.lines {
+  height: 2px;
+  width: 20%;
+  background: linear-gradient(
+    to left,
+    var(--text-color-dark),
+    var(--light-bgcolor)
+  );
+}
+.linesRight {
+  background: linear-gradient(
+    to right,
+    var(--text-color-dark),
+    var(--light-bgcolor)
+  );
+}
+.letter {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: var(--text-color-light);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.letter:hover {
+  color: var(--text-color-dark);
+}

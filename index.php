@@ -33,8 +33,8 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globals.css  -->
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
@@ -106,6 +106,13 @@ $resfac = mysqli_query($con, $sql);
                 <div id="allDynamicPostContent">
                     <!-- for each post  -->
 
+                </div>
+                <div id="ShowMoreData">
+                    <div class="SeeMoreLetterLines">
+                        <span class="lines"></span>
+                        <span class="letter" onclick="SeemoreClk()">See more</span>
+                        <span class="lines linesRight"></span>
+                    </div>
                 </div>
 
                 <!-- end of each post  -->
@@ -223,7 +230,9 @@ $resfac = mysqli_query($con, $sql);
 
         const recentPostMethod = (data) => {
             const recentPost = `<div class="firstBox" >
-                            <img src="${data.image}" alt="" onclick="recentPostClk()">
+            ${
+                data.image.trim().length > 1 ? `<img src="${data.image}" alt="" onclick="recentPostClk()">`:''
+            }
                             <div id="ing">
                                 <div class="content" onclick="recentPostClk()">
                                     <p>${data.postdes.length>50?data.postdes.slice(0,50)+"...":data.postdes}</p>
@@ -255,6 +264,12 @@ $resfac = mysqli_query($con, $sql);
             return eachCmt;
         };
 
+        let showLimit = 15;
+        const SeemoreClk = () => {
+            showLimit = showLimit + 15;
+            fetchData(params())
+        }
+
         const fetchData = async (showType) => {
             try {
                 const response = await fetch('http://localhost/e_notebook/Server/Home/indexdataget.php');
@@ -270,14 +285,20 @@ $resfac = mysqli_query($con, $sql);
                     e.comment = e.comment.split(',').map(Number).filter(value => value >= 1);
                 });
 
+
+
                 const fragment = document.createDocumentFragment();
                 const allDynamicPostContent = document.getElementById("allDynamicPostContent");
                 if (showType !== 'all') {
                     const FilteredData = finalData.filter((e) => e.stream === showType);
                     finalData = FilteredData;
                 }
-
-                finalData.forEach(e => {
+                if (finalData.length <= showLimit) {
+                    document.getElementById("ShowMoreData").style.display = "none";
+                } else {
+                    document.getElementById("ShowMoreData").style.display = "block";
+                }
+                finalData.slice(0, showLimit).forEach(e => {
                     const eachPost = HTMLContent(e);
                     const div = document.createElement('div');
                     div.innerHTML = eachPost;
