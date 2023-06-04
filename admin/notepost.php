@@ -186,7 +186,7 @@ function getOrdinal($number)
                         $sem = $row['sem'];
                         $year = $row['year'];
                         $semYr = "";
-                        $sem != 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
+                        $sem > 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
                         echo "<tr>
                         <td>{$i}</td>
                         <td>{$postDes}</td>

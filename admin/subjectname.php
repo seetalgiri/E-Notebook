@@ -58,7 +58,7 @@ $rowNumbers = mysqli_fetch_assoc($resultRowNum);
 $totalRowNumber = $rowNumbers['total'];
 
 // for total page 
-$recordsPerPage = 10;
+$recordsPerPage = 13;
 $totalPages = ceil($totalRowNumber / $recordsPerPage);
 
 // my current page
@@ -215,7 +215,7 @@ function getOrdinal($number)
                             $sem = $row['sem'];
                             $year = $row['year'];
                             $semYr = "";
-                            $sem != 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
+                            $sem > 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
                             echo "
                     <tr>
                     <td>" . $num . "</td>
