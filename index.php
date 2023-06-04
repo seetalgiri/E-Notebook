@@ -33,8 +33,8 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globals.css  -->
+    <link rel="stylesheet" href="./Client/styles/globals.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
@@ -500,7 +500,7 @@ $resfac = mysqli_query($con, $sql);
             });
         };
 
-        window.onload = function () {
+        window.onload = function() {
             fetchData(params());
         }
     </script>

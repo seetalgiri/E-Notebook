@@ -190,7 +190,7 @@
   width: 100%;
 }
 #PostDesctiption {
-  height: 125px;
+  height: 100px;
   scrollbar-width: thin;
 }
 #PostDesctiption::-webkit-scrollbar {

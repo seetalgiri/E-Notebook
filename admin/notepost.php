@@ -76,6 +76,7 @@ $sub_name = "";
 $sub_id = "";
 $note_file = "";
 $note_name = "";
+$author = "E-NoteBook";
 $note_category = "";
 $stream_na = "";
 $note_like = "";
@@ -96,6 +97,7 @@ if (isset($_GET['edit'])) {
         $sub_id = $note['sub_id'];
         $note_file = $note['note_file'];
         $note_name = $note['note_name'];
+        $author = $note['author'];
         $note_category = $note['note_category'];
         $stream_name = $note['stream_name'];
         $note_like = $note['note_like'];
@@ -151,7 +153,7 @@ function getOrdinal($number)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
-    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="../Client/styles/globals.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noteposts.css">
@@ -250,7 +252,11 @@ function getOrdinal($number)
                     <h3>Add Faculty:</h3>
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
-                        <textarea name="description" id="PostDesctiption" cols="30" rows="10" placeholder="Enter Note Description..."><?php echo $post_des; ?></textarea>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="5" placeholder="Enter Note Description..."><?php echo $post_des; ?></textarea>
+                    </div>
+                    <div id="forms" class="flex">
+                        <label for="author">Enter Author:</label>
+                        <input type="text" name="author" id="author" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $author; ?>">
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
