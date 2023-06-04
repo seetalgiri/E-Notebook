@@ -16,27 +16,27 @@ if (isset($_POST['post'])) {
     echo "clicked";
 }
 
-// if (isset($_POST['post'])) {
+if (isset($_POST['post'])) {
 
-//     echo "clicked";
-//     // Retrieve the posted text from a form or any other source
-//     $name = $_POST['username'];
-//     $faculty = $_POST['stream'];
-//     $postText = $_POST['post_text'];
+    echo "clicked";
+    // Retrieve the posted text from a form or any other source
+    $name = $_POST['username'];
+    $faculty = $_POST['stream'];
+    $postText = $_POST['post_text'];
 
-//     // Prepare the query to insert the post into the database
-//     $query = "INSERT INTO `newsfeed` (`user_name`,`faculty_name`, `post_description`) VALUES ('$name', '$faculty', '$postText')";
+    // Prepare the query to insert the post into the database
+    $query = "INSERT INTO `newsfeed` (`user_name`,`faculty_name`, `post_description`) VALUES ('$name', '$faculty', '$postText')";
 
-//     // Execute the query
-//     $result = mysqli_query($con, $query);
+    // Execute the query
+    $result = mysqli_query($con, $query);
 
-//     // Check if the query was successful
-//     if ($result) {
-//         echo "Post successfully added to the newsfeed.";
-//     } else {
-//         echo "Error: Unable to add the post.";
-//     }
-// }
+    // Check if the query was successful
+    if ($result) {
+        echo "Post successfully added to the newsfeed.";
+    } else {
+        echo "Error: Unable to add the post.";
+    }
+}
 
 
 //Display the newsfeed entries
@@ -49,7 +49,7 @@ $result = mysqli_query($con, $query);
 while ($row = mysqli_fetch_assoc($result)) {
     echo "User ID: " . $row['user_id'] . "<br>";
     echo "User Name: " . $row['user_name'] . "<br>";
-    echo "Content: " . $row['content'] . "<br><br>";
+    echo "Content: " . $row['postText'] . "<br><br>";
 }
 
 // Close the database connection

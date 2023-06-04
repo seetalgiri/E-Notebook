@@ -104,7 +104,7 @@ $resfac = mysqli_query($con, $sql);
                             <div id="headerDiv">
                                 <div id="profilePost" class="shadow">G</div>
                                 <div id="nameMore">
-                                    <div id="name">Gaurab Sunar</div>
+                                    <div id="name"><?php echo $username ?></div>
                                     <div id="date">
                                         <span>2021-02-02 .</span>
                                         <svg width="12" height="12" fill="#5555559f" viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
