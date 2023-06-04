@@ -214,14 +214,14 @@ function getOrdinal($number)
                         while ($row = mysqli_fetch_assoc($res)) {
                             $sem = $row['sem'];
                             $year = $row['year'];
-                            $semYr = "";
-                            $sem > 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
+                            $semYrwh = "";
+                            $sem > 0 ? $semYrwh =  getOrdinal($sem) . " semester" : $semYrwh =  getOrdinal($year)  . " year";
                             echo "
                     <tr>
                     <td>" . $num . "</td>
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["facname"] . "</td>
-                    <td>" .  $semYr . "</td>
+                    <td>" .  $semYrwh . "</td>
                     <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./subjectname.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./subjectname.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
@@ -372,6 +372,22 @@ function getOrdinal($number)
                 myFunction();
             }
         };
+
+        function getSelectedOption() {
+            const selectElement = document.getElementById("mySelect");
+            const selectedIndex = selectElement.selectedIndex;
+
+            if (selectedIndex !== -1) {
+                const selectedOption = selectElement.options[selectedIndex];
+                const selectedValue = selectedOption.value;
+                const selectedText = selectedOption.text;
+
+                console.log("Selected Value: " + selectedValue);
+                console.log("Selected Text: " + selectedText);
+            } else {
+                console.log("No option selected.");
+            }
+        }
     </script>
 
 
