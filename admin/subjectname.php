@@ -155,6 +155,26 @@ if (isset($_GET['search'])) {
     }
 }
 
+
+function getOrdinal($number)
+{
+    if ($number % 100 >= 11 && $number % 100 <= 13) {
+        return $number . 'th';
+    } else {
+        switch ($number % 10) {
+            case 1:
+                return $number . 'st';
+            case 2:
+                return $number . 'nd';
+            case 3:
+                return $number . 'rd';
+            default:
+                return $number . 'th';
+        }
+    }
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -185,17 +205,23 @@ if (isset($_GET['search'])) {
                         <th class="serialname">S.N</th>
                         <th class="facname">Name</th>
                         <th>Faculty Name</th>
+                        <th>Sem/Year</th>
                         <th colspan="2">Action</th>
                     </tr>
                     <?php
                     $num = 1;
                     if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
+                            $sem = $row['sem'];
+                            $year = $row['year'];
+                            $semYr = "";
+                            $sem != 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
                             echo "
                     <tr>
                     <td>" . $num . "</td>
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["facname"] . "</td>
+                    <td>" .  $semYr . "</td>
                     <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./subjectname.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./subjectname.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
