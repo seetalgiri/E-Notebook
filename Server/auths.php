@@ -64,9 +64,9 @@ else {
                 $_SESSION['privilege'] = $privilege;
 
                 // Redirect to index.php
-                if($privilege==0){
+                if ($privilege == 0) {
                     header("Location: ../admin/dashboard.php");
-                }else{
+                } else {
                     header("Location: ../index.php");
                 }
                 exit();
@@ -100,9 +100,9 @@ else {
                 $_SESSION['privilege'] = $user['privilege'];
 
                 // Redirect to index.php or any other page you desire
-                if($user['privilege']==0){
+                if ($user['privilege'] == 0) {
                     header("Location: ../admin/dashboard.php");
-                }else{
+                } else {
                     header("Location: ../index.php");
                 }
                 exit();
