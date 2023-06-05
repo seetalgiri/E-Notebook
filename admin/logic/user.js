@@ -65,14 +65,4 @@ window.addEventListener("click", (event) => {
 // Function called when a hambar list item is clicked
 const btnClicked = () => {
   console.log("Clicked");
-  // var url = window.location.href;
-
-  // if (url.includes("?")) {
-  //   url += "&delete=1";
-  // } else {
-  //   url += "?delete=1";
-  // }
-
-  // // Set the modified URL
-  // window.location.href = url;
 };

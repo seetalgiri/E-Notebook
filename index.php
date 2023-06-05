@@ -38,7 +38,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexas.css" />
+    <link rel="stylesheet" href="./Client/styles/indexa.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -199,12 +199,42 @@ $resfac = mysqli_query($con, $sql);
                                     <span id="counterComment${data.id}" class="counter">${data.comment.length}</span>
                                     <!-- <span>Comments</span> -->
                                 </div>
-                                <div id="share" class="actionFlex">
-                                    <svg width="17" height="17" viewBox="0 0 8 7" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M7.75 3.00004L4.83333 0.083374V1.75004C1.91667 2.16671 0.666667 4.25004 0.25 6.33337C1.29167 4.87504 2.75 4.20837 4.83333 4.20837V5.91671L7.75 3.00004Z" />
+                                <div id="share${data.id}" class="actionFlex iconProperty shareIconContainer" onclick="shareIconClk(event, ${data.id})">
+                                    <svg width="17" class="iconProperty" height="17" viewBox="0 0 8 7" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="iconProperty" d="M7.75 3.00004L4.83333 0.083374V1.75004C1.91667 2.16671 0.666667 4.25004 0.25 6.33337C1.29167 4.87504 2.75 4.20837 4.83333 4.20837V5.91671L7.75 3.00004Z" />
                                     </svg>
-
-                                    <!-- <span>Share</span> -->
+                                    <div class="SharehiddenBlockContainer iconProperty">
+                                        <div class="shareDataBigContainer iconProperty shadow-lg">
+                                            <div class="shareData iconProperty">
+                                                <div class="shareIcon iconProperty">
+                                                    <a href="#" class="facebook iconProperty">
+                                                    <svg class="iconProperty" width="22" height="21" viewBox="0 0 21 21" xmlns="http://www.w3.org/2000/svg">
+                                                    <path class="iconProperty" d="M20.8784 14.4805C20.8784 18.1205 18.7084 20.2905 15.0684 20.2905H13.8784C13.3284 20.2905 12.8784 19.8405 12.8784 19.2905V13.5205C12.8784 13.2505 13.0984 13.0205 13.3684 13.0205L15.1284 12.9905C15.2684 12.9805 15.3884 12.8805 15.4184 12.7405L15.7684 10.8305C15.7984 10.6505 15.6584 10.4805 15.4684 10.4805L13.3384 10.5105C13.0584 10.5105 12.8384 10.2905 12.8284 10.0205L12.7884 7.57053C12.7884 7.41053 12.9184 7.27054 13.0884 7.27054L15.4884 7.23053C15.6584 7.23053 15.7884 7.10054 15.7884 6.93054L15.7484 4.53052C15.7484 4.36052 15.6184 4.23053 15.4484 4.23053L12.7484 4.27054C11.0884 4.30054 9.76842 5.66053 9.79842 7.32053L9.84842 10.0705C9.85842 10.3505 9.63842 10.5705 9.35842 10.5805L8.15842 10.6005C7.98842 10.6005 7.85843 10.7305 7.85843 10.9005L7.88843 12.8005C7.88843 12.9705 8.01842 13.1005 8.18842 13.1005L9.38842 13.0805C9.66842 13.0805 9.88842 13.3005 9.89842 13.5705L9.98842 19.2705C9.99842 19.8305 9.54842 20.2905 8.98842 20.2905H6.68842C3.04842 20.2905 0.878418 18.1205 0.878418 14.4705V6.10053C0.878418 2.46053 3.04842 0.290527 6.68842 0.290527H15.0684C18.7084 0.290527 20.8784 2.46053 20.8784 6.10053V14.4805Z" />
+                                                    </svg>
+                                                    </a>
+                                                </div>
+                                                <div class="shareIcon iconProperty">
+                                                    <a href="#" class="insta iconProperty">
+                                                        <svg class="iconProperty" width="17" height="18" viewBox="0 0 17 18" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="iconProperty" d="M12.0675 0H4.94096C1.84542 0 0 1.84542 0 4.94096V12.059C0 15.1631 1.84542 17.0085 4.94096 17.0085H12.059C15.1546 17.0085 17 15.1631 17 12.0675V4.94096C17.0085 1.84542 15.1631 0 12.0675 0ZM8.50424 11.8039C6.68433 11.8039 5.20459 10.3241 5.20459 8.50424C5.20459 6.68433 6.68433 5.20459 8.50424 5.20459C10.3241 5.20459 11.8039 6.68433 11.8039 8.50424C11.8039 10.3241 10.3241 11.8039 8.50424 11.8039ZM13.5387 4.15007C13.4962 4.25212 13.4367 4.34567 13.3602 4.43071C13.2751 4.50725 13.1816 4.56678 13.0795 4.6093C12.9775 4.65182 12.8669 4.67733 12.7564 4.67733C12.5267 4.67733 12.3141 4.59229 12.1526 4.43071C12.076 4.34567 12.0165 4.25212 11.974 4.15007C11.9314 4.04802 11.9059 3.93746 11.9059 3.82691C11.9059 3.71635 11.9314 3.6058 11.974 3.50375C12.0165 3.39319 12.076 3.30815 12.1526 3.22311C12.3482 3.02751 12.6458 2.93396 12.9179 2.99349C12.9775 3.002 13.0285 3.019 13.0795 3.04452C13.1305 3.06153 13.1816 3.08704 13.2326 3.12106C13.2751 3.14657 13.3176 3.18909 13.3602 3.22311C13.4367 3.30815 13.4962 3.39319 13.5387 3.50375C13.5813 3.6058 13.6068 3.71635 13.6068 3.82691C13.6068 3.93746 13.5813 4.04802 13.5387 4.15007Z" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                                <div class="shareIcon iconProperty">
+                                                    <a href="#" class="twitter iconProperty">
+                                                    <svg class="iconProperty" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path class="iconProperty" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-.139 9.237c.209 4.617-3.234 9.765-9.33 9.765-1.854 0-3.579-.543-5.032-1.475 1.742.205 3.48-.278 4.86-1.359-1.437-.027-2.649-.976-3.066-2.28.515.098 1.021.069 1.482-.056-1.579-.317-2.668-1.739-2.633-3.26.442.246.949.394 1.486.411-1.461-.977-1.875-2.907-1.016-4.383 1.619 1.986 4.038 3.293 6.766 3.43-.479-2.053 1.08-4.03 3.199-4.03.943 0 1.797.398 2.395 1.037.748-.147 1.451-.42 2.086-.796-.246.767-.766 1.41-1.443 1.816.664-.08 1.297-.256 1.885-.517-.439.656-.996 1.234-1.639 1.697z"/></svg>
+                                                    </a>
+                                                </div>
+                                                <div class="shareIcon iconProperty">
+                                                    <a href="#" class="linkedin iconProperty">
+                                                        <svg class="iconProperty" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="iconProperty" d="M16 0C16.5304 0 17.0391 0.210714 17.4142 0.585786C17.7893 0.960859 18 1.46957 18 2V16C18 16.5304 17.7893 17.0391 17.4142 17.4142C17.0391 17.7893 16.5304 18 16 18H2C1.46957 18 0.960859 17.7893 0.585786 17.4142C0.210714 17.0391 0 16.5304 0 16V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H16ZM15.5 15.5V10.2C15.5 9.33539 15.1565 8.5062 14.5452 7.89483C13.9338 7.28346 13.1046 6.94 12.24 6.94C11.39 6.94 10.4 7.46 9.92 8.24V7.13H7.13V15.5H9.92V10.57C9.92 9.8 10.54 9.17 11.31 9.17C11.6813 9.17 12.0374 9.3175 12.2999 9.58005C12.5625 9.8426 12.71 10.1987 12.71 10.57V15.5H15.5ZM3.88 5.56C4.32556 5.56 4.75288 5.383 5.06794 5.06794C5.383 4.75288 5.56 4.32556 5.56 3.88C5.56 2.95 4.81 2.19 3.88 2.19C3.43178 2.19 3.00193 2.36805 2.68499 2.68499C2.36805 3.00193 2.19 3.43178 2.19 3.88C2.19 4.81 2.95 5.56 3.88 5.56ZM5.27 15.5V7.13H2.5V15.5H5.27Z" />
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="divline mt-2"></div>
@@ -338,6 +368,7 @@ $resfac = mysqli_query($con, $sql);
                 if (finalData.length < 1) {
                     allDynamicPostContent.innerHTML = "<h3 id='NotFoundNews'>Sorry! News Not Found</h3>"
                 }
+                hideShareIcon()
             } catch (error) {
                 console.error(error);
             }
@@ -408,6 +439,7 @@ $resfac = mysqli_query($con, $sql);
                         let counterLike = document.getElementById(`counterLike${data.postId}`)
                         counterLike.innerText = data.likeCount
                     }
+
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -503,6 +535,19 @@ $resfac = mysqli_query($con, $sql);
         window.onload = function() {
             fetchData(params());
         }
+
+        const hideShareIcon = () => {
+            const allSharehiddenBlockContainers = document.querySelectorAll('.SharehiddenBlockContainer');
+            allSharehiddenBlockContainers.forEach(container => {
+                container.classList.add('hidden');
+            });
+        };
+
+        const shareIconClk = (event, id) => {
+            hideShareIcon();
+            const share = document.querySelector(`#share${id} .SharehiddenBlockContainer`);
+            share.classList.remove('hidden');
+        };
     </script>
 </body>
 

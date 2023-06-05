@@ -962,3 +962,53 @@ ul li {
 #date svg {
   fill: var(--text-color-light);
 }
+.shareIconContainer {
+  position: relative;
+}
+.shareDataBigContainer {
+  position: absolute;
+  height: 35px;
+  width: 160px;
+  display: flex;
+  bottom: -40px;
+  left: 0;
+  border-radius: 2px;
+  cursor: text;
+  background-color: var(--bg-white);
+  overflow: hidden;
+}
+.shareData {
+  background-color: var(--light-bgcolor);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  cursor: text;
+  height: 100%;
+}
+.shareIcon {
+  border-radius: 2px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+.shareIcon:hover {
+  scale: 1.1;
+}
+
+.shareIcon svg {
+  height: 22px;
+  width: 22px;
+  margin-top: 2px;
+}
+.shareIcon a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
