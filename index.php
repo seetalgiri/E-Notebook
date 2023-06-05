@@ -38,7 +38,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
-    <link rel="stylesheet" href="./Client/styles/indexsa.css" />
+    <link rel="stylesheet" href="./Client/styles/indexs.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -210,7 +210,7 @@ $resfac = mysqli_query($con, $sql);
                                                     </a>
                                                 </div>
                                                 <div class="shareIcon iconProperty">
-                                                    <a target="blank" href="http://www.pinterest.com/pin/create/button/?url=${window.location.href}?id=${data.id}">
+                                                    <a target="blank" href="http://www.pinterest.com/pin/create/link/?url=${window.location.href}?id=${data.id}">
                                                         <svg class="iconProperty" height="22" width="21" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                                             viewBox="0 0 504 504" xml:space="preserve">
                                                         <g class="iconProperty">
