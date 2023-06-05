@@ -967,15 +967,27 @@ ul li {
 }
 .shareDataBigContainer {
   position: absolute;
-  height: 35px;
+  height: 75px;
   width: 160px;
   display: flex;
-  bottom: -40px;
+  bottom: -75px;
   left: 0;
   border-radius: 2px;
   cursor: text;
   background-color: var(--bg-white);
   overflow: hidden;
+  flex-direction: column;
+}
+.copyLinkContainer {
+  background-color: var(--light-bgcolor);
+  padding: 9px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-top: 1px solid var(--light-border-clor-opacity2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
 }
 .shareData {
   background-color: var(--light-bgcolor);
@@ -985,6 +997,20 @@ ul li {
   width: 100%;
   cursor: text;
   height: 100%;
+}
+.copyLinkSVG {
+  cursor: pointer;
+}
+.copyLinkSVG:hover {
+  scale: 1.1;
+}
+.copySuccess {
+  height: 17px !important;
+  width: 17px !important;
+}
+.copyLinkSVG {
+  height: 17px !important;
+  width: 17px !important;
 }
 .shareIcon {
   border-radius: 2px;

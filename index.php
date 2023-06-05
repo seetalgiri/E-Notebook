@@ -236,7 +236,7 @@ $resfac = mysqli_query($con, $sql);
                                                     </a>
                                                 </div>
                                                 <div class="shareIcon iconProperty">
-                                                    <a class="iconProperty" target="blank" href="http://www.linkedin.com/shareArticle?mini=true&url=${window.location.href}?id=${data.id}" >
+                                                    <a class="iconProperty" target="blank" href="https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}?id=${data.id}" >
                                                         <svg class="iconProperty" width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
                                                             <path class="iconProperty" d="M16 0C16.5304 0 17.0391 0.210714 17.4142 0.585786C17.7893 0.960859 18 1.46957 18 2V16C18 16.5304 17.7893 17.0391 17.4142 17.4142C17.0391 17.7893 16.5304 18 16 18H2C1.46957 18 0.960859 17.7893 0.585786 17.4142C0.210714 17.0391 0 16.5304 0 16V2C0 1.46957 0.210714 0.960859 0.585786 0.585786C0.960859 0.210714 1.46957 0 2 0H16ZM15.5 15.5V10.2C15.5 9.33539 15.1565 8.5062 14.5452 7.89483C13.9338 7.28346 13.1046 6.94 12.24 6.94C11.39 6.94 10.4 7.46 9.92 8.24V7.13H7.13V15.5H9.92V10.57C9.92 9.8 10.54 9.17 11.31 9.17C11.6813 9.17 12.0374 9.3175 12.2999 9.58005C12.5625 9.8426 12.71 10.1987 12.71 10.57V15.5H15.5ZM3.88 5.56C4.32556 5.56 4.75288 5.383 5.06794 5.06794C5.383 4.75288 5.56 4.32556 5.56 3.88C5.56 2.95 4.81 2.19 3.88 2.19C3.43178 2.19 3.00193 2.36805 2.68499 2.68499C2.36805 3.00193 2.19 3.43178 2.19 3.88C2.19 4.81 2.95 5.56 3.88 5.56ZM5.27 15.5V7.13H2.5V15.5H5.27Z" />
                                                         </svg>
@@ -245,6 +245,11 @@ $resfac = mysqli_query($con, $sql);
                                             </div>
                                             <div class="socialIcon copyLinkContainer iconProperty">
                                                 <p class="copyLink iconProperty">Copy link</p>
+                                                <div class="copystatus">
+                                                <svg onclick="copiedLink(event, ${data.id})" class="iconProperty copyLinkSVG" width="17" height="17" viewBox="0 0 19 22" xmlns="http://www.w3.org/2000/svg">
+                                                        <path class="iconProperty" d="M17 20H6V6H17M17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z"/>
+                                                        </svg>
+                                                </div>
                                             </div>
                                         </div> 
 
@@ -278,6 +283,26 @@ $resfac = mysqli_query($con, $sql);
 `
             return postHTML;
         }
+        const copysuccessSVG = `<svg width="17" class="copySuccess iconProperty" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path class="iconProperty" d="M22 11.1V6.9C22 3.4 20.6 2 17.1 2H12.9C9.4 2 8 3.4 8 6.9V8H11.1C14.6 8 16 9.4 16 12.9V16H17.1C20.6 16 22 14.6 22 11.1Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path class="iconProperty" d="M16 17.1V12.9C16 9.4 14.6 8 11.1 8H6.9C3.4 8 2 9.4 2 12.9V17.1C2 20.6 3.4 22 6.9 22H11.1C14.6 22 16 20.6 16 17.1Z" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        <path class="iconProperty" d="M6.08008 15L8.03008 16.95L11.9201 13.05" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                        </svg>`
+
+        const copiedLink = (e, id) => {
+            const copyLinkSVG = `<svg onclick="copiedLink(event, ${id})" class="iconProperty copyLinkSVG" width="17" height="17" viewBox="0 0 19 22" xmlns="http://www.w3.org/2000/svg">
+            <path class="iconProperty" d="M17 20H6V6H17M17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z"/></svg>`
+            if (id !== undefined && id !== null && id !== "") {
+                const url = `${window.location.href}?id=${id}`;
+                navigator.clipboard.writeText(url).then(() => {
+                    const copystatus = e.target.parentNode;
+                    copystatus.innerHTML = copysuccessSVG;
+                    setTimeout(() => {
+                        copystatus.innerHTML = copyLinkSVG;
+                    }, 3000);
+                })
+            }
+        };
 
         const recentPostMethod = (data) => {
             const recentPost = `<div class="firstBox" >
@@ -562,7 +587,6 @@ $resfac = mysqli_query($con, $sql);
             });
         };
         window.addEventListener("click", (event) => {
-            let parentId = event.target.parentNode.id;
             const clickedElement = event.target;
             if (
                 !clickedElement.classList.contains("iconProperty")
