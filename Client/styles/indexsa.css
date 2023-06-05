@@ -988,6 +988,15 @@ ul li {
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.fillTransparent {
+  fill: transparent !important;
+}
+.copystatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .copystatus svg {
   fill: var(--text-color-light) !important;

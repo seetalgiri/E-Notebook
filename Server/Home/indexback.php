@@ -75,7 +75,7 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
             echo 'Error: ' . mysqli_error($conn);
         }
     } else {
-        header("Location: ../../index.php");
+        header("Location: ../../auth/login.php");
     }
 }
 
