@@ -66,46 +66,46 @@ $resfac = mysqli_query($con, $sql);
                     </svg>
                 </div>' : ''; ?>
 
-                <div id="category" class="shadow">
-                    <div class="streamDiv">
-                        <div class="stream streamChooseDiv" id="selecterStream">
-                            <?php
-                            if (mysqli_num_rows($resfac) > 0) {
-                                echo '<li class="selectSreamradio">';
-                                $news = isset($_GET['news']) ? $_GET['news'] : 'all';
-                                echo ($news == 'all') ? "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)'>";
-                                echo "<label class='btn btn-default' for='allrad'><span>ALL</span>
+                <?php
+                if (!isset($_GET['id'])) {
+                    echo '
+        <div id="category" class="shadow">
+            <div class="streamDiv">
+                <div class="stream streamChooseDiv" id="selecterStream">';
+                    if (mysqli_num_rows($resfac) > 0) {
+                        echo '<li class="selectSreamradio">';
+                        $news = isset($_GET['news']) ? $_GET['news'] : 'all';
+                        echo ($news == 'all') ? "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='allrad' name='stream' value='all' onchange='updateURL(this.value)'>";
+                        echo "<label class='btn btn-default' for='allrad'><span>ALL</span>
+        <svg width='14' height='15' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'>
+        <path d='M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z' />
+        </svg></label>";
+                        echo '</li>';
+
+                        while ($row = mysqli_fetch_assoc($resfac)) {
+                            $news = isset($_GET['news']) ? $_GET['news'] : '';
+                            $streamValue = $row['faculity_name'];
+                            $streamId = $row['faculity_name'] . 'rad';
+
+                            echo '<li class="selectSreamradio">';
+                            echo ($news == $streamValue) ? "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)'>";
+                            echo "<label class='btn btn-default' for='$streamId'><span>" . $row['faculity_name'] . "</span>
             <svg width='14' height='15' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'>
-                <path d='M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z' />
+            <path d='M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z' />
             </svg></label>";
-                                echo '</li>';
+                            echo '</li>';
+                        }
+                    }
 
-                                while ($row = mysqli_fetch_assoc($resfac)) {
-                                    $news = isset($_GET['news']) ? $_GET['news'] : '';
-                                    $streamValue = $row['faculity_name'];
-                                    $streamId = $row['faculity_name'] . 'rad';
-
-                                    echo '<li class="selectSreamradio">';
-                                    echo ($news == $streamValue) ? "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)'>";
-                                    echo "<label class='btn btn-default' for='$streamId'><span>" . $row['faculity_name'] . "</span>
-                <svg width='14' height='15' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'>
-                    <path d='M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z' />
-                </svg></label>";
-                                    echo '</li>';
-                                }
-                            }
-                            ?>
-                        </div>
-
-
-
-
-                    </div>
+                    echo '
                 </div>
+            </div>
+        </div>';
+                }
+                ?>
 
                 <div id="allDynamicPostContent">
                     <!-- for each post  -->
-
                 </div>
                 <div id="ShowMoreData" style="display:none;">
                     <div class="SeeMoreLetterLines">
@@ -152,7 +152,6 @@ $resfac = mysqli_query($con, $sql);
     </div>
     <script>
         const HTMLContent = (data) => {
-
             const postHTML = ` <div id="eachPost" class="shadow">
                         <div id="contentdev">
                             <div id="headerDiv">
@@ -293,8 +292,8 @@ $resfac = mysqli_query($con, $sql);
             const copyLinkSVG = `<svg onclick="copiedLink(event, ${id})" class="iconProperty copyLinkSVG" width="17" height="17" viewBox="0 0 19 22" xmlns="http://www.w3.org/2000/svg">
             <path class="iconProperty" d="M17 20H6V6H17M17 4H6C5.46957 4 4.96086 4.21071 4.58579 4.58579C4.21071 4.96086 4 5.46957 4 6V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H17C17.5304 22 18.0391 21.7893 18.4142 21.4142C18.7893 21.0391 19 20.5304 19 20V6C19 5.46957 18.7893 4.96086 18.4142 4.58579C18.0391 4.21071 17.5304 4 17 4ZM14 0H2C1.46957 0 0.960859 0.210714 0.585786 0.585786C0.210714 0.960859 0 1.46957 0 2V16H2V2H14V0Z"/></svg>`
             if (id !== undefined && id !== null && id !== "") {
-                const url = `${window.location.href}?id=${id}`;
-                navigator.clipboard.writeText(url).then(() => {
+                const url = `${window.location.origin}${window.location.pathname}`;
+                navigator.clipboard.writeText(`${url}?id=${id}`).then(() => {
                     const copystatus = e.target.parentNode;
                     copystatus.innerHTML = copysuccessSVG;
                     setTimeout(() => {
@@ -302,17 +301,18 @@ $resfac = mysqli_query($con, $sql);
                     }, 3000);
                 })
             }
+
         };
 
         const recentPostMethod = (data) => {
             const recentPost = `<div class="firstBox" >
-            ${data.image.trim().length > 1 ? `<img src="${data.image}" style="object-fit:cover;" alt="" onclick="recentPostClk()">` : ''
+            ${data && data.image && data.image.trim().length > 1 ? `<img src="${data.image}" style="object-fit:cover;" alt="" onclick="recentPostClk()">` : ''
                 }
                             <div id="ing">
                                 <div class="content" onclick="recentPostClk()">
-                                    <p>${data.postdes.length > 50 ? data.postdes.slice(0, 50) + "..." : data.postdes}</p>
+                                    <p>${data&&data.postdes.length > 50 ? data&&data.postdes.slice(0, 50) + "..." : data&&data.postdes}</p>
                                     <div id="dateRec">
-                                        ${data.date}
+                                        ${data&&data.date}
                                     </div>
                                 </div>
                                 <div class="clearRec" id="recentClear" onclick="recentClearClk()">
@@ -406,7 +406,7 @@ $resfac = mysqli_query($con, $sql);
 
                 // for recent post
                 const recentPostdata = document.getElementById("recentPostdata");
-                recentPostdata.innerHTML = recentPostMethod(recentImage);
+                recentPostdata != null ? recentPostdata.innerHTML = recentPostMethod(recentImage) : '';
 
                 if (finalData.length < 1) {
                     allDynamicPostContent.innerHTML = "<h3 id='NotFoundNews'>Sorry! News Not Found</h3>";

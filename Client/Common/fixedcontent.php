@@ -22,19 +22,30 @@
         </div>
         <div class="divline"></div>
         <div class="contentbtns">
-            <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
+            <?php
+            if (intval($id) > 0) {
+                echo '
+                <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
+                ';
+            }
+            ?>
             <a href="notes.php">
                 <button id="notes" class="shadow SeeNoteIndex" style="width: 100%">See Notes</button>
             </a>
         </div>
     </div>
-    <div class="fixedcontentbox2 fixedContentDiv shadow" id="recentPostContentFulldiv">
+    <?php
+    if (!isset($_GET['id'])) {
+        echo '
+        <div class="fixedcontentbox2 fixedContentDiv shadow" id="recentPostContentFulldiv">
         <h3 id="recentTitle">Recent Post:</h3>
         <div id="recentPostdata">
-
+        
         </div>
-
-    </div>
+        </div>
+        ';
+    }
+    ?>
     <div class="fixedcontentbox3 fixedContentDiv shadow">
         <h3 id="recentTitle">Contents:</h3>
         <div class="linksforContent">
