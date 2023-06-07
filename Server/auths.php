@@ -3,6 +3,10 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 // Importing configurations 
 include '../Configuration.php';
 
@@ -11,11 +15,45 @@ $privilege = 2;
 // Database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 
+function sendMail($email, $v_code)
+{
+    require 'PHPMailer\PHPMailer.php';
+    require 'PHPMailer\SMTP.php';
+    require 'PHPMailer\Exception.php';
+    // https://www.youtube.com/watch?v=w43LAiVV-cM&t=1139s first watch this 
+    // https://www.youtube.com/watch?v=_sRQX_9C9l8 and solve the problem of email sending with the help of theis
+
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'gaurabsunar0001@gmail.com';
+        $mail->Password   = 'unkewaqezreankae';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
+
+        //Recipients
+        $mail->setFrom('gaurabsunar0001@gmail.com', 'E-NoteBook');
+        $mail->addAddress($email);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Email Verification from E-Notebook';
+        $mail->Body    = "Thanks for registration <br> click the link below to verify the email address <a href='http://localhost/e_notebook/Server/verify.php?email=$email&v_code=$v_code'>Verify</a>";
+
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
 if (!$con) {
     die("Could not connect to the database");
 }
-
-
 // Check if the register button is set or not
 else {
     if (isset($_POST['register'])) {
@@ -30,6 +68,8 @@ else {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $stream = $_POST['stream'];
+        $verification_code = bin2hex(random_bytes(16));
+        $is_verified = 0;
 
         // Check if email already exists
         $emailQuery = "SELECT * FROM `auth` WHERE `email` = '$email'";
@@ -45,10 +85,10 @@ else {
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             // Insert into the database
-            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`, `privilege`) VALUES ('$name', '$email', '$hashedPass', '$stream', '$privilege')";
+            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`, `privilege`, `verification_code`, `is_verified`) VALUES ('$name', '$email', '$hashedPass', '$stream', '$privilege', '$verification_code', '$is_verified')";
 
             // Execute the query
-            $regResponse = mysqli_query($con, $regQuery);
+            $regResponse = mysqli_query($con, $regQuery) && sendMail($email, $verification_code);
 
             if (!$regResponse) {
                 echo "Cannot insert into the database";
