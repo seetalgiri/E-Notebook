@@ -1,7 +1,7 @@
 <?php
 // Include the necessary files
-include '../../admin/UserSessionData.php';
-include '../../Configuration.php';
+require_once '../../admin/UserSessionData.php';
+require_once '../../Configuration.php';
 
 // Database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
@@ -19,40 +19,41 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
     $author = isset($_POST['author']) ? $_POST['author'] : "";
     $sem = isset($_POST['sem']) ? $_POST['sem'] : "";
     $year = isset($_POST['year']) ? $_POST['year'] : "";
-    $facultyName = "";
-    $subName = "";
+
+    // Validate faculty ID
+    if ($facultyid == 0 || $facultyid == "") {
+        die("Please select a faculty");
+    }
+
+    // Validate subject ID
+    if ($subjectid == 0 || $subjectid == "") {
+        die("Please select a subject");
+    }
 
     // Prepare the faculty name query
-    if ($facultyid != 0 && $facultyid != "") {
-        $sqlfacName = "SELECT * FROM faculty WHERE id = $facultyid";
-        $resultFacName = mysqli_query($con, $sqlfacName);
+    $facultyName = "";
+    $sqlfacName = "SELECT faculity_name FROM faculty WHERE id = $facultyid";
+    $resultFacName = mysqli_query($con, $sqlfacName);
 
-        if (mysqli_num_rows($resultFacName) > 0) {
-            while ($faculty = mysqli_fetch_array($resultFacName)) {
-                $facultyName = $faculty['faculity_name'];
-            }
-        }
-    } else {
-        die("Please select faculty");
+    if (mysqli_num_rows($resultFacName) > 0) {
+        $faculty = mysqli_fetch_array($resultFacName);
+        $facultyName = $faculty['faculity_name'];
     }
 
     // Prepare the subject name query
-    if ($subjectid != 0 && $subjectid != "") {
-        $sqlfSubject = "SELECT * FROM subname WHERE id = $subjectid";
-        $resultSubName = mysqli_query($con, $sqlfSubject);
+    $subName = "";
+    $sqlfSubject = "SELECT name FROM subname WHERE id = $subjectid";
+    $resultSubName = mysqli_query($con, $sqlfSubject);
 
-        if (mysqli_num_rows($resultSubName) > 0) {
-            while ($subject = mysqli_fetch_array($resultSubName)) {
-                $subName = $subject['name'];
-            }
-        }
-    } else {
-        die("Please select subject");
+    if (mysqli_num_rows($resultSubName) > 0) {
+        $subject = mysqli_fetch_array($resultSubName);
+        $subName = $subject['name'];
     }
 
     if (isset($_POST['noteUpdateUpload'])) {
         $update = $_POST['update'];
 
+        // File upload handling
         if (isset($_FILES['note']) && $_FILES['note']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['note'];
             $file_name = $file['name'];
@@ -66,15 +67,21 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             }
 
             // Define the upload directory based on section
-            if ($section == "syllabus") {
-                $upload_dir = '../uploads/syllabus/';
-                $notePath =  $uploadFIleFront . 'syllabus/';
-            } elseif ($section == "prevqn") {
-                $upload_dir = '../uploads/prevqn/';
-                $notePath =  $uploadFIleFront . 'prevqn/';
-            } else {
-                $upload_dir = '../uploads/notes/';
-                $notePath =  $uploadFIleFront . 'notes/';
+            $upload_dir = '';
+            $notePath = '';
+            switch ($section) {
+                case 'syllabus':
+                    $upload_dir = '../uploads/syllabus/';
+                    $notePath = $uploadFIleFront . 'syllabus/';
+                    break;
+                case 'prevqn':
+                    $upload_dir = '../uploads/prevqn/';
+                    $notePath = $uploadFIleFront . 'prevqn/';
+                    break;
+                default:
+                    $upload_dir = '../uploads/notes/';
+                    $notePath = $uploadFIleFront . 'notes/';
+                    break;
             }
 
             // Generate a unique filename
@@ -86,27 +93,42 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             // Move the uploaded file to the desired location
             if (move_uploaded_file($file_tmp, $destination)) {
                 $lastPath = $notePath . $unique_filename;
+
+                // Prepare the update query
+                $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, note_file = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
+                WHERE id = ?";
+
+                // Create a prepared statement
+                $stmt = mysqli_prepare($con, $updateQuery);
+
+                // Bind the parameters to the statement
+                mysqli_stmt_bind_param($stmt, "siisssssssi", $description, $facultyid, $subjectid, $noteName, $section, $lastPath, $facultyName, $sem, $year, $subName, $author, $update);
+
+                // Execute the prepared statement
+                if (mysqli_stmt_execute($stmt)) {
+                    header("Location: ../../admin/notepost.php");
+                    exit;
+                } else {
+                    echo "Error updating record: " . mysqli_error($con);
+                }
             } else {
                 echo "Error uploading file.";
                 exit;
             }
-
-            // Prepare the update query
-            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', note_file = '$lastPath', stream_name = '$facultyName', sem = '$sem', year = '$year', sub_name = '$subName', author='$author'
-            WHERE id = '$update'";
-
-            // Execute the update query
-            if (mysqli_query($con, $updateQuery)) {
-                header("Location: ../../admin/notepost.php");
-            } else {
-                echo "Error updating record: " . mysqli_error($con);
-            }
         } else {
-            $updateQuery = "UPDATE notes SET post_des = '$description', stream_id = '$facultyid', sub_id = '$subjectid', note_name = '$noteName', note_category = '$section', stream_name = '$facultyName', sem = '$sem', year = '$year', sub_name = '$subName', author='$author'
-            WHERE id = '$update'";
+            $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
+            WHERE id = ?";
 
-            if (mysqli_query($con, $updateQuery)) {
+            // Create a prepared statement
+            $stmt = mysqli_prepare($con, $updateQuery);
+
+            // Bind the parameters to the statement
+            mysqli_stmt_bind_param($stmt, "siisssssssi", $description, $facultyid, $subjectid, $noteName, $section, $facultyName, $sem, $year, $subName, $author, $update);
+
+            // Execute the prepared statement
+            if (mysqli_stmt_execute($stmt)) {
                 header("Location: ../../admin/notepost.php");
+                exit;
             } else {
                 echo "Error updating record: " . mysqli_error($con);
             }
@@ -127,15 +149,21 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             }
 
             // Define the upload directory based on section
-            if ($section == "syllabus") {
-                $upload_dir = '../uploads/syllabus/';
-                $notePath =  $uploadFIleFront . 'syllabus/';
-            } elseif ($section == "prevqn") {
-                $upload_dir = '../uploads/prevqn/';
-                $notePath =  $uploadFIleFront . 'prevqn/';
-            } else {
-                $upload_dir = '../uploads/notes/';
-                $notePath =  $uploadFIleFront . 'notes/';
+            $upload_dir = '';
+            $notePath = '';
+            switch ($section) {
+                case 'syllabus':
+                    $upload_dir = '../uploads/syllabus/';
+                    $notePath = $uploadFIleFront . 'syllabus/';
+                    break;
+                case 'prevqn':
+                    $upload_dir = '../uploads/prevqn/';
+                    $notePath = $uploadFIleFront . 'prevqn/';
+                    break;
+                default:
+                    $upload_dir = '../uploads/notes/';
+                    $notePath = $uploadFIleFront . 'notes/';
+                    break;
             }
 
             // Generate a unique filename
@@ -147,13 +175,21 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             // Move the uploaded file to the desired location
             if (move_uploaded_file($file_tmp, $destination)) {
                 $lastPath = $notePath . $unique_filename;
+
                 // Prepare the insert query
                 $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, stream_name, sem, year, sub_name, author)
-                            VALUES ('$description', '$facultyid', '$subjectid', '$lastPath', '$noteName', '$section', '$facultyName', '$sem', '$year', '$subName', $author)";
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                // Execute the insert query
-                if (mysqli_query($con, $insertQuery)) {
+                // Create a prepared statement
+                $stmt = mysqli_prepare($con, $insertQuery);
+
+                // Bind the parameters to the statement
+                mysqli_stmt_bind_param($stmt, "siissssssss", $description, $facultyid, $subjectid, $lastPath, $noteName, $section, $facultyName, $sem, $year, $subName, $author);
+
+                // Execute the prepared statement
+                if (mysqli_stmt_execute($stmt)) {
                     header("Location: ../../admin/notepost.php");
+                    exit;
                 } else {
                     echo "Error inserting record: " . mysqli_error($con);
                 }
