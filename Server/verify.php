@@ -18,7 +18,7 @@ if (isset($_GET['email']) && $_GET['v_code']) {
     if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
 
-        if ($row['verification_code'] == $vCode) {
+        if ($user['verification_code'] == $vCode) {
             $UpdateSql = "UPDATE auth SET is_verified = 1 WHERE email = '$email'";
             $updatee = mysqli_query($con, $UpdateSql);
             if ($updatee) {
