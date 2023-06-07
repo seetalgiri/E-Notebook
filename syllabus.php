@@ -103,8 +103,8 @@ if (isset($_GET['search'])) {
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Syllabus</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globalas.css  -->
+    <link rel="stylesheet" href="./Client/styles/globalas.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
