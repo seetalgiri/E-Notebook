@@ -42,7 +42,7 @@ function sendMail($email, $v_code)
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Email Verification from E-Notebook';
-        $mail->Body    = "Thanks for registration <br> click the link below to verify the email address <a href='http://localhost/e_notebook/Server/verify.php?email=$email&v_code=$v_code'>Verify</a>";
+        $mail->Body    = "Thanks for registration <br> click the link below to verify the email address <b>$v_code</b>";
 
         $mail->send();
         return true;
@@ -68,7 +68,8 @@ else {
         $email = $_POST['email'];
         $password = $_POST['password'];
         $stream = $_POST['stream'];
-        $verification_code = bin2hex(random_bytes(16));
+        $verification_code = rand(100000, 999999);
+
         $is_verified = 0;
 
         // Check if email already exists
@@ -95,20 +96,15 @@ else {
             } else {
                 // Retrieve the inserted data's ID
                 $insertedId = mysqli_insert_id($con);
-
-                // Set session variables
+                // // Set session variables
                 $_SESSION['id'] = $insertedId;
-                $_SESSION['username'] = $name;
-                $_SESSION['email'] = $email;
-                $_SESSION['stream'] = $stream;
-                $_SESSION['privilege'] = $privilege;
-
+                header("Location: ./verify.php");
                 // Redirect to index.php
-                if ($privilege == 0) {
-                    header("Location: ../admin/dashboard.php");
-                } else {
-                    header("Location: ../index.php");
-                }
+                // if ($privilege == 0) {
+                //     header("Location: ../admin/dashboard.php");
+                // } else {
+                //     header("Location: ../index.php");
+                // }
                 exit();
             }
         }
