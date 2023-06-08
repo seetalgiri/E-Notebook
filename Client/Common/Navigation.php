@@ -136,7 +136,6 @@ if (isset($_POST['logoutBtn'])) {
     const modalCLoseDIvOutside = document.getElementById("modalCLoseDIvOutside");
 
     const openProfileModal = () => {
-        console.log("Clicked")
         if (profilecards.style.display == "none" || profilecards.style.display == "") {
             profilecards.style.display = "block";
             modalCLoseDIvOutside.style.display = "block";

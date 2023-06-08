@@ -434,7 +434,6 @@ $resfac = mysqli_query($con, $sql);
 
         const disData = () => {
             const DisDataPost = document.getElementById("DisDataPost")
-            // console.log(DisDataPost.innerHTML.trim().replace(/\n/g, "<br>"));
         }
 
         function updateURL(newsValue) {

@@ -296,13 +296,13 @@ uploadBtnNote.addEventListener("click", () => {
 // Handle the uploaded file when the file input changes
 fileInputNote.addEventListener("change", () => {
   const file = fileInputNote.files[0];
-  console.log("Uploaded file:", file);
+  // console.log("Uploaded file:", file);
 });
 
 // Function to handle file upload
 function handleFileUpload(fileInput) {
   const file = fileInput.files[0];
-  console.log("Uploaded file:", file);
+  // console.log("Uploaded file:", file);
 }
 
 // Function to set the upload button functionality

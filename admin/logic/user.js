@@ -63,6 +63,6 @@ window.addEventListener("click", (event) => {
 });
 
 // Function called when a hambar list item is clicked
-const btnClicked = () => {
-  console.log("Clicked");
-};
+// const btnClicked = () => {
+//   console.log("Clicked");
+// };

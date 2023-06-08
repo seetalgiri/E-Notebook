@@ -138,7 +138,9 @@ if (isset($_SESSION['email'])) {
                         }
                     })
                     .then(function(data) {
-                        console.log(data);
+                        if (data === "success") {
+                            window.location.href = "../index.php";
+                        }
                         // Handle the response as needed
                     })
                     .catch(function(error) {

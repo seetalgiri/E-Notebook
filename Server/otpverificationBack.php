@@ -23,7 +23,18 @@ if (isset($_POST['verificationCode'])) {
         $updateResult = mysqli_query($con, $updateSql);
 
         if ($updateResult) {
-            echo "Verification successful";
+            $query = "SELECT * FROM `auth` WHERE `email` = '$email'";
+            $res = mysqli_query($con, $query);
+            $user = mysqli_fetch_assoc($res);
+
+            // Setting value session variables
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['username'] = $user['name'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['stream'] = $user['stream'];
+            $_SESSION['privilege'] = $user['privilege'];
+            $_SESSION['isverified'] = $user['is_verified'];
+            echo "success";
         } else {
             echo "Error: Unable to update verification status";
         }

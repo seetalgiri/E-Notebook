@@ -41,8 +41,8 @@ function sendMail($email, $v_code)
 
         //Content
         $mail->isHTML(true);
-        $mail->Subject = 'Email Verification from E-Notebook';
-        $mail->Body    = "Thanks for registration <br> click the link below to verify the email address <b>$v_code</b>";
+        $mail->Subject = 'Email verification code from E-Notebook';
+        $mail->Body    = "Thanks for registration!<br>Please enter the following code to verify your email: <b>$v_code</b>";
 
         $mail->send();
         return true;
