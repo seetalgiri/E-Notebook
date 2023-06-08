@@ -69,7 +69,6 @@ $emailaccount = "personal";
         </div>
 
         <form action="./verify.php" method="get">
-            <input type="text" name="name" id="name">
             <div>
                 <button type="button" class="btn btn-primary" name="verify">Verify</button>
             </div>

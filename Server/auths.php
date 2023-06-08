@@ -97,14 +97,10 @@ else {
                 // Retrieve the inserted data's ID
                 $insertedId = mysqli_insert_id($con);
                 // // Set session variables
-                $_SESSION['id'] = $insertedId;
-                header("Location: ./verify.php");
-                // Redirect to index.php
-                // if ($privilege == 0) {
-                //     header("Location: ../admin/dashboard.php");
-                // } else {
-                //     header("Location: ../index.php");
-                // }
+                $_SESSION['vcode'] = $verification_code;
+                $_SESSION['email'] = $email;
+
+                header("Location: ./otpverify.php");
                 exit();
             }
         }
