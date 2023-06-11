@@ -80,6 +80,7 @@ $author = "E-NoteBook";
 $note_category = "";
 $stream_na = "";
 $note_like = "";
+$semYrchecked = "";
 
 if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
@@ -101,6 +102,15 @@ if (isset($_GET['edit'])) {
         $note_category = $note['note_category'];
         $stream_name = $note['stream_name'];
         $note_like = $note['note_like'];
+        // $sem > 0 ? $semYrchecked =  $sem : $year;
+        if (intval($sem) > 0) {
+            $semYrchecked =  $sem;
+            echo $semYrchecked;
+        } else {
+            echo $year;
+            $semYrchecked =  $sem;
+            echo $semYrchecked;
+        }
     }
 }
 
@@ -408,21 +418,21 @@ function getOrdinal($number)
         // crossSection.addEventListener("click", toggleSection);
         // filterSection.addEventListener("click", toggleSection);
 
-        let sem = `<option value="1" <?php if ($sem == "1") echo "selected"; ?>>First Semester</option>
-                                <option value="2" <?php if ($sem == "2") echo "selected"; ?>>Second Semester</option>
-                                <option value="3" <?php if ($sem == "3") echo "selected"; ?>>Third Semester</option>
-                                <option value="4" <?php if ($sem == "4") echo "selected"; ?>>Fourth Semester</option>
-                                <option value="5" <?php if ($sem == "5") echo "selected"; ?>>Fifth Semester</option>
-                                <option value="6" <?php if ($sem == "6") echo "selected"; ?>>Sixth Semester</option>
-                                <option value="7" <?php if ($sem == "7") echo "selected"; ?>>Seventh Semester</option>
-                                <option value="8" <?php if ($sem == "8") echo "selected"; ?>>Eighth Semester</option>
+        let sem = `<option value="1" <?php if ($semYrchecked == "1") echo "selected"; ?>>First Semester</option>
+                                <option value="2" <?php if ($semYrchecked == "2") echo "selected"; ?>>Second Semester</option>
+                                <option value="3" <?php if ($semYrchecked == "3") echo "selected"; ?>>Third Semester</option>
+                                <option value="4" <?php if ($semYrchecked == "4") echo "selected"; ?>>Fourth Semester</option>
+                                <option value="5" <?php if ($semYrchecked == "5") echo "selected"; ?>>Fifth Semester</option>
+                                <option value="6" <?php if ($semYrchecked == "6") echo "selected"; ?>>Sixth Semester</option>
+                                <option value="7" <?php if ($semYrchecked == "7") echo "selected"; ?>>Seventh Semester</option>
+                                <option value="8" <?php if ($semYrchecked == "8") echo "selected"; ?>>Eighth Semester</option>
                     `;
 
         let year = ` <option value="">Select Year</option>
-                    <option value="1" <?php if ($year == "1") echo "selected"; ?>>First Year</option>
-                    <option value="2" <?php if ($year == "2") echo "selected"; ?>>Second Year</option>
-                    <option value="3" <?php if ($year == "3") echo "selected"; ?>>Third Year</option>
-                    <option value="4" <?php if ($year == "4") echo "selected"; ?>>Fourth Year</option>
+                    <option value="1" <?php if ($semYrchecked == "1") echo "selected"; ?>>First Year</option>
+                    <option value="2" <?php if ($semYrchecked == "2") echo "selected"; ?>>Second Year</option>
+                    <option value="3" <?php if ($semYrchecked == "3") echo "selected"; ?>>Third Year</option>
+                    <option value="4" <?php if ($semYrchecked == "4") echo "selected"; ?>>Fourth Year</option>
                    `;
 
         // setting year and sem
