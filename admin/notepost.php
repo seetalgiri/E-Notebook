@@ -107,8 +107,7 @@ if (isset($_GET['edit'])) {
             $semYrchecked =  $sem;
             echo $semYrchecked;
         } else {
-            echo $year;
-            $semYrchecked =  $sem;
+            $semYrchecked =  $year;
             echo $semYrchecked;
         }
     }
