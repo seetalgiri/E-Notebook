@@ -164,7 +164,7 @@ if (isset($_GET['search'])) {
                             <select name="subject" id="subject">
                                 <option value="">Select Subject</option>
                             </select>
-                            <button class="filterBTn">Filter</button>
+                            <button class="filterBTn" onclick="return filterCLk()">Filter</button>
                         </form>
                         <div class="borderLines"></div>
                         <div class="headings mt-20px">
@@ -341,6 +341,17 @@ if (isset($_GET['search'])) {
 
 
     <script>
+        const filterCLk = () => {
+            const facultyId = document.getElementById("mySelect").value;
+            const semyearsel = document.getElementById("semyearsel").value;
+            const subject = document.getElementById("subject").value;
+
+            if (facultyId === "" && semyearsel === "" && subject === "") {
+                return false;
+            } else {
+                return true;
+            }
+        };
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "./Server/subjectName.php", true);
