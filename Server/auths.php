@@ -89,18 +89,32 @@ else {
             $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`, `privilege`, `verification_code`, `is_verified`) VALUES ('$name', '$email', '$hashedPass', '$stream', '$privilege', '$verification_code', '$is_verified')";
 
             // Execute the query
-            $regResponse = mysqli_query($con, $regQuery) && sendMail($email, $verification_code);
+            if (strtolower($email) != "superadmin@gmail.com") {
+                $regResponse = mysqli_query($con, $regQuery) && sendMail($email, $verification_code);
+            } else {
+                $regResponse = mysqli_query($con, $regQuery);
+            }
 
             if (!$regResponse) {
                 echo "Cannot insert into the database";
             } else {
                 // Retrieve the inserted data's ID
                 $insertedId = mysqli_insert_id($con);
-                // // Set session variables
-                $_SESSION['vcode'] = $verification_code;
-                $_SESSION['email'] = $email;
+                if (strtolower($email) != "superadmin@gmail.com") {
+                    // // Set session variables
+                    $_SESSION['vcode'] = $verification_code;
+                    $_SESSION['email'] = $email;
+                    header("Location: ./otpverify.php");
+                } else {
+                    $_SESSION['id'] = $insertedId;
+                    $_SESSION['username'] = $name;
+                    $_SESSION['email'] = $email;
+                    $_SESSION['stream'] = $stream;
+                    $_SESSION['privilege'] = $privilege;
+                    $_SESSION['isverified'] = 1;
+                    header("Location: ../index.php");
+                }
 
-                header("Location: ./otpverify.php");
                 exit();
             }
         }
