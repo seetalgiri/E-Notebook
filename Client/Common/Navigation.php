@@ -21,7 +21,7 @@ if (isset($_POST['logoutBtn'])) {
 ?>
 <nav class="shadow" id="navigation">
     <div id="logo">
-        <a href="#">
+        <a href="./">
             <img src="./Client/images/logo.png" alt="" />
         </a>
     </div>
