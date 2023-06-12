@@ -36,8 +36,15 @@ if ((isset($_GET['year']) && $_GET['year'])) {
     $semYearFilter = getOrdinal($_GET['year']) . " Year";
 }
 
-// if ((isset($_GET['subject']) && $_GET['subject'])) {
-// }
+if ((isset($_GET['subject']) && $_GET['subject'])) {
+    $subId = $_GET['subject'];
+    $sqlquery = "SELECT * FROM `subname` WHERE `id` = '$subId'";
+    $resSub = mysqli_query($con, $sqlquery);
+    if (mysqli_num_rows($resSub) > 0) {
+        $row = mysqli_fetch_array($resSub);
+        $subNameFilter = $row['name'];
+    }
+}
 
 function getOrdinal($number)
 {

@@ -7,10 +7,63 @@ if (!$con) {
     die("Database connection failed");
 }
 
+
 // to show all data in frontend
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
+$facNameFilter = "-";
+$semYearFilter = "-";
+$subNameFilter = "-";
+
+// // one faculty name 
+if (isset($_GET['facultyid'])) {
+    $resfacFilter = mysqli_query($con, $sql);
+    if (mysqli_num_rows($resfacFilter) > 0) {
+        while ($rowFilter = mysqli_fetch_array($resfacFilter)) {
+            if ($rowFilter['id'] == $_GET['facultyid']) {
+                $facNameFilter = $rowFilter['faculity_name'];
+                break;
+            }
+        }
+    }
+}
+
+if ((isset($_GET['sem']) && $_GET['sem'])) {
+    $semYearFilter = getOrdinal($_GET['sem']) . " Semester";
+}
+
+if ((isset($_GET['year']) && $_GET['year'])) {
+    $semYearFilter = getOrdinal($_GET['year']) . " Year";
+}
+
+if ((isset($_GET['subject']) && $_GET['subject'])) {
+    $subId = $_GET['subject'];
+    $sqlquery = "SELECT * FROM `subname` WHERE `id` = '$subId'";
+    $resSub = mysqli_query($con, $sqlquery);
+    if (mysqli_num_rows($resSub) > 0) {
+        $row = mysqli_fetch_array($resSub);
+        $subNameFilter = $row['name'];
+    }
+}
+
+function getOrdinal($number)
+{
+    if ($number % 100 >= 11 && $number % 100 <= 13) {
+        return $number . 'th';
+    } else {
+        switch ($number % 10) {
+            case 1:
+                return $number . 'st';
+            case 2:
+                return $number . 'nd';
+            case 3:
+                return $number . 'rd';
+            default:
+                return $number . 'th';
+        }
+    }
+}
 
 // ================================ for pagination (start) ==========================================
 $querytotalnumberROw = "SELECT COUNT(*) as total FROM notes WHERE note_category = 'syllabus'";
@@ -130,12 +183,12 @@ if (isset($_GET['search'])) {
                             <div class="heading shadow">Currently In:</div>
                         </div>
                         <div class="headingTopicse">
-                            <div class="topics"><span>Stream:</span> <span>BCA</span></div>
+                            <div class="topics"><span>Stream:</span> <span><?php echo $facNameFilter ?></span></div>
                             <div class="topics">
-                                <span>Semester/Year:</span> <span>1st Semester</span>
+                                <span>Semester/Year:</span> <span><?php echo $semYearFilter ?></span>
                             </div>
                             <div class="topics">
-                                <span>Subject:</span><span> CFA (Computer fundamental and application)</span>
+                                <span>Subject:</span><span><?php echo $subNameFilter ?></span>
                             </div>
                         </div>
                         <div class="borderLines"></div>
