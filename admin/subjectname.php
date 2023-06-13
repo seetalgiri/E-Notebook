@@ -281,7 +281,7 @@ function getOrdinal($number)
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
                         <label for="mySelect">Choose Faculty:</label>
-                        <select name="facultyid" id="mySelect" onchange="myFunction()">
+                        <select name="facultyid" id="mySelect" onchange="myFunction()" required>
                             <option value="">Select Faculty</option>
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {
@@ -296,7 +296,7 @@ function getOrdinal($number)
 
                     <div id="forms" class="flex fbselectStr">
                         <label for="semyearsel">Select Grade:</label>
-                        <select id='semyearsel' name="sem">
+                        <select id='semyearsel' name="sem" required>
                             <option value="">Select Semester</option>
                         </select>
                     </div>

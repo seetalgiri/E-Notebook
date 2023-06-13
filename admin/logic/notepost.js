@@ -49,7 +49,9 @@ window.onclick = function (event) {
     parentId !== "sideButton" &&
     parentId !== "modalContent" &&
     parentId !== "forms" &&
-    parentId !== "editbtn"
+    parentId !== "editbtn" &&
+    par !== "notePostUpload" &&
+    parentId !== "notePostUpload"
   ) {
     if (modalContent.style.right !== "-475px") {
       modalContent.style.right = "-475px";
@@ -79,7 +81,6 @@ window.onclick = function (event) {
     listItemsAdminPp.style.display = "none";
   }
 };
-
 function openmodal(id) {
   modalContent.style.right = "0px";
   svgbtn.style.transform = "rotateZ(0deg)";

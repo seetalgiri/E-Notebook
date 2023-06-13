@@ -189,11 +189,11 @@ if (isset($_GET['search'])) {
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
                         <label for="description">Enter Post Description:</label>
-                        <textarea name="post" id="description" cols="30" rows="10"></textarea>
+                        <textarea name="post" id="description" cols="30" rows="10" required></textarea>
                     </div>
                     <div id="forms" class="flex">
                         <label for="mySelect">Choose Faculty:</label>
-                        <select name="stream" id="mySelect">
+                        <select name="stream" id="mySelect" required>
                             <option value="all">All</option>
                             <?php
                             if (mysqli_num_rows($resfac) > 0) {

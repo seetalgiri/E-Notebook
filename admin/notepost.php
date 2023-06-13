@@ -169,7 +169,7 @@ function getOrdinal($number)
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/noteposts.js" defer></script>
+    <script src="./logic/notepost.js" defer></script>
 </head>
 
 <body>
@@ -261,16 +261,16 @@ function getOrdinal($number)
                     <h3>Add Faculty:</h3>
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
-                        <textarea name="description" id="PostDesctiption" cols="30" rows="5" placeholder="Enter Note Description..."><?php echo $post_des; ?></textarea>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="5" placeholder="Enter Note Description..." required><?php echo $post_des; ?></textarea>
                     </div>
                     <div id="forms" class="flex">
                         <label for="author">Enter Author:</label>
-                        <input type="text" name="author" id="author" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $author; ?>">
+                        <input type="text" name="author" id="author" placeholder="Enter Note Name" style="padding: 10px 8px;" required value="<?php echo $author; ?>">
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
                             <label for="mySelect">Select Stream:</label>
-                            <select name="facultyid" id="mySelect" onchange="myFunction()" style="padding: 11px; border-radius: 3px">
+                            <select name="facultyid" id="mySelect" onchange="myFunction()" style="padding: 11px; border-radius: 3px" required>
                                 <option value="">Select Stream</option>
                                 <?php
                                 if (mysqli_num_rows($resfac) > 0) {
@@ -284,7 +284,7 @@ function getOrdinal($number)
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="semyearsel">Select Grade:</label>
-                            <select id='semyearsel'>
+                            <select id='semyearsel' required>
                                 <option value="">Select Semester</option>
                             </select>
                         </div>
@@ -292,19 +292,19 @@ function getOrdinal($number)
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
                             <label for="subject">Subject Name:</label>
-                            <select name="subject" id="subject">
+                            <select name="subject" id="subject" required>
                                 <option value="">Select Subject</option>
                             </select>
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="image">Select Image:</label>
-                            <input type="file" name="note" id="image" accept="application/pdf">
+                            <input type="file" name="note" id="image" accept="application/pdf" required>
                         </div>
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
                             <label for="section">Select File Section:</label>
-                            <select name="section" id="section">
+                            <select name="section" id="section" required>
                                 <option value="">Select Section</option>
                                 <option value="note" <?php echo ($note_category == 'note') ? 'selected' : ''; ?>>Note</option>
                                 <option value="prevqn" <?php echo ($note_category == 'prevqn') ? 'selected' : ''; ?>>Prev Question</option>
@@ -313,7 +313,7 @@ function getOrdinal($number)
                         </div>
                         <div id="forms" class="flex" style="width: 50%;">
                             <label for="noteName">Enter Note Name:</label>
-                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
+                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" required style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
                         </div>
                     </div>
                     <?php echo isset($_GET['edit']) ? '<input type="hidden" name="update" id="" value="' . $_GET['edit'] . '">' : ''; ?>

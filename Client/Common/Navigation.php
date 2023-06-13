@@ -40,7 +40,7 @@ if (isset($_POST['logoutBtn'])) {
 
             <!-- ======================================== for login button ======================================== -->
             <?php
-            echo $id < 1 ? '<a href="./auth/register.php" style="margin-right: -20px;">
+            echo $id < 1 ? '<a href="./auth/login.php" style="margin-right: -20px;">
             <button class="shadow-lg">
                 <span> Login </span>
                 <svg width="15" height="18" viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg">
