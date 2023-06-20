@@ -1,86 +1,3 @@
-<<<<<<< HEAD
-<?php
-$show_notification = false;
-
-// importaing configurations 
-include '../Configuration.php';
-
-//database connection
-$con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
-
-if (!$con) {
-    die("Database connection failed");
-}
-
-// to add content
-if (isset($_POST['postadd'])) {
-    $fname = $_POST['fname'];
-    $dOrder = $_POST['dOrder'];
-    $yearsem = $_POST['yearsem'];
-    $sql = "INSERT INTO `faculty` (`faculity_name`, `displayorder`, `yearsem`) VALUES ('$fname', '$dOrder', '$yearsem')";
-    if (mysqli_query($con, $sql)) {
-        $show_notification = true;
-    } else {
-        $show_notification = false;
-    }
-}
-
-// to so all data in frontend
-$sql = "SELECT * FROM `faculty`";
-$res = mysqli_query($con, $sql);
-
-
-// for delete data 
-if (isset($_GET["id"])) {
-    $id = $_GET["id"];
-    $sqlD = "DELETE FROM `faculty` WHERE id = $id";
-    $resD = mysqli_query($con, $sqlD);
-    if (!$resD) {
-        echo "Error " . $resD;
-    } else {
-        header("Location: " . $_SERVER['PHP_SELF']);
-    }
-}
-
-// for edit btn
-// to show edting data
-$name = "";
-$dorder = "";
-$idnum = "";
-if (isset($_GET["edit"])) {
-    $id = $_GET["edit"];
-    $sql = "SELECT * FROM faculty WHERE id = $id";
-    $result = mysqli_query($con, $sql);
-    if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $name = $row["faculity_name"];
-        $dorder = $row["displayorder"];
-        $idnum = $row["id"];
-    } else {
-        $name = "";
-        $dorder = "";
-        $idnum = "";
-    }
-}
-
-// to update changes
-if (isset($_POST['updateadd'])) {
-    $fname = $_POST['fname'];
-    $dOrder = $_POST['dOrder'];
-    $id = $_POST['idnum'];
-    $yearsem = $_POST['yearsem'];
-    $sql = "UPDATE faculty SET faculity_name = '$fname',displayorder = '$dOrder', yearsem='$yearsem' WHERE id = $id";
-    if (mysqli_query($con, $sql)) {
-        header("Location: " . $_SERVER['PHP_SELF']);
-    } else {
-        echo "Error updating record: " . mysqli_error($con);
-    }
-}
-
-?>
-
-=======
->>>>>>> ef8fdd33aeb35a0c121ac4a768827acd0a63d297
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,9 +7,9 @@ if (isset($_POST['updateadd'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Faculty</title>
     <!-- for CSS Style  -->
-    <link rel="stylesheet" href="../Client/styles/globald.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./CSS/faculty.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenavs.js" defer></script>
@@ -161,13 +78,12 @@ if (isset($_POST['updateadd'])) {
             </div>
 
             <div id="sideDivForm">
-                <form>
+                <form action="#" method="post">
                     <h3>Add Faculty name:</h3>
                     <input type="hidden">
                     <div id="forms" class="flex">
                         <label for="fname">Enter faculty name:</label>
-                        <input type="text" name="fname"  id="fname" placeholder="Name"
-                            value="<?php echo $name ?>">
+                        <input type="text" name="fname" id="fname" placeholder="Name" value="<?php echo $name ?>">
                     </div>
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
@@ -183,8 +99,7 @@ if (isset($_POST['updateadd'])) {
 
                     <div id="forms" class="flex">
                         <label for="dOrder">Enter Display order:</label>
-                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order"
-                            value="<?php echo $dorder; ?>">
+                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value="<?php echo $dorder; ?>">
                     </div>
                     <div id="forms" class="buttonformFac">
 

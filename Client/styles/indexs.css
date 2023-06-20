@@ -633,7 +633,7 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
-  max-height: 50vh;
+  max-height: 35vh;
   overflow-y: auto;
   box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1) inset;
 }
@@ -752,8 +752,8 @@
     font-size: 12px;
   }
   #date svg {
-    height: 8px;
-    width: 8px;
+    height: 10px;
+    width: 10px;
   }
   #profilePost {
     height: 30px;
@@ -783,6 +783,7 @@
   }
   #commentContent {
     margin: 10px 0 20px 0;
+    padding: 10px 3px;
   }
   #postModalContent {
     width: 97% !important;
@@ -829,6 +830,11 @@ ul li {
   width: 70px;
   position: relative;
   display: flex;
+}
+@media screen and (max-width: 600px) {
+  #selecterStream .selectSreamradio {
+    width: 65px;
+  }
 }
 
 #selecterStream .selectSreamradio label,

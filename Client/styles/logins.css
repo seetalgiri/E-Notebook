@@ -17,6 +17,21 @@
   border-radius: 5px;
 }
 
+@media screen and (max-width: 950px) {
+  #loginform form {
+    min-width: 340px !important;
+  }
+  .rightDiv {
+    display: none !important;
+  }
+  #socialmedia {
+    display: none !important;
+  }
+  #loginform form {
+    padding: 40px 30px 50px 30px;
+  }
+}
+
 #inputfields {
   display: flex;
   align-items: center;

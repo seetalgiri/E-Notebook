@@ -1,8 +1,11 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE)
+    session_start();
 
 // Importing configurations 
 include '../Configuration.php';
+
+$privilege = 2;
 
 // Database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
@@ -31,9 +34,13 @@ else {
         if (mysqli_num_rows($emailResult) > 0) {
             echo "User already registered";
         } else {
+
+            if (strtolower($email) == "superadmin@gmail.com") {
+                $privilege = 0;
+            }
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             // Insert into the database
-            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`) VALUES ('$name', '$email', '$hashedPass', '$stream')";
+            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`, `privilege`) VALUES ('$name', '$email', '$hashedPass', '$stream', '$privilege')";
 
             // Execute the query
             $regResponse = mysqli_query($con, $regQuery);
@@ -49,9 +56,14 @@ else {
                 $_SESSION['username'] = $name;
                 $_SESSION['email'] = $email;
                 $_SESSION['stream'] = $stream;
+                $_SESSION['privilege'] = $privilege;
 
                 // Redirect to index.php
-                header("Location: ../index.php");
+                if ($privilege == 0) {
+                    header("Location:../admin/dashboard.php");
+                } else {
+                    header("Location: ../index.php");
+                }
                 exit();
             }
         }
@@ -80,9 +92,16 @@ else {
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['stream'] = $user['stream'];
+                $_SESSION['privilege'] = $privilege;
 
-                // Redirect to index.php or any other page you desire
-                header("Location: ../index.php");
+
+                if ($privilege == 0) {
+                    header("Location:../admin/dashboard.php");
+                } else {
+                    // Redirect to index.php or any other page you desire
+                    header("Location: ../index.php");
+                }
+
                 exit();
             } else {
                 // Password is incorrect
@@ -91,4 +110,21 @@ else {
         }
     }
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['logout'])) {
+            // Handle logout action
+            // Perform any necessary logout logic here
+
+            // Redirect to the login page
+            header("Location: ../../auth/login.php");
+            exit();
+        } elseif (isset($_POST['home'])) {
+            // Handle home action
+            // Perform any necessary home logic here
+
+            // Redirect to the home page
+            header("Location: e_notebook/index.php");
+            exit();
+        }
+    }
 }

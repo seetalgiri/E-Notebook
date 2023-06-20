@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Registration form</title>
-    <link rel="stylesheet" href="../Client/styles/globala.css" />
-    <link rel="stylesheet" href="../Client/styles/logina.css" />
+    <link rel="stylesheet" href="../Client/styles/global.css" />
+    <link rel="stylesheet" href="../Client/styles/logins.css" />
 </head>
 
 <body>
     <div id="container">
         <div id="loginform">
-            <form method="post" class="shadow" action="../Server/auths.php">
+            <form method="post" class="shadow" action="../Server/auth.php">
                 <div id="inputfields">
                     <h3 id="login">Login</h3>
                     <div class="input-box">

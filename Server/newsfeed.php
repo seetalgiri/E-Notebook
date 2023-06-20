@@ -3,7 +3,7 @@
 session_start();
 
 include '../Configuration.php';
-include 'auths.php';
+include 'auth.php';
 
 // Database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
@@ -14,18 +14,13 @@ if (!$con) {
 
 if (isset($_POST['post'])) {
     echo "clicked";
-}
-
-if (isset($_POST['post'])) {
-
-    echo "clicked";
     // Retrieve the posted text from a form or any other source
-    $name = $_POST['username'];
-    $faculty = $_POST['stream'];
-    $postText = $_POST['post_text'];
+    $author = $_POST['username'];
+    $stream = $_POST['stream'];
+    $postdes = $_POST['post_text'];
 
     // Prepare the query to insert the post into the database
-    $query = "INSERT INTO `newsfeed` (`user_name`,`faculty_name`, `post_description`) VALUES ('$name', '$faculty', '$postText')";
+    $query = "INSERT INTO `news` (`author`,`stream`, `postdes`) VALUES ('$author', '$stream', '$postdes')";
 
     // Execute the query
     $result = mysqli_query($con, $query);
@@ -44,12 +39,16 @@ if (isset($_POST['post'])) {
 // Retrieve the newsfeed entries from the database
 $query = "SELECT * FROM newsfeed ORDER BY entry_id DESC";
 $result = mysqli_query($con, $query);
-
-// Display the newsfeed entries
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "User ID: " . $row['user_id'] . "<br>";
-    echo "User Name: " . $row['user_name'] . "<br>";
-    echo "Content: " . $row['postText'] . "<br><br>";
+// Check if there are any newsfeed entries
+if (mysqli_num_rows($result) > 0) {
+    // Display the newsfeed entries
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "User ID: " . $row['author'] . "<br>";
+        echo "Stream: " . $row['stream'] . "<br>";
+        echo "Content: " . $row['postdes'] . "<br><br>";
+    }
+} else {
+    echo "No newsfeed entries found.";
 }
 
 // Close the database connection

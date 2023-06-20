@@ -175,7 +175,7 @@ const NotesInnterHtml = ` <form action="#" id="filerequestModal">
 </div>
 </form>`;
 
-const NoticeInnerHtml = `<form action="../../Server/newsfeed.php" method="post">
+const NoticeInnerHtml = `<form action="./Server/newsfeed.php" method="post">
             <div class="buttonclscontentPlc">
               <div class="buttontextAreadiv">
                 <textarea name="post_text" id="postContentMod" placeholder="What is on your mind?"></textarea>

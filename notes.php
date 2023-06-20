@@ -23,14 +23,14 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Notes</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for globala.css  -->
-    <link rel="stylesheet" href="./Client/styles/globala.css" />
+    <!-- for global.css  -->
+    <link rel="stylesheet" href="./Client/styles/global.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/notes.js" defer></script>
@@ -135,7 +135,7 @@ $resfac = mysqli_query($con, $sql);
                     <div id="mainViewContent" class="gridContent">
                         <div class="eachBox">
                             <div class="boxcontentNote">
-                                <h3>Chapter 1: Introduction to computer this is me...</h3>
+                                <h3>Chapter 1: This is test I have title...</h3>
                                 <div class="auth">
                                     <svg width="14" height="14" viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -144,16 +144,20 @@ $resfac = mysqli_query($con, $sql);
 
                                     <span>Author:</span> Gaurab sunar
                                 </div>
-                                <svg width="17" height="20" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg"
-                                    class="bookmark">
-                                    <path
-                                        d="M4.82 15L9 17.28V20H2C0.89 20 0 19.11 0 18V2C0 0.9 0.89 0 2 0H3V7L5.5 5.5L8 7V0H14C15.1 0 16 0.89 16 2V10.54L14.5 9.72L4.82 15ZM20 15L14.5 12L9 15L14.5 18L20 15ZM11 17.09V19.09L14.5 21L18 19.09V17.09L14.5 19L11 17.09Z" />
-                                </svg>
+
 
                                 <div class="NoteAction">
                                     <div class="date"><span>Date:</span> 2023-01-01</div>
                                     <div class="svgsNote">
-                                        <svg width="20" height="14" viewBox="0 0 18 12"
+                                        <div class="likecontent">
+                                            <svg width="17" height="15" viewBox="0 0 20 21"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10 18.35L8.55 17.03C3.4 12.36 0 9.27 0 5.5C0 2.41 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.08C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.41 20 5.5C20 9.27 16.6 12.36 11.45 17.03L10 18.35Z" />
+                                            </svg>
+                                            <span class="likecount">101</span>
+                                        </div>
+                                        <svg width="20" height="14" viewBox="0 0 18 12" style="margin-right:6px;"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M9 3.75C8.40326 3.75 7.83097 3.98705 7.40901 4.40901C6.98705 4.83097 6.75 5.40326 6.75 6C6.75 6.59674 6.98705 7.16903 7.40901 7.59099C7.83097 8.01295 8.40326 8.25 9 8.25C9.59674 8.25 10.169 8.01295 10.591 7.59099C11.0129 7.16903 11.25 6.59674 11.25 6C11.25 5.40326 11.0129 4.83097 10.591 4.40901C10.169 3.98705 9.59674 3.75 9 3.75ZM9 9.75C8.00544 9.75 7.05161 9.35491 6.34835 8.65165C5.64509 7.94839 5.25 6.99456 5.25 6C5.25 5.00544 5.64509 4.05161 6.34835 3.34835C7.05161 2.64509 8.00544 2.25 9 2.25C9.99456 2.25 10.9484 2.64509 11.6517 3.34835C12.3549 4.05161 12.75 5.00544 12.75 6C12.75 6.99456 12.3549 7.94839 11.6517 8.65165C10.9484 9.35491 9.99456 9.75 9 9.75ZM9 0.375C5.25 0.375 2.0475 2.7075 0.75 6C2.0475 9.2925 5.25 11.625 9 11.625C12.75 11.625 15.9525 9.2925 17.25 6C15.9525 2.7075 12.75 0.375 9 0.375Z" />
@@ -175,32 +179,54 @@ $resfac = mysqli_query($con, $sql);
     <div id="filterSection"></div>
 
     <script>
-        let data = [];
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "./Server/subjectName.php", true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                var jsonData = JSON.parse(xhr.responseText);
-                data = jsonData
+    let data = [];
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "./Server/subjectName.php", true);
+    xhr.onreadystatechange = func tion() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var jsonData = JSON.parse(xhr.responseText);
+            data = jsonData
+        }
+    };
+    xhr.send();
+    var streamDropdown = document.getElementById('mySelect');
+    var semYearDropdown = document.getElementById('semyearsel');
+    var subjectDropdown = document.getElementById('subject');
+
+    streamDropdown.addEventListener('change', handleSubjectChange);
+    semYearDropdown.addEventListener('change', handlesemSubjectChange);
+
+    let totalcontent = '';
+    let filterdcontent = [];
+
+    function handleSubjectChange() {
+        let stream = streamDropdown.value;
+        let streamfiltered = data.filter(e => e.facultyid === stream);
+        filterdcontent = streamfiltered;
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+        let option = "";
+        totalcontent = '';
+
+        streamfiltered.forEach((e) => {
+            if (!option.includes(`value="${e.id}"`)) {
+                option = `<option value="${e.id}">${e.name}</option>`;
+                totalcontent += option;
             }
-        };
-        xhr.send();
-        var streamDropdown = document.getElementById('mySelect');
-        var semYearDropdown = document.getElementById('semyearsel');
-        var subjectDropdown = document.getElementById('subject');
+        });
 
-        streamDropdown.addEventListener('change', handleSubjectChange);
-        semYearDropdown.addEventListener('change', handlesemSubjectChange);
+        subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
+    }
 
-        let totalcontent = '';
-        let filterdcontent = [];
 
-        function handleSubjectChange() {
-            let stream = streamDropdown.value;
-            let streamfiltered = data.filter(e => e.facultyid === stream);
-            filterdcontent = streamfiltered;
-            subjectDropdown.innerHTML = "";
-            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+    function handlesemSubjectChange() {
+        let grade = semYearDropdown.value;
+        let streamfiltered = [];
+        subjectDropdown.innerHTML = "";
+        subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
+
+        const allDataset = () => {
             let option = "";
             totalcontent = '';
 
@@ -214,48 +240,26 @@ $resfac = mysqli_query($con, $sql);
             subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
         }
 
-
-
-        function handlesemSubjectChange() {
-            let grade = semYearDropdown.value;
-            let streamfiltered = [];
-            subjectDropdown.innerHTML = "";
-            subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
-
-            const allDataset = () => {
-                let option = "";
-                totalcontent = '';
-
-                streamfiltered.forEach((e) => {
-                    if (!option.includes(`value="${e.id}"`)) {
-                        option = `<option value="${e.id}">${e.name}</option>`;
-                        totalcontent += option;
-                    }
-                });
-
-                subjectDropdown.innerHTML = totalcontent !== '' ? totalcontent : '<option value="">Not Found</option>';
-            }
-
-            if (filterdcontent.length <= 0) {
-                if (semYearDropdown.children.length > 7) {
-                    streamfiltered = data.filter(e => e.sem === grade);
-                    allDataset()
-                } else {
-                    streamfiltered = data.filter(e => e.year === grade);
-                    allDataset()
-                }
+        if (filterdcontent.length <= 0) {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = data.filter(e => e.sem === grade);
+                allDataset()
             } else {
-                if (semYearDropdown.children.length > 7) {
-                    streamfiltered = filterdcontent.filter(e => e.sem === grade);
-                    allDataset()
-                } else {
-                    streamfiltered = filterdcontent.filter(e => e.year === grade);
-                    allDataset()
-                }
+                streamfiltered = data.filter(e => e.year === grade);
+                allDataset()
             }
-
-
+        } else {
+            if (semYearDropdown.children.length > 7) {
+                streamfiltered = filterdcontent.filter(e => e.sem === grade);
+                allDataset()
+            } else {
+                streamfiltered = filterdcontent.filter(e => e.year === grade);
+                allDataset()
+            }
         }
+
+
+    }
     </script>
 </body>
 
