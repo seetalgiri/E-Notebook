@@ -40,7 +40,7 @@ $resfac = mysqli_query($con, $sql);
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <link rel="stylesheet" href="./Client/styles/indexs.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
 
     <!-- ==================== JS Imported ======================== -->
     <script src="./Client/logic/index.js" defer></script>

@@ -73,6 +73,7 @@ nav {
 }
 .logoutbtn button {
   padding: 7px 65px;
+  width: 210px;
   letter-spacing: 1px;
   border-radius: 2px;
   font-size: 17px;
@@ -301,7 +302,8 @@ nav {
   position: absolute;
   top: 55px;
   right: -10px;
-  height: 150px;
+  min-height: 150px;
+  max-height: 180px;
   width: 230px;
   background-color: var(--bg-white);
   border-radius: 2px;

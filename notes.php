@@ -162,7 +162,7 @@ if (isset($_GET['search'])) {
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigation.css" />
     <!-- for nav css  -->
-    <link rel="stylesheet" href="./Client/styles/navstyle.css" />
+    <link rel="stylesheet" href="./Client/styles/navstyles.css" />
     <link rel="stylesheet" href="./Client/styles/note.css" />
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
