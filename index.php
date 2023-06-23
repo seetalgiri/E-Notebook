@@ -69,7 +69,7 @@ $resfac = mysqli_query($con, $sql);
                 <?php
                 if (!isset($_GET['id'])) {
                     echo '
-        <div id="category" class="shadow"><
+        <div id="category" class="shadow">
             <div class="streamDiv">
                 <div class="stream streamChooseDiv" id="selecterStream">';
                     if (mysqli_num_rows($resfac) > 0) {
