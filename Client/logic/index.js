@@ -276,7 +276,7 @@ const NoticeInnerHtml = `<form action="./Server/newsfeed.php" method="post">
               </div>
             </div>
             <div class="buttonclscontent border postBtn">
-              <button type="submit" name="post" value=""post>POSTssss </button>
+              <button type="submit" name="post" value=""post>POST </button>
             </div>
           </form>`;
 

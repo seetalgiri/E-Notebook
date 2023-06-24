@@ -5,7 +5,8 @@
   justify-content: space-around;
 }
 #cmtPost {
-  padding: 6px;
+  padding: 10px 6px;
+  margin-bottom: 10px;
 }
 #createPost,
 #createPost1,
@@ -88,10 +89,10 @@
   min-height: 100px;
   border-radius: 2px;
   background-color: var(--bg-white);
+  padding-top: 12px;
 }
 #contentdev {
-  padding: 10px 20px;
-  padding-bottom: 25px !important;
+  padding: 1px 20px;
 }
 
 #headerDiv {
@@ -133,7 +134,7 @@
 }
 
 #contentDIv {
-  padding: 16px 35px;
+  padding: 10px 35px;
   text-align: justify;
   letter-spacing: 1px;
   font-family: Arial, Helvetica, sans-serif;
@@ -355,12 +356,14 @@
 }
 .mt-2 {
   margin-top: 12px;
+  margin-bottom: 10px;
 }
 .d-none {
   display: none;
 }
 .firstBox {
-  margin: 10px 10px;
+  margin: 0px 10px;
+  margin-top: -5px;
   display: flex;
   gap: 12px;
   color: var(--primary-color-light);
@@ -369,6 +372,8 @@
   letter-spacing: 1px;
   margin-right: 12px;
   text-align: justify;
+  padding: 7px 10px;
+  cursor: pointer;
 }
 .firstBox img {
   width: 70px;
@@ -629,7 +634,8 @@
 }
 
 #commentContent {
-  margin: 20px 0;
+  margin-top: 15px;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -654,7 +660,7 @@
   background-color: #777;
 }
 .eachcomment {
-  min-height: 110px;
+  min-height: 80px;
   padding: 5px 10px;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
     0px 1px 2px 0px rgba(0, 0, 0, 0.04);
@@ -768,12 +774,12 @@
     max-height: 500px;
   }
   #contentdev {
-    padding: 0px 15px 20px 15px;
+    padding: 1px 15px 20px 15px;
   }
   #createPost,
   #createPost1,
   #cmtcreatePost {
-    width: 60%;
+    width: 75%;
   }
   .stream li:nth-child(2) {
     display: none;
@@ -782,7 +788,7 @@
     display: none;
   }
   #commentContent {
-    margin: 10px 0 20px 0;
+    margin: 10px 0 10px 0;
     padding: 10px 3px;
   }
   #postModalContent {
@@ -919,4 +925,131 @@ ul li {
   margin: auto;
   margin-top: -5px;
   margin-bottom: 7px;
+}
+#allDynamicPostContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.Capitalize {
+  text-transform: capitalize;
+}
+.capitalize-first-letter::first-letter {
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 700px) {
+  #commentContent {
+    max-height: 25vh;
+  }
+}
+#actionDiv svg {
+  margin-bottom: 2px;
+}
+#NotFoundNews {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  color: var(--text-color-light);
+}
+.commentcontent {
+  width: 100%;
+}
+#date svg {
+  fill: var(--text-color-light);
+}
+.shareIconContainer {
+  position: relative;
+}
+.shareDataBigContainer {
+  position: absolute;
+  height: 75px;
+  width: 160px;
+  display: flex;
+  bottom: -75px;
+  left: 0;
+  border-radius: 2px;
+  cursor: text;
+  background-color: var(--bg-white);
+  overflow: hidden;
+  flex-direction: column;
+}
+.copyLinkContainer {
+  background-color: var(--light-bgcolor);
+  padding: 9px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-top: 1px solid var(--light-border-clor-opacity2);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+}
+.fillTransparent {
+  fill: transparent !important;
+}
+.copystatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 22px;
+}
+.copystatus svg {
+  fill: var(--text-color-light) !important;
+}
+.shareData {
+  background-color: var(--light-bgcolor);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  cursor: text;
+  height: 100%;
+}
+.copyLinkSVG {
+  cursor: pointer;
+}
+.copyLinkSVG:hover {
+  scale: 1.1;
+}
+.copySuccess {
+  height: 17px !important;
+  width: 17px !important;
+}
+.copyLinkSVG {
+  height: 17px !important;
+  width: 17px !important;
+}
+.shareIcon {
+  border-radius: 2px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.1s;
+}
+.shareIcon:hover {
+  scale: 1.1;
+}
+
+.shareIcon svg {
+  height: 22px;
+  width: 22px;
+  margin-top: 2px;
+}
+.shareIcon a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

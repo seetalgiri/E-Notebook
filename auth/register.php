@@ -70,7 +70,7 @@ $resfac = mysqli_query($con, $sql);
             </div>
         </div>
         <div id="loginform">
-            <form method="post" class="shadow" action="../Server/auth.php">
+            <form method="post" class="shadow" action="../Server/auths.php">
                 <div id="inputfields" class="register">
                     <h3 id="login">Register</h3>
                     <div class="input-box">
@@ -116,7 +116,7 @@ $resfac = mysqli_query($con, $sql);
                         </select>
                     </div>
                     <p class="dontHaveAcc">Already have account, <a href="./login.php">Login?</a></p>
-                    <p class="dontHaveAcc gobackHwRg">Don't Want Login, <a href="/e_notebook/index.php">Go Back?</a></p>
+                    <p class="dontHaveAcc gobackHwRg">Don't Want Login, <a href="../index.php">Go Back?</a></p>
 
                     <button type="submit" name="register">Signup</button>
                 </div>

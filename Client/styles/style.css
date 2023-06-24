@@ -7,7 +7,7 @@
 }
 
 .home {
-  width: 95%;
+  width: 85%;
   background-color: var(--light-bgcolor);
   display: flex;
   justify-content: center;

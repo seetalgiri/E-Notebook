@@ -13,7 +13,7 @@
 <body>
     <div id="container">
         <div id="loginform">
-            <form method="post" class="shadow" action="../Server/auth.php">
+            <form method="post" class="shadow" action="../Server/auths.php">
                 <div id="inputfields">
                     <h3 id="login">Login</h3>
                     <div class="input-box">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <p class="dontHaveAcc">Don't have an account, <a href="./register.php">Signup?</a></p>
-                    <p class="dontHaveAcc gobackHw">Don't Want Login, <a href="/e_notebook/index.php">Go Back?</a></p>
+                    <p class="dontHaveAcc gobackHw">Don't Want Login, <a href="../index.php">Go Back?</a></p>
                     </p>
 
                     <button type="submit" name="login">Login</button>

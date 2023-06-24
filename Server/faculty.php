@@ -13,29 +13,22 @@ if (!$con) {
 }
 
 if (isset($_POST['post'])) {
-    echo "clicked";
-    // Retrieve the posted text from a form or any other source
-    $author = $_POST['username'];
-    $stream = $_POST['stream'];
-    $postdes = $_POST['post_text'];
-    $image = $_POST['image'];
-    $post_like = $_POST['jscb'];
+    $faculty_name = $_POST['fname'];
+    $yearsem = $_POST['yearsem'];
 
     // Prepare the query to insert the post into the database
-    $query = "INSERT INTO `news` (`author`,`stream`, `postdes`, `image`) VALUES ('$author', '$stream', '$postdes', '$image')";
+    $query = "INSERT INTO `faculty` (`faculty_name`,`yearsem`) VALUES ('$faculty_name', '$yearsem')";
 
     // Execute the query
     $result = mysqli_query($con, $query);
 
     // Check if the query was successful
     if ($result) {
-        echo "Post successfully added to the newsfeed.";
+        echo "Faculty name successfully inserted in the database";
     } else {
-        echo "Error: Unable to add the post.";
+        echo "Error: Unable to add the faculty name.";
     }
 }
-
-
 
 // Close the database connection
 mysqli_close($con);

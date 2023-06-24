@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE)
 // Importing configurations 
 include '../Configuration.php';
 
-$privilege = 2;
+// $privilege = 2;
 
 // Database connection
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
@@ -17,10 +17,35 @@ if (!$con) {
 // Check if the button is set or not
 else {
     if (isset($_POST['register'])) {
-        if (!isset($_POST['username']) || !isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['stream'])) {
-            echo "Please fill in all the required fields.";
+        // if (!isset($_POST['username']) || !isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['stream'])) {
+        //     echo "Please fill in all the required fields.";
+        //     exit;
+        // }
+
+        // Validate username
+        if (!isset($_POST['username']) || empty($_POST['username'])) {
+            echo "Please enter a username.";
             exit;
         }
+
+        // Validate email
+        if (!isset($_POST['email']) || empty($_POST['email'])) {
+            echo "Please enter an email.";
+            exit;
+        }
+
+        // Validate password
+        if (!isset($_POST['password']) || empty($_POST['password'])) {
+            echo "Please enter a password.";
+            exit;
+        }
+
+        // Validate stream
+        if (!isset($_POST['stream']) || empty($_POST['stream'])) {
+            echo "Please select a stream.";
+            exit;
+        }
+
 
         // Fetch data from the frontend
         $name = $_POST['username'];
@@ -71,6 +96,18 @@ else {
 
     // Check if the login button is clicked or not
     if (isset($_POST['login'])) {
+
+        if (!isset($_POST['email']) || empty($_POST['email'])) {
+            echo "Please enter an email.";
+            exit;
+        }
+
+        // Validate password
+        if (!isset($_POST['password']) || empty($_POST['password'])) {
+            echo "Please enter a password.";
+            exit;
+        }
+
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -92,13 +129,12 @@ else {
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
                 $_SESSION['stream'] = $user['stream'];
-                $_SESSION['privilege'] = $privilege;
+                $_SESSION['privilege'] = $user['privilege'];
 
 
-                if ($privilege == 0) {
+                if ($_SESSION['privilege'] == 0) {
                     header("Location:../admin/dashboard.php");
                 } else {
-                    // Redirect to index.php or any other page you desire
                     header("Location: ../index.php");
                 }
 

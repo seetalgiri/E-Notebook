@@ -1,14 +1,15 @@
 <?php
 session_start();
 // session_destroy();
-include "./admin/common/common.php";
+// include "./admin/common/common.php";
+include "../Configuration.php";
 // db connection in (lms) db
 $con = mysqli_connect($host, $dbUserName, $dbPassword, $database);
 if (!$con) {
     die("DB connection failed");
 }
 
-if (isset($_POST['data'])) {
+if (isset($_POST['like'])) {
     // data from frontend
     $data = $_POST['data'];
     $userid = $_POST['userid'];
@@ -16,7 +17,7 @@ if (isset($_POST['data'])) {
     // data from backend
     $sqlGet = "SELECT * FROM `like` WHERE `id` = '1'";
     $responseRes = mysqli_query($con, $sqlGet);
-    if (mysqli_num_rows($responseRes) > 0) {
+    if (mysqli_num_rows($res_news) > 0) {
         $row = mysqli_fetch_array($responseRes);
         $likecontent = $row['like'];
 
