@@ -105,10 +105,8 @@ if (isset($_GET['edit'])) {
         // $sem > 0 ? $semYrchecked =  $sem : $year;
         if (intval($sem) > 0) {
             $semYrchecked =  $sem;
-            echo $semYrchecked;
         } else {
             $semYrchecked =  $year;
-            echo $semYrchecked;
         }
     }
 }
@@ -163,7 +161,7 @@ function getOrdinal($number)
     <title>E-NoteBook Note Post</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/globalas.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noteposts.css">
 
@@ -414,9 +412,6 @@ function getOrdinal($number)
 
 
 
-        // crossSection.addEventListener("click", toggleSection);
-        // filterSection.addEventListener("click", toggleSection);
-
         let sem = `<option value="1" <?php if ($semYrchecked == "1") echo "selected"; ?>>First Semester</option>
                                 <option value="2" <?php if ($semYrchecked == "2") echo "selected"; ?>>Second Semester</option>
                                 <option value="3" <?php if ($semYrchecked == "3") echo "selected"; ?>>Third Semester</option>
@@ -470,7 +465,6 @@ function getOrdinal($number)
                     handleSubjectChange();
                     handlesemSubjectChange()
                 }, 100);
-                // handlesemSubjectChange();
             }
         };
     </script>

@@ -1,5 +1,67 @@
 <?php
 
+
+if (isset($_GET['error'])) {
+    echo '<div class="fullcontainerToast">
+    <div class="toastifier">
+        <div class="toastifierContent errorToast ">
+        <div class="cross" onclick="crossClk()">X</div>
+
+        <div class="innercontent">
+            <!-- <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z"
+            />
+            </svg> -->
+
+            <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C15.53 0 20 4.47 20 10C20 15.53 15.53 20 10 20C4.47 20 0 15.53 0 10C0 4.47 4.47 0 10 0ZM13.59 5L10 8.59L6.41 5L5 6.41L8.59 10L5 13.59L6.41 15L10 11.41L13.59 15L15 13.59L11.41 10L15 6.41L13.59 5Z"
+            />
+            </svg>
+
+            <span> ' . $_GET['error'] . '</span>
+        </div>
+            </div>
+        </div>
+    </div>';
+}
+if (isset($_GET['success'])) {
+    echo '<div class="fullcontainerToast">
+    <div class="toastifier">
+        <div class="toastifierContent successToast ">
+        <div class="cross" onclick="crossClk()">X</div>
+
+        <div class="innercontent">
+            <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z"
+            />
+            </svg>
+            <span> ' . $_GET['success'] . '</span>
+        </div>
+            </div>
+        </div>
+    </div>';
+}
+
+
+
 $show_notification = false;
 include "./UserSessionData.php";
 
@@ -45,10 +107,9 @@ if (isset($_GET['add_admin'])) {
         $sqlUpdate = "UPDATE `auth` SET `privilege` = 1 WHERE `id` = '$admin'";
         mysqli_query($con, $sqlUpdate);
     } else {
-        echo "Access denied";
+        header("Location: " . $_SERVER['PHP_SELF'] . '?error=Access denied');
     }
-    header("Location: users.php");
-    exit();
+    header("Location: " . $_SERVER['PHP_SELF'] . '?success=added in admin');
 }
 if (isset($_GET['remove_admin'])) {
     $admin = $_GET['remove_admin'];
@@ -57,10 +118,9 @@ if (isset($_GET['remove_admin'])) {
         $sqlUpdate = "UPDATE `auth` SET `privilege` = 2 WHERE `id` = '$admin'";
         mysqli_query($con, $sqlUpdate);
     } else {
-        echo "Access denied";
+        header("Location: " . $_SERVER['PHP_SELF'] . '?error=Access denied');
     }
-    header("Location: users.php");
-    exit();
+    header("Location: " . $_SERVER['PHP_SELF'] . '?success=remoded from admin');
 }
 
 // delete user
@@ -71,10 +131,9 @@ if (isset($_GET['delete_user'])) {
         $sqlUpdate = "DELETE FROM `auth` WHERE `id` = '$user'";
         mysqli_query($con, $sqlUpdate);
     } else {
-        echo "Access Denide";
+        header("Location: " . $_SERVER['PHP_SELF'] . '?error=Access denied');
     }
-    header("Location: users.php");
-    exit();
+    header("Location: " . $_SERVER['PHP_SELF'] . '?success=user deleted successfully');
 }
 
 
@@ -195,8 +254,8 @@ if (mysqli_num_rows($res) > 0) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Users</title>
-    <link rel="stylesheet" href="../Client/styles/globalas.css">
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="../Client/styles/global.css">
+    <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/users.css">
 
     <!-- for JS Logic  -->
@@ -271,6 +330,33 @@ if (mysqli_num_rows($res) > 0) {
         </div>
 
     </div>
+    <script>
+        const fullcontainerToast = document.querySelectorAll(".fullcontainerToast");
+        setTimeout(() => {
+            for (let i = 0; i < fullcontainerToast.length; i++) {
+                fullcontainerToast[i].style.right = "0px";
+                document.body.style.overflow = "hidden";
+            }
+        }, 200);
+        setInterval(() => {
+            closeModal(); // Call the closeModal function
+        }, 3000);
+        const crossClk = () => {
+            closeModal(); // Call the closeModal function
+        };
+
+        const closeModal = () => {
+            for (let i = 0; i < fullcontainerToast.length; i++) {
+                fullcontainerToast[i].style.right = "-700px";
+                // document.body.style.overflowY = "auto";
+            }
+        };
+        if (window.location.search.includes('error') || window.location.search.includes('success')) {
+            history.replaceState({}, document.title, window.location.pathname);
+            // document.body.style.overflowY = "auto";
+
+        }
+    </script>
 </body>
 
 </html>

@@ -76,7 +76,7 @@ else {
         $emailQuery = "SELECT * FROM `auth` WHERE `email` = '$email'";
         $emailResult = mysqli_query($con, $emailQuery);
         if (mysqli_num_rows($emailResult) > 0) {
-            echo "User already registered";
+            header("Location: ../auth/register.php?error=User already registered");
         } else {
 
             // Set super user privileges to 0
@@ -96,7 +96,7 @@ else {
             }
 
             if (!$regResponse) {
-                echo "Cannot insert into the database";
+                header("Location: ../auth/register.php?error=Cannot register user");
             } else {
                 // Retrieve the inserted data's ID
                 $insertedId = mysqli_insert_id($con);
@@ -131,7 +131,8 @@ else {
 
         // Check whether the user is registered or not
         if (mysqli_num_rows($resLogin) < 1) {
-            echo "User not registered or password incorrect";
+            header("Location: ../auth/login.php?error=Enter valid credential");
+            // echo "User not registered or password incorrect";
         } else {
             $user = mysqli_fetch_assoc($resLogin);
             $hashedPassword = $user['password'];
@@ -154,7 +155,8 @@ else {
                 exit();
             } else {
                 // Password is incorrect
-                echo "User not registered or password incorrect";
+                // echo "User not registered or password incorrect";
+                header("Location: ../auth/login.php?error=Enter valid credential");
             }
         }
     }

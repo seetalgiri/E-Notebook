@@ -1,4 +1,6 @@
 <?php
+
+
 // Importing session datas
 include '../../admin/UserSessionData.php';
 
@@ -52,11 +54,19 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
                     $imagePath =  $uploadFIleFront . 'images/' . $newFileName;
                     $sql = "INSERT INTO `news` (`postdes`, `image`, `stream`, `author`, `authid`, `post_like`, `comment`) VALUES ('$postdes', '$imagePath', '$stream', '$author', '$authorId', '$like', '$comment')";
                 } else {
-                    echo 'Error uploading file.';
+                    if (isset($_POST['postnewsadmin'])) {
+                        header("Location: ../../admin/noticepost.php?error=Error uploading file");
+                    } else {
+                        header("Location: ../../index.php?error=Error uploading file");
+                    }
                     exit;
                 }
             } else {
-                echo 'Invalid file extension.';
+                if (isset($_POST['postnewsadmin'])) {
+                    header("Location: ../../admin/noticepost.php?error=Invalid file extension");
+                } else {
+                    header("Location: ../../index.php?error=Invalid file extension");
+                }
                 exit;
             }
         } else {
@@ -67,9 +77,9 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
         // Execute the SQL statement
         if (mysqli_query($conn, $sql)) {
             if (isset($_POST['postnewsadmin'])) {
-                header("Location: ../../admin/noticepost.php");
+                header("Location: ../../admin/noticepost.php?success=notice added successfully");
             } else {
-                header("Location: ../../index.php");
+                header("Location: ../../index.php?success=notice added successfully");
             }
             exit;
         } else {
