@@ -441,7 +441,7 @@
   color: var(--primary-color);
   text-transform: uppercase;
 }
-.headContent .cross {
+.headContent .crossModal {
   text-align: right;
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px 15px;
@@ -451,7 +451,7 @@
   color: var(--text-color-light);
   width: 20px;
 }
-.headContent .cross:hover {
+.headContent .crossModal:hover {
   color: var(--text-color-dark);
 }
 #postModal {
