@@ -50,24 +50,22 @@ if (isset($_POST['requestDis']) && isset($_POST['stream']) && isset($_FILES['fil
                 $imagePath = $uploadFIleFront . 'request/' . $newFileName;
                 $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`) VALUES ('$postdes', '$stream', '$imagePath', '$semYr', '$subname', '$notename', '$username', '$id')";
             } else {
-                echo 'Error uploading file.';
-                exit;
+                header("Location: ../../index.php?error=Error uploading file");
             }
         } else {
-            echo 'Invalid file extension.';
-            exit;
+            header("Location: ../../index.php?error=Invalid file extension");
         }
     } else {
         // Construct the SQL statement without image data
-        $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`) VALUES ('$postdes', '$stream', NULL, '$semYr', '$subname', '$notename', '$author', '$id')";
+        $sql = "INSERT INTO `requestpost` (`description`, `stream`, `file`, `semYr`, `sub_name`, `note_name`, `author_name`, `author_id`) VALUES ('$postdes', '$stream', NULL, '$semYr', '$subname', '$notename', '$username', '$id')";
     }
 
     // Execute the SQL statement
     if (mysqli_query($conn, $sql)) {
         if (isset($_POST['postnewsadmin'])) {
-            header("Location: ../../admin/noticepost.php");
+            header("Location: ../../admin/noticepost.php?success=Note Requested successfully");
         } else {
-            header("Location: ../../index.php");
+            header("Location: ../../index.php?success=Note Requested successfully");
         }
         exit;
     } else {
