@@ -679,6 +679,7 @@ $resfac = mysqli_query($con, $sql);
         }, 3000);
         const crossClk = () => {
             closeModal(); // Call the closeModal function
+            location.reload();
         };
 
         const closeModal = () => {
