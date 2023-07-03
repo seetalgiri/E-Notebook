@@ -24,6 +24,13 @@ if (isset($_GET['error'])) {
             </div>
         </div>
     </div>';
+    echo '
+    <script>
+        setTimeout(function() {
+        location.reload();
+        }, 2000);
+    </script>
+    ';
 }
 if (isset($_GET['success'])) {
     echo '<div class="fullcontainerToast">
@@ -47,6 +54,13 @@ if (isset($_GET['success'])) {
         </div>
         </div>
         </div>';
+    echo '
+    <script>
+        setTimeout(function() {
+        location.reload();
+        }, 2000);
+    </script>
+    ';
 }
 
 
