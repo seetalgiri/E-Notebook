@@ -1,6 +1,67 @@
 <?php
 $show_notification = false;
 
+if (isset($_GET['error'])) {
+    echo '<div class="fullcontainerToast">
+    <div class="toastifier">
+        <div class="toastifierContent errorToast ">
+        <div class="cross" onclick="crossClk()">X</div>
+
+        <div class="innercontent">
+            <!-- <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z"
+            />
+            </svg> -->
+
+            <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C15.53 0 20 4.47 20 10C20 15.53 15.53 20 10 20C4.47 20 0 15.53 0 10C0 4.47 4.47 0 10 0ZM13.59 5L10 8.59L6.41 5L5 6.41L8.59 10L5 13.59L6.41 15L10 11.41L13.59 15L15 13.59L11.41 10L15 6.41L13.59 5Z"
+            />
+            </svg>
+
+            <span> ' . $_GET['error'] . '</span>
+        </div>
+            </div>
+        </div>
+    </div>';
+}
+if (isset($_GET['success'])) {
+    echo '<div class="fullcontainerToast">
+    <div class="toastifier">
+        <div class="toastifierContent successToast ">
+        <div class="cross" onclick="crossClk()">X</div>
+
+        <div class="innercontent">
+            <svg
+            width="16"
+            height="16"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            >
+            <path
+                d="M10 0C4.5 0 0 4.5 0 10C0 15.5 4.5 20 10 20C15.5 20 20 15.5 20 10C20 4.5 15.5 0 10 0ZM8 15L3 10L4.41 8.59L8 12.17L15.59 4.58L17 6L8 15Z"
+            />
+            </svg>
+            <span> ' . $_GET['success'] . '</span>
+        </div>
+            </div>
+        </div>
+    </div>';
+}
+
+
+
 // importaing configurations 
 include '../Configuration.php';
 
@@ -57,10 +118,10 @@ if (isset($_GET['deletenote'])) {
     // Execute the delete query
     if (mysqli_query($con, $deleteQuery)) {
         // Redirect to the same page without the deletenote parameter
-        header("Location: " . $_SERVER['PHP_SELF']);
+        header("Location: " . $_SERVER['PHP_SELF'] . '?success=note deleted successfully');
         exit(); // Make sure to exit after the redirect
     } else {
-        echo "Error deleting note: " . mysqli_error($con);
+        header("Location: " . $_SERVER['PHP_SELF'] . '?success=can not delete note');
     }
     // Close the database connection
     mysqli_close($con);
@@ -255,7 +316,7 @@ function getOrdinal($number)
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="../Server/Notes/uploadnote.php" method="post" id="forms" enctype="multipart/form-data">
+                <form action="../Server/Notes/uploadnote.phpp" method="post" id="forms" enctype="multipart/form-data">
                     <h3>Add Faculty:</h3>
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
@@ -467,6 +528,31 @@ function getOrdinal($number)
                 }, 100);
             }
         };
+        const fullcontainerToast = document.querySelectorAll(".fullcontainerToast");
+        setTimeout(() => {
+            for (let i = 0; i < fullcontainerToast.length; i++) {
+                fullcontainerToast[i].style.right = "0px";
+                document.body.style.overflow = "hidden";
+            }
+        }, 200);
+        setInterval(() => {
+            closeModal(); // Call the closeModal function
+        }, 3000);
+        const crossClk = () => {
+            closeModal(); // Call the closeModal function
+        };
+
+        const closeModal = () => {
+            for (let i = 0; i < fullcontainerToast.length; i++) {
+                fullcontainerToast[i].style.right = "-700px";
+                // document.body.style.overflowY = "auto";
+            }
+        };
+        if (window.location.search.includes('error') || window.location.search.includes('success')) {
+            history.replaceState({}, document.title, window.location.pathname);
+            // document.body.style.overflowY = "auto";
+
+        }
     </script>
 
 </body>

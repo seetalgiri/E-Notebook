@@ -22,12 +22,12 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
     // Validate faculty ID
     if ($facultyid == 0 || $facultyid == "") {
-        die("Please select a faculty");
+        header("Location: ../../admin/notepost.php?error=Please select a faculty");
     }
 
     // Validate subject ID
     if ($subjectid == 0 || $subjectid == "") {
-        die("Please select a subject");
+        header("Location: ../../admin/notepost.php?error=Please select a subject");
     }
 
     // Prepare the faculty name query
@@ -63,7 +63,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             // Check if the file is a PDF
             $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
             if ($file_ext !== "pdf") {
-                die("Only PDF files are allowed!");
+                header("Location: ../../admin/notepost.php?error=Only PDF files are allowed");
             }
 
             // Define the upload directory based on section
@@ -106,14 +106,13 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
                 // Execute the prepared statement
                 if (mysqli_stmt_execute($stmt)) {
-                    header("Location: ../../admin/notepost.php");
+                    header("Location: ../../admin/notepost.php?success=note update successfully");
                     exit;
                 } else {
-                    echo "Error updating record: " . mysqli_error($con);
+                    header("Location: ../../admin/notepost.php?error=sorry cannot update note");
                 }
             } else {
-                echo "Error uploading file.";
-                exit;
+                header("Location: ../../admin/notepost.php?error=Error uploading file");
             }
         } else {
             $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
@@ -127,10 +126,10 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
             // Execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
-                header("Location: ../../admin/notepost.php");
+                header("Location: ../../admin/notepost.php?success=note update successfully");
                 exit;
             } else {
-                echo "Error updating record: " . mysqli_error($con);
+                header("Location: ../../admin/notepost.php?error=cannot update note");
             }
         }
     } else {
@@ -145,7 +144,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             // Check if the file is a PDF
             $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
             if ($file_ext !== "pdf") {
-                die("Only PDF files are allowed!");
+                header("Location: ../../admin/notepost.php?error=only PDF file allowed");
             }
 
             // Define the upload directory based on section
@@ -188,16 +187,19 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
 
                 // Execute the prepared statement
                 if (mysqli_stmt_execute($stmt)) {
-                    header("Location: ../../admin/notepost.php");
+                    header("Location: ../../admin/notepost.php?success=note added successfully");
                     exit;
                 } else {
                     echo "Error inserting record: " . mysqli_error($con);
+                    header("Location: ../../admin/notepost.php?error=cannot added note");
                 }
             } else {
-                echo "Error uploading file.";
+                header("Location: ../../admin/notepost.php?error=Error uploading file");
+                // echo "Error uploading file.";
             }
         } else {
-            echo "No file uploaded.";
+            // echo "No file uploaded.";
+            header("Location: ../../admin/notepost.php?error=No file uploaded");
         }
     }
 
