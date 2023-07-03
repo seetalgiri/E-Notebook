@@ -87,7 +87,7 @@ $resfac = mysqli_query($con, $sql);
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigations.css" />
-    <link rel="stylesheet" href="./Client/styles/indexss.css" />
+    <link rel="stylesheet" href="./Client/styles/index.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -225,7 +225,7 @@ $resfac = mysqli_query($con, $sql);
                                 ${data.postdes.trim().replace(/\n/g, "<br>")}
                                 </div>
                                 ${
-                                    data.image.length > 0?`
+                                    data.image.length > 6?`
                                     <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}" loading="lazy">
                                     `:``
                                 }
@@ -657,7 +657,7 @@ $resfac = mysqli_query($con, $sql);
         setTimeout(() => {
             for (let i = 0; i < fullcontainerToast.length; i++) {
                 fullcontainerToast[i].style.right = "0px";
-                document.body.style.overflow = "hidden";
+                document.body.style.overflowX = "hidden";
             }
         }, 200);
         setInterval(() => {
@@ -670,12 +670,10 @@ $resfac = mysqli_query($con, $sql);
         const closeModal = () => {
             for (let i = 0; i < fullcontainerToast.length; i++) {
                 fullcontainerToast[i].style.right = "-700px";
-                document.body.style.overflowY = "auto";
             }
         };
         if (window.location.search.includes('error') || window.location.search.includes('success')) {
             history.replaceState({}, document.title, window.location.pathname);
-            document.body.style.overflowY = "auto";
         }
     </script>
 </body>
