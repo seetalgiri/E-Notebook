@@ -122,7 +122,7 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             $stmt = mysqli_prepare($con, $updateQuery);
 
             // Bind the parameters to the statement
-            mysqli_stmt_bind_param($stmt, "siissssiissi", $description, $facultyid, $subjectid, $noteName, $section, $facultyName, $sem, $year, $subName, $author, $update);
+            mysqli_stmt_bind_param($stmt, "siisssiissi", $description, $facultyid, $subjectid, $noteName, $section, $facultyName, $sem, $year, $subName, $author, $update);
 
             // Execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {

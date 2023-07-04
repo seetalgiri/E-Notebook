@@ -357,7 +357,7 @@ function getOrdinal($number)
                         </div>
                         <div id="forms" class="flex fbselectStr">
                             <label for="image">Select Image:</label>
-                            <input type="file" name="note" id="image" accept="application/pdf" required>
+                            <input type="file" name="note" id="image" accept="application/pdf" <?php echo (isset($_GET['edit']) ? '' : 'required'); ?>>
                         </div>
                     </div>
                     <div class='flexButtons'>
