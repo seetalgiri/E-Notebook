@@ -228,7 +228,7 @@ function getOrdinal($number)
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/notepost.js" defer></script>
+    <script src="./logic/noteposts.js" defer></script>
 </head>
 
 <body>
@@ -316,7 +316,7 @@ function getOrdinal($number)
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
-                <form action="../Server/Notes/uploadnote.phpp" method="post" id="forms" enctype="multipart/form-data">
+                <form action="../Server/Notes/uploadnote.php" method="post" id="forms" enctype="multipart/form-data">
                     <h3>Add Faculty:</h3>
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
