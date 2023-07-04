@@ -460,6 +460,7 @@ function getOrdinal($number)
         const closeModal = () => {
             for (let i = 0; i < fullcontainerToast.length; i++) {
                 fullcontainerToast[i].style.right = "-700px";
+                window.location.reload();
                 document.body.style.overflow = "auto";
             }
         };

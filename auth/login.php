@@ -172,6 +172,7 @@ if (isset($_GET['error'])) {
         const closeModal = () => {
             for (let i = 0; i < fullcontainerToast.length; i++) {
                 fullcontainerToast[i].style.right = "-700px";
+                window.location.reload();
             }
         };
         if (window.location.search.includes('error')) {

@@ -545,13 +545,11 @@ function getOrdinal($number)
         const closeModal = () => {
             for (let i = 0; i < fullcontainerToast.length; i++) {
                 fullcontainerToast[i].style.right = "-700px";
-                // document.body.style.overflowY = "auto";
+                window.location.reload();
             }
         };
         if (window.location.search.includes('error') || window.location.search.includes('success')) {
             history.replaceState({}, document.title, window.location.pathname);
-            // document.body.style.overflowY = "auto";
-
         }
     </script>
 
