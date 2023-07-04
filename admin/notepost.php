@@ -257,9 +257,10 @@ function getOrdinal($number)
                         $year = $row['year'];
                         $semYr = "";
                         $sem > 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
+                        $postDesl = strlen($postDes) > 30 ? substr($postDes, 0, 30) . '...' : $postDes;
                         echo "<tr>
                         <td>{$i}</td>
-                        <td>{$postDes}</td>
+                        <td>{$postDesl}</td>
                         <td>{$row['stream_name']}</td>
                         <td>{$semYr}</td>
                         <td>{$row['sub_name']}</td>
