@@ -447,7 +447,7 @@ function getOrdinal($number)
         }, 200);
         setInterval(() => {
             closeModal(); // Call the closeModal function
-        }, 3000);
+        }, 2000);
         const crossClk = () => {
             closeModal(); // Call the closeModal function
         };

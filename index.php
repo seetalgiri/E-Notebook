@@ -366,7 +366,7 @@ $resfac = mysqli_query($con, $sql);
                     copystatus.innerHTML = copysuccessSVG;
                     setTimeout(() => {
                         copystatus.innerHTML = copyLinkSVG;
-                    }, 3000);
+                    }, 2000);
                 })
             }
 
@@ -676,7 +676,7 @@ $resfac = mysqli_query($con, $sql);
         }, 200);
         setInterval(() => {
             closeModal(); // Call the closeModal function
-        }, 3000);
+        }, 2000);
         const crossClk = () => {
             closeModal(); // Call the closeModal function
             location.reload();
