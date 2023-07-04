@@ -348,9 +348,7 @@ if (isset($_GET['search'])) {
                 const data = await response.json();
                 let finalData = data.data.reverse()
                 return finalData;
-            } catch (e) {
-                console.log(e)
-            }
+            } catch (e) {}
         }
         const fullcontainerToast = document.querySelectorAll(".fullcontainerToast");
         setTimeout(() => {

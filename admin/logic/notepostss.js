@@ -45,7 +45,6 @@ const removeParams = () => {
 };
 window.onclick = function (event) {
   const parentId = event.target.parentNode.id;
-  console.log(event.target.id);
 
   if (event.target.id === "wrapperdivform") {
     if (modalContent.style.right !== "-475px") {

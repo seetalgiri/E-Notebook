@@ -436,12 +436,7 @@ function getOrdinal($number)
                 const selectedOption = selectElement.options[selectedIndex];
                 const selectedValue = selectedOption.value;
                 const selectedText = selectedOption.text;
-
-                console.log("Selected Value: " + selectedValue);
-                console.log("Selected Text: " + selectedText);
-            } else {
-                console.log("No option selected.");
-            }
+            } else {}
         }
         const fullcontainerToast = document.querySelectorAll(".fullcontainerToast");
         setTimeout(() => {
