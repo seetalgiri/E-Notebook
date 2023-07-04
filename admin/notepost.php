@@ -224,11 +224,11 @@ function getOrdinal($number)
     <link rel="stylesheet" href="../Client/styles/global.css">
     <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/faculity.css">
-    <link rel="stylesheet" href="./CSS/noteposts.css">
+    <link rel="stylesheet" href="./CSS/notepost.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
-    <script src="./logic/noteposts.js" defer></script>
+    <script src="./logic/notepostss.js" defer></script>
 </head>
 
 <body>
@@ -381,10 +381,11 @@ function getOrdinal($number)
                         <button type="reset">Reset</button>
                     </div>
                 </form>
-
             </div>
+            <div class="wrapperDivForm" id="wrapperdivform"></div>
         </div>
     </div>
+
 
 
 

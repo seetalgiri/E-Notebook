@@ -7,10 +7,13 @@ function modalBtnclk() {
   if (modalContent.style.right === "0px") {
     modalContent.style.right = "-475px";
     svgbtn.style.transform = "rotateZ(180deg)";
+    document.getElementById("wrapperdivform").style.display = "none";
+
     removeParams();
   } else {
     modalContent.style.right = "0px";
     svgbtn.style.transform = "rotateZ(0deg)";
+    document.getElementById("wrapperdivform").style.display = "block";
   }
 }
 // when url have chaptername and description modal open
@@ -42,20 +45,13 @@ const removeParams = () => {
 };
 window.onclick = function (event) {
   const parentId = event.target.parentNode.id;
-  const par = event.target;
-  if (
-    event.target.id !== "forms" &&
-    parentId !== "sidenav" &&
-    parentId !== "sideButton" &&
-    parentId !== "modalContent" &&
-    parentId !== "forms" &&
-    parentId !== "editbtn" &&
-    par !== "notePostUpload" &&
-    parentId !== "notePostUpload"
-  ) {
+  console.log(event.target.id);
+
+  if (event.target.id === "wrapperdivform") {
     if (modalContent.style.right !== "-475px") {
       modalContent.style.right = "-475px";
       svgbtn.style.transform = "rotateZ(180deg)";
+      document.getElementById("wrapperdivform").style.display = "none";
     }
   }
 
