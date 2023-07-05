@@ -93,7 +93,6 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             // Move the uploaded file to the desired location
             if (move_uploaded_file($file_tmp, $destination)) {
                 $lastPath = $notePath . $unique_filename;
-
                 // Prepare the update query
                 $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, note_file = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
                 WHERE id = ?";
