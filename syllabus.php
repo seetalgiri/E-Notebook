@@ -115,8 +115,9 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
         }
 
         $sqlNote .= " LIMIT $offset, $recordsPerPage";
-
         $resultNotes = mysqli_query($con, $sqlNote);
+        $totalRowNumber = mysqli_num_rows($resultNotes);
+        $totalPages = ceil($totalRowNumber / $recordsPerPage);
     }
 }
 
@@ -134,10 +135,14 @@ if (isset($_GET['search'])) {
         // Query with the search value
         $sqlNote = "SELECT * FROM notes WHERE note_category = 'syllabus' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
+        $totalRowNumber = mysqli_num_rows($resultNotes);
+        $totalPages = ceil($totalRowNumber / $recordsPerPage);
     } else {
         // Query without the search value
         $sqlNote = "SELECT * FROM notes WHERE note_category = 'syllabus' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
+        $totalRowNumber = mysqli_num_rows($resultNotes);
+        $totalPages = ceil($totalRowNumber / $recordsPerPage);
     }
 }
 

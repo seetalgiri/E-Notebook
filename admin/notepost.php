@@ -84,6 +84,14 @@ $resultRowNum = mysqli_query($con, $querytotalnumberROw);
 $rowNumbers = mysqli_fetch_assoc($resultRowNum);
 $totalRowNumber = $rowNumbers['total'];
 
+
+
+
+
+
+
+
+
 // for total page 
 $recordsPerPage = 10;
 $totalPages = ceil($totalRowNumber / $recordsPerPage);
@@ -266,7 +274,7 @@ function getOrdinal($number)
                         <td>{$row['sub_name']}</td>
                         <td>{$noteName}</td>
                         <td class='edit twoBtn' id='editbtn'>
-            <a href='?edit={$noteId}'>
+            <a href='?edit={$noteId}&{$_SERVER['QUERY_STRING']}'>
                 <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
                 </svg>
