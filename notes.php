@@ -127,6 +127,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
 
 
 // Retrieve the search value from the GET request]
+
 if (isset($_GET['search'])) {
     $search = isset($_GET['search']) ? $_GET['search'] : '';
 
