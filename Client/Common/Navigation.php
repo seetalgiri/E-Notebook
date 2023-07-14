@@ -68,7 +68,7 @@ if (isset($_POST['logoutBtn'])) {
             </form>';
 
             if (intval($privilege) < 2) {
-                echo '<a href="./admin/dashboard.php" class="logoutbtn">
+                echo '<a href="./admin/dashboard.php" target="blank" class="logoutbtn">
             <button type="submit" name="logoutBtn">DASHBOARD</button>
         </a>';
             }
