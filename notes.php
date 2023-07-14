@@ -438,7 +438,7 @@ if (isset($_GET['search'])) {
 
         function handleSubjectChange() {
             let stream = streamDropdown.value;
-            let streamfiltered = data.filter(e => e.facultyid === stream);
+            let streamfiltered = data.filter(e => Number(e.facultyid) === Number(stream));
             filterdcontent = streamfiltered;
             subjectDropdown.innerHTML = "";
             subjectDropdown.innerHTML = '<option value="">Select Subject</option>';
@@ -485,12 +485,15 @@ if (isset($_GET['search'])) {
 
             }
 
+            let streamfilteredd = data.filter(e => Number(e.facultyid) === Number(stream));
+
+
             if (filterdcontent.length <= 0) {
                 if (semYearDropdown.children.length > 7) {
-                    streamfiltered = data.filter(e => e.sem === grade);
+                    streamfiltered = streamfilteredd.filter(e => e.sem === grade);
                     allDataset()
                 } else {
-                    streamfiltered = data.filter(e => e.year === grade);
+                    streamfiltered = streamfilteredd.filter(e => e.year === grade);
                     allDataset()
                 }
             } else {
