@@ -22,7 +22,7 @@ if (isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Client/styles/global.css" />
+    <link rel="stylesheet" href="../Client/styles/globala.css" />
     <link rel="stylesheet" href="../Client/styles/verify.css" />
     <title>Verification Account UI</title>
     <style>

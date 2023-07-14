@@ -163,14 +163,14 @@ if (isset($_GET['search'])) {
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook Notes</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globala.css  -->
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <!-- common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigations.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
-    <link rel="stylesheet" href="./Client/styles/note.css" />
+    <link rel="stylesheet" href="./Client/styles/notes.css" />
     <!-- ==================== JS Imported ======================== -->
     <!-- <script src="./Client/logic/note.js" defer></script> -->
 

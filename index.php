@@ -96,12 +96,12 @@ $resfac = mysqli_query($con, $sql);
     <link rel="icon" href="./Client/images/logo.png" type="image/icon type">
     <title>E-Notebook</title>
     <!-- ==================== CSS Imported ======================== -->
-    <!-- for global.css  -->
-    <link rel="stylesheet" href="./Client/styles/global.css" />
+    <!-- for globala.css  -->
+    <link rel="stylesheet" href="./Client/styles/globala.css" />
     <!-- for common css  -->
     <link rel="stylesheet" href="./Client/styles/style.css" />
     <link rel="stylesheet" href="./Client/styles/navigations.css" />
-    <link rel="stylesheet" href="./Client/styles/index.css" />
+    <link rel="stylesheet" href="./Client/styles/indexa.css" />
     <!-- for nav css  -->
     <link rel="stylesheet" href="./Client/styles/navstyle.css" />
 
@@ -228,7 +228,7 @@ $resfac = mysqli_query($con, $sql);
                                             <svg width="12" height="12" viewBox="0 0 5 5" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M3.975 3.8475C3.91 3.6475 3.7225 3.5 3.5 3.5H3.25V2.75C3.25 2.6837 3.22366 2.62011 3.17678 2.57322C3.12989 2.52634 3.0663 2.5 3 2.5H1.5V2H2C2.0663 2 2.12989 1.97366 2.17678 1.92678C2.22366 1.87989 2.25 1.8163 2.25 1.75V1.25H2.75C2.88261 1.25 3.00979 1.19732 3.10355 1.10355C3.19732 1.00979 3.25 0.882608 3.25 0.75V0.6475C3.9825 0.9425 4.5 1.66 4.5 2.5C4.5 3.02 4.3 3.4925 3.975 3.8475ZM2.25 4.4825C1.2625 4.36 0.5 3.52 0.5 2.5C0.5 2.345 0.52 2.195 0.5525 2.0525L1.75 3.25V3.5C1.75 3.63261 1.80268 3.75979 1.89645 3.85355C1.99021 3.94732 2.11739 4 2.25 4M2.5 0C2.1717 0 1.84661 0.0646644 1.54329 0.190301C1.23998 0.315938 0.96438 0.500087 0.732233 0.732233C0.263392 1.20107 0 1.83696 0 2.5C0 3.16304 0.263392 3.79893 0.732233 4.26777C0.96438 4.49991 1.23998 4.68406 1.54329 4.8097C1.84661 4.93534 2.1717 5 2.5 5C3.16304 5 3.79893 4.73661 4.26777 4.26777C4.73661 3.79893 5 3.16304 5 2.5C5 2.1717 4.93534 1.84661 4.8097 1.54329C4.68406 1.23998 4.49991 0.96438 4.26777 0.732233C4.03562 0.500087 3.76002 0.315938 3.45671 0.190301C3.15339 0.0646644 2.8283 0 2.5 0Z" />
                                             </svg>`: `<span>.</span>
-                                            <svg width="14" height="14" viewBox="0 0 22 18"  xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="15" height="15" viewBox="0 0 22 18"  xmlns="http://www.w3.org/2000/svg">
                                             <path d="M11 0L0 6L11 12L20 7.09V14H22V6M4 10.18V14.18L11 18L18 14.18V10.18L11 14L4 10.18Z" />
                                             </svg>`}
                                     </div>
@@ -262,6 +262,7 @@ $resfac = mysqli_query($con, $sql);
                                     <span id="counterComment${data.id}" class="counter">${data.comment.length}</span>
                                     <!-- <span>Comments</span> -->
                                 </div>
+                             
                                 <div id="share${data.id}" class="actionFlex iconProperty shareIconContainer" onclick="shareIconClk(event, ${data.id})">
                                     <svg width="17" class="iconProperty" height="17" viewBox="0 0 8 7" xmlns="http://www.w3.org/2000/svg">
                                         <path class="iconProperty" d="M7.75 3.00004L4.83333 0.083374V1.75004C1.91667 2.16671 0.666667 4.25004 0.25 6.33337C1.29167 4.87504 2.75 4.20837 4.83333 4.20837V5.91671L7.75 3.00004Z" />
@@ -321,15 +322,23 @@ $resfac = mysqli_query($con, $sql);
 
                                     </div>
                                 </div>
+                                ${data.image.length>2?`
+                                    <div id="comment" class="actionFlex" onclick="commentFOcusIconclk(${data.id}, <?php echo $id ?>)">
+                                        <a href="${data.image}" download>
+                                            <svg width="15" height="18" viewBox="0 0 15 18" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M0.296295 17.6296H14.2963V15.6296H0.296295M14.2963 6.62962H10.2963V0.629623H4.2963V6.62962H0.296295L7.2963 13.6296L14.2963 6.62962Z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                `:''}
                             </div>
-                            <div class="divline mt-2"></div>
+                            
+                            ${data.comment.length<=0?`<div class="divline mt-2"></div>`:''}
 
                             <!-- for comment pot -->
                             <div>
                                 <!-- for thers comment  -->
-                                <div id="commentContent" class="commentContent${data.id}">
-                                </div>
-
+                                ${data.comment.length>0?`<div id="commentContent" class="commentContent${data.id}"></div>`:''}
                                 <!-- for post comment  -->
                                 <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
                                     <div id="cmtPost" class="shadow">

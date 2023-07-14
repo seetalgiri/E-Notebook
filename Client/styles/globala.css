@@ -72,7 +72,7 @@
   --color-bg-modal: rgba(90, 90, 90, 0.7);
 
   /* for border colors  */
-  --light-border-clor-opacity1: rgba(255, 255, 255, 0.2);
+  --light-border-clor-opacity1: rgb(80 80 80 / 20%);
   --light-border-clor-opacity2: rgba(255, 255, 255, 0.2);
 
   /* for light small shadow  */
