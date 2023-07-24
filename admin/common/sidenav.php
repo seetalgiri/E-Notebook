@@ -235,7 +235,6 @@ $countREQPost = mysqli_num_rows($resfacREQPost);
                             </div>
                         </div>
                     </div>
-
                 </li>
                 <li id="adminProfilemainDiv">
                     <div id="adminProfile">
