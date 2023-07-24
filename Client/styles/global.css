@@ -380,7 +380,7 @@ body {
   height: 100vh;
   width: 100%;
   z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: var(--light-border-clor-opacity1);
   display: none;
   font-family: Arial, Helvetica, sans-serif !important;
 }
@@ -396,7 +396,7 @@ body {
 .actualCardConfirm {
   height: 180px;
   width: 350px;
-  background-color: rgb(228, 252, 255);
+  background-color: var(--bg-white);
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
@@ -407,6 +407,7 @@ body {
   border-radius: 4px;
   box-shadow: 0 0px 2px 0px rgba(0, 0, 0, 0.2);
   position: relative;
+  color: var(--text-color-light);
 }
 
 .headermodalCon {
@@ -424,11 +425,10 @@ body {
 #confirmModalButtons button,
 #confirmModalButtons a {
   border: 1px solid rgba(0, 0, 0, 0.3);
-
   padding: 6px 15px;
   letter-spacing: 1px;
   text-decoration: none;
-  color: black;
+  color: var(--text-color-light);
   background-color: transparent;
   font-size: 14px;
   font-weight: 600;
@@ -460,9 +460,9 @@ body {
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--text-color-light);
 }
 
 .crossBtn:hover {
-  color: black;
+  color: var(--text-color-dark);
 }
