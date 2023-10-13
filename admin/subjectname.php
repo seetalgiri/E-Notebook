@@ -141,9 +141,8 @@ $idnum = "";
 $semYr = "";
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
-    $sql = "SELECT subname.*, faculty.faculity_name AS facname
-    FROM subname
-    JOIN faculty ON faculty.id = subname.facultyid WHERE id = $id";
+    $sql = "SELECT *
+    FROM subname WHERE id = $id";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);

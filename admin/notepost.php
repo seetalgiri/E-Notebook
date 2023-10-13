@@ -208,11 +208,51 @@ if (isset($_GET['search'])) {
     // Check if the search value is set
     if (!empty($search)) {
         // Query with the search value
-        $sqlNote = "SELECT * FROM `notes` WHERE `note_name` LIKE '%$search%' OR `post_des` LIKE '%$search%'";
+        $sqlNote = "SELECT
+        notes.id,
+        notes.post_des,
+        notes.stream_id,
+        notes.sem,
+        notes.year,
+        notes.sub_id,
+        notes.note_file,
+        notes.note_name,
+        notes.note_category,
+        notes.note_like,
+        notes.date,
+        notes.author,
+        faculty.id AS faculty_id,
+        faculty.faculity_name AS stream_name,
+        faculty.date AS faculty_date,
+        faculty.yearsem,
+        subname.name AS sub_name
+        FROM notes
+        JOIN faculty ON notes.stream_id = faculty.id
+        JOIN subname ON notes.sub_id = subname.id LIKE '%$search%' OR `post_des` LIKE '%$search%' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
     } else {
         // Query without the search value
-        $sqlNote = "SELECT * FROM `notes`";
+        $sqlNote = "SELECT
+        notes.id,
+        notes.post_des,
+        notes.stream_id,
+        notes.sem,
+        notes.year,
+        notes.sub_id,
+        notes.note_file,
+        notes.note_name,
+        notes.note_category,
+        notes.note_like,
+        notes.date,
+        notes.author,
+        faculty.id AS faculty_id,
+        faculty.faculity_name AS stream_name,
+        faculty.date AS faculty_date,
+        faculty.yearsem,
+        subname.name AS sub_name
+        FROM notes
+        JOIN faculty ON notes.stream_id = faculty.id
+        JOIN subname ON notes.sub_id = subname.id LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
     }
 }
