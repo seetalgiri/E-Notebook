@@ -103,7 +103,27 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes ORDER BY id DESC LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT
+notes.id,
+notes.post_des,
+notes.stream_id,
+notes.sem,
+notes.year,
+notes.sub_id,
+notes.note_file,
+notes.note_name,
+notes.note_category,
+notes.note_like,
+notes.date,
+notes.author,
+faculty.id AS faculty_id,
+faculty.faculity_name AS stream_name,
+faculty.date AS faculty_date,
+faculty.yearsem,
+subname.name AS sub_name
+FROM notes
+JOIN faculty ON notes.stream_id = faculty.id
+JOIN subname ON notes.sub_id = subname.id ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 
 
@@ -141,7 +161,6 @@ $post_des = "";
 $stream_id = "";
 $sem = "";
 $year = "";
-$sub_name = "";
 $sub_id = "";
 $note_file = "";
 $note_name = "";
@@ -163,19 +182,17 @@ if (isset($_GET['edit'])) {
         $stream_id = $note['stream_id'];
         $sem = $note['sem'];
         $year = $note['year'];
-        $sub_name = $note['sub_name'];
         $sub_id = $note['sub_id'];
         $note_file = $note['note_file'];
         $note_name = $note['note_name'];
         $author = $note['author'];
         $note_category = $note['note_category'];
-        $stream_name = $note['stream_name'];
         $note_like = $note['note_like'];
         // $sem > 0 ? $semYrchecked =  $sem : $year;
         if (intval($sem) > 0) {
-            $semYrchecked =  $sem;
+            $semYrchecked = $sem;
         } else {
-            $semYrchecked =  $year;
+            $semYrchecked = $year;
         }
     }
 }
@@ -264,7 +281,7 @@ function getOrdinal($number)
                         $sem = $row['sem'];
                         $year = $row['year'];
                         $semYr = "";
-                        $sem > 0 ? $semYr =  getOrdinal($sem) . " semester" : $semYr =  getOrdinal($year)  . " year";
+                        $sem > 0 ? $semYr = getOrdinal($sem) . " semester" : $semYr = getOrdinal($year) . " year";
                         $postDesl = strlen($postDes) > 30 ? substr($postDes, 0, 30) . '...' : $postDes;
                         echo "<tr>
                         <td>{$i}</td>
@@ -329,16 +346,19 @@ function getOrdinal($number)
                     <h3>Add Faculty:</h3>
                     <div id="forms" class="flex">
                         <label for="PostDesctiption">Enter Post Description:</label>
-                        <textarea name="description" id="PostDesctiption" cols="30" rows="5" placeholder="Enter Note Description..." required><?php echo $post_des; ?></textarea>
+                        <textarea name="description" id="PostDesctiption" cols="30" rows="5"
+                            placeholder="Enter Note Description..." required><?php echo $post_des; ?></textarea>
                     </div>
                     <div id="forms" class="flex">
                         <label for="author">Enter Author:</label>
-                        <input type="text" name="author" id="author" placeholder="Enter Note Name" style="padding: 10px 8px;" required value="<?php echo $author; ?>">
+                        <input type="text" name="author" id="author" placeholder="Enter Note Name"
+                            style="padding: 10px 8px;" required value="<?php echo $author; ?>">
                     </div>
                     <div class='flexButtons'>
                         <div id="forms" class="flex fbselectStr">
                             <label for="mySelect">Select Stream:</label>
-                            <select name="facultyid" id="mySelect" onchange="myFunction()" style="padding: 11px; border-radius: 3px" required>
+                            <select name="facultyid" id="mySelect" onchange="myFunction()"
+                                style="padding: 11px; border-radius: 3px" required>
                                 <option value="">Select Stream</option>
                                 <?php
                                 if (mysqli_num_rows($resfac) > 0) {
@@ -374,14 +394,18 @@ function getOrdinal($number)
                             <label for="section">Select File Section:</label>
                             <select name="section" id="section" required>
                                 <option value="">Select Section</option>
-                                <option value="note" <?php echo ($note_category == 'note') ? 'selected' : ''; ?>>Note</option>
-                                <option value="prevqn" <?php echo ($note_category == 'prevqn') ? 'selected' : ''; ?>>Prev Question</option>
-                                <option value="syllabus" <?php echo ($note_category == 'syllabus') ? 'selected' : ''; ?>>Syllabus</option>
+                                <option value="note" <?php echo ($note_category == 'note') ? 'selected' : ''; ?>>Note
+                                </option>
+                                <option value="prevqn" <?php echo ($note_category == 'prevqn') ? 'selected' : ''; ?>>Prev
+                                    Question</option>
+                                <option value="syllabus" <?php echo ($note_category == 'syllabus') ? 'selected' : ''; ?>>
+                                    Syllabus</option>
                             </select>
                         </div>
                         <div id="forms" class="flex" style="width: 50%;">
                             <label for="noteName">Enter Note Name:</label>
-                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" required style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
+                            <input type="text" name="noteName" id="noteName" placeholder="Enter Note Name" required
+                                style="padding: 10px 8px;" value="<?php echo $note_name; ?>">
                         </div>
                     </div>
                     <?php echo isset($_GET['edit']) ? '<input type="hidden" name="update" id="" value="' . $_GET['edit'] . '">' : ''; ?>
@@ -400,7 +424,8 @@ function getOrdinal($number)
             <div class="actualCardConfirm">
                 <div class="headermodalCon">
                     <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.9443 12.9809L10.944 13.0181L10.9067 15.0178L8.90705 14.9805M9.09332 4.98225L11.093 5.01951L10.9812 11.0185L8.98156 10.9812M9.81375 19.9983C11.1267 20.0227 12.4317 19.7883 13.6541 19.3085C14.8765 18.8286 15.9924 18.1127 16.9381 17.2016C18.8481 15.3615 19.9489 12.838 19.9983 10.1863C20.0477 7.53457 19.0417 4.97185 17.2016 3.06188C16.2904 2.11616 15.202 1.35916 13.9983 0.834098C12.7946 0.30904 11.4993 0.0262068 10.1863 0.00174628C7.53457 -0.0476539 4.97185 0.958355 3.06188 2.79846C1.15191 4.63857 0.0511458 7.16204 0.0017456 9.81375C-0.0227149 11.1267 0.211676 12.4317 0.691537 13.6541C1.1714 14.8765 1.88733 15.9924 2.79846 16.9381C3.70959 17.8839 4.79807 18.6409 6.00175 19.1659C7.20544 19.691 8.50076 19.9738 9.81375 19.9983Z" />
+                        <path
+                            d="M8.9443 12.9809L10.944 13.0181L10.9067 15.0178L8.90705 14.9805M9.09332 4.98225L11.093 5.01951L10.9812 11.0185L8.98156 10.9812M9.81375 19.9983C11.1267 20.0227 12.4317 19.7883 13.6541 19.3085C14.8765 18.8286 15.9924 18.1127 16.9381 17.2016C18.8481 15.3615 19.9489 12.838 19.9983 10.1863C20.0477 7.53457 19.0417 4.97185 17.2016 3.06188C16.2904 2.11616 15.202 1.35916 13.9983 0.834098C12.7946 0.30904 11.4993 0.0262068 10.1863 0.00174628C7.53457 -0.0476539 4.97185 0.958355 3.06188 2.79846C1.15191 4.63857 0.0511458 7.16204 0.0017456 9.81375C-0.0227149 11.1267 0.211676 12.4317 0.691537 13.6541C1.1714 14.8765 1.88733 15.9924 2.79846 16.9381C3.70959 17.8839 4.79807 18.6409 6.00175 19.1659C7.20544 19.691 8.50076 19.9738 9.81375 19.9983Z" />
                     </svg>
                     <h3>Confirmation</h3>
                 </div>
@@ -421,7 +446,7 @@ function getOrdinal($number)
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "../Server/subjectName.php", true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData
@@ -502,21 +527,33 @@ function getOrdinal($number)
 
 
 
-        let sem = `<option value="1" <?php if ($semYrchecked == "1") echo "selected"; ?>>First Semester</option>
-                                <option value="2" <?php if ($semYrchecked == "2") echo "selected"; ?>>Second Semester</option>
-                                <option value="3" <?php if ($semYrchecked == "3") echo "selected"; ?>>Third Semester</option>
-                                <option value="4" <?php if ($semYrchecked == "4") echo "selected"; ?>>Fourth Semester</option>
-                                <option value="5" <?php if ($semYrchecked == "5") echo "selected"; ?>>Fifth Semester</option>
-                                <option value="6" <?php if ($semYrchecked == "6") echo "selected"; ?>>Sixth Semester</option>
-                                <option value="7" <?php if ($semYrchecked == "7") echo "selected"; ?>>Seventh Semester</option>
-                                <option value="8" <?php if ($semYrchecked == "8") echo "selected"; ?>>Eighth Semester</option>
+        let sem = `<option value="1" <?php if ($semYrchecked == "1")
+            echo "selected"; ?>>First Semester</option>
+                                <option value="2" <?php if ($semYrchecked == "2")
+                                    echo "selected"; ?>>Second Semester</option>
+                                <option value="3" <?php if ($semYrchecked == "3")
+                                    echo "selected"; ?>>Third Semester</option>
+                                <option value="4" <?php if ($semYrchecked == "4")
+                                    echo "selected"; ?>>Fourth Semester</option>
+                                <option value="5" <?php if ($semYrchecked == "5")
+                                    echo "selected"; ?>>Fifth Semester</option>
+                                <option value="6" <?php if ($semYrchecked == "6")
+                                    echo "selected"; ?>>Sixth Semester</option>
+                                <option value="7" <?php if ($semYrchecked == "7")
+                                    echo "selected"; ?>>Seventh Semester</option>
+                                <option value="8" <?php if ($semYrchecked == "8")
+                                    echo "selected"; ?>>Eighth Semester</option>
                     `;
 
         let year = ` <option value="">Select Year</option>
-                    <option value="1" <?php if ($semYrchecked == "1") echo "selected"; ?>>First Year</option>
-                    <option value="2" <?php if ($semYrchecked == "2") echo "selected"; ?>>Second Year</option>
-                    <option value="3" <?php if ($semYrchecked == "3") echo "selected"; ?>>Third Year</option>
-                    <option value="4" <?php if ($semYrchecked == "4") echo "selected"; ?>>Fourth Year</option>
+                    <option value="1" <?php if ($semYrchecked == "1")
+                        echo "selected"; ?>>First Year</option>
+                    <option value="2" <?php if ($semYrchecked == "2")
+                        echo "selected"; ?>>Second Year</option>
+                    <option value="3" <?php if ($semYrchecked == "3")
+                        echo "selected"; ?>>Third Year</option>
+                    <option value="4" <?php if ($semYrchecked == "4")
+                        echo "selected"; ?>>Fourth Year</option>
                    `;
 
         // setting year and sem
@@ -545,7 +582,7 @@ function getOrdinal($number)
 
 
         // When editing get sem/year and subject name
-        window.onload = function() {
+        window.onload = function () {
             const urlParams = new URLSearchParams(window.location.search);
             const editParam = urlParams.get('edit');
             if (editParam) {

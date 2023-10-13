@@ -94,14 +94,15 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
             if (move_uploaded_file($file_tmp, $destination)) {
                 $lastPath = $notePath . $unique_filename;
                 // Prepare the update query
-                $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, note_file = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
-                WHERE id = ?";
+                $updateQuery = "UPDATE notes 
+               SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, note_file = ?, sem = ?, year = ?, author = ? 
+               WHERE id = ?";
 
                 // Create a prepared statement
                 $stmt = mysqli_prepare($con, $updateQuery);
 
                 // Bind the parameters to the statement
-                mysqli_stmt_bind_param($stmt, "siissssiissi", $description, $facultyid, $subjectid, $noteName, $section, $lastPath, $facultyName, $sem, $year, $subName, $author, $update);
+                mysqli_stmt_bind_param($stmt, "siisssiiii", $description, $facultyid, $subjectid, $noteName, $section, $lastPath, $sem, $year, $author, $update);
 
                 // Execute the prepared statement
                 if (mysqli_stmt_execute($stmt)) {
@@ -114,14 +115,13 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
                 header("Location: ../../admin/notepost.php?error=Error uploading file");
             }
         } else {
-            $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, stream_name = ?, sem = ?, year = ?, sub_name = ?, author = ?
-            WHERE id = ?";
+            $updateQuery = "UPDATE notes SET post_des = ?, stream_id = ?, sub_id = ?, note_name = ?, note_category = ?, sem = ?, year = ?, author = ? WHERE id = ?";
 
             // Create a prepared statement
             $stmt = mysqli_prepare($con, $updateQuery);
 
             // Bind the parameters to the statement
-            mysqli_stmt_bind_param($stmt, "siisssiissi", $description, $facultyid, $subjectid, $noteName, $section, $facultyName, $sem, $year, $subName, $author, $update);
+            mysqli_stmt_bind_param($stmt, "siissiisi", $description, $facultyid, $subjectid, $noteName, $section, $sem, $year, $author, $update);
 
             // Execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
@@ -175,14 +175,14 @@ if (isset($_POST['notePostUpload']) || isset($_POST['noteUpdateUpload'])) {
                 $lastPath = $notePath . $unique_filename;
 
                 // Prepare the insert query
-                $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, stream_name, sem, year, sub_name, author)
-                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $insertQuery = "INSERT INTO notes (post_des, stream_id, sub_id, note_file, note_name, note_category, sem, year, author)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
                 // Create a prepared statement
                 $stmt = mysqli_prepare($con, $insertQuery);
 
                 // Bind the parameters to the statement
-                mysqli_stmt_bind_param($stmt, "siissssssss", $description, $facultyid, $subjectid, $lastPath, $noteName, $section, $facultyName, $sem, $year, $subName, $author);
+                mysqli_stmt_bind_param($stmt, "siisssiis", $description, $facultyid, $subjectid, $lastPath, $noteName, $section, $sem, $year, $author);
 
                 // Execute the prepared statement
                 if (mysqli_stmt_execute($stmt)) {
