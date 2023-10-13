@@ -18,7 +18,9 @@ if (!$conn) {
 $response = array();
 
 // Fetch data from the database
-$query = "SELECT * FROM news";
+$query = "SELECT news.*, auth.name AS author
+FROM news
+JOIN auth ON news.authid = auth.id";
 $result = mysqli_query($conn, $query);
 
 if ($result) {

@@ -20,10 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $postId = $commentData['postId'];
     $userId = $commentData['userId'];
     $comment = $commentData['comment'];
-    $userName = $commentData['userName'];
 
     // Insert the comment into the 'comments' table
-    $sql = "INSERT INTO comments (cmt_des, author, postId, date, userid) VALUES ('$comment', '$userName', '$postId', NOW(), '$userId')";
+    $sql = "INSERT INTO comments (cmt_des,  postId, date, userid) VALUES ('$comment',  '$postId', NOW(), '$userId')";
 
     if (mysqli_query($con, $sql)) {
         // Get the comment ID
@@ -47,12 +46,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_query($con, $sqlUpdate);
 
         // Get the recently added comment data
-        $sqlComment = "SELECT * FROM comments WHERE id = $commentId";
-        $resultComment = mysqli_query($con, $sqlComment);
+        $sqlComment = "SELECT comments.*, auth.name AS author
+              FROM comments
+              JOIN auth ON comments.userid = auth.id 
+              WHERE comments.id = ?";
+
+        // Create a prepared statement
+        $stmtComment = mysqli_prepare($con, $sqlComment);
+        mysqli_stmt_bind_param($stmtComment, "i", $commentId);
+        mysqli_stmt_execute($stmtComment);
+        $resultComment = mysqli_stmt_get_result($stmtComment);
         $recentComment = mysqli_fetch_assoc($resultComment);
 
         // Comment insertion successful
         $response = array('status' => 'success', 'message' => 'Comment added successfully', 'comment' => $recentComment);
+
     } else {
         // Comment insertion failed
         $response = array('status' => 'error', 'message' => 'Failed to add comment');

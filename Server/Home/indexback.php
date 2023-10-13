@@ -19,8 +19,7 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
     if (intval($id) > 0) {
         $postdes = $_POST['post'];
         $stream = strtolower($_POST['stream']);
-        $author = $username;
-        $authorId =  $id;
+        $authorId = $id;
         $like = "";
         $comment = "";
 
@@ -51,8 +50,8 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
                 // Move the uploaded file to the destination
                 if (move_uploaded_file($fileTmp, $destination)) {
                     // Construct the SQL statement with image data
-                    $imagePath =  $uploadFIleFront . 'images/' . $newFileName;
-                    $sql = "INSERT INTO `news` (`postdes`, `image`, `stream`, `author`, `authid`, `post_like`, `comment`) VALUES ('$postdes', '$imagePath', '$stream', '$author', '$authorId', '$like', '$comment')";
+                    $imagePath = $uploadFIleFront . 'images/' . $newFileName;
+                    $sql = "INSERT INTO `news` (`postdes`, `image`, `stream`,  `authid`, `post_like`, `comment`) VALUES ('$postdes', '$imagePath', '$stream',  '$authorId', '$like', '$comment')";
                 } else {
                     if (isset($_POST['postnewsadmin'])) {
                         header("Location: ../../admin/noticepost.php?error=Error uploading file");
@@ -71,7 +70,7 @@ if (isset($_POST['postnews']) || isset($_POST['postnewsadmin'])) {
             }
         } else {
             // Construct the SQL statement without image data
-            $sql = "INSERT INTO `news` (`postdes`, `stream`, `author`, `post_like`, `comment`, `authid`) VALUES ('$postdes', '$stream', '$author', '$like', '$comment', '$authorId')";
+            $sql = "INSERT INTO `news` (`postdes`, `stream`,  `post_like`, `comment`, `authid`) VALUES ('$postdes', '$stream', '$like', '$comment', '$authorId')";
         }
 
         // Execute the SQL statement

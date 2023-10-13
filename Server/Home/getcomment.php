@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $postId = mysqli_real_escape_string($con, $_GET['postId']);
 
         // Select comments based on the provided postId
-        $sql = "SELECT * FROM comments WHERE postId = '$postId'";
+        $sql = "SELECT comments.*, auth.name AS author
+        FROM comments
+        JOIN auth ON comments.userid = auth.id WHERE postId = '$postId'";
         $result = mysqli_query($con, $sql);
 
         $comments = array();
