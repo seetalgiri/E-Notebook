@@ -82,7 +82,7 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT notes.id, notes.post_des, notes.stream_id, notes.sem, notes.year, notes.sub_id, notes.note_file, notes.note_name, notes.note_category, notes.note_like, notes.date, notes.author, faculty.id AS faculty_id, faculty.faculity_name AS stream_name, faculty.date AS faculty_date, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset($_GET['year']))) {
     $sem = "";
@@ -92,7 +92,7 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     if (strlen($facultyId) > 0) {
 
 
-        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note'";
+        $sqlNote = "SELECT notes.id, notes.post_des, notes.stream_id, notes.sem, notes.year, notes.sub_id, notes.note_file, notes.note_name, notes.note_category, notes.note_like, notes.date, notes.author, faculty.id AS faculty_id, faculty.faculity_name AS stream_name, faculty.date AS faculty_date, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'note'";
 
         if (strlen($facultyId) > 0) {
             $sqlNote .= " AND stream_id = '$facultyId'";
@@ -137,13 +137,13 @@ if (isset($_GET['search'])) {
     // Check if the search value is set
     if (!empty($search)) {
         // Query with the search value
-        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
+        $sqlNote = "SELECT notes.id, notes.post_des, notes.stream_id, notes.sem, notes.year, notes.sub_id, notes.note_file, notes.note_name, notes.note_category, notes.note_like, notes.date, notes.author, faculty.id AS faculty_id, faculty.faculity_name AS stream_name, faculty.date AS faculty_date, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'note' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
         $totalRowNumber = mysqli_num_rows($resultNotes);
         $totalPages = ceil($totalRowNumber / $recordsPerPage);
     } else {
         // Query without the search value
-        $sqlNote = "SELECT * FROM notes WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
+        $sqlNote = "SELECT notes.id, notes.post_des, notes.stream_id, notes.sem, notes.year, notes.sub_id, notes.note_file, notes.note_name, notes.note_category, notes.note_like, notes.date, notes.author, faculty.id AS faculty_id, faculty.faculity_name AS stream_name, faculty.date AS faculty_date, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'note' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
         $totalRowNumber = mysqli_num_rows($resultNotes);
         $totalPages = ceil($totalRowNumber / $recordsPerPage);
@@ -190,12 +190,18 @@ if (isset($_GET['search'])) {
                             <div class="heading shadow">Currently In:</div>
                         </div>
                         <div class="headingTopicse">
-                            <div class="topics"><span>Stream:</span> <span><?php echo $facNameFilter ?></span></div>
+                            <div class="topics"><span>Stream:</span> <span>
+                                    <?php echo $facNameFilter ?>
+                                </span></div>
                             <div class="topics">
-                                <span>Semester/Year:</span> <span><?php echo $semYearFilter ?></span>
+                                <span>Semester/Year:</span> <span>
+                                    <?php echo $semYearFilter ?>
+                                </span>
                             </div>
                             <div class="topics">
-                                <span>Subject:</span><span><?php echo $subNameFilter ?></span>
+                                <span>Subject:</span><span>
+                                    <?php echo $subNameFilter ?>
+                                </span>
                             </div>
                         </div>
                         <div class="borderLines"></div>
@@ -242,10 +248,14 @@ if (isset($_GET['search'])) {
                         <h3 class="HeadingPage">Notes:</h3>
                         <form id="searchNotes" class="shadow">
                             <?php include './Client/Common/filterSVG.php'; ?>
-                            <input type="text" name="search" id="search" placeholder="Search Notes..." autocomplete="off" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" />
+                            <input type="text" name="search" id="search" placeholder="Search Notes..."
+                                autocomplete="off"
+                                value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" />
                             <button id="searchName">
-                                <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.01221 0.316132C8.73611 0.316132 10.3894 1.00095 11.6084 2.21994C12.8274 3.43892 13.5122 5.09222 13.5122 6.81613C13.5122 8.42613 12.9222 9.90613 11.9522 11.0461L12.2222 11.3161H13.0122L18.0122 16.3161L16.5122 17.8161L11.5122 12.8161V12.0261L11.2422 11.7561C10.1022 12.7261 8.62221 13.3161 7.01221 13.3161C5.2883 13.3161 3.635 12.6313 2.41601 11.4123C1.19703 10.1933 0.512207 8.54004 0.512207 6.81613C0.512207 5.09222 1.19703 3.43892 2.41601 2.21994C3.635 1.00095 5.2883 0.316132 7.01221 0.316132ZM7.01221 2.31613C4.51221 2.31613 2.51221 4.31613 2.51221 6.81613C2.51221 9.31613 4.51221 11.3161 7.01221 11.3161C9.51221 11.3161 11.5122 9.31613 11.5122 6.81613C11.5122 4.31613 9.51221 2.31613 7.01221 2.31613Z" />
+                                <svg width="19" height="18" viewBox="0 0 19 18" class="searchBtn"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.01221 0.316132C8.73611 0.316132 10.3894 1.00095 11.6084 2.21994C12.8274 3.43892 13.5122 5.09222 13.5122 6.81613C13.5122 8.42613 12.9222 9.90613 11.9522 11.0461L12.2222 11.3161H13.0122L18.0122 16.3161L16.5122 17.8161L11.5122 12.8161V12.0261L11.2422 11.7561C10.1022 12.7261 8.62221 13.3161 7.01221 13.3161C5.2883 13.3161 3.635 12.6313 2.41601 11.4123C1.19703 10.1933 0.512207 8.54004 0.512207 6.81613C0.512207 5.09222 1.19703 3.43892 2.41601 2.21994C3.635 1.00095 5.2883 0.316132 7.01221 0.316132ZM7.01221 2.31613C4.51221 2.31613 2.51221 4.31613 2.51221 6.81613C2.51221 9.31613 4.51221 11.3161 7.01221 11.3161C9.51221 11.3161 11.5122 9.31613 11.5122 6.81613C11.5122 4.31613 9.51221 2.31613 7.01221 2.31613Z" />
                                 </svg>
                             </button>
                         </form>
@@ -269,8 +279,10 @@ if (isset($_GET['search'])) {
                         </div>
                         <div id="mainBroomDiv">
                             <div id="broom">
-                                <svg onclick="pageLoad()" width="25" height="25" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.1084 0.161499L18.5284 1.5815L12.8084 7.2915C13.8784 8.8315 14.0284 10.6815 13.1284 11.8815L6.80839 5.5615C8.00839 4.6615 9.85839 4.8115 11.3984 5.8815L17.1084 0.161499ZM3.67839 15.0115C1.66839 13.0015 0.438389 10.6015 0.0983887 8.3615L4.97839 6.2715L12.4184 13.7115L10.3284 18.5915C8.08839 18.2515 5.68839 17.0215 3.67839 15.0115Z" />
+                                <svg onclick="pageLoad()" width="25" height="25" viewBox="0 0 19 19"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M17.1084 0.161499L18.5284 1.5815L12.8084 7.2915C13.8784 8.8315 14.0284 10.6815 13.1284 11.8815L6.80839 5.5615C8.00839 4.6615 9.85839 4.8115 11.3984 5.8815L17.1084 0.161499ZM3.67839 15.0115C1.66839 13.0015 0.438389 10.6015 0.0983887 8.3615L4.97839 6.2715L12.4184 13.7115L10.3284 18.5915C8.08839 18.2515 5.68839 17.0215 3.67839 15.0115Z" />
                                 </svg>
                             </div>
                         </div>
@@ -375,7 +387,8 @@ if (isset($_GET['search'])) {
                     <span class="close">&times;</span>
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h2 id="heading" style="text-transform: uppercase; letter-spacing: 2px; margin-left: -3px;">Quick View</h2>
+                            <h2 id="heading" style="text-transform: uppercase; letter-spacing: 2px; margin-left: -3px;">
+                                Quick View</h2>
                             <p>Name: <span id="noteName"></span></p>
                             <p>Author: <span id="author"></span></p>
                             <p>Stream: <span id="stream"></span></p>
@@ -416,7 +429,7 @@ if (isset($_GET['search'])) {
         let data = [];
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "./Server/subjectName.php", true);
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var jsonData = JSON.parse(xhr.responseText);
                 data = jsonData;
@@ -664,7 +677,7 @@ if (isset($_GET['search'])) {
         }
 
 
-        closeBtn.addEventListener("click", function() {
+        closeBtn.addEventListener("click", function () {
             pdfModal.style.display = "none";
         });
 
