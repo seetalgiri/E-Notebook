@@ -35,6 +35,16 @@ if (isset($_GET['error'])) {
     </div>';
 }
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// getting user value from sesstion
+if (isset($_SESSION['id'])) {
+    header('Location: ../index.php');
+}
+
+
 // importaing configurations 
 include '../Configuration.php';
 
