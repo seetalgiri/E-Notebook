@@ -32,6 +32,20 @@ $resfacREQPost = mysqli_query($conREQPost, $sqlREQPost);
 $countREQPost = mysqli_num_rows($resfacREQPost);
 
 
+if (isset($_GET['logout'])) {
+    // Clear all session variables
+    if ($_GET['logout'] == true) {
+
+        session_unset();
+
+        // Destroy the session
+        session_destroy();
+
+        // Redirect to the login page or any other desired location
+        header("Location: ../index.php");
+        exit();
+    }
+}
 
 
 ?>
@@ -267,7 +281,7 @@ $countREQPost = mysqli_num_rows($resfacREQPost);
                     <div id="listItemsAdminPp" class="shadow">
                         <ul id='adminppLink'>
                             <li>
-                                <a href="#">
+                                <a href="?logout=true">
                                     <span>Logout</span> <svg width="15" height="17" viewBox="0 0 19 21"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
