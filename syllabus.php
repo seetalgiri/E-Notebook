@@ -82,7 +82,11 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'syllabus' LIMIT $offset, $recordsPerPage";
+$sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem
+FROM notes
+JOIN faculty ON notes.stream_id = faculty.id
+WHERE note_category = 'syllabus'
+ORDER BY CHAR_LENGTH(notes.note_like) DESC LIMIT $offset, $recordsPerPage";
 $resultNotes = mysqli_query($con, $sqlNote);
 if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset($_GET['year']))) {
     $sem = "";
@@ -92,7 +96,10 @@ if (isset($_GET['facultyid'], $_GET['subject']) && (isset($_GET['sem']) || isset
     if (strlen($facultyId) > 0) {
 
 
-        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'syllabus'";
+        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem
+FROM notes
+JOIN faculty ON notes.stream_id = faculty.id
+WHERE note_category = 'syllabus'";
 
         if (strlen($facultyId) > 0) {
             $sqlNote .= " AND stream_id = '$facultyId'";
@@ -133,13 +140,20 @@ if (isset($_GET['search'])) {
     // Check if the search value is set
     if (!empty($search)) {
         // Query with the search value
-        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'syllabus' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
+        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem
+FROM notes
+JOIN faculty ON notes.stream_id = faculty.id
+WHERE note_category = 'syllabus' AND note_name LIKE '%$search%' LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
         $totalRowNumber = mysqli_num_rows($resultNotes);
         $totalPages = ceil($totalRowNumber / $recordsPerPage);
     } else {
         // Query without the search value
-        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem FROM notes JOIN faculty ON notes.stream_id = faculty.id WHERE note_category = 'syllabus' LIMIT $offset, $recordsPerPage";
+        $sqlNote = "SELECT notes.*, faculty.faculity_name AS stream_name, faculty.yearsem
+FROM notes
+JOIN faculty ON notes.stream_id = faculty.id
+WHERE note_category = 'syllabus'
+ORDER BY CHAR_LENGTH(notes.note_like) DESC LIMIT $offset, $recordsPerPage";
         $resultNotes = mysqli_query($con, $sqlNote);
         $totalRowNumber = mysqli_num_rows($resultNotes);
         $totalPages = ceil($totalRowNumber / $recordsPerPage);
