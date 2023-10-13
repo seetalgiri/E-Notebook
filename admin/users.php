@@ -190,9 +190,7 @@ function displayUserCard($row, $user)
             </div>
         </div>
         <div class="contentList">
-            <div class="saperateContent">
-                <span class="Title">Stream:</span> <span style="text-transform: uppercase;">' . $row["stream"] . '</span>
-            </div>
+            
             <div class="saperateContent">
                 <span class="Title">Date:</span> <span>' . $row["date"] . '</span>
             </div>';

@@ -62,7 +62,7 @@ if (isset($_POST['logoutBtn'])) {
                 <span>' . $email . '</span>
             </div>
         </div>
-        <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
+        <div id="streamprofile"><span></span><span style="text-transform: uppercase;"> </span></div>
             <form method="POST" action="" class="logoutbtn">
                 <button type="submit" name="logoutBtn">LOGOUT</button>
             </form>';
@@ -107,7 +107,7 @@ if (isset($_POST['logoutBtn'])) {
                 <span>' . $email . '</span>
             </div>
             </div>
-            <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
+            <div id="streamprofile"><span></span><span style="text-transform: uppercase;"> </span></div>
             <form method="POST" action="" class="logoutbtn">
             <button type="submit" name="logoutBtn">LOGOUT</button>
         </form>

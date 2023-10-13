@@ -142,20 +142,6 @@ $resfac = mysqli_query($con, $sql);
                     </div>
                     <span id="passwordError" class="error regErr"></span>
 
-                    <div class="selectdiv">
-                        <label for="stream">Stream</label>
-                        <select name="stream" id="stream" style="text-transform: uppercase;">
-                            <?php
-                            if (mysqli_num_rows($resfac) > 0) {
-                                while ($row = mysqli_fetch_assoc($resfac)) {
-                                    $faculity_name = strtolower($row["faculity_name"]);
-                                    echo "<option value='" . $faculity_name . "' data_yearsem='" . $row['yearsem'] . "' style='text-transform: uppercase;'>" . $faculity_name . "</option> ";
-                                }
-                            }
-                            ?>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
                     <p class="dontHaveAcc">Already have account, <a href="./login.php">Login?</a></p>
                     <p class="dontHaveAcc gobackHwRg">Don't Want Register, <a href="/e_notebook/index.php">Go Back?</a></p>
 

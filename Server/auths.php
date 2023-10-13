@@ -28,12 +28,12 @@ function sendMail($email, $v_code)
         //Server settings
         $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'gaurabsunar0001@gmail.com';
-        $mail->Password   = 'unkewaqezreankae';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'gaurabsunar0001@gmail.com';
+        $mail->Password = 'unkewaqezreankae';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
+        $mail->Port = 465;
 
         //Recipients
         $mail->setFrom('gaurabsunar0001@gmail.com', 'E-NoteBook');
@@ -42,7 +42,7 @@ function sendMail($email, $v_code)
         //Content
         $mail->isHTML(true);
         $mail->Subject = 'Email verification code from E-Notebook';
-        $mail->Body    = "Thanks for registration!<br>Please enter the following code to verify your email: <b>$v_code</b>";
+        $mail->Body = "Thanks for registration!<br>Please enter the following code to verify your email: <b>$v_code</b>";
 
         $mail->send();
         return true;
@@ -57,17 +57,15 @@ if (!$con) {
 // Check if the register button is set or not
 else {
     if (isset($_POST['register'])) {
-        if (!isset($_POST['username']) || !isset($_POST['email']) || !isset($_POST['password']) || !isset($_POST['stream'])) {
+        if (!isset($_POST['username']) || !isset($_POST['email']) || !isset($_POST['password'])) {
             echo "Please fill in all the required fields.";
             exit;
         }
-
 
         // Fetch data from the frontend
         $name = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $stream = $_POST['stream'];
         $verification_code = rand(100000, 999999);
 
         $is_verified = 0;
@@ -86,7 +84,7 @@ else {
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
             // Insert into the database
-            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `stream`, `privilege`, `verification_code`, `is_verified`) VALUES ('$name', '$email', '$hashedPass', '$stream', '$privilege', '$verification_code', '$is_verified')";
+            $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `privilege`, `is_verified`) VALUES ('$name', '$email', '$hashedPass', '$privilege', '$is_verified')";
 
             // Execute the query
             if (strtolower($email) != "superadmin@gmail.com") {
@@ -104,12 +102,12 @@ else {
                     // // Set session variables
                     $_SESSION['vcode'] = $verification_code;
                     $_SESSION['email'] = $email;
+                    $_SESSION['id'] = $insertedId;
                     header("Location: ./otpverify.php");
                 } else {
                     $_SESSION['id'] = $insertedId;
                     $_SESSION['username'] = $name;
                     $_SESSION['email'] = $email;
-                    $_SESSION['stream'] = $stream;
                     $_SESSION['privilege'] = $privilege;
                     $_SESSION['isverified'] = 1;
                     header("Location: ../index.php");
@@ -143,7 +141,6 @@ else {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['username'] = $user['name'];
                 $_SESSION['email'] = $user['email'];
-                $_SESSION['stream'] = $user['stream'];
                 $_SESSION['privilege'] = $user['privilege'];
 
                 // Redirect to index.php or any other page you desire

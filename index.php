@@ -152,7 +152,7 @@ $resfac = mysqli_query($con, $sql);
 
                             echo '<li class="selectSreamradio">';
                             echo ($news == $streamValue) ? "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)' checked>" : "<input type='radio' id='$streamId' name='stream' value='$streamValue' onchange='updateURL(this.value)'>";
-                            echo "<label class='btn btn-default' for='$streamId'><span style='text-transform:uppercase;'>" . substr($row['faculity_name'], 0, 4)  . "</span>
+                            echo "<label class='btn btn-default' for='$streamId'><span style='text-transform:uppercase;'>" . substr($row['faculity_name'], 0, 4) . "</span>
             <svg width='14' height='15' viewBox='0 0 16 18' xmlns='http://www.w3.org/2000/svg'>
             <path d='M12 6C12 8.21 10.21 10 8 10C5.79 10 4 8.21 4 6L4.11 5.06L1 3.5L8 0L15 3.5V8.5H14V4L11.89 5.06L12 6ZM8 12C12.42 12 16 13.79 16 16V18H0V16C0 13.79 3.58 12 8 12Z' />
             </svg></label>";
@@ -238,11 +238,10 @@ $resfac = mysqli_query($con, $sql);
                                 <div class="capitalize-first-letter" id="DisDataPost">
                                 ${data.postdes.trim().replace(/\n/g, "<br>")}
                                 </div>
-                                ${
-                                    data.image.length > 6?`
+                                ${data.image.length > 6 ? `
                                     <img id="imageUrl${data.id}" class="imagePosst" src="${data.image}" loading="lazy">
-                                    `:``
-                                }
+                                    `: ``
+                }
                             </div>
                             <div class="divline"></div>
 
@@ -322,7 +321,7 @@ $resfac = mysqli_query($con, $sql);
 
                                     </div>
                                 </div>
-                                ${data.image.length>2?`
+                                ${data.image.length > 2 ? `
                                     <div id="comment" class="actionFlex" onclick="commentFOcusIconclk(${data.id}, <?php echo $id ?>)">
                                         <a href="${data.image}" download>
                                             <svg width="15" height="18" viewBox="0 0 15 18" xmlns="http://www.w3.org/2000/svg">
@@ -330,15 +329,15 @@ $resfac = mysqli_query($con, $sql);
                                             </svg>
                                         </a>
                                     </div>
-                                `:''}
+                                `: ''}
                             </div>
                             
-                            ${data.comment.length<=0?`<div class="divline mt-2"></div>`:''}
+                            ${data.comment.length <= 0 ? `<div class="divline mt-2"></div>` : ''}
 
                             <!-- for comment pot -->
                             <div>
                                 <!-- for thers comment  -->
-                                ${data.comment.length>0?`<div id="commentContent" class="commentContent${data.id}"></div>`:''}
+                                ${data.comment.length > 0 ? `<div id="commentContent" class="commentContent${data.id}"></div>` : ''}
                                 <!-- for post comment  -->
                                 <?php echo $id >= 1 ? '<form action="#" method="post" onsubmit="event.preventDefault(); submitCommentAsync(event, ${data.id}, ' . $id . ', \'' . $username . '\' )">
                                     <div id="cmtPost" class="shadow">
@@ -387,9 +386,9 @@ $resfac = mysqli_query($con, $sql);
                 }
                             <div id="ing">
                                 <div class="content" onclick="recentPostClk()">
-                                    <p>${data&&data.postdes.length > 50 ? data&&data.postdes.slice(0, 50) + "..." : data&&data.postdes}</p>
+                                    <p>${data && data.postdes.length > 50 ? data && data.postdes.slice(0, 50) + "..." : data && data.postdes}</p>
                                     <div id="dateRec">
-                                        ${data&&data.date}
+                                        ${data && data.date}
                                     </div>
                                 </div>
                                 <div class="clearRec" id="recentClear" onclick="recentClearClk()">
@@ -652,7 +651,7 @@ $resfac = mysqli_query($con, $sql);
             });
         };
 
-        window.onload = function() {
+        window.onload = function () {
             fetchData(params());
         }
 
