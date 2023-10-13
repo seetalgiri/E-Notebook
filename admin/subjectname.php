@@ -87,17 +87,8 @@ if (isset($_POST['postadd'])) {
         $sem = $_POST['sem'];
     }
 
-    $facName = "";
-    if (mysqli_num_rows($resfac) > 0) {
-        while ($row = mysqli_fetch_assoc($resfac)) {
-            if ($row['id'] == $fId) {
-                $facName = $row['faculity_name'];
-            }
-        }
-    }
 
-
-    $sql = "INSERT INTO `subname` (`name`, `facultyid`, `facname`, `year`, `sem`) VALUES ('$sub_name', '$fId', '$facName', '$year', '$sem')";
+    $sql = "INSERT INTO `subname` (`name`, `facultyid`,  `year`, `sem`) VALUES ('$sub_name', '$fId', '$year', '$sem')";
     if (mysqli_query($con, $sql)) {
         // echo "Inserted";
         header("Location: " . $_SERVER['PHP_SELF'] . '?success=subject name added');
@@ -123,7 +114,9 @@ $offset = ($currentPage - 1) * $recordsPerPage;
 
 
 // get data 
-$sql = "SELECT * FROM subname ORDER BY id DESC LIMIT $offset, $recordsPerPage";
+$sql = "SELECT subname.*, faculty.faculity_name AS facname
+FROM subname
+JOIN faculty ON faculty.id = subname.facultyid ORDER BY id DESC LIMIT $offset, $recordsPerPage";
 $res = mysqli_query($con, $sql);
 
 
@@ -143,11 +136,14 @@ if (isset($_GET["id"])) {
 // to show edting data
 $name = "";
 $facultyId = "";
+
 $idnum = "";
 $semYr = "";
 if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
-    $sql = "SELECT * FROM subname WHERE id = $id";
+    $sql = "SELECT subname.*, faculty.faculity_name AS facname
+    FROM subname
+    JOIN faculty ON faculty.id = subname.facultyid WHERE id = $id";
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
@@ -175,16 +171,9 @@ if (isset($_POST['updateadd'])) {
     }
     $id = $_POST['idnum'];
 
-    $facName = "";
-    if (mysqli_num_rows($resfac) > 0) {
-        while ($row = mysqli_fetch_assoc($resfac)) {
-            if ($row['id'] == $facultyId) {
-                $facName = $row['faculity_name'];
-            }
-        }
-    }
 
-    $sql = "UPDATE subname SET name = '$fname', facultyid = '$facultyId', facname = '$facName', year = '$year', sem = '$sem' WHERE id = $id";
+
+    $sql = "UPDATE subname SET name = '$fname', facultyid = '$facultyId', year = '$year', sem = '$sem' WHERE id = $id";
     if (mysqli_query($con, $sql)) {
         header("Location: " . $_SERVER['PHP_SELF'] . '?success=subject Name updated');
         exit();
@@ -205,7 +194,9 @@ if (isset($_GET['search'])) {
     // Check if the search value is set
     if (!empty($search)) {
         // Query with the search value
-        $sqlNote = "SELECT * FROM `subname` WHERE `name` LIKE '%$search%'";
+        $sqlNote = "SELECT subname.*, faculty.faculity_name AS facname
+        FROM subname
+        JOIN faculty ON faculty.id = subname.facultyid WHERE `name` LIKE '%$search%'";
         $res = mysqli_query($con, $sqlNote);
     }
 }
@@ -270,13 +261,13 @@ function getOrdinal($number)
                             $sem = $row['sem'];
                             $year = $row['year'];
                             $semYrwh = "";
-                            $sem > 0 ? $semYrwh =  getOrdinal($sem) . " semester" : $semYrwh =  getOrdinal($year)  . " year";
+                            $sem > 0 ? $semYrwh = getOrdinal($sem) . " semester" : $semYrwh = getOrdinal($year) . " year";
                             echo "
                     <tr>
                     <td>" . $num . "</td>
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["facname"] . "</td>
-                    <td>" .  $semYrwh . "</td>
+                    <td>" . $semYrwh . "</td>
                     <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./subjectname.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./subjectname.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
@@ -358,7 +349,8 @@ function getOrdinal($number)
 
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
-                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name" value="<?php echo $name; ?>">
+                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name"
+                            value="<?php echo $name; ?>">
 
                     </div>
                     <div id="forms" class="buttonformFac">
@@ -379,7 +371,8 @@ function getOrdinal($number)
             <div class="actualCardConfirm">
                 <div class="headermodalCon">
                     <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.9443 12.9809L10.944 13.0181L10.9067 15.0178L8.90705 14.9805M9.09332 4.98225L11.093 5.01951L10.9812 11.0185L8.98156 10.9812M9.81375 19.9983C11.1267 20.0227 12.4317 19.7883 13.6541 19.3085C14.8765 18.8286 15.9924 18.1127 16.9381 17.2016C18.8481 15.3615 19.9489 12.838 19.9983 10.1863C20.0477 7.53457 19.0417 4.97185 17.2016 3.06188C16.2904 2.11616 15.202 1.35916 13.9983 0.834098C12.7946 0.30904 11.4993 0.0262068 10.1863 0.00174628C7.53457 -0.0476539 4.97185 0.958355 3.06188 2.79846C1.15191 4.63857 0.0511458 7.16204 0.0017456 9.81375C-0.0227149 11.1267 0.211676 12.4317 0.691537 13.6541C1.1714 14.8765 1.88733 15.9924 2.79846 16.9381C3.70959 17.8839 4.79807 18.6409 6.00175 19.1659C7.20544 19.691 8.50076 19.9738 9.81375 19.9983Z" />
+                        <path
+                            d="M8.9443 12.9809L10.944 13.0181L10.9067 15.0178L8.90705 14.9805M9.09332 4.98225L11.093 5.01951L10.9812 11.0185L8.98156 10.9812M9.81375 19.9983C11.1267 20.0227 12.4317 19.7883 13.6541 19.3085C14.8765 18.8286 15.9924 18.1127 16.9381 17.2016C18.8481 15.3615 19.9489 12.838 19.9983 10.1863C20.0477 7.53457 19.0417 4.97185 17.2016 3.06188C16.2904 2.11616 15.202 1.35916 13.9983 0.834098C12.7946 0.30904 11.4993 0.0262068 10.1863 0.00174628C7.53457 -0.0476539 4.97185 0.958355 3.06188 2.79846C1.15191 4.63857 0.0511458 7.16204 0.0017456 9.81375C-0.0227149 11.1267 0.211676 12.4317 0.691537 13.6541C1.1714 14.8765 1.88733 15.9924 2.79846 16.9381C3.70959 17.8839 4.79807 18.6409 6.00175 19.1659C7.20544 19.691 8.50076 19.9738 9.81375 19.9983Z" />
                     </svg>
                     <h3>Confirmation</h3>
                 </div>
@@ -395,21 +388,33 @@ function getOrdinal($number)
 
 
     <script>
-        let semH = `<option value="1" <?php if ($semYr == "1") echo "selected"; ?>>First Semester</option>
-                                <option value="2" <?php if ($semYr == "2") echo "selected"; ?>>Second Semester</option>
-                                <option value="3" <?php if ($semYr == "3") echo "selected"; ?>>Third Semester</option>
-                                <option value="4" <?php if ($semYr == "4") echo "selected"; ?>>Fourth Semester</option>
-                                <option value="5" <?php if ($semYr == "5") echo "selected"; ?>>Fifth Semester</option>
-                                <option value="6" <?php if ($semYr == "6") echo "selected"; ?>>Sixth Semester</option>
-                                <option value="7" <?php if ($semYr == "7") echo "selected"; ?>>Seventh Semester</option>
-                                <option value="8" <?php if ($semYr == "8") echo "selected"; ?>>Eighth Semester</option>
+        let semH = `<option value="1" <?php if ($semYr == "1")
+            echo "selected"; ?>>First Semester</option>
+                                <option value="2" <?php if ($semYr == "2")
+                                    echo "selected"; ?>>Second Semester</option>
+                                <option value="3" <?php if ($semYr == "3")
+                                    echo "selected"; ?>>Third Semester</option>
+                                <option value="4" <?php if ($semYr == "4")
+                                    echo "selected"; ?>>Fourth Semester</option>
+                                <option value="5" <?php if ($semYr == "5")
+                                    echo "selected"; ?>>Fifth Semester</option>
+                                <option value="6" <?php if ($semYr == "6")
+                                    echo "selected"; ?>>Sixth Semester</option>
+                                <option value="7" <?php if ($semYr == "7")
+                                    echo "selected"; ?>>Seventh Semester</option>
+                                <option value="8" <?php if ($semYr == "8")
+                                    echo "selected"; ?>>Eighth Semester</option>
                     `;
 
         let yearH = ` <option value="">Select Year</option>
-                    <option value="1" <?php if ($semYr == "1") echo "selected"; ?>>First Year</option>
-                    <option value="2" <?php if ($semYr == "2") echo "selected"; ?>>Second Year</option>
-                    <option value="3" <?php if ($semYr == "3") echo "selected"; ?>>Third Year</option>
-                    <option value="4" <?php if ($semYr == "4") echo "selected"; ?>>Fourth Year</option>
+                    <option value="1" <?php if ($semYr == "1")
+                        echo "selected"; ?>>First Year</option>
+                    <option value="2" <?php if ($semYr == "2")
+                        echo "selected"; ?>>Second Year</option>
+                    <option value="3" <?php if ($semYr == "3")
+                        echo "selected"; ?>>Third Year</option>
+                    <option value="4" <?php if ($semYr == "4")
+                        echo "selected"; ?>>Fourth Year</option>
                    `;
 
         // setting year and sem
@@ -438,7 +443,7 @@ function getOrdinal($number)
 
 
         // When editing get sem/year and subject name
-        window.onload = function() {
+        window.onload = function () {
             const urlParams = new URLSearchParams(window.location.search);
             const editParam = urlParams.get('edit');
             if (editParam) {
@@ -454,7 +459,7 @@ function getOrdinal($number)
                 const selectedOption = selectElement.options[selectedIndex];
                 const selectedValue = selectedOption.value;
                 const selectedText = selectedOption.text;
-            } else {}
+            } else { }
         }
         const fullcontainerToast = document.querySelectorAll(".fullcontainerToast");
         setTimeout(() => {
