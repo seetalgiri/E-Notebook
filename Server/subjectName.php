@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
-$sql = "SELECT id, name, facname, facultyid, date, sem, year FROM subname";
+$sql = "SELECT * FROM subname";
 $result = $conn->query($sql);
 
 // Prepare an array to store the results
