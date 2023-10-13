@@ -83,6 +83,9 @@ else {
             }
 
             $hashedPass = password_hash($password, PASSWORD_DEFAULT);
+            if ($email === "superadmin@gmail.com") {
+                $is_verified = 1;
+            }
             // Insert into the database
             $regQuery = "INSERT INTO `auth` (`name`, `email`, `password`, `privilege`, `is_verified`) VALUES ('$name', '$email', '$hashedPass', '$privilege', '$is_verified')";
 
