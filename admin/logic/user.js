@@ -63,6 +63,22 @@ window.addEventListener("click", (event) => {
 });
 
 // Function called when a hambar list item is clicked
+<<<<<<< HEAD
 // const btnClicked = () => {
 //   console.log("Clicked");
 // };
+=======
+const btnClicked = () => {
+  console.log("Clicked");
+  // var url = window.location.href;
+
+  // if (url.includes("?")) {
+  //   url += "&delete=1";
+  // } else {
+  //   url += "?delete=1";
+  // }
+
+  // // Set the modified URL
+  // window.location.href = url;
+};
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352

@@ -12,7 +12,11 @@
                     </div>
                 </div>
                 <div class="divline mt-2"></div>
+<<<<<<< HEAD
                     </div>' : '' ?>
+=======
+            </div>' : '' ?>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 
             <div class="logoandContent">
                 <h3 class="clsLogo">E-NoteBook</h3>
@@ -22,6 +26,7 @@
         </div>
         <div class="divline"></div>
         <div class="contentbtns">
+<<<<<<< HEAD
             <?php
             if (intval($id) > 0) {
                 echo '
@@ -29,11 +34,15 @@
                 ';
             }
             ?>
+=======
+            <button id="createpost" class="shadow" onclick="modalOpen()">Create Post</button>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
             <a href="notes.php">
                 <button id="notes" class="shadow SeeNoteIndex" style="width: 100%">See Notes</button>
             </a>
         </div>
     </div>
+<<<<<<< HEAD
     <?php
     if (!isset($_GET['id'])) {
         echo '
@@ -46,6 +55,26 @@
         ';
     }
     ?>
+=======
+    <div class="fixedcontentbox2 fixedContentDiv shadow">
+        <h3 id="recentTitle">Recent Post:</h3>
+        <div class="firstBox">
+            <img src="https://images.unsplash.com/photo-1681068420510-cb528c65d595?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1331&q=80"
+                alt="">
+            <div id="ing">
+                <div class="content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    <div id="dateRec">
+                        2079-02-31
+                    </div>
+                </div>
+                <div class="clearRec">
+                    Clear
+                </div>
+            </div>
+        </div>
+    </div>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     <div class="fixedcontentbox3 fixedContentDiv shadow">
         <h3 id="recentTitle">Contents:</h3>
         <div class="linksforContent">

@@ -12,12 +12,6 @@
   padding: 7px;
   color: var(--text-color-light);
 }
-<<<<<<< HEAD
-.faculity img {
-  object-fit: cover;
-}
-=======
->>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 .faculity th {
   padding: 10px 0;
 }
@@ -36,11 +30,7 @@
   height: 420px;
   width: 400px;
   position: absolute;
-<<<<<<< HEAD
-  right: -378px;
-=======
   right: 0px;
->>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   top: 100px;
   z-index: 1000;
   display: flex;
@@ -148,8 +138,8 @@ form input::-webkit-outer-spin-button {
 }
 select {
   padding: 10px;
-  border: 1px solid var(--light-border-clor-opacity1);
-  border-radius: 2px;
+  border: 1px solid #555;
+  border-radius: 4px;
   outline: none;
   cursor: pointer !important;
   font-size: 17px !important;

@@ -24,7 +24,11 @@ document.addEventListener("click", (e) => {
   }
 });
 
+<<<<<<< HEAD
 const NotesInnterHtml = ` <form id="filerequestModal" action="./Server/Home/requestpost.php" enctype="multipart/form-data" method="post">
+=======
+const NotesInnterHtml = ` <form action="#" id="filerequestModal">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 <div class="buttonclscontentPlc buttonclscontentPlcreq">
   <div class="buttontextAreadiv requestNotice">
     <textarea
@@ -171,6 +175,7 @@ const NotesInnterHtml = ` <form id="filerequestModal" action="./Server/Home/requ
   />
 </div>
 <div class="buttonclscontent border postBtn">
+<<<<<<< HEAD
   <button>REQUEST</button>
 </div>
 </form>`;
@@ -179,6 +184,16 @@ const NoticeInnerHtml = `<form action="./Server/Home/indexback.php" enctype="mul
             <div class="buttonclscontentPlc">
               <div class="buttontextAreadiv">
                 <textarea name="post" id="postContentMod" placeholder="What is on your mind?"></textarea>
+=======
+  <button type="submit" name="request">REQUEST</button>
+</div>
+</form>`;
+
+const NoticeInnerHtml = `<form action="./Server/newsfeed.php" method="post">
+            <div class="buttonclscontentPlc">
+              <div class="buttontextAreadiv">
+                <textarea name="post_text" id="postContentMod" placeholder="What is on your mind?"></textarea>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
               </div>
             </div>
             <input type="file" id="pdfuploadnote" name="image" accept="image/png, image/jpeg, image/jpg" style="display: none;"> 
@@ -266,12 +281,24 @@ const NoticeInnerHtml = `<form action="./Server/Home/indexback.php" enctype="mul
                     /></svg
                 ></label>
               </li>
+<<<<<<< HEAD
+=======
+                  <li class="dropdown">
+                    <div class="dotLine"></div>
+                    <div class="dotLine"></div>
+                    <div class="dotLine"></div>
+                  </li>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                 </div>
               </div>
               </div>
             </div>
             <div class="buttonclscontent border postBtn">
+<<<<<<< HEAD
               <button name="postnews">POST</button>
+=======
+              <button type="submit" name="post" value=""post>POST </button>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
             </div>
           </form>`;
 
@@ -296,13 +323,21 @@ uploadBtnNote.addEventListener("click", () => {
 // Handle the uploaded file when the file input changes
 fileInputNote.addEventListener("change", () => {
   const file = fileInputNote.files[0];
+<<<<<<< HEAD
   // console.log("Uploaded file:", file);
+=======
+  console.log("Uploaded file:", file);
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 });
 
 // Function to handle file upload
 function handleFileUpload(fileInput) {
   const file = fileInput.files[0];
+<<<<<<< HEAD
   // console.log("Uploaded file:", file);
+=======
+  console.log("Uploaded file:", file);
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 
 // Function to set the upload button functionality

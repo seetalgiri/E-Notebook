@@ -60,9 +60,15 @@
   background-color: var(--light-bgcolor);
 }
 #notessection {
+<<<<<<< HEAD
   height: 92%;
   width: 100%;
   max-width: 1620px;
+=======
+  height: 99%;
+  width: 100%;
+  max-width: 1500px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   margin: auto;
 }
 .filtersec {
@@ -204,8 +210,12 @@
 #actualNote {
   height: 100%;
   width: 99%;
+<<<<<<< HEAD
   padding: 20px 5px;
   overflow: auto;
+=======
+  padding: 20px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 .topicHead {
   padding: 40px;
@@ -331,14 +341,22 @@
 }
 .linecontentNote {
   width: 100%;
+<<<<<<< HEAD
   margin-bottom: -15px !important;
+=======
+  margin-bottom: -5px !important;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   margin: auto;
   height: 1px;
   background-color: var(--light-border-clor-opacity1);
 }
 
 #searchNotes {
+<<<<<<< HEAD
   width: 91.5%;
+=======
+  width: 95%;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   height: 100%;
   z-index: 100;
   position: relative;
@@ -398,7 +416,11 @@
 
 /* for grid vied  */
 .gridContent {
+<<<<<<< HEAD
   width: 97%;
+=======
+  width: 95%;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 250px));
   column-gap: 30px;
@@ -408,6 +430,7 @@
   align-items: start;
   row-gap: 30px;
   max-height: 80vh;
+<<<<<<< HEAD
   margin-top: 40px;
   position: relative;
 }
@@ -415,6 +438,10 @@
   .gridContent {
     row-gap: 10px !important;
   }
+=======
+  overflow: auto;
+  margin-top: 40px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 .gridContent .eachBox {
   height: 110px;
@@ -501,9 +528,12 @@
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
+<<<<<<< HEAD
   position: relative;
   margin: 20px auto;
   margin-top: 40px;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 .flexContent .eachBox {
   display: flex;
@@ -536,7 +566,10 @@
   line-height: 1.5;
   color: var(--text-color-light);
   font-family: Arial, Helvetica, sans-serif;
+<<<<<<< HEAD
   min-width: 50%;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 
 .flexContent .auth span {
@@ -643,7 +676,12 @@
 @media screen and (max-width: 940px) {
   .filtersec {
     position: absolute;
+<<<<<<< HEAD
     left: -350px;
+=======
+    left: 0;
+    left: -260px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     background-color: var(--bg-white);
     z-index: 100000000000 !important;
   }
@@ -661,10 +699,17 @@
     width: 90px;
   }
   #searchNotes {
+<<<<<<< HEAD
     width: 90% !important;
   }
   .HeadingPage {
     font-size: 16px;
+=======
+    width: 90%;
+  }
+  .HeadingPage {
+    font-size: 20px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   }
   .FilterNotes {
     gap: 10px;
@@ -698,11 +743,15 @@
   #actualNote {
     padding: 10px;
     padding-top: 15px;
+<<<<<<< HEAD
     overflow: auto;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   }
   .likecount {
     font-size: 10px !important;
     padding-top: 1px;
+<<<<<<< HEAD
     margin-right: 6px;
   }
   .flexContent .svgsNote {
@@ -711,11 +760,20 @@
   .likecontent {
     gap: 0px;
     margin-left: -10px;
+=======
+  }
+  .flexContent .svgsNote {
+    width: 80px;
+  }
+  .likecontent {
+    gap: 0px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   }
 }
 
 @media screen and (max-width: 300px) {
   #searchNotes {
+<<<<<<< HEAD
     width: 80% !important;
   }
 }
@@ -1026,5 +1084,8 @@
   #mainBroomDiv {
     right: 11%;
     top: -35px;
+=======
+    width: 80%;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   }
 }

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if (isset($_GET['error'])) {
     echo '<div class="fullcontainerToast">
     <div class="toastifier">
@@ -57,6 +58,9 @@ if (isset($_GET['success'])) {
         </div>
     </div>';
 }
+=======
+$show_notification = false;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 
 // importaing configurations 
 include '../Configuration.php';
@@ -68,7 +72,11 @@ if (!$con) {
     die("Database connection failed");
 }
 
+<<<<<<< HEAD
 // to show all data in frontend
+=======
+// to show all faculty data in frontend
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
@@ -87,6 +95,7 @@ if (isset($_POST['postadd'])) {
         $sem = $_POST['sem'];
     }
 
+<<<<<<< HEAD
 
     $sql = "INSERT INTO `subname` (`name`, `facultyid`,  `year`, `sem`) VALUES ('$sub_name', '$fId', '$year', '$sem')";
     if (mysqli_query($con, $sql)) {
@@ -120,21 +129,58 @@ JOIN faculty ON faculty.id = subname.facultyid ORDER BY id DESC LIMIT $offset, $
 $res = mysqli_query($con, $sql);
 
 
+=======
+    $facName = "";
+    if (mysqli_num_rows($resfac) > 0) {
+        while ($row = mysqli_fetch_assoc($resfac)) {
+            if ($row['id'] == $fId) {
+                $facName = $row['faculity_name'];
+            }
+        }
+    }
+
+
+    $sql = "INSERT INTO `subname` (`name`, `facultyid`, `facname`, `year`, `sem`) VALUES ('$sub_name', '$fId', '$facName', '$year', '$sem')";
+    if (mysqli_query($con, $sql)) {
+        // echo "Inserted";
+        $show_notification = true;
+        header("Location: " . $_SERVER['PHP_SELF']);
+    } else {
+        // echo "Sorry";
+        $show_notification = false;
+    }
+}
+
+// to show all data in frontend
+$sql = "SELECT * FROM `subname`";
+$res = mysqli_query($con, $sql);
+
+
+
+
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 // for delete data 
 if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $sqlD = "DELETE FROM `subname` WHERE id = $id";
     $resD = mysqli_query($con, $sqlD);
     if (!$resD) {
+<<<<<<< HEAD
         header("Location: " . $_SERVER['PHP_SELF'] . '?error=can not delete subject name');
     } else {
         header("Location: " . $_SERVER['PHP_SELF'] . '?success=subject name deleted');
+=======
+        echo "Error " . $resD;
+    } else {
+        header("Location: " . $_SERVER['PHP_SELF']);
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     }
 }
 
 // for edit btn
 // to show edting data
 $name = "";
+<<<<<<< HEAD
 $facultyId = "";
 
 $idnum = "";
@@ -143,16 +189,31 @@ if (isset($_GET["edit"])) {
     $id = $_GET["edit"];
     $sql = "SELECT *
     FROM subname WHERE id = $id";
+=======
+$dorder = "";
+$idnum = "";
+if (isset($_GET["edit"])) {
+    $id = $_GET["edit"];
+    $sql = "SELECT * FROM subname WHERE id = $id";
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     $result = mysqli_query($con, $sql);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $name = $row["name"];
+<<<<<<< HEAD
         $facultyId = $row["facultyid"];
         $idnum = $row["id"];
         $semYr = $row["sem"] != -1 ? $row["sem"] : $row["year"];
     } else {
         $name = "";
         $facultyId = "";
+=======
+        $dorder = $row["facultyid"];
+        $idnum = $row["id"];
+    } else {
+        $name = "";
+        $dorder = "";
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
         $idnum = "";
     }
 }
@@ -162,13 +223,18 @@ if (isset($_POST['updateadd'])) {
     $year = -1;
     $sem = -1;
     $fname = $_POST['sub_name'];
+<<<<<<< HEAD
     $facultyId = $_POST['facultyid'];
+=======
+    $dOrder = $_POST['facultyid'];
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     if (isset($_POST['year'])) {
         $year = $_POST['year'];
     } else {
         $sem = $_POST['sem'];
     }
     $id = $_POST['idnum'];
+<<<<<<< HEAD
 
 
 
@@ -220,6 +286,16 @@ function getOrdinal($number)
 }
 
 
+=======
+    $sql = "UPDATE subname SET name = '$fname',facultyid = '$dOrder', year=$year, sem=$sem WHERE id = $id";
+    if (mysqli_query($con, $sql)) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+    } else {
+        echo "Error updating record: " . mysqli_error($con);
+    }
+}
+
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 ?>
 
 <!DOCTYPE html>
@@ -230,12 +306,21 @@ function getOrdinal($number)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-NoteBook Suject Name</title>
+<<<<<<< HEAD
     <link rel="stylesheet" href="../Client/styles/global.css">
     <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/faculity.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
+=======
+    <link rel="stylesheet" href="../Client/styles/globala.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sideNav.js" defer></script>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     <script src="./logic/subjectname.js" defer></script>
 
 </head>
@@ -250,23 +335,32 @@ function getOrdinal($number)
                         <th class="serialname">S.N</th>
                         <th class="facname">Name</th>
                         <th>Faculty Name</th>
+<<<<<<< HEAD
                         <th>Sem/Year</th>
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                         <th colspan="2">Action</th>
                     </tr>
                     <?php
                     $num = 1;
                     if (mysqli_num_rows($res) > 0) {
                         while ($row = mysqli_fetch_assoc($res)) {
+<<<<<<< HEAD
                             $sem = $row['sem'];
                             $year = $row['year'];
                             $semYrwh = "";
                             $sem > 0 ? $semYrwh = getOrdinal($sem) . " semester" : $semYrwh = getOrdinal($year) . " year";
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                             echo "
                     <tr>
                     <td>" . $num . "</td>
                     <td>" . $row["name"] . "</td>
                     <td>" . $row["facname"] . "</td>
+<<<<<<< HEAD
                     <td>" . $semYrwh . "</td>
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     <td class='edit' id='editbtn' name='editbtnclk' onclick='openmodal(" . $row["id"] . ")'>
                             <a name='editBtn' href=\"./subjectname.php?edit=" . $row["id"] . "\">
                             <svg id='editbtn' href=\"./subjectname.php?edit=" . $row["id"] . "\" width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
@@ -275,7 +369,11 @@ function getOrdinal($number)
                             </a>
                         </td>
                         <td class='delete'>
+<<<<<<< HEAD
                         <a name='deletebtn' onclick='deleteBtnClk(" . $row['id'] . ")'>
+=======
+                        <a name='deletebtn' href=\"./subjectname.php?id=" . $row["id"] . "\">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                             <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
                                 <path d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z' />
                             </svg>
@@ -289,6 +387,7 @@ function getOrdinal($number)
                     ?>
                 </table>
 
+<<<<<<< HEAD
 
                 <!-- ================================= for pagination =============================== -->
                 <div class="pagination">
@@ -310,6 +409,17 @@ function getOrdinal($number)
                         echo '<a class="rightArrow">&raquo;</a>';
                     }
                     ?>
+=======
+                <div class="pagination">
+                    <a href="#" class="leftArrow">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#" class="activePage">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#" class="rightArrow">&raquo;</a>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                 </div>
 
             </div>
@@ -326,6 +436,7 @@ function getOrdinal($number)
                     <input type="hidden" name="idnum" value="<?php echo $idnum; ?>">
                     <div id="forms" class="flex">
                         <label for="mySelect">Choose Faculty:</label>
+<<<<<<< HEAD
                         <select name="facultyid" id="mySelect" onchange="myFunction()" required>
                             <option value="">Select Faculty</option>
                             <?php
@@ -333,28 +444,49 @@ function getOrdinal($number)
                                 while ($row = mysqli_fetch_assoc($resfac)) {
                                     $selected = ($row["id"] == $facultyId) ? "selected" : ""; // Check if faculty id matches $facultyid
                                     echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . " " . $selected . ">" . $row["faculity_name"] . "</option> ";
+=======
+                        <select name="facultyid" id="mySelect" onchange="myFunction()">
+                            <?php
+                            if (mysqli_num_rows($resfac) > 0) {
+                                while ($row = mysqli_fetch_assoc($resfac)) {
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                                 }
                             }
                             ?>
                         </select>
                     </div>
 
+<<<<<<< HEAD
                     <div id="forms" class="flex fbselectStr">
                         <label for="semyearsel">Select Grade:</label>
                         <select id='semyearsel' name="sem" required>
                             <option value="">Select Semester</option>
                         </select>
+=======
+                    <div id="semyear" class="flex">
+
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     </div>
 
                     <div id="forms" class="flex">
                         <label for="fname">Enter Subject name:</label>
+<<<<<<< HEAD
                         <input type="text" required name="sub_name" id="fname" placeholder="Subject Name"
                             value="<?php echo $name; ?>">
+=======
+                        <input type="text" required name="sub_name" id="fname" placeholder="Subject Name" value="<?php echo $name; ?>">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 
                     </div>
                     <div id="forms" class="buttonformFac">
                         <?php
+<<<<<<< HEAD
                         echo "<button id='submitBtn' type='submit' name='" . ((intval($idnum) >= 1) ? 'updateadd' : 'postadd') . "'>" . ((intval($idnum) >= 1) ? 'Update' : 'Add') . "</button>";
+=======
+                        $message = (intval($idnum) >= 1) ? "<button type='submit' name='updateadd'>Update</button>" : "<button type='submit' name='postadd'>Add</button>";
+                        echo $message;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                         ?>
                         <button type="reset">Reset</button>
                     </div>
@@ -365,6 +497,7 @@ function getOrdinal($number)
 
     </div>
 
+<<<<<<< HEAD
     <div id="confirmModal">
         <div id="confirmModalContent">
             <div class="actualCardConfirm">
@@ -509,6 +642,8 @@ function getOrdinal($number)
     </script>
 
 
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 
 
 </body>

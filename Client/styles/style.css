@@ -7,7 +7,11 @@
 }
 
 .home {
+<<<<<<< HEAD
   width: 95%;
+=======
+  width: 85%;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   background-color: var(--light-bgcolor);
   display: flex;
   justify-content: center;

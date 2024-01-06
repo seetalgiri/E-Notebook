@@ -1,9 +1,20 @@
 <?php
 // Start session
+<<<<<<< HEAD
 
 include './admin/UserSessionData.php';
 
 
+=======
+session_start();
+$id = 0;
+if (isset($_SESSION['username'], $_SESSION['id'], $_SESSION['email'], $_SESSION['stream'])) {
+    $username = $_SESSION['username'];
+    $id = (int) $_SESSION['id'];
+    $email = $_SESSION['email'];
+    $stream = $_SESSION['stream'];
+}
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 
 // Check if the logout button is clicked
 if (isset($_POST['logoutBtn'])) {
@@ -21,7 +32,11 @@ if (isset($_POST['logoutBtn'])) {
 ?>
 <nav class="shadow" id="navigation">
     <div id="logo">
+<<<<<<< HEAD
         <a href="./">
+=======
+        <a href="#">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
             <img src="./Client/images/logo.png" alt="" />
         </a>
     </div>
@@ -40,6 +55,7 @@ if (isset($_POST['logoutBtn'])) {
 
             <!-- ======================================== for login button ======================================== -->
             <?php
+<<<<<<< HEAD
             echo $id < 1 ? '<a href="./auth/login.php" style="margin-right: -20px;">
         <button class="shadow-lg">
             <span> Login </span>
@@ -75,6 +91,36 @@ if (isset($_POST['logoutBtn'])) {
             echo '</div>
 </div>';
 
+=======
+            echo $id < 1 ? '<a href="./auth/register.php" style="margin-right: -20px;">
+            <button class="shadow-lg">
+                <span> Login </span>
+                <svg width="15" height="18" viewBox="0 0 16 20" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8 15.2381C8.53043 15.2381 9.03914 15.0374 9.41421 14.6802C9.78929 14.323 10 13.8385 10 13.3333C10 12.2762 9.1 11.4286 8 11.4286C7.46957 11.4286 6.96086 11.6293 6.58579 11.9865C6.21071 12.3437 6 12.8282 6 13.3333C6 13.8385 6.21071 14.323 6.58579 14.6802C6.96086 15.0374 7.46957 15.2381 8 15.2381ZM14 6.66667C14.5304 6.66667 15.0391 6.86735 15.4142 7.22456C15.7893 7.58177 16 8.06625 16 8.57143V18.0952C16 18.6004 15.7893 19.0849 15.4142 19.4421C15.0391 19.7993 14.5304 20 14 20H2C1.46957 20 0.960859 19.7993 0.585786 19.4421C0.210714 19.0849 0 18.6004 0 18.0952V8.57143C0 7.51429 0.9 6.66667 2 6.66667H3V4.7619C3 3.49897 3.52678 2.28776 4.46447 1.39473C5.40215 0.501699 6.67392 0 8 0C8.65661 0 9.30679 0.12317 9.91342 0.362478C10.52 0.601787 11.0712 0.952546 11.5355 1.39473C11.9998 1.83691 12.3681 2.36186 12.6194 2.9396C12.8707 3.51734 13 4.13656 13 4.7619V6.66667H14ZM8 1.90476C7.20435 1.90476 6.44129 2.20578 5.87868 2.7416C5.31607 3.27742 5 4.00414 5 4.7619V6.66667H11V4.7619C11 4.00414 10.6839 3.27742 10.1213 2.7416C9.55871 2.20578 8.79565 1.90476 8 1.90476Z" />
+                </svg>
+            </button>
+        </a>' : '<div class="profileCls topProfileDesktop" id="profileMainContainer">
+        <svg onclick="openProfileModal()" id="adminProfile22" width="35" height="40" viewBox="0 0 21 21"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M10.4091 17.5812C7.9091 17.5812 5.6991 16.3012 4.4091 14.3812C4.4391 12.3812 8.4091 11.2812 10.4091 11.2812C12.4091 11.2812 16.3791 12.3812 16.4091 14.3812C15.1191 16.3012 12.9091 17.5812 10.4091 17.5812ZM10.4091 3.38123C11.2048 3.38123 11.9678 3.6973 12.5304 4.25991C13.093 4.82251 13.4091 5.58558 13.4091 6.38123C13.4091 7.17688 13.093 7.93994 12.5304 8.50255C11.9678 9.06516 11.2048 9.38123 10.4091 9.38123C9.61345 9.38123 8.85039 9.06516 8.28778 8.50255C7.72517 7.93994 7.4091 7.17688 7.4091 6.38123C7.4091 5.58558 7.72517 4.82251 8.28778 4.25991C8.85039 3.6973 9.61345 3.38123 10.4091 3.38123ZM10.4091 0.381226C9.09588 0.381226 7.79552 0.639883 6.58227 1.14243C5.36901 1.64498 4.26662 2.38157 3.33804 3.31016C1.46267 5.18552 0.409103 7.72906 0.409103 10.3812C0.409103 13.0334 1.46267 15.5769 3.33804 17.4523C4.26662 18.3809 5.36901 19.1175 6.58227 19.62C7.79552 20.1226 9.09588 20.3812 10.4091 20.3812C13.0613 20.3812 15.6048 19.3277 17.4802 17.4523C19.3555 15.5769 20.4091 13.0334 20.4091 10.3812C20.4091 4.85123 15.9091 0.381226 10.4091 0.381226Z" />
+        </svg>
+        <div id="profilecards" class="shadow-lg">
+            <div id="cmtuserDet">
+                <div id="userPost">' . ucfirst(substr($username, 0, 1)) . '</div>
+                <div id="userNameAndDate">
+                    <span>' . $username . '</span>
+                    <span>' . $email . '</span>
+                </div>
+            </div>
+            <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
+                <form method="POST" action="" class="logoutbtn">
+                    <button type="submit" name="logoutBtn">LOGOUT</button>
+                </form>
+        </div>
+    </div>';
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
             ?>
 
 
@@ -107,7 +153,11 @@ if (isset($_POST['logoutBtn'])) {
                 <span>' . $email . '</span>
             </div>
             </div>
+<<<<<<< HEAD
             <div id="streamprofile"><span></span><span style="text-transform: uppercase;"> </span></div>
+=======
+            <div id="streamprofile"><span>Stream:</span><span style="text-transform: uppercase;">' . $stream . '</span></div>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
             <form method="POST" action="" class="logoutbtn">
             <button type="submit" name="logoutBtn">LOGOUT</button>
         </form>
@@ -119,7 +169,11 @@ if (isset($_POST['logoutBtn'])) {
 <script>
     var navLinks = document.getElementsByTagName("a");
     const currentUrl = window.location.href;
+<<<<<<< HEAD
     const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1).split('?')[0];
+=======
+    const currentPage = currentUrl.substr(currentUrl.lastIndexOf('/') + 1);
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     const clsPage = currentPage.split(".")[0]
 
 
@@ -143,6 +197,10 @@ if (isset($_POST['logoutBtn'])) {
     const modalCLoseDIvOutside = document.getElementById("modalCLoseDIvOutside");
 
     const openProfileModal = () => {
+<<<<<<< HEAD
+=======
+        console.log("Clicked")
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
         if (profilecards.style.display == "none" || profilecards.style.display == "") {
             profilecards.style.display = "block";
             modalCLoseDIvOutside.style.display = "block";

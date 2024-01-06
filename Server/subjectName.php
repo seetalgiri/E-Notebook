@@ -11,7 +11,11 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from the database
+<<<<<<< HEAD
 $sql = "SELECT * FROM subname";
+=======
+$sql = "SELECT id, name, facname, facultyid, date, sem, year FROM subname";
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 $result = $conn->query($sql);
 
 // Prepare an array to store the results

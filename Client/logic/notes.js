@@ -65,6 +65,7 @@ filterNotes.addEventListener("click", () => {
 crossSection.addEventListener("click", toggleSection);
 filterSection.addEventListener("click", toggleSection);
 
+<<<<<<< HEAD
 let sem = `<option value="">Select Semester</option>
             <option value='1' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 1) ? 'selected' : ''; ?> >First Semester</option>
             <option value='2' <?php echo (isset($_GET['sem']) && $_GET['sem'] == 2) ? 'selected' : ''; ?> >Second Semester</option>
@@ -77,6 +78,20 @@ let sem = `<option value="">Select Semester</option>
                     `;
 
 let year = `<option value="">Select Year</option>    
+=======
+let sem = `<option>Select Semester</option>
+                    <option value='1'>First Semester</option>
+                    <option value='2'>Second Semester</option>
+                    <option value='3'>Third Semester</option>
+                    <option value='4'>Fourth Semester</option>
+                    <option value='5'>Fifth Semester</option>
+                    <option value='6'>Sixth Semester</option>
+                    <option value='7'>Seventh Semester</option>
+                    <option value='8'>Eighth Semester</option>
+                    `;
+
+let year = `<option>Select Year</option>    
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     <option value='1'>First Year</option>
                     <option value='2'>Second Year</option>
                     <option value='3'>Third Year</option>

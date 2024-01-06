@@ -8,11 +8,19 @@
     <title>E-Notebook Dashboard</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/global.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/dashboard.css">
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
+=======
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sidenavs.js" defer></script>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 </head>
 
 <body>

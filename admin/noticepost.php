@@ -1,6 +1,7 @@
 <?php
 $show_notification = false;
 
+<<<<<<< HEAD
 if (isset($_GET['error'])) {
     echo '<div class="fullcontainerToast">
     <div class="toastifier">
@@ -50,6 +51,8 @@ if (isset($_GET['success'])) {
 }
 
 
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 // importaing configurations 
 include '../Configuration.php';
 
@@ -64,6 +67,7 @@ if (!$con) {
 $sql = "SELECT * FROM `faculty`";
 $resfac = mysqli_query($con, $sql);
 
+<<<<<<< HEAD
 
 
 // ================================ for pagination (start) ==========================================
@@ -140,6 +144,9 @@ if (isset($_GET['search'])) {
 ?>
 
 
+=======
+?>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,6 +156,7 @@ if (isset($_GET['search'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Notebook Notice Post</title>
     <link rel="stylesheet" href="../Client/styles/global.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/faculity.css">
     <link rel="stylesheet" href="./CSS/noticepost.css">
@@ -158,6 +166,15 @@ if (isset($_GET['search'])) {
 
     <!-- for JS Logic  -->
     <script src="./logic/sidenav.js" defer></script>
+=======
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
+    <link rel="stylesheet" href="./CSS/noticepost.css">
+
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sidenavs.js" defer></script>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     <script src="./logic/noticepost.js" defer></script>
 </head>
 
@@ -172,6 +189,7 @@ if (isset($_GET['search'])) {
                         <th class="facname">Description</th>
                         <th>Image</th>
                         <th>Faculty</th>
+<<<<<<< HEAD
                         <th>User</th>
                         <th colspan="2">Action</th>
                     </tr>
@@ -231,6 +249,39 @@ if (isset($_GET['search'])) {
                         echo '<a class="rightArrow">&raquo;</a>';
                     }
                     ?>
+=======
+                        <th colspan="2">Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>THis is me gaurab sunar</td>
+                        <td>Year</td>
+                        <td>BCA</td>
+                        <td class='edit' id='editbtn'>
+                            <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24'
+                                xmlns='http://www.w3.org/2000/svg'>
+                                <path
+                                    d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
+                            </svg>
+                        </td>
+                        <td class='delete'>
+                            <a name='deletebtn' $row[" id"] . "\">
+                                <svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
+                                    <path
+                                        d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z' />
+                                </svg>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <div class="pagination">
+                    <a href="#" class="leftArrow">&laquo;</a>
+                    <a href="#">1</a>
+                    <a href="#" class="activePage">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#" class="rightArrow">&raquo;</a>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                 </div>
             </div>
         </div>
@@ -241,11 +292,16 @@ if (isset($_GET['search'])) {
                 </svg>
             </div>
             <div id="sideDivForm" class='noticePost'>
+<<<<<<< HEAD
                 <form action="../Server/Home/indexback.php" method="post" id="forms" enctype="multipart/form-data">
+=======
+                <form action="#" method="get" id="forms">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     <h3>Add Faculty:</h3>
                     <!-- <input type="hidden" name="idnum" value="<?php echo $idnum; ?>"> -->
                     <div id="forms" class="flex">
                         <label for="description">Enter Post Description:</label>
+<<<<<<< HEAD
                         <textarea name="post" id="description" cols="30" rows="10" required></textarea>
                     </div>
                     <div id="forms" class="flex">
@@ -256,6 +312,17 @@ if (isset($_GET['search'])) {
                             if (mysqli_num_rows($resfac) > 0) {
                                 while ($row = mysqli_fetch_assoc($resfac)) {
                                     echo "<option value='" . $row["faculity_name"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+=======
+                        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    </div>
+                    <div id="forms" class="flex">
+                        <label for="mySelect">Choose Faculty:</label>
+                        <select name="facultyid" id="mySelect">
+                            <?php
+                            if (mysqli_num_rows($resfac) > 0) {
+                                while ($row = mysqli_fetch_assoc($resfac)) {
+                                    echo "<option value='" . $row["id"] . "' data_yearsem=" . $row['yearsem'] . ">" . $row["faculity_name"] . "</option> ";
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                                 }
                             }
                             ?>
@@ -267,7 +334,11 @@ if (isset($_GET['search'])) {
                     </div>
 
                     <div id=" forms" class="buttonformFac">
+<<<<<<< HEAD
                         <button type='submit' name='postnewsadmin'>Post</button>
+=======
+                        <button type='submit' name='updateadd'>Post</button>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                         <button type="reset">Reset</button>
                     </div>
                 </form>
@@ -275,6 +346,7 @@ if (isset($_GET['search'])) {
         </div>
     </div>
 
+<<<<<<< HEAD
     <div id="modal">
         <div id="background">
             <div id="contentModal" style="height: 600px !important;">
@@ -414,6 +486,8 @@ if (isset($_GET['search'])) {
         })
     </script>
 
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 if (isset($_GET['error'])) {
     echo '<div class="fullcontainerToast">
     <div class="toastifier">
@@ -62,11 +63,20 @@ if (isset($_GET['success'])) {
 include '../Configuration.php';
 
 //database connection
+=======
+$show_notification = false;
+
+// Importing configurations 
+include '../Configuration.php';
+
+// Database connection
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 $con = mysqli_connect($commonHost, $commonUser, $commonPassword, $commonDbname);
 
 if (!$con) {
     die("Database connection failed");
 }
+<<<<<<< HEAD
 if (isset($_POST['postadd'])) {
     $fname = $_POST['fname'];
     $yearsem = $_POST['yearsem'];
@@ -137,6 +147,14 @@ if (isset($_GET['search'])) {
 
 ?>
 
+=======
+
+// Fetching faculty data
+$sql_faculty = "SELECT * FROM `faculty`";
+$res_faculty = mysqli_query($con, $sql_faculty);
+
+?>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,6 +165,7 @@ if (isset($_GET['search'])) {
     <title>E-NoteBook Faculty</title>
     <!-- for CSS Style  -->
     <link rel="stylesheet" href="../Client/styles/global.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="./css/stylesa.css">
     <link rel="stylesheet" href="./css/faculity.css">
 
@@ -157,6 +176,18 @@ if (isset($_GET['search'])) {
 
 <body>
     <?php include "./common/sidenav.php" ?>
+=======
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/faculity.css">
+
+    <!-- for JS Logic  -->
+    <script src="./logic/sidenavs.js" defer></script>
+    <script src="./logic/faculity.js" defer></script>
+</head>
+
+<body>
+    <?php include './common/sidenav.php' ?>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
     <div id="adminContent">
         <div class="actualContent">
             <div class="contentDiv">
@@ -165,6 +196,7 @@ if (isset($_GET['search'])) {
                         <th class="serialname">S.N</th>
                         <th class="facname">Name</th>
                         <th>Year/Semester</th>
+<<<<<<< HEAD
                         <th colspan="2">Action</th>
                     </tr>
                     <?php
@@ -200,21 +232,53 @@ if (isset($_GET['search'])) {
                     ?>
                 </table>
                 <!-- <div class="pagination">
+=======
+                        <th>Display order</th>
+                        <th colspan="2">Action</th>
+                    </tr>
+                    <?php while ($row = mysqli_fetch_assoc($res_faculty)) { ?>
+                        <tr>
+                            <td class="serialname"><?php echo $row['id']; ?></td>
+                            <td class="facname"><?php echo $row['faculty_name']; ?></td>
+                            <td>1st sem</td>
+                            <td>3</td>
+                            <td style="width:100px;">
+                                <svg id='editbtn' width='17' height='17' viewBox='0 0 25 24' xmlns='http://www.w3.org/2000/svg'>
+                                    <path d='M22.5 8.75V7.5L15 0H2.5C1.1125 0 0 1.1125 0 2.5V20C0 21.3875 1.125 22.5 2.5 22.5H10V20.1625L20.4875 9.675C21.0375 9.125 21.7375 8.825 22.5 8.75ZM13.75 1.875L20.625 8.75H13.75V1.875ZM24.8125 13.9875L23.5875 15.2125L21.0375 12.6625L22.2625 11.4375C22.5 11.1875 22.9125 11.1875 23.1625 11.4375L24.8125 13.0875C25.0625 13.3375 25.0625 13.75 24.8125 13.9875ZM20.1625 13.5375L22.7125 16.0875L15.05 23.75H12.5V21.2L20.1625 13.5375Z' />
+                                </svg>
+                            </td>
+                            <td style="width:100px;"><svg width='17' height='17' viewBox='0 0 20 23' xmlns='http://www.w3.org/2000/svg'>
+                                    <path d='M6.25 0V1.25H0V3.75H1.25V20C1.25 20.663 1.51339 21.2989 1.98223 21.7678C2.45107 22.2366 3.08696 22.5 3.75 22.5H16.25C16.913 22.5 17.5489 22.2366 18.0178 21.7678C18.4866 21.2989 18.75 20.663 18.75 20V3.75H20V1.25H13.75V0H6.25ZM6.25 6.25H8.75V17.5H6.25V6.25ZM11.25 6.25H13.75V17.5H11.25V6.25Z' />
+                                </svg></td>
+                        </tr>
+                    <?php } ?>
+
+                </table>
+                <div class="pagination">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     <a href="#" class="leftArrow">&laquo;</a>
                     <a href="#">1</a>
                     <a href="#" class="activePage">2</a>
                     <a href="#">3</a>
                     <a href="#">4</a>
                     <a href="#" class="rightArrow">&raquo;</a>
+<<<<<<< HEAD
                 </div> -->
             </div>
         </div>
+=======
+                </div>
+            </div>
+        </div>
+
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
         <div id="modalContent">
             <div id="sideButton" onclick="modalBtnclk()">
                 <svg width="13" height="16" viewBox="0 0 8 12" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.589844 10.58L5.16984 6L0.589844 1.41L1.99984 0L7.99984 6L1.99984 12L0.589844 10.58Z" />
                 </svg>
             </div>
+<<<<<<< HEAD
             <div id="sideDivForm" style="height: 350px !important;">
                 <form action="./faculty.php" method="post" id="forms">
                     <h3>Add Faculty:</h3>
@@ -222,6 +286,16 @@ if (isset($_GET['search'])) {
                     <div id="forms" class="flex">
                         <label for="fname">Enter faculity name:</label>
                         <input type="text" name="fname" required id="fname" placeholder="Name">
+=======
+
+            <div id="sideDivForm">
+                <form action="../Server/faculty.php" method="post">
+                    <h3>Add Faculty name:</h3>
+                    <input type="hidden">
+                    <div id="forms" class="flex">
+                        <label for="fname">Enter faculty name:</label>
+                        <input type="text" name="fname" id="fname" placeholder="Name" value="">
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                     </div>
                     <div id="forms" class="flex">
                         <label for="stdType">Select Year/Semester:</label>
@@ -230,14 +304,29 @@ if (isset($_GET['search'])) {
                             <option value="2">Semester</option>
                         </select>
                     </div>
+<<<<<<< HEAD
                     <div id="forms" class="buttonformFac">
                         <button type='submit' name='postadd' id="submitBtn">Add</button>
+=======
+
+                    <div id="semyear" class="flex">
+
+                    </div>
+
+                    <div id="forms" class="flex">
+                        <label for="dOrder">Enter Display order:</label>
+                        <input type="number" name="dOrder" required id="dOrder" placeholder="Display Order" value="<?php echo $dorder; ?>">
+                    </div>
+                    <div id="forms" class="buttonformFac">
+                        <button type='submit' name='post'>Post</button>
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
                         <button type="reset">Reset</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <div id="confirmModal">
         <div id="confirmModalContent">
             <div class="actualCardConfirm">
@@ -304,6 +393,9 @@ if (isset($_GET['search'])) {
             }
         })
     </script>
+=======
+
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 </body>
 
 </html>

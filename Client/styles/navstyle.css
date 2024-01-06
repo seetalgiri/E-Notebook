@@ -73,7 +73,10 @@ nav {
 }
 .logoutbtn button {
   padding: 7px 65px;
+<<<<<<< HEAD
   width: 210px;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   letter-spacing: 1px;
   border-radius: 2px;
   font-size: 17px;
@@ -127,17 +130,27 @@ nav {
   min-height: 100vh;
   background-color: var(--light-bgcolor);
 }
+<<<<<<< HEAD
 #contentDivsup {
+=======
+#contentDiv {
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   width: 80%;
   min-height: 90vh;
   margin: auto;
   max-width: 1020px;
   display: flex;
   gap: 20px;
+<<<<<<< HEAD
   padding-top: 65px;
   position: relative;
 }
 
+=======
+  padding-top: 60px;
+  position: relative;
+}
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 #dynamicContent {
   width: 70%;
   min-height: 200px;
@@ -303,8 +316,12 @@ nav {
   position: absolute;
   top: 55px;
   right: -10px;
+<<<<<<< HEAD
   min-height: 150px;
   max-height: 180px;
+=======
+  height: 150px;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
   width: 230px;
   background-color: var(--bg-white);
   border-radius: 2px;
@@ -315,7 +332,10 @@ nav {
 
 #profilecards #userPost {
   scale: 1.2;
+<<<<<<< HEAD
   min-width: 30px;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 #logoutBtn {
   padding: 6px 30px;

@@ -25,7 +25,11 @@ textarea {
 }
 
 .NotePostModalContent #sideDivForm {
+<<<<<<< HEAD
   height: 520px !important;
+=======
+  height: 510px !important;
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
 
 .flexButtons {
@@ -44,6 +48,7 @@ textarea {
 
 #modalContent {
   width: 500px !important;
+<<<<<<< HEAD
   right: -475px;
 }
 .wrapperDivForm {
@@ -60,4 +65,6 @@ textarea {
 }
 #sideButton {
   z-index: 10000000000000;
+=======
+>>>>>>> 630326700dad90d9b2eafaa435850f2fe7beb352
 }
